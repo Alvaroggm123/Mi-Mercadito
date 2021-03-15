@@ -42,7 +42,6 @@ namespace Mi_mercadito
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Image = global::Mi_mercadito.Properties.Resources.Logo_mi_mercadito__03_10_21_4;
             this.pbxLogo.Location = new System.Drawing.Point(23, 12);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(256, 256);
@@ -69,7 +68,6 @@ namespace Mi_mercadito
             // 
             this.txtPassword.Location = new System.Drawing.Point(90, 308);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(189, 20);
             this.txtPassword.TabIndex = 3;
             // 
@@ -115,7 +113,7 @@ namespace Mi_mercadito
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 422);
+            this.ClientSize = new System.Drawing.Size(304, 450);
             this.Controls.Add(this.lblTerminos);
             this.Controls.Add(this.cmdRegister);
             this.Controls.Add(this.cmdAccept);
