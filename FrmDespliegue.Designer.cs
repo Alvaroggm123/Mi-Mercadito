@@ -1,0 +1,156 @@
+﻿
+namespace Mi_mercadito
+{
+    partial class FrmDespliegue
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.cmdAccept = new System.Windows.Forms.Button();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblDialogo = new System.Windows.Forms.Label();
+            this.grpbDatos = new System.Windows.Forms.GroupBox();
+            this.grpbDatos.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // cmdAccept
+            // 
+            this.cmdAccept.Location = new System.Drawing.Point(92, 224);
+            this.cmdAccept.Name = "cmdAccept";
+            this.cmdAccept.Size = new System.Drawing.Size(123, 23);
+            this.cmdAccept.TabIndex = 29;
+            this.cmdAccept.Text = "Terminar registro";
+            this.cmdAccept.UseVisualStyleBackColor = true;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(9, 33);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(99, 13);
+            this.lblUsername.TabIndex = 4;
+            this.lblUsername.Text = "Nombre de usuario:";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(114, 30);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(154, 20);
+            this.txtUsername.TabIndex = 5;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(59, 56);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(209, 20);
+            this.txtName.TabIndex = 12;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(9, 59);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(44, 13);
+            this.lblName.TabIndex = 11;
+            this.lblName.Text = "Nombre";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(111, 82);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(157, 20);
+            this.txtEmail.TabIndex = 18;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(9, 85);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(96, 13);
+            this.lblEmail.TabIndex = 17;
+            this.lblEmail.Text = "Correo electrónico:";
+            // 
+            // lblDialogo
+            // 
+            this.lblDialogo.AutoSize = true;
+            this.lblDialogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDialogo.Location = new System.Drawing.Point(12, 25);
+            this.lblDialogo.Name = "lblDialogo";
+            this.lblDialogo.Size = new System.Drawing.Size(256, 60);
+            this.lblDialogo.TabIndex = 26;
+            this.lblDialogo.Text = "Sus datos han sido registrados \r\nsatisfactoriamente, puede regresar\r\npara iniciar" +
+    " sesión.";
+            // 
+            // grpbDatos
+            // 
+            this.grpbDatos.Controls.Add(this.lblUsername);
+            this.grpbDatos.Controls.Add(this.txtUsername);
+            this.grpbDatos.Controls.Add(this.txtName);
+            this.grpbDatos.Controls.Add(this.lblName);
+            this.grpbDatos.Controls.Add(this.txtEmail);
+            this.grpbDatos.Controls.Add(this.lblEmail);
+            this.grpbDatos.Location = new System.Drawing.Point(12, 97);
+            this.grpbDatos.Name = "grpbDatos";
+            this.grpbDatos.Size = new System.Drawing.Size(290, 121);
+            this.grpbDatos.TabIndex = 27;
+            this.grpbDatos.TabStop = false;
+            this.grpbDatos.Text = "Datos registrados";
+            // 
+            // FrmDespliegue
+            // 
+            this.AcceptButton = this.cmdAccept;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(321, 264);
+            this.Controls.Add(this.cmdAccept);
+            this.Controls.Add(this.lblDialogo);
+            this.Controls.Add(this.grpbDatos);
+            this.Name = "FrmDespliegue";
+            this.Text = "Datos registrados correctamente";
+            this.grpbDatos.ResumeLayout(false);
+            this.grpbDatos.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.Button cmdAccept;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblDialogo;
+        private System.Windows.Forms.GroupBox grpbDatos;
+    }
+}
