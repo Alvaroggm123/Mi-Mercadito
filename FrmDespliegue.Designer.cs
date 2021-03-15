@@ -46,7 +46,7 @@ namespace Mi_mercadito
             this.cmdAccept.Location = new System.Drawing.Point(92, 224);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(123, 23);
-            this.cmdAccept.TabIndex = 29;
+            this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Terminar registro";
             this.cmdAccept.UseVisualStyleBackColor = true;
             // 
@@ -56,22 +56,24 @@ namespace Mi_mercadito
             this.lblUsername.Location = new System.Drawing.Point(9, 33);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(99, 13);
-            this.lblUsername.TabIndex = 4;
+            this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Nombre de usuario:";
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(114, 30);
             this.txtUsername.Name = "txtUsername";
+            this.txtUsername.ReadOnly = true;
             this.txtUsername.Size = new System.Drawing.Size(154, 20);
-            this.txtUsername.TabIndex = 5;
+            this.txtUsername.TabIndex = 1;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(59, 56);
             this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(209, 20);
-            this.txtName.TabIndex = 12;
+            this.txtName.TabIndex = 3;
             // 
             // lblName
             // 
@@ -79,15 +81,16 @@ namespace Mi_mercadito
             this.lblName.Location = new System.Drawing.Point(9, 59);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(44, 13);
-            this.lblName.TabIndex = 11;
+            this.lblName.TabIndex = 2;
             this.lblName.Text = "Nombre";
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(111, 82);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(157, 20);
-            this.txtEmail.TabIndex = 18;
+            this.txtEmail.TabIndex = 5;
             // 
             // lblEmail
             // 
@@ -95,7 +98,7 @@ namespace Mi_mercadito
             this.lblEmail.Location = new System.Drawing.Point(9, 85);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(96, 13);
-            this.lblEmail.TabIndex = 17;
+            this.lblEmail.TabIndex = 4;
             this.lblEmail.Text = "Correo electrónico:";
             // 
             // lblDialogo
@@ -105,7 +108,7 @@ namespace Mi_mercadito
             this.lblDialogo.Location = new System.Drawing.Point(12, 25);
             this.lblDialogo.Name = "lblDialogo";
             this.lblDialogo.Size = new System.Drawing.Size(256, 60);
-            this.lblDialogo.TabIndex = 26;
+            this.lblDialogo.TabIndex = 0;
             this.lblDialogo.Text = "Sus datos han sido registrados \r\nsatisfactoriamente, puede regresar\r\npara iniciar" +
     " sesión.";
             // 
@@ -120,7 +123,7 @@ namespace Mi_mercadito
             this.grpbDatos.Location = new System.Drawing.Point(12, 97);
             this.grpbDatos.Name = "grpbDatos";
             this.grpbDatos.Size = new System.Drawing.Size(290, 121);
-            this.grpbDatos.TabIndex = 27;
+            this.grpbDatos.TabIndex = 1;
             this.grpbDatos.TabStop = false;
             this.grpbDatos.Text = "Datos registrados";
             // 
