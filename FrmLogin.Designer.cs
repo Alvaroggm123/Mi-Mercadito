@@ -34,8 +34,8 @@ namespace Mi_mercadito
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.cmdAccept = new System.Windows.Forms.Button();
-            this.cmdRegister = new System.Windows.Forms.Button();
+            this.CmdAccept = new System.Windows.Forms.Button();
+            this.CmdRegister = new System.Windows.Forms.Button();
             this.lblTerminos = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
@@ -80,24 +80,25 @@ namespace Mi_mercadito
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Contraseña:";
             // 
-            // cmdAccept
+            // CmdAccept
             // 
-            this.cmdAccept.Location = new System.Drawing.Point(55, 347);
-            this.cmdAccept.Name = "cmdAccept";
-            this.cmdAccept.Size = new System.Drawing.Size(82, 23);
-            this.cmdAccept.TabIndex = 4;
-            this.cmdAccept.Text = "iniciar sesión ";
-            this.cmdAccept.UseVisualStyleBackColor = true;
-            this.cmdAccept.Click += new System.EventHandler(this.cmdAccept_Click);
+            this.CmdAccept.Location = new System.Drawing.Point(55, 347);
+            this.CmdAccept.Name = "CmdAccept";
+            this.CmdAccept.Size = new System.Drawing.Size(82, 23);
+            this.CmdAccept.TabIndex = 4;
+            this.CmdAccept.Text = "iniciar sesión ";
+            this.CmdAccept.UseVisualStyleBackColor = true;
+            this.CmdAccept.Click += new System.EventHandler(this.CmdAccept_Click);
             // 
-            // cmdRegister
+            // CmdRegister
             // 
-            this.cmdRegister.Location = new System.Drawing.Point(157, 347);
-            this.cmdRegister.Name = "cmdRegister";
-            this.cmdRegister.Size = new System.Drawing.Size(80, 23);
-            this.cmdRegister.TabIndex = 5;
-            this.cmdRegister.Text = "Registrarme";
-            this.cmdRegister.UseVisualStyleBackColor = true;
+            this.CmdRegister.Location = new System.Drawing.Point(157, 347);
+            this.CmdRegister.Name = "CmdRegister";
+            this.CmdRegister.Size = new System.Drawing.Size(80, 23);
+            this.CmdRegister.TabIndex = 5;
+            this.CmdRegister.Text = "Registrarme";
+            this.CmdRegister.UseVisualStyleBackColor = true;
+            this.CmdRegister.Click += new System.EventHandler(this.CmdRegister_Click);
             // 
             // lblTerminos
             // 
@@ -110,13 +111,13 @@ namespace Mi_mercadito
             // 
             // FrmLogin
             // 
-            this.AcceptButton = this.cmdAccept;
+            this.AcceptButton = this.CmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 450);
             this.Controls.Add(this.lblTerminos);
-            this.Controls.Add(this.cmdRegister);
-            this.Controls.Add(this.cmdAccept);
+            this.Controls.Add(this.CmdRegister);
+            this.Controls.Add(this.CmdAccept);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtUsername);
@@ -137,8 +138,8 @@ namespace Mi_mercadito
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Button cmdAccept;
-        private System.Windows.Forms.Button cmdRegister;
+        private System.Windows.Forms.Button CmdAccept;
+        private System.Windows.Forms.Button CmdRegister;
         private System.Windows.Forms.Label lblTerminos;
     }
 }

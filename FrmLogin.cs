@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Mi_mercadito
 {
@@ -17,9 +18,18 @@ namespace Mi_mercadito
             InitializeComponent();
         }
 
-        private void cmdAccept_Click(object sender, EventArgs e)
+        private void CmdAccept_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CmdRegister_Click(object sender, EventArgs e)
+        {
+            // Creamos objeto de formulario de registro.
+            FrmRegistro FormRegistro = new FrmRegistro();
+
+            // Desplegamos el formuario de registro.
+            FormRegistro.Show();
         }
     }
 }
