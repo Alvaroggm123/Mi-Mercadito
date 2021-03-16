@@ -82,10 +82,14 @@ namespace Mi_mercadito
                 );
                 // Enviamos  los  datos y un mensaje de confirmacion en
                 // caso de que todo haya procedido correctamente.
-                if (Usuario.Insertar(Usuario) > 0)
-                    MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente, regresa para loguearte.", "Datos Guardado", MessageBoxButtons.OK);
-                else
-                    MessageBox.Show("No se pudieron guardar los datos", "Error de Guardado", MessageBoxButtons.OK);
+                if (MessageBox.Show("¿Sus datos son correctos?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (Usuario.Insertar(Usuario) > 0)
+                    {
+                        MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente, regresa para loguearte.", "Datos Guardado", MessageBoxButtons.OK);
+                        Close();
+                    }
+                    else
+                        MessageBox.Show("No se pudieron guardar los datos", "Error de Guardado", MessageBoxButtons.OK);
             }
         }
 

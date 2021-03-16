@@ -63,6 +63,7 @@ namespace Mi_mercadito
             // 
             this.txtPassword.Location = new System.Drawing.Point(111, 39);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(154, 20);
             this.txtPassword.TabIndex = 3;
             // 
@@ -89,6 +90,7 @@ namespace Mi_mercadito
             // 
             this.txtConfirmP.Location = new System.Drawing.Point(111, 65);
             this.txtConfirmP.Name = "txtConfirmP";
+            this.txtConfirmP.PasswordChar = '*';
             this.txtConfirmP.Size = new System.Drawing.Size(154, 20);
             this.txtConfirmP.TabIndex = 5;
             // 
