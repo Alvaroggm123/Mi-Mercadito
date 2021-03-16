@@ -28,6 +28,7 @@ namespace Mi_mercadito
         public string Usuario { get; set; }
         public string Clave { get; set; }
         public string Correo { get; set; }
+        public Usuarios() { }
 
         public Usuarios(string Nombre, string Apellidos, string Usuario, string Clave, string Correo)
         {
@@ -41,12 +42,29 @@ namespace Mi_mercadito
         {
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
-                SqlCommand Comando = new SqlCommand(string.Format("Insert Into Usuarioss (Nombre,Apellidos,Usuario,Clave,Correo) values ('{0}','{1}','{2}','{3}','{4}')",
-                UsuarioReg.Nombre, UsuarioReg.Apellidos, UsuarioReg.Usuario, UsuarioReg.Clave, UsuarioReg.Correo), Conn);
+                SqlCommand Comando = new SqlCommand(
+                    string.Format("Insert Into Usuarios (Fname,Lname,Username,Pass,Email) " +
+                    "values ('{0}','{1}','{2}','{3}','{4}')",
+                    UsuarioReg.Nombre,
+                    UsuarioReg.Apellidos,
+                    UsuarioReg.Usuario,
+                    UsuarioReg.Clave,
+                    UsuarioReg.Correo), Conn);
                 return Comando.ExecuteNonQuery();
             }
         }
+        public bool Validar(string Username)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM Usuarios WHERE Username = @Username ; ";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@Username ", Username);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
 
+            }
+        }
     }
     // Creamos clase que permite la coneccion con la base de datos
     public class ConnectionDB
@@ -54,9 +72,9 @@ namespace Mi_mercadito
         public static SqlConnection StartConn()
         {
             // Configuración de los parametros para conectar con la base de datos.
-            string[] Config = { "Data Source = mercadito.axolotlteam.com;",
+            string[] Config = { "Data Source = mercadito.database.windows.net;",
             /*                 */"Initial Catalog=Mercadito;",
-            /*                 */"User Id=SA;",
+            /*                 */"User Id=axolotl;",
             /*                 */"Password=Mercadito3312"};
             string Connection = Config[0] + Config[1] + Config[2] + Config[3];
             SqlConnection Conn = new SqlConnection(Connection);

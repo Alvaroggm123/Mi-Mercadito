@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// Librerias necesarias
+using System.Data.SqlClient;
 
 namespace Mi_mercadito
 {
@@ -15,9 +17,8 @@ namespace Mi_mercadito
         /* ========== | Comienzan los métodos | ========== */
 
         // Método que permite imprimir mensajes de error.
-        private bool ErrorMessage(string Grupo, Control Enfoque)
+        private bool ErrorMessage(string Grupo, string Mensaje, Control Enfoque)
         {
-            string Mensaje = "Los datos " + Grupo + " deben estar completos o correctos.";
             string Titulo = "Error en " + Grupo;
             MessageBox.Show(Mensaje, Titulo);
             Enfoque.Focus();
@@ -26,21 +27,27 @@ namespace Mi_mercadito
         // == | Metodo de verificación de llenado de datos.
         private bool CheckData()
         {
+            // Generamos usuario para validar si se ingreso un usuario correcto
+            Usuarios Usuario = new Usuarios();
             // Área de verificación de datos personales.
             if (txtName.Text == "" || txtLname.Text == "" || txtEmail.Text == "")
-                return ErrorMessage("personales", txtName);
+                return ErrorMessage("Datos personales", "Los datos personales deben estar completos", txtName);
             else if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
-                return ErrorMessage("sobre el sexo", lblSexo);
-            else if (datepBirth.Value.AddYears(18) > DateTime.Today)
-                return ErrorMessage("la edad", lblSexo); // === | Caso especial, falta verificar | === //
+                return ErrorMessage("Definir sexo requerido", "Se requiere espesificar sexo, en caso de inclusividad seleccione \"otro\"", txtName);
+            else if (datepBirth.Value.AddYears(13) > DateTime.Today)
+                return ErrorMessage("Edad minima requerida", "Se requiere espesificar una edad mayor a 13 años.", lblSexo);
             // Área de verificación de datos de contacto.
             else if (txtUsername.Text == "" || txtPassword.Text == "" || txtConfirmP.Text == "")
-                return ErrorMessage("sobre el usuario", lblUsername);
+                return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario valido.", lblUsername);
+            else if (txtUsername.Text.Length < 10)
+                return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario de al menos 10 caracteres.", lblPassword);
             else if (txtPassword.Text != txtConfirmP.Text)
-                return ErrorMessage("la contraseña", lblPassword);
+                return ErrorMessage("Contraseña", "Las contraseñas no coinciden.", lblPassword);
+            else if (!Usuario.Validar(txtUsername.Text))
+                return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblPassword);
             // Validamos que haya aceptado los terminos y condiciones.
             else if (!chkboxTerms.Checked) // === | Caso especial, falta verificar | === //
-                return ErrorMessage("terminos y condiciones", lblPassword);
+                return ErrorMessage("Terminos y condiciones", "Se deben aceptar los terminos y condiciones.", lblPassword);
             else
                 return true;
         }
@@ -79,6 +86,19 @@ namespace Mi_mercadito
                     MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente.", "Datos Guardado", MessageBoxButtons.OK);
                 else
                     MessageBox.Show("No se pudieron guardar los datos", "Error de Guardado", MessageBoxButtons.OK);
+            }
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            // Validamos que el usuario que se este intentando registrar
+            // no se encuentre ya registrado
+            Usuarios Usuario = new Usuarios();
+            if (txtUsername.Text.Length > 10)
+            {
+                if (!Usuario.Validar(txtUsername.Text))
+                    txtUsername.BackColor = Color.Red;
+                else txtUsername.BackColor = Color.White;
             }
         }
     }
