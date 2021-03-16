@@ -74,7 +74,7 @@ namespace Mi_mercadito
             {
                 // Creamos un objeto Usuario y le asignamos los valores
                 Usuarios Usuario = new Usuarios(
-                txtLname.Text,
+                txtName.Text,
                 txtLname.Text + " " + txtLname2.Text,
                 txtUsername.Text,
                 txtPassword.Text,
@@ -83,7 +83,7 @@ namespace Mi_mercadito
                 // Enviamos  los  datos y un mensaje de confirmacion en
                 // caso de que todo haya procedido correctamente.
                 if (Usuario.Insertar(Usuario) > 0)
-                    MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente.", "Datos Guardado", MessageBoxButtons.OK);
+                    MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente, regresa para loguearte.", "Datos Guardado", MessageBoxButtons.OK);
                 else
                     MessageBox.Show("No se pudieron guardar los datos", "Error de Guardado", MessageBoxButtons.OK);
             }
