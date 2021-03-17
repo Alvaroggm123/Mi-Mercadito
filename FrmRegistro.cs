@@ -72,13 +72,19 @@ namespace Mi_mercadito
             // sido llenados correctamente.
             if (CheckData())
             {
+                // Validamos el sexo
+                char Sex = 'F';
+                if (rbtnMale.Checked) Sex = 'M';
+                else if (rbtnOther.Checked) Sex = 'O';
                 // Creamos un objeto Usuario y le asignamos los valores
                 Usuarios Usuario = new Usuarios(
+                txtUsername.Text,
                 txtName.Text,
                 txtLname.Text + " " + txtLname2.Text,
-                txtUsername.Text,
-                txtPassword.Text,
-                txtEmail.Text
+                datepBirth.Text,
+                Sex,
+                txtEmail.Text,
+                txtPassword.Text
                 );
                 // Enviamos  los  datos y un mensaje de confirmacion en
                 // caso de que todo haya procedido correctamente.
