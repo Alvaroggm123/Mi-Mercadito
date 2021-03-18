@@ -81,7 +81,7 @@ namespace Mi_mercadito
                 txtUsername.Text,
                 txtName.Text,
                 txtLname.Text + " " + txtLname2.Text,
-                datepBirth.Text,
+                datepBirth.Value,
                 Sex,
                 txtEmail.Text,
                 txtPassword.Text

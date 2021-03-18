@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Mi_mercadito
 {
@@ -23,37 +24,40 @@ namespace Mi_mercadito
     // Clase que permitira obtener los valores del usuario a registrar
     public class Usuarios
     {
-        public string Usuario { get; set; }
-        public string Nombre { get; set; }
-        public string Apellidos { get; set; }
+        public string Username { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
+        public DateTime Birth { get; set; }
         public char Sex { get; set; }
-        public string Clave { get; set; }
-        public string Correo { get; set; }
+        public string Paswrd { get; set; }
+        public string Email { get; set; }
         public Usuarios() { }
 
-        public Usuarios(string Usuario, string Nombre, string Apellidos, string Date, char Sex,  string Correo, string Clave)
+        public Usuarios(string Username, string Fname, string Lname, DateTime Birth, char Sex,  string Email, string Paswrd)
         {
-            this.Usuario = Usuario;
-            this.Nombre = Nombre;
-            this.Apellidos = Apellidos;
+            this.Username = Username;
+            this.Fname = Fname;
+            this.Lname= Lname;
+            this.Birth = Birth;
             this.Sex = Sex;
-            this.Correo = Correo;
-            this.Clave = Clave;
+            this.Email = Email;
+            this.Paswrd = Paswrd;
         }
         public int Insertar(Usuarios UsuarioReg)
         {
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 SqlCommand Comando = new SqlCommand(
-                    string.Format("Insert Into Users (usrUsrname,usrFname,usrLname,usrSex,usrEmail,usrPswrd) " +
-                    "values ('{0}','{1}','{2}','{3}','{4}','{5}')",
-                    UsuarioReg.Usuario,
-                    UsuarioReg.Nombre,
-                    UsuarioReg.Apellidos,
-                    // UsuarioReg.Birth, /* Queda pendiente su implementacion*/
+                    string.Format("Insert Into Users (usrUsrname, usrFname, usrLname, usrBirth, usrSex, usrEmail, usrPswrd, usrRegDate) " +
+                    "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+                    UsuarioReg.Username,
+                    UsuarioReg.Fname,
+                    UsuarioReg.Lname,
+                    UsuarioReg.Birth,
                     UsuarioReg.Sex,
-                    UsuarioReg.Correo,
-                    UsuarioReg.Clave), Conn);
+                    UsuarioReg.Email,
+                    UsuarioReg.Paswrd,
+                    DateTime.Now), Conn);
                 return Comando.ExecuteNonQuery();
             }
         }

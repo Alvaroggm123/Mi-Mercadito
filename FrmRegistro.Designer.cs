@@ -178,7 +178,8 @@ namespace Mi_mercadito
             // 
             // datepBirth
             // 
-            this.datepBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datepBirth.CustomFormat = "dd/MM/yyyy";
+            this.datepBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datepBirth.Location = new System.Drawing.Point(129, 120);
             this.datepBirth.Name = "datepBirth";
             this.datepBirth.Size = new System.Drawing.Size(144, 20);
