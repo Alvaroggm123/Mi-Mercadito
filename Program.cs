@@ -17,7 +17,7 @@ namespace Mi_mercadito
             Application.Run(new FrmLogin());
         }
     }
-    // Clase que permitira obtener los valores del usuario a registrar
+    // Clase que permitirá obtener los valores del usuario a registrar.
     public class Usuarios
     {
         public string Username { get; set; }
@@ -27,8 +27,10 @@ namespace Mi_mercadito
         public char Sex { get; set; }
         public string Paswrd { get; set; }
         public string Email { get; set; }
+        // Constructor genérico.
         public Usuarios() { }
 
+        // Constructor sobrecargado.
         public Usuarios(string Username, string Fname, string Lname, DateTime Birth, char Sex,  string Email, string Paswrd)
         {
             this.Username = Username;
@@ -70,12 +72,12 @@ namespace Mi_mercadito
             }
         }
     }
-    // Creamos clase que permite la coneccion con la base de datos
+    // Creamos clase que permite la conexión con la base de datos.
     public class ConnectionDB
     {
         public static SqlConnection StartConn()
         {
-            // Configuración de los parametros para conectar con la base de datos.
+            // Configuración de los parámetros para conectar con la base de datos.
             string[] Config = { "Data Source = mercadito.database.windows.net;",
             /*                 */"Initial Catalog=Mercadito;",
             /*                 */"User Id=axolotl;",
