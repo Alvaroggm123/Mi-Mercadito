@@ -31,11 +31,11 @@ namespace Mi_mercadito
         public Usuarios() { }
 
         // Constructor sobrecargado.
-        public Usuarios(string Username, string Fname, string Lname, DateTime Birth, char Sex,  string Email, string Paswrd)
+        public Usuarios(string Username, string Fname, string Lname, DateTime Birth, char Sex, string Email, string Paswrd)
         {
             this.Username = Username;
             this.Fname = Fname;
-            this.Lname= Lname;
+            this.Lname = Lname;
             this.Birth = Birth;
             this.Sex = Sex;
             this.Email = Email;
@@ -69,6 +69,18 @@ namespace Mi_mercadito
                 int Count = Convert.ToInt32(cmd.ExecuteScalar());
                 return Count == 0;
 
+            }
+        }
+        public bool Login(string Username, string Password)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM Users WHERE usrUsrname = @usrUsrname AND usrPswrd = @usrPswrd; ";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@usrUsrname ", Username);
+                cmd.Parameters.AddWithValue("@usrPswrd ", Password);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
             }
         }
     }
