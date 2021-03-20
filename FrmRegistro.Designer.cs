@@ -62,7 +62,7 @@ namespace Mi_mercadito
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(148, 48);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -93,7 +93,7 @@ namespace Mi_mercadito
             // txtConfirmP
             // 
             this.txtConfirmP.Location = new System.Drawing.Point(148, 80);
-            this.txtConfirmP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConfirmP.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfirmP.MaxLength = 50;
             this.txtConfirmP.Name = "txtConfirmP";
             this.txtConfirmP.PasswordChar = '*';
@@ -113,7 +113,7 @@ namespace Mi_mercadito
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(85, 23);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.MaxLength = 45;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(277, 22);
@@ -132,7 +132,7 @@ namespace Mi_mercadito
             // txtLname
             // 
             this.txtLname.Location = new System.Drawing.Point(141, 55);
-            this.txtLname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLname.Margin = new System.Windows.Forms.Padding(4);
             this.txtLname.MaxLength = 45;
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(221, 22);
@@ -151,7 +151,7 @@ namespace Mi_mercadito
             // txtLname2
             // 
             this.txtLname2.Location = new System.Drawing.Point(141, 87);
-            this.txtLname2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLname2.Margin = new System.Windows.Forms.Padding(4);
             this.txtLname2.MaxLength = 45;
             this.txtLname2.Name = "txtLname2";
             this.txtLname2.Size = new System.Drawing.Size(221, 22);
@@ -170,11 +170,12 @@ namespace Mi_mercadito
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(155, 119);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(208, 22);
             this.txtEmail.TabIndex = 7;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lblEmail
             // 
@@ -201,7 +202,7 @@ namespace Mi_mercadito
             this.datepBirth.CustomFormat = "dd/MM/yyyy";
             this.datepBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datepBirth.Location = new System.Drawing.Point(172, 148);
-            this.datepBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.datepBirth.Margin = new System.Windows.Forms.Padding(4);
             this.datepBirth.Name = "datepBirth";
             this.datepBirth.Size = new System.Drawing.Size(191, 22);
             this.datepBirth.TabIndex = 9;
@@ -223,9 +224,9 @@ namespace Mi_mercadito
             this.grpbPersonales.Controls.Add(this.lblLname2);
             this.grpbPersonales.Controls.Add(this.txtLname2);
             this.grpbPersonales.Location = new System.Drawing.Point(23, 66);
-            this.grpbPersonales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpbPersonales.Margin = new System.Windows.Forms.Padding(4);
             this.grpbPersonales.Name = "grpbPersonales";
-            this.grpbPersonales.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpbPersonales.Padding = new System.Windows.Forms.Padding(4);
             this.grpbPersonales.Size = new System.Drawing.Size(387, 224);
             this.grpbPersonales.TabIndex = 1;
             this.grpbPersonales.TabStop = false;
@@ -235,7 +236,7 @@ namespace Mi_mercadito
             // 
             this.rbtnOther.AutoSize = true;
             this.rbtnOther.Location = new System.Drawing.Point(277, 185);
-            this.rbtnOther.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtnOther.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnOther.Name = "rbtnOther";
             this.rbtnOther.Size = new System.Drawing.Size(57, 21);
             this.rbtnOther.TabIndex = 12;
@@ -247,7 +248,7 @@ namespace Mi_mercadito
             // 
             this.rbtnMale.AutoSize = true;
             this.rbtnMale.Location = new System.Drawing.Point(172, 185);
-            this.rbtnMale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtnMale.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnMale.Name = "rbtnMale";
             this.rbtnMale.Size = new System.Drawing.Size(92, 21);
             this.rbtnMale.TabIndex = 11;
@@ -259,7 +260,7 @@ namespace Mi_mercadito
             // 
             this.rbtnFmale.AutoSize = true;
             this.rbtnFmale.Location = new System.Drawing.Point(72, 185);
-            this.rbtnFmale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtnFmale.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnFmale.Name = "rbtnFmale";
             this.rbtnFmale.Size = new System.Drawing.Size(91, 21);
             this.rbtnFmale.TabIndex = 10;
@@ -286,9 +287,9 @@ namespace Mi_mercadito
             this.groupBox2.Controls.Add(this.lblConfirmP);
             this.groupBox2.Controls.Add(this.txtPassword);
             this.groupBox2.Location = new System.Drawing.Point(23, 298);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(387, 126);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
@@ -307,7 +308,7 @@ namespace Mi_mercadito
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(148, 16);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.MaxLength = 45;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(204, 22);
@@ -317,7 +318,7 @@ namespace Mi_mercadito
             // cmdAccept
             // 
             this.cmdAccept.Location = new System.Drawing.Point(33, 473);
-            this.cmdAccept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdAccept.Margin = new System.Windows.Forms.Padding(4);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(164, 28);
             this.cmdAccept.TabIndex = 4;
@@ -329,7 +330,7 @@ namespace Mi_mercadito
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Location = new System.Drawing.Point(216, 473);
-            this.cmdCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmdCancel.Margin = new System.Windows.Forms.Padding(4);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(164, 28);
             this.cmdCancel.TabIndex = 5;
@@ -341,7 +342,7 @@ namespace Mi_mercadito
             // 
             this.chkboxTerms.AutoSize = true;
             this.chkboxTerms.Location = new System.Drawing.Point(95, 431);
-            this.chkboxTerms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkboxTerms.Margin = new System.Windows.Forms.Padding(4);
             this.chkboxTerms.Name = "chkboxTerms";
             this.chkboxTerms.Size = new System.Drawing.Size(248, 21);
             this.chkboxTerms.TabIndex = 3;
@@ -362,7 +363,7 @@ namespace Mi_mercadito
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.grpbPersonales);
             this.Controls.Add(this.lblDialogo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmRegistro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de nuevo usuario";
