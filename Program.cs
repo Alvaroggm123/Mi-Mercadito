@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace Mi_mercadito
 {
@@ -89,6 +85,5 @@ namespace Mi_mercadito
             Conn.Open();
             return Conn;
         }
-
     }
 }

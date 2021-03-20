@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 // Librerias necesarias
 using System.Data.SqlClient;
@@ -36,6 +30,7 @@ namespace Mi_mercadito
                 return ErrorMessage("Definir sexo requerido", "Se requiere espesificar sexo, en caso de inclusividad seleccione \"otro\"", txtName);
             else if (datepBirth.Value.AddYears(13) > DateTime.Today)
                 return ErrorMessage("Edad minima requerida", "Se requiere espesificar una edad mayor a 13 años.", lblSexo);
+
             // Área de verificación de datos de contacto.
             else if (txtUsername.Text == "" || txtPassword.Text == "" || txtConfirmP.Text == "")
                 return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario valido.", lblUsername);
@@ -44,7 +39,8 @@ namespace Mi_mercadito
             else if (txtPassword.Text != txtConfirmP.Text)
                 return ErrorMessage("Contraseña", "Las contraseñas no coinciden.", lblPassword);
             else if (!Usuario.Validar(txtUsername.Text))
-                return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblPassword);
+                return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblUsername);
+
             // Validamos que haya aceptado los terminos y condiciones.
             else if (!chkboxTerms.Checked) // === | Caso especial, falta verificar | === //
                 return ErrorMessage("Terminos y condiciones", "Se deben aceptar los terminos y condiciones.", lblPassword);
@@ -91,7 +87,7 @@ namespace Mi_mercadito
                 if (MessageBox.Show("¿Sus datos son correctos?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     if (Usuario.Insertar(Usuario) > 0)
                     {
-                        MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente, regresa para loguearte.", "Datos Guardado", MessageBoxButtons.OK);
+                        MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente, regresa para loguearte.", "Datos guardados", MessageBoxButtons.OK);
                         Close();
                     }
                     else
