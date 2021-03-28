@@ -90,10 +90,10 @@ namespace Mi_mercadito
         public static SqlConnection StartConn()
         {
             // Configuración de los parámetros para conectar con la base de datos.
-            string[] Config = { "Data Source = mercadito.database.windows.net;",
+            string[] Config = { "Data Source = mercadito.axolotlteam.com;",
             /*                 */"Initial Catalog=Mercadito;",
-            /*                 */"User Id=axolotl;",
-            /*                 */"Password=Mercadito3312"};
+            /*                 */"User Id=SA;",
+            /*                 */"Password=Mi-mercadito"};
             string Connection = Config[0] + Config[1] + Config[2] + Config[3];
             SqlConnection Conn = new SqlConnection(Connection);
             Conn.Open();
