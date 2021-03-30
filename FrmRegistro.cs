@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-// Librerias necesarias
+// Librerías necesarias.
 using System.Data.SqlClient;
+using System.Text;
 
 namespace Mi_mercadito
 {
@@ -18,22 +19,22 @@ namespace Mi_mercadito
             Enfoque.Focus();
             return false;
         }
-        // == | Metodo de verificación de llenado de datos.
+        // == | Método de verificación de llenado de datos. | == //
         private bool CheckData()
         {
-            // Generamos usuario para validar si se ingreso un usuario correcto
+            // Generamos [Usuario] para validar si se ingresó un usuario correcto.
             Usuarios Usuario = new Usuarios();
             // Área de verificación de datos personales.
             if (txtName.Text == "" || txtLname.Text == "" || txtEmail.Text == "")
-                return ErrorMessage("Datos personales", "Los datos personales deben estar completos", txtName);
+                return ErrorMessage("Datos personales", "Los datos personales deben estar completos.", txtName);
             else if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
-                return ErrorMessage("Definir sexo requerido", "Se requiere espesificar sexo, en caso de inclusividad seleccione \"otro\"", txtName);
+                return ErrorMessage("Definir sexo requerido", "Se requiere especificar sexo, en caso de inclusividad seleccione \"otro\".", txtName);
             else if (datepBirth.Value.AddYears(13) > DateTime.Today)
-                return ErrorMessage("Edad minima requerida", "Se requiere espesificar una edad mayor a 13 años.", lblSexo);
+                return ErrorMessage("Edad mínima requerida", "Se requiere especificar una edad mayor a 13 años.", lblSexo);
 
             // Área de verificación de datos de contacto.
             else if (txtUsername.Text == "" || txtPassword.Text == "" || txtConfirmP.Text == "")
-                return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario valido.", lblUsername);
+                return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario válido.", lblUsername);
             else if (txtUsername.Text.Length < 10)
                 return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario de al menos 10 caracteres.", lblPassword);
             else if (txtPassword.Text != txtConfirmP.Text)
@@ -41,9 +42,9 @@ namespace Mi_mercadito
             else if (!Usuario.Validar(txtUsername.Text))
                 return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblUsername);
 
-            // Validamos que haya aceptado los terminos y condiciones.
+            // Validamos que haya aceptado los términos y condiciones.
             else if (!chkboxTerms.Checked) // === | Caso especial, falta verificar | === //
-                return ErrorMessage("Terminos y condiciones", "Se deben aceptar los terminos y condiciones.", lblPassword);
+                return ErrorMessage("Términos y condiciones", "Se deben aceptar los términos y condiciones.", lblPassword);
             else
                 return true;
         }
@@ -55,8 +56,8 @@ namespace Mi_mercadito
         /* ========== | Comienzan los eventos | ========== */
         private void cmdCancel_Click(object sender, EventArgs e)
         {
-            // Cerramos el formuario de registro.
-            // Ventana de confirmación de salida del registro
+            // Cerramos el formulario de registro.
+            // Ventana de confirmación de salida del registro.
             string Msg = "¿Desea cancelar el registro?", Title = "Cancelar registro";
             if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 Close();
@@ -64,15 +65,15 @@ namespace Mi_mercadito
 
         private void cmdAccept_Click(object sender, EventArgs e)
         {
-            // Llamamos  al  método  que  verifica que los campos hayan
-            // sido llenados correctamente.
+            // Llamamos al método que verifica que los campos hayan sido llenados correctamente.
+        
             if (CheckData())
             {
-                // Validamos el sexo
+                // Validamos el sexo.
                 char Sex = 'F';
                 if (rbtnMale.Checked) Sex = 'M';
                 else if (rbtnOther.Checked) Sex = 'O';
-                // Creamos un objeto Usuario y le asignamos los valores
+                // Creamos un objeto [Usuario] y le asignamos los valores.
                 Usuarios Usuario = new Usuarios(
                 txtUsername.Text,
                 txtName.Text,
@@ -82,23 +83,21 @@ namespace Mi_mercadito
                 txtEmail.Text,
                 txtPassword.Text
                 );
-                // Enviamos  los  datos y un mensaje de confirmacion en
-                // caso de que todo haya procedido correctamente.
+                // Enviamos los datos y un mensaje de confirmación en caso de que todo haya procedido correctamente.
                 if (MessageBox.Show("¿Sus datos son correctos?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     if (Usuario.Insertar(Usuario) > 0)
                     {
-                        MessageBox.Show("!Enhora Buena¡, te haz registrado correctamente, regresa para loguearte.", "Datos guardados", MessageBoxButtons.OK);
+                        MessageBox.Show("¡Enhorabuena!, te haz registrado correctamente, regresa para loguearte.", "Datos guardados", MessageBoxButtons.OK);
                         Close();
                     }
                     else
-                        MessageBox.Show("No se pudieron guardar los datos", "Error de Guardado", MessageBoxButtons.OK);
+                        MessageBox.Show("No se pudieron guardar los datos.", "Error de guardado", MessageBoxButtons.OK);
             }
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            // Validamos que el usuario que se este intentando registrar
-            // no se encuentre ya registrado
+            // Validamos que el usuario que se esté intentando registrar no se encuentre ya registrado.
             Usuarios Usuario = new Usuarios();
             if (txtUsername.Text.Length > 10)
             {
@@ -107,5 +106,20 @@ namespace Mi_mercadito
                 else txtUsername.BackColor = Color.White;
             }
         }
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            // Validamos que se usen signos válidos para un correo.
+            txtEmail.Text.ToLower();
+            foreach (int Caracter in Encoding.ASCII.GetBytes(txtEmail.Text))
+                if (Caracter != 46 && Caracter != 95 && Caracter != 45 && (Caracter < 64 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && (Caracter < 48 || Caracter > 57))
+                {
+                    MessageBox.Show("Solo se pueden ingresar valores válidos", "Error de sintáxis",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    string Correcion = txtEmail.Text;
+                    Correcion = Correcion.Remove(Correcion.Length - 1);
+                    txtEmail.Text = Correcion;
+                    txtEmail.SelectAll();
+                }
+        }
+    
     }
 }

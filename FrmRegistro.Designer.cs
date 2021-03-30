@@ -62,6 +62,7 @@ namespace Mi_mercadito
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(111, 39);
+            this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(154, 20);
@@ -89,6 +90,7 @@ namespace Mi_mercadito
             // txtConfirmP
             // 
             this.txtConfirmP.Location = new System.Drawing.Point(111, 65);
+            this.txtConfirmP.MaxLength = 50;
             this.txtConfirmP.Name = "txtConfirmP";
             this.txtConfirmP.PasswordChar = '*';
             this.txtConfirmP.Size = new System.Drawing.Size(154, 20);
@@ -106,6 +108,7 @@ namespace Mi_mercadito
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(64, 19);
+            this.txtName.MaxLength = 45;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(209, 20);
             this.txtName.TabIndex = 1;
@@ -115,13 +118,14 @@ namespace Mi_mercadito
             this.lblName.AutoSize = true;
             this.lblName.Location = new System.Drawing.Point(14, 22);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(44, 13);
+            this.lblName.Size = new System.Drawing.Size(47, 13);
             this.lblName.TabIndex = 0;
-            this.lblName.Text = "Nombre";
+            this.lblName.Text = "Nombre:";
             // 
             // txtLname
             // 
             this.txtLname.Location = new System.Drawing.Point(106, 45);
+            this.txtLname.MaxLength = 45;
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(167, 20);
             this.txtLname.TabIndex = 3;
@@ -138,6 +142,7 @@ namespace Mi_mercadito
             // txtLname2
             // 
             this.txtLname2.Location = new System.Drawing.Point(106, 71);
+            this.txtLname2.MaxLength = 45;
             this.txtLname2.Name = "txtLname2";
             this.txtLname2.Size = new System.Drawing.Size(167, 20);
             this.txtLname2.TabIndex = 5;
@@ -154,9 +159,11 @@ namespace Mi_mercadito
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(116, 97);
+            this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(157, 20);
             this.txtEmail.TabIndex = 7;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lblEmail
             // 
@@ -270,13 +277,14 @@ namespace Mi_mercadito
             this.lblUsername.AutoSize = true;
             this.lblUsername.Location = new System.Drawing.Point(6, 16);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(99, 13);
+            this.lblUsername.Size = new System.Drawing.Size(101, 13);
             this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "Nombre de usuario:";
+            this.lblUsername.Text = "Nombre del usuario:";
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(111, 13);
+            this.txtUsername.MaxLength = 45;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(154, 20);
             this.txtUsername.TabIndex = 1;
@@ -288,17 +296,18 @@ namespace Mi_mercadito
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(123, 23);
             this.cmdAccept.TabIndex = 4;
-            this.cmdAccept.Text = "Terminar registro";
+            this.cmdAccept.Text = "Terminar registro.";
             this.cmdAccept.UseVisualStyleBackColor = true;
             this.cmdAccept.Click += new System.EventHandler(this.cmdAccept_Click);
             // 
             // cmdCancel
             // 
+            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Location = new System.Drawing.Point(162, 384);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(123, 23);
             this.cmdCancel.TabIndex = 5;
-            this.cmdCancel.Text = "Cancelar registro";
+            this.cmdCancel.Text = "Cancelar registro.";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
@@ -309,7 +318,7 @@ namespace Mi_mercadito
             this.chkboxTerms.Name = "chkboxTerms";
             this.chkboxTerms.Size = new System.Drawing.Size(189, 17);
             this.chkboxTerms.TabIndex = 3;
-            this.chkboxTerms.Text = "Acepto los terminos y condiciones.";
+            this.chkboxTerms.Text = "Acepto los términos y condiciones.";
             this.chkboxTerms.UseVisualStyleBackColor = true;
             // 
             // FrmRegistro
@@ -317,6 +326,7 @@ namespace Mi_mercadito
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(330, 429);
             this.ControlBox = false;
             this.Controls.Add(this.chkboxTerms);
@@ -326,6 +336,7 @@ namespace Mi_mercadito
             this.Controls.Add(this.grpbPersonales);
             this.Controls.Add(this.lblDialogo);
             this.Name = "FrmRegistro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de nuevo usuario";
             this.grpbPersonales.ResumeLayout(false);
             this.grpbPersonales.PerformLayout();
@@ -343,20 +354,13 @@ namespace Mi_mercadito
         private System.Windows.Forms.Label lblDialogo;
         private System.Windows.Forms.TextBox txtConfirmP;
         private System.Windows.Forms.Label lblConfirmP;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox txtLname;
         private System.Windows.Forms.Label lblLname;
-        private System.Windows.Forms.TextBox txtLname2;
         private System.Windows.Forms.Label lblLname2;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblBirth;
-        private System.Windows.Forms.DateTimePicker datepBirth;
         private System.Windows.Forms.GroupBox grpbPersonales;
         private System.Windows.Forms.RadioButton rbtnOther;
-        private System.Windows.Forms.RadioButton rbtnMale;
-        private System.Windows.Forms.RadioButton rbtnFmale;
         private System.Windows.Forms.Label lblSexo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblUsername;
@@ -364,5 +368,12 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.CheckBox chkboxTerms;
+        public System.Windows.Forms.TextBox txtName;
+        public System.Windows.Forms.TextBox txtLname;
+        public System.Windows.Forms.TextBox txtLname2;
+        public System.Windows.Forms.TextBox txtEmail;
+        public System.Windows.Forms.DateTimePicker datepBirth;
+        public System.Windows.Forms.RadioButton rbtnMale;
+        public System.Windows.Forms.RadioButton rbtnFmale;
     }
 }

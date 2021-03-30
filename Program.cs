@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Mi_mercadito
 {
@@ -31,11 +32,11 @@ namespace Mi_mercadito
         public Usuarios() { }
 
         // Constructor sobrecargado.
-        public Usuarios(string Username, string Fname, string Lname, DateTime Birth, char Sex,  string Email, string Paswrd)
+        public Usuarios(string Username, string Fname, string Lname, DateTime Birth, char Sex, string Email, string Paswrd)
         {
             this.Username = Username;
             this.Fname = Fname;
-            this.Lname= Lname;
+            this.Lname = Lname;
             this.Birth = Birth;
             this.Sex = Sex;
             this.Email = Email;
@@ -45,17 +46,22 @@ namespace Mi_mercadito
         {
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
+                // Variable para formato de la base de datos año, mes y día.
+                string format = "yyyy-MM-dd";
+
                 SqlCommand Comando = new SqlCommand(
                     string.Format("Insert Into Users (usrUsrname, usrFname, usrLname, usrBirth, usrSex, usrEmail, usrPswrd, usrRegDate) " +
-                    "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+                    "values ('{0}','{1}','{2}','{3}','{4}','{5}','{ 6}','{7}')",
                     UsuarioReg.Username,
                     UsuarioReg.Fname,
                     UsuarioReg.Lname,
-                    UsuarioReg.Birth,
+                    //* Fecha de nacimiento a string con formato de base de datos.
+                    UsuarioReg.Birth.ToString(format),
                     UsuarioReg.Sex,
                     UsuarioReg.Email,
                     UsuarioReg.Paswrd,
-                    DateTime.Now), Conn);
+                    //* Fecha de día de registro a string con formato de la base de datos.
+                    DateTime.Today.ToString(format)), Conn);
                 return Comando.ExecuteNonQuery();
             }
         }
@@ -71,6 +77,18 @@ namespace Mi_mercadito
 
             }
         }
+        public bool Login(string Username, string Password)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM Users WHERE usrUsrname = @usrUsrname AND usrPswrd = @usrPswrd; ";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@usrUsrname ", Username);
+                cmd.Parameters.AddWithValue("@usrPswrd ", Password);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
     }
     // Creamos clase que permite la conexión con la base de datos.
     public class ConnectionDB
@@ -78,9 +96,9 @@ namespace Mi_mercadito
         public static SqlConnection StartConn()
         {
             // Configuración de los parámetros para conectar con la base de datos.
-            string[] Config = { "Data Source = mercadito.database.windows.net;",
+            string[] Config = { "Data Source = mercadito.axolotlteam.com;",
             /*                 */"Initial Catalog=Mercadito;",
-            /*                 */"User Id=axolotl;",
+            /*                 */"User Id=Mercader;",
             /*                 */"Password=Mercadito3312"};
             string Connection = Config[0] + Config[1] + Config[2] + Config[3];
             SqlConnection Conn = new SqlConnection(Connection);
