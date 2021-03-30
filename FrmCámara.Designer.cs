@@ -41,6 +41,7 @@ namespace Mi_mercadito
             this.pbox_Camara.Location = new System.Drawing.Point(10, 12);
             this.pbox_Camara.Name = "pbox_Camara";
             this.pbox_Camara.Size = new System.Drawing.Size(595, 610);
+            this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbox_Camara.TabIndex = 0;
             this.pbox_Camara.TabStop = false;
             // 

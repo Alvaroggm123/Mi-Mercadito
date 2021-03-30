@@ -16,7 +16,7 @@ namespace Mi_mercadito
     public partial class FrmCámara : Form
     {
         //se guardaran las imagenes tomadas por el usuario
-        private string Path = @"C:\Users\chris\source\repos\Mi-mercadito";
+        private string Path = System.IO.Path.GetTempPath();
         private bool Dispositivos;
         //se utiliza para saber cual cámara utilizara el dispositivo
         private FilterInfoCollection MisDispositivos;
