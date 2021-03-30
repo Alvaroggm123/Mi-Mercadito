@@ -1,5 +1,5 @@
-﻿using AForge.Video;
-using AForge.Video.DirectShow;
+﻿using AForge.Video;//librería para la cámara
+using AForge.Video.DirectShow;//librería para la cámara
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,6 +64,7 @@ namespace Mi_mercadito
 
         private void CerrarCamara() 
         {
+            ///hace que si MiCamara no tiene un frame corriendo y esta corriendo se cierre la cámara
             if (MiCamara !=null && MiCamara.IsRunning)
             {
                 MiCamara.SignalToStop();
@@ -74,10 +75,15 @@ namespace Mi_mercadito
         private void btn_Grabar_Click(object sender, EventArgs e)
         {
             CerrarCamara();
+            //selecciona la camara que esta en el combobox en base a la posición
             int i = cbox_Camara.SelectedIndex;
+            //nos indica el nombre de la posiicon
             string NombreVideo = MisDispositivos[i].MonikerString;
+            //captura la imagen en base al nombre del dispositivo
             MiCamara = new VideoCaptureDevice(NombreVideo);
+            //agrega el metodo captura al momento de tomar la foto
             MiCamara.NewFrame += new NewFrameEventHandler(Capturando);
+            //hace que la cámara inicie
             MiCamara.Start();
         }
 
