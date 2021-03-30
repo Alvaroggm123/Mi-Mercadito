@@ -66,6 +66,7 @@ namespace Mi_mercadito
         private void cmdAccept_Click(object sender, EventArgs e)
         {
             // Llamamos al método que verifica que los campos hayan sido llenados correctamente.
+        
             if (CheckData())
             {
                 // Validamos el sexo.
@@ -119,5 +120,6 @@ namespace Mi_mercadito
                     txtEmail.SelectAll();
                 }
         }
+    
     }
 }
