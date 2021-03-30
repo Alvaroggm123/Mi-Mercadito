@@ -14,7 +14,7 @@ namespace Mi_mercadito
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmMain());
         }
     }
     // Clase que permitirá obtener los valores del usuario a registrar.
