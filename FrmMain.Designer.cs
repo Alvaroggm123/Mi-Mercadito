@@ -63,12 +63,12 @@ namespace Mi_mercadito
             this.btn_slide = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
             this.btn_Agregar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbox_Camara = new System.Windows.Forms.PictureBox();
             this.lView_Contenido = new System.Windows.Forms.ListView();
             this.btn_Foto = new System.Windows.Forms.Button();
             this.lBox_Datos = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_miMercadito
@@ -99,7 +99,7 @@ namespace Mi_mercadito
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(521, 36);
             this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Text = "X";
             // 
             // menToolStripMenuItem
             // 
@@ -327,16 +327,16 @@ namespace Mi_mercadito
             this.btn_Agregar.Text = "Agregar al Carrito";
             this.btn_Agregar.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // pbox_Camara
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(155, 87);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(232, 303);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
+            this.pbox_Camara.Location = new System.Drawing.Point(155, 87);
+            this.pbox_Camara.Name = "pbox_Camara";
+            this.pbox_Camara.Size = new System.Drawing.Size(232, 303);
+            this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbox_Camara.TabIndex = 7;
+            this.pbox_Camara.TabStop = false;
+            this.pbox_Camara.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lView_Contenido
             // 
@@ -373,7 +373,7 @@ namespace Mi_mercadito
             this.Controls.Add(this.lBox_Datos);
             this.Controls.Add(this.btn_Foto);
             this.Controls.Add(this.lView_Contenido);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbox_Camara);
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_slide);
@@ -386,7 +386,7 @@ namespace Mi_mercadito
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,6 +430,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.ListView lView_Contenido;
         private System.Windows.Forms.Button btn_Foto;
         private System.Windows.Forms.ListBox lBox_Datos;
-        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pbox_Camara;
     }
 }

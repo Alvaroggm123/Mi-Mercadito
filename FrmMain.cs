@@ -13,14 +13,15 @@ namespace Mi_mercadito
 {
     public partial class FrmMain : Form
     {
-        Image I;
+        public FrmMain() 
+        {
+            InitializeComponent();
+        }
 
         public FrmMain(System.Drawing.Image i)
         {
-            I = i;
             InitializeComponent();
-            //pictureBox1.Image = i;
-            
+            pbox_Camara.Image = i;
         }
 
         private void menToolStripMenuItem_Click(object sender, EventArgs e)
@@ -33,32 +34,20 @@ namespace Mi_mercadito
 
         }
 
-        //public static Image Logo = null;
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            //Logo = pbox_imgProductoMain.Image;
-            /*FrmCámara f2 = new FrmCámara();
-            DialogResult res = f2.ShowDialog();
-            if (res == DialogResult.OK)
-            {
-                pbox_imgProductoMain.Image = f2.Micamara2.Image;
-            }*/
-
-            //pbox_imgProductoMain.Image = Image.FromFile(@"C:\Users\chris\source\repos\Mi-mercadito");
-            /*pbox_imgProductoMain.Image = FrmCámara.Logo;
-            this.Show();*/
         }
 
         private void btn_Foto_Click(object sender, EventArgs e)
         {
+            //hace que al dar click en el boton tomar foto se habra el formulario de la camara
             FrmCámara formulario = new FrmCámara();
             formulario.Show();
+            this.Hide();
         }
-
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            pictureBox1.Image = I;
+
         }
     }
 }

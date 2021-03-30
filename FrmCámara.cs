@@ -30,6 +30,7 @@ namespace Mi_mercadito
 
         private void FrmCámara_Load(object sender, EventArgs e)
         {
+            //se llama al metodo para cargar la imagen en el formulario
             CargaDispositivo();
         }
 
@@ -42,7 +43,9 @@ namespace Mi_mercadito
                 //el arreglo analiza la cantidad de cámaras que tiene el dispositivo
                 Dispositivos = true;
                 for (int i = 0; i < MisDispositivos.Count; i++)
+                    ///permite agregar los dispositivos y esta en string para poder visualizar los nombre
                     cbox_Camara.Items.Add(MisDispositivos[i].Name.ToString());
+                //selecciona el primer dispositivo por defecto
                 cbox_Camara.Text = MisDispositivos[0].Name.ToString();
                 
             }
@@ -52,8 +55,9 @@ namespace Mi_mercadito
 
         private void Capturando(object sender, NewFrameEventArgs eventArgs) 
         {
-            //sirve para descargar una imagen en base a la cantidad de frames
+            //el Bitmap sirve para cargar la imagen en base a la cantidad de frames
             //clona la imagen para que la foto tomada se mande al picturebox del Main y no exista conflicto en la lectura de frames
+            //el .Clone() crea un nuevo objeto a partir del que existe por el Bitmap Imagen
             Bitmap Imagen = (Bitmap)eventArgs.Frame.Clone();
             pbox_Camara.Image = Imagen;
         }
@@ -82,21 +86,21 @@ namespace Mi_mercadito
             CerrarCamara();
         }
 
-        //public static Image Logo = null;
-
         private void btn_CapturarFoto_Click(object sender, EventArgs e) 
         {
             if (MiCamara !=null && MiCamara.IsRunning)
             {
-                FrmMain f = new FrmMain(pictureBox1.Image);
-                //pictureBox1.Image = FrmMain.Logo;
-                //Logo = pictureBox1.Image;
-                pictureBox1.Image = pbox_Camara.Image;
-                pictureBox1.Image.Save(Path + ".jpg", ImageFormat.Jpeg);
+                FrmMain f = new FrmMain(pbox_Camara.Image);
+                f.pbox_Camara.Image = pbox_Camara.Image;
+                f.pbox_Camara.Image.Save(Path + ".jpg", ImageFormat.Jpeg);
                 f.Show();
             }
-            //this.Show();
-            //this.Hide();
+            else
+            {
+                MessageBox.Show("Encienda su cámara", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            this.Hide();            
             MiCamara.Stop();
         }
     }
