@@ -29,6 +29,7 @@ namespace Mi_mercadito
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -37,54 +38,63 @@ namespace Mi_mercadito
             this.CmdAccept = new System.Windows.Forms.Button();
             this.CmdRegister = new System.Windows.Forms.Button();
             this.lblTerminos = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Location = new System.Drawing.Point(23, 12);
+            this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pbxLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbxLogo.BackgroundImage")));
+            this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxLogo.Location = new System.Drawing.Point(20, 11);
             this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(256, 256);
+            this.pbxLogo.Size = new System.Drawing.Size(267, 242);
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(20, 285);
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(-4, 259);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(99, 13);
+            this.lblUsername.Size = new System.Drawing.Size(131, 19);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Nombre de usuario:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(125, 282);
+            this.txtUsername.Location = new System.Drawing.Point(129, 259);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(154, 20);
+            this.txtUsername.Size = new System.Drawing.Size(158, 20);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(90, 308);
+            this.txtPassword.Location = new System.Drawing.Point(129, 285);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(189, 20);
+            this.txtPassword.Size = new System.Drawing.Size(158, 20);
             this.txtPassword.TabIndex = 3;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(20, 311);
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(45, 284);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(64, 13);
+            this.lblPassword.Size = new System.Drawing.Size(82, 19);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Contraseña:";
             // 
             // CmdAccept
             // 
-            this.CmdAccept.Location = new System.Drawing.Point(55, 347);
+            this.CmdAccept.FlatAppearance.BorderColor = System.Drawing.Color.Purple;
+            this.CmdAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdAccept.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdAccept.Location = new System.Drawing.Point(180, 327);
             this.CmdAccept.Name = "CmdAccept";
-            this.CmdAccept.Size = new System.Drawing.Size(82, 23);
+            this.CmdAccept.Size = new System.Drawing.Size(107, 34);
             this.CmdAccept.TabIndex = 4;
             this.CmdAccept.Text = "iniciar sesión ";
             this.CmdAccept.UseVisualStyleBackColor = true;
@@ -92,9 +102,12 @@ namespace Mi_mercadito
             // 
             // CmdRegister
             // 
-            this.CmdRegister.Location = new System.Drawing.Point(157, 347);
+            this.CmdRegister.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.CmdRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdRegister.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdRegister.Location = new System.Drawing.Point(47, 327);
             this.CmdRegister.Name = "CmdRegister";
-            this.CmdRegister.Size = new System.Drawing.Size(80, 23);
+            this.CmdRegister.Size = new System.Drawing.Size(106, 34);
             this.CmdRegister.TabIndex = 5;
             this.CmdRegister.Text = "Registrarme";
             this.CmdRegister.UseVisualStyleBackColor = true;
@@ -103,7 +116,7 @@ namespace Mi_mercadito
             // lblTerminos
             // 
             this.lblTerminos.AutoSize = true;
-            this.lblTerminos.Location = new System.Drawing.Point(87, 392);
+            this.lblTerminos.Location = new System.Drawing.Point(98, 401);
             this.lblTerminos.Name = "lblTerminos";
             this.lblTerminos.Size = new System.Drawing.Size(118, 13);
             this.lblTerminos.TabIndex = 6;
@@ -114,8 +127,8 @@ namespace Mi_mercadito
             this.AcceptButton = this.CmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 450);
-            this.Controls.Add(this.lblTerminos);
+            this.BackColor = System.Drawing.Color.LightBlue;
+            this.ClientSize = new System.Drawing.Size(323, 450);
             this.Controls.Add(this.CmdRegister);
             this.Controls.Add(this.CmdAccept);
             this.Controls.Add(this.txtPassword);
@@ -123,7 +136,9 @@ namespace Mi_mercadito
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.pbxLogo);
+            this.Controls.Add(this.lblTerminos);
             this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "iniciar sesión ";
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
@@ -141,6 +156,7 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button CmdAccept;
         private System.Windows.Forms.Button CmdRegister;
         private System.Windows.Forms.Label lblTerminos;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
