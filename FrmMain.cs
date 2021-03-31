@@ -39,9 +39,9 @@ namespace Mi_mercadito
             // Hace que al dar click en el boton tomar foto se habra el formulario de la camara.
             FrmCámara Camara = new FrmCámara();
             Image Logo = Camara.pbox_Camara.Image;
-            this.Enabled=false;
+            this.Hide();
             if (Camara.ShowDialog()==DialogResult.OK)
-                this.Enabled=true;
+                this.Show();
             // Re asignamos en caso de que corresponda un cambio
             if (Logo != pbox_Camara.Image)
             {

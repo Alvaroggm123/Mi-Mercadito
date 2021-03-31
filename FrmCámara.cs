@@ -99,6 +99,7 @@ namespace Mi_mercadito
             {
                 string[] not = new string[7];
                 not[0] = "";
+                this.Close();
             }
             else
             {
