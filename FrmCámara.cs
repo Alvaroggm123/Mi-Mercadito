@@ -100,7 +100,7 @@ namespace Mi_mercadito
                 not[0] = "";
                 FrmMain f = new FrmMain(pbox_Camara.Image, not);
                 f.pbox_Camara.Image = pbox_Camara.Image;
-                f.pbox_Camara.Image.Save(Path + ".jpg", ImageFormat.Jpeg);
+                f.pbox_Camara.Image.Save(Path + ".Jpeg", ImageFormat.Jpeg);
                 f.Show();
             }
             else

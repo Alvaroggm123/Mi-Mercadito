@@ -49,21 +49,21 @@ namespace Mi_mercadito
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 // Variable para formato de la base de datos año, mes y día.
-                string format = "yyyy-MM-dd";
+                string Format = "yyyy-MM-dd";
 
                 SqlCommand Comando = new SqlCommand(
-                    string.Format("Insert Into Users (usrUsrname, usrFname, usrLname, usrBirth, usrSex, usrEmail, usrPswrd, usrRegDate) " +
-                    "values ('{0}','{1}','{2}','{3}','{4}','{5}','{ 6}','{7}')",
+                    string.Format("INSERT INTO Users (usrUsrname, usrFname, usrLname, usrBirth, usrSex, usrEmail, usrPswrd, usrRegDate) " +
+                    "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
                     UsuarioReg.Username,
                     UsuarioReg.Fname,
                     UsuarioReg.Lname,
                     //* Fecha de nacimiento a string con formato de base de datos.
-                    UsuarioReg.Birth.ToString(format),
+                    UsuarioReg.Birth.ToString(Format),
                     UsuarioReg.Sex,
                     UsuarioReg.Email,
                     UsuarioReg.Paswrd,
                     //* Fecha de día de registro a string con formato de la base de datos.
-                    DateTime.Today.ToString(format)), Conn);
+                    DateTime.Today.ToString(Format)), Conn);
                 return Comando.ExecuteNonQuery();
             }
         }
@@ -110,7 +110,7 @@ namespace Mi_mercadito
         {
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
-                SqlCommand Comando = new SqlCommand("insert into Imagen values (@img)", Conn);
+                SqlCommand Comando = new SqlCommand("INSERT INTO Imagen VALUES (@img)", Conn);
                 Comando.Parameters.Add("@img", SqlDbType.Image);
 
                 MemoryStream ms = new MemoryStream();
