@@ -29,15 +29,17 @@ namespace Mi_mercadito
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCámara));
             this.pbox_Camara = new System.Windows.Forms.PictureBox();
-            this.btn_CapturarFoto = new System.Windows.Forms.Button();
+            this.cmdFoto = new System.Windows.Forms.Button();
             this.cbox_Camara = new System.Windows.Forms.ComboBox();
-            this.btn_Grabar = new System.Windows.Forms.Button();
+            this.cmdGrabar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.SuspendLayout();
             // 
             // pbox_Camara
             // 
+            this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
             this.pbox_Camara.Location = new System.Drawing.Point(10, 12);
             this.pbox_Camara.Name = "pbox_Camara";
             this.pbox_Camara.Size = new System.Drawing.Size(595, 610);
@@ -45,16 +47,16 @@ namespace Mi_mercadito
             this.pbox_Camara.TabIndex = 0;
             this.pbox_Camara.TabStop = false;
             // 
-            // btn_CapturarFoto
+            // cmdFoto
             // 
-            this.btn_CapturarFoto.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_CapturarFoto.Location = new System.Drawing.Point(456, 628);
-            this.btn_CapturarFoto.Name = "btn_CapturarFoto";
-            this.btn_CapturarFoto.Size = new System.Drawing.Size(128, 30);
-            this.btn_CapturarFoto.TabIndex = 1;
-            this.btn_CapturarFoto.Text = "Tomar Foto";
-            this.btn_CapturarFoto.UseVisualStyleBackColor = true;
-            this.btn_CapturarFoto.Click += new System.EventHandler(this.btn_CapturarFoto_Click);
+            this.cmdFoto.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.cmdFoto.Location = new System.Drawing.Point(456, 628);
+            this.cmdFoto.Name = "cmdFoto";
+            this.cmdFoto.Size = new System.Drawing.Size(128, 30);
+            this.cmdFoto.TabIndex = 2;
+            this.cmdFoto.Text = "Tomar Foto";
+            this.cmdFoto.UseVisualStyleBackColor = true;
+            this.cmdFoto.Click += new System.EventHandler(this.btn_CapturarFoto_Click);
             // 
             // cbox_Camara
             // 
@@ -62,28 +64,30 @@ namespace Mi_mercadito
             this.cbox_Camara.Location = new System.Drawing.Point(50, 628);
             this.cbox_Camara.Name = "cbox_Camara";
             this.cbox_Camara.Size = new System.Drawing.Size(192, 21);
-            this.cbox_Camara.TabIndex = 2;
+            this.cbox_Camara.TabIndex = 0;
             // 
-            // btn_Grabar
+            // cmdGrabar
             // 
-            this.btn_Grabar.Location = new System.Drawing.Point(290, 628);
-            this.btn_Grabar.Name = "btn_Grabar";
-            this.btn_Grabar.Size = new System.Drawing.Size(128, 29);
-            this.btn_Grabar.TabIndex = 3;
-            this.btn_Grabar.Text = "Grabar";
-            this.btn_Grabar.UseVisualStyleBackColor = true;
-            this.btn_Grabar.Click += new System.EventHandler(this.btn_Grabar_Click);
+            this.cmdGrabar.Location = new System.Drawing.Point(290, 628);
+            this.cmdGrabar.Name = "cmdGrabar";
+            this.cmdGrabar.Size = new System.Drawing.Size(128, 29);
+            this.cmdGrabar.TabIndex = 1;
+            this.cmdGrabar.Text = "Grabar";
+            this.cmdGrabar.UseVisualStyleBackColor = true;
+            this.cmdGrabar.Click += new System.EventHandler(this.btn_Grabar_Click);
             // 
             // FrmCámara
             // 
+            this.AcceptButton = this.cmdGrabar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 674);
-            this.Controls.Add(this.btn_Grabar);
+            this.Controls.Add(this.cmdGrabar);
             this.Controls.Add(this.cbox_Camara);
-            this.Controls.Add(this.btn_CapturarFoto);
+            this.Controls.Add(this.cmdFoto);
             this.Controls.Add(this.pbox_Camara);
             this.Name = "FrmCámara";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCámara";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCámara_FormClosed);
             this.Load += new System.EventHandler(this.FrmCámara_Load);
@@ -93,9 +97,9 @@ namespace Mi_mercadito
         }
 
         #endregion
-        private System.Windows.Forms.Button btn_CapturarFoto;
+        private System.Windows.Forms.Button cmdFoto;
         private System.Windows.Forms.ComboBox cbox_Camara;
-        private System.Windows.Forms.Button btn_Grabar;
+        private System.Windows.Forms.Button cmdGrabar;
         public System.Windows.Forms.PictureBox pbox_Camara;
     }
 }

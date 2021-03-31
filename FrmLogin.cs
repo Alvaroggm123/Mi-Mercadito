@@ -26,24 +26,18 @@ namespace Mi_mercadito
             System.Drawing.Image z;
             z = pbxLogo.Image;
             // Validamos que existe el usuario
-            if (!Usuario.Validar(txtUsername.Text))
+            if (!Usuario.Validar(txtUsername.Text) && !Usuario.Login(txtUsername.Text, txtPassword.Text))
             {
-                txtUsername.BackColor = Color.Green;
-                if (!Usuario.Login(txtUsername.Text, txtPassword.Text))
-                {
-                    // Llamada al método de ConsultaT
-                    Usuarios Consultas = new Usuarios();
-                    Consulta = Consultas.ConsultaT(txtUsername.Text);
-
-                    Hide();
-                    FrmMain main = new FrmMain(z, Consulta);
-
-                    main.Show();
-                }
-                else
-                    txtPassword.BackColor = Color.Red;
+                // Llamada al método de ConsultaT
+                Usuarios Consultas = new Usuarios();
+                Consulta = Consultas.ConsultaT(txtUsername.Text);
+                this.Hide();
+                FrmMain Main = new FrmMain(z, Consulta);
+                if (Main.ShowDialog() != DialogResult.OK)
+                    //while(DialogResult.Ignore)
+                    this.Show();
+                txtPassword.Clear();
             }
-            else txtUsername.BackColor = Color.White;
         }
 
         private void CmdRegister_Click(object sender, EventArgs e)

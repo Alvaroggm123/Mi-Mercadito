@@ -47,7 +47,7 @@ namespace Mi_mercadito
             this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbxLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbxLogo.BackgroundImage")));
             this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxLogo.Location = new System.Drawing.Point(20, 11);
+            this.pbxLogo.Location = new System.Drawing.Point(37, 12);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(250, 229);
             this.pbxLogo.TabIndex = 0;
@@ -57,7 +57,7 @@ namespace Mi_mercadito
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(-4, 259);
+            this.lblUsername.Location = new System.Drawing.Point(9, 259);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(131, 19);
             this.lblUsername.TabIndex = 0;
@@ -65,15 +65,16 @@ namespace Mi_mercadito
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(129, 259);
+            this.txtUsername.Location = new System.Drawing.Point(142, 259);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(158, 20);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(129, 285);
+            this.txtPassword.Location = new System.Drawing.Point(142, 285);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(158, 20);
             this.txtPassword.TabIndex = 3;
             // 
@@ -81,7 +82,7 @@ namespace Mi_mercadito
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(45, 284);
+            this.lblPassword.Location = new System.Drawing.Point(58, 284);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(82, 19);
             this.lblPassword.TabIndex = 2;
@@ -105,7 +106,7 @@ namespace Mi_mercadito
             this.CmdRegister.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
             this.CmdRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdRegister.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdRegister.Location = new System.Drawing.Point(47, 327);
+            this.CmdRegister.Location = new System.Drawing.Point(37, 327);
             this.CmdRegister.Name = "CmdRegister";
             this.CmdRegister.Size = new System.Drawing.Size(106, 34);
             this.CmdRegister.TabIndex = 5;
@@ -116,7 +117,7 @@ namespace Mi_mercadito
             // lblTerminos
             // 
             this.lblTerminos.AutoSize = true;
-            this.lblTerminos.Location = new System.Drawing.Point(98, 401);
+            this.lblTerminos.Location = new System.Drawing.Point(98, 380);
             this.lblTerminos.Name = "lblTerminos";
             this.lblTerminos.Size = new System.Drawing.Size(118, 13);
             this.lblTerminos.TabIndex = 6;
@@ -128,7 +129,7 @@ namespace Mi_mercadito
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(323, 450);
+            this.ClientSize = new System.Drawing.Size(323, 409);
             this.Controls.Add(this.CmdRegister);
             this.Controls.Add(this.CmdAccept);
             this.Controls.Add(this.txtPassword);

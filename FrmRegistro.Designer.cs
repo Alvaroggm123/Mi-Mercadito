@@ -143,6 +143,7 @@ namespace Mi_mercadito
             // 
             // cmdAccept
             // 
+            this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Location = new System.Drawing.Point(26, 423);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(123, 23);
@@ -153,7 +154,7 @@ namespace Mi_mercadito
             // 
             // cmdCancel
             // 
-            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdCancel.Location = new System.Drawing.Point(163, 423);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(123, 23);

@@ -153,6 +153,7 @@ namespace Mi_mercadito
             this.Controls.Add(this.grpbDatos);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FrmDespliegue";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Datos registrados correctamente";
             this.grpbDatos.ResumeLayout(false);
             this.grpbDatos.PerformLayout();

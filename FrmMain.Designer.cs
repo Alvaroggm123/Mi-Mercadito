@@ -61,11 +61,11 @@ namespace Mi_mercadito
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbox_ListaMercado = new System.Windows.Forms.ListBox();
             this.btn_slide = new System.Windows.Forms.Button();
-            this.btn_Cancelar = new System.Windows.Forms.Button();
-            this.btn_Agregar = new System.Windows.Forms.Button();
+            this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdAdd = new System.Windows.Forms.Button();
             this.pbox_Camara = new System.Windows.Forms.PictureBox();
             this.lView_Contenido = new System.Windows.Forms.ListView();
-            this.btn_Foto = new System.Windows.Forms.Button();
+            this.cmdFoto = new System.Windows.Forms.Button();
             this.lBox_Datos = new System.Windows.Forms.ListBox();
             this.lblName = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -294,9 +294,9 @@ namespace Mi_mercadito
             // lbox_ListaMercado
             // 
             this.lbox_ListaMercado.FormattingEnabled = true;
-            this.lbox_ListaMercado.Location = new System.Drawing.Point(0, 87);
+            this.lbox_ListaMercado.Location = new System.Drawing.Point(5, 74);
             this.lbox_ListaMercado.Name = "lbox_ListaMercado";
-            this.lbox_ListaMercado.Size = new System.Drawing.Size(149, 407);
+            this.lbox_ListaMercado.Size = new System.Drawing.Size(144, 329);
             this.lbox_ListaMercado.TabIndex = 3;
             // 
             // btn_slide
@@ -308,31 +308,32 @@ namespace Mi_mercadito
             this.btn_slide.Text = "<";
             this.btn_slide.UseVisualStyleBackColor = true;
             // 
-            // btn_Cancelar
+            // cmdCancel
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(61, 570);
-            this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(104, 33);
-            this.btn_Cancelar.TabIndex = 5;
-            this.btn_Cancelar.Text = "Cancelar Compra";
-            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.cmdCancel.Location = new System.Drawing.Point(61, 409);
+            this.cmdCancel.Name = "cmdCancel";
+            this.cmdCancel.Size = new System.Drawing.Size(104, 31);
+            this.cmdCancel.TabIndex = 6;
+            this.cmdCancel.Text = "Salir";
+            this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
-            // btn_Agregar
+            // cmdAdd
             // 
-            this.btn_Agregar.Location = new System.Drawing.Point(344, 570);
-            this.btn_Agregar.Name = "btn_Agregar";
-            this.btn_Agregar.Size = new System.Drawing.Size(110, 33);
-            this.btn_Agregar.TabIndex = 6;
-            this.btn_Agregar.Text = "Agregar al Carrito";
-            this.btn_Agregar.UseVisualStyleBackColor = true;
-            this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
+            this.cmdAdd.Location = new System.Drawing.Point(344, 409);
+            this.cmdAdd.Name = "cmdAdd";
+            this.cmdAdd.Size = new System.Drawing.Size(110, 31);
+            this.cmdAdd.TabIndex = 8;
+            this.cmdAdd.Text = "Enviar datos";
+            this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.btn_Agregar_Click);
             // 
             // pbox_Camara
             // 
             this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
-            this.pbox_Camara.Location = new System.Drawing.Point(155, 87);
+            this.pbox_Camara.Location = new System.Drawing.Point(155, 61);
             this.pbox_Camara.Name = "pbox_Camara";
-            this.pbox_Camara.Size = new System.Drawing.Size(205, 206);
+            this.pbox_Camara.Size = new System.Drawing.Size(235, 224);
             this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbox_Camara.TabIndex = 7;
             this.pbox_Camara.TabStop = false;
@@ -340,29 +341,29 @@ namespace Mi_mercadito
             // lView_Contenido
             // 
             this.lView_Contenido.HideSelection = false;
-            this.lView_Contenido.Location = new System.Drawing.Point(396, 51);
+            this.lView_Contenido.Location = new System.Drawing.Point(396, 74);
             this.lView_Contenido.Name = "lView_Contenido";
-            this.lView_Contenido.Size = new System.Drawing.Size(122, 339);
-            this.lView_Contenido.TabIndex = 8;
+            this.lView_Contenido.Size = new System.Drawing.Size(113, 211);
+            this.lView_Contenido.TabIndex = 4;
             this.lView_Contenido.UseCompatibleStateImageBehavior = false;
             // 
-            // btn_Foto
+            // cmdFoto
             // 
-            this.btn_Foto.Location = new System.Drawing.Point(204, 574);
-            this.btn_Foto.Name = "btn_Foto";
-            this.btn_Foto.Size = new System.Drawing.Size(99, 29);
-            this.btn_Foto.TabIndex = 10;
-            this.btn_Foto.Text = "Tomar Foto";
-            this.btn_Foto.UseVisualStyleBackColor = true;
-            this.btn_Foto.Click += new System.EventHandler(this.btn_Foto_Click);
+            this.cmdFoto.Location = new System.Drawing.Point(204, 413);
+            this.cmdFoto.Name = "cmdFoto";
+            this.cmdFoto.Size = new System.Drawing.Size(99, 27);
+            this.cmdFoto.TabIndex = 7;
+            this.cmdFoto.Text = "Capturar producto";
+            this.cmdFoto.UseVisualStyleBackColor = true;
+            this.cmdFoto.Click += new System.EventHandler(this.btn_Foto_Click);
             // 
             // lBox_Datos
             // 
             this.lBox_Datos.FormattingEnabled = true;
-            this.lBox_Datos.Location = new System.Drawing.Point(155, 403);
+            this.lBox_Datos.Location = new System.Drawing.Point(155, 299);
             this.lBox_Datos.Name = "lBox_Datos";
-            this.lBox_Datos.Size = new System.Drawing.Size(362, 82);
-            this.lBox_Datos.TabIndex = 11;
+            this.lBox_Datos.Size = new System.Drawing.Size(354, 95);
+            this.lBox_Datos.TabIndex = 5;
             // 
             // lblName
             // 
@@ -371,30 +372,32 @@ namespace Mi_mercadito
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(0, 36);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(199, 25);
-            this.lblName.TabIndex = 13;
-            this.lblName.Text = "Nombre del usuario";
+            this.lblName.Size = new System.Drawing.Size(197, 25);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Nombre de Usuario";
             // 
             // FrmMain
             // 
+            this.AcceptButton = this.cmdFoto;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 635);
+            this.CancelButton = this.cmdCancel;
+            this.ClientSize = new System.Drawing.Size(521, 462);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lBox_Datos);
-            this.Controls.Add(this.btn_Foto);
+            this.Controls.Add(this.cmdFoto);
             this.Controls.Add(this.lView_Contenido);
             this.Controls.Add(this.pbox_Camara);
-            this.Controls.Add(this.btn_Agregar);
-            this.Controls.Add(this.btn_Cancelar);
+            this.Controls.Add(this.cmdAdd);
+            this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.btn_slide);
             this.Controls.Add(this.lbox_ListaMercado);
             this.Controls.Add(this.txt);
             this.Controls.Add(this.lbl_miMercadito);
             this.Controls.Add(this.menuStrip1);
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmMain";
-            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).EndInit();
@@ -436,10 +439,10 @@ namespace Mi_mercadito
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ListBox lbox_ListaMercado;
         private System.Windows.Forms.Button btn_slide;
-        private System.Windows.Forms.Button btn_Cancelar;
-        private System.Windows.Forms.Button btn_Agregar;
+        private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.ListView lView_Contenido;
-        private System.Windows.Forms.Button btn_Foto;
+        private System.Windows.Forms.Button cmdFoto;
         private System.Windows.Forms.ListBox lBox_Datos;
         public System.Windows.Forms.PictureBox pbox_Camara;
         private System.Windows.Forms.Label lblName;

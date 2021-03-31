@@ -34,7 +34,7 @@ namespace Mi_mercadito
             CargaDispositivo();
         }
 
-        public void CargaDispositivo() 
+        public void CargaDispositivo()
         {
             //realiza la conexión de la cámara en tiempo real con el formulario
             MisDispositivos = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -85,6 +85,7 @@ namespace Mi_mercadito
             MiCamara.NewFrame += new NewFrameEventHandler(Capturando);
             //hace que la cámara inicie
             MiCamara.Start();
+            cmdFoto.Focus();
         }
 
         private void FrmCámara_FormClosed(object sender, FormClosedEventArgs e)
@@ -98,17 +99,12 @@ namespace Mi_mercadito
             {
                 string[] not = new string[7];
                 not[0] = "";
-                FrmMain f = new FrmMain(pbox_Camara.Image, not);
-                f.pbox_Camara.Image = pbox_Camara.Image;
-                f.pbox_Camara.Image.Save(Path + ".Jpeg", ImageFormat.Jpeg);
-                f.Show();
             }
             else
             {
                 MessageBox.Show("Encienda su cámara", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            this.Hide();            
             MiCamara.Stop();
         }
     }
