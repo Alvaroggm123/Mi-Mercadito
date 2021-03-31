@@ -120,6 +120,6 @@ namespace Mi_mercadito
                     txtEmail.SelectAll();
                 }
         }
-    
+
     }
 }

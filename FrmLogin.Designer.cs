@@ -49,7 +49,7 @@ namespace Mi_mercadito
             this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbxLogo.Location = new System.Drawing.Point(20, 11);
             this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(267, 242);
+            this.pbxLogo.Size = new System.Drawing.Size(250, 229);
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
             // 
