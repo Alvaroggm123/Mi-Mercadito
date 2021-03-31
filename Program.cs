@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
+using System.Data;
 
 namespace Mi_mercadito
 {
@@ -15,7 +17,7 @@ namespace Mi_mercadito
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            Application.Run(new FrmLogin());
         }
     }
     // Clase que permitirá obtener los valores del usuario a registrar.
@@ -75,6 +77,47 @@ namespace Mi_mercadito
                 int Count = Convert.ToInt32(cmd.ExecuteScalar());
                 return Count == 0;
 
+            }
+        }
+        // Consulta de datos de usuario. 
+        public string[] ConsultaT(string Username)
+        {
+            string[] Salida = new string[7];
+            string Consulta = @"SELECT usrUsrname, usrFname, usrLname, usrEmail, usrSex, usrBirth,usrRegDate FROM Users WHERE usrUsrname = @usrUsrname;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@usrUsrname ", Username);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida[0] = Leer["usrUsrname"].ToString();
+                    Salida[1] = Leer["usrFname"].ToString();
+                    Salida[2] = Leer["usrLname"].ToString();
+                    Salida[3] = Leer["usrEmail"].ToString();
+                    Salida[4] = Leer["usrSex"].ToString();
+                    Salida[5] = Leer["usrBirth"].ToString();
+                    Salida[6] = Leer["usrRegDate"].ToString();
+
+                }
+                return Salida;
+            }
+
+        }
+
+        public int InsertarCarrito(PictureBox pb)
+        {
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand Comando = new SqlCommand("insert into Imagen values (@img)", Conn);
+                Comando.Parameters.Add("@img", SqlDbType.Image);
+
+                MemoryStream ms = new MemoryStream();
+                pb.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Comando.Parameters["@img"].Value = ms.GetBuffer();
+
+                return Comando.ExecuteNonQuery();
             }
         }
         public bool Login(string Username, string Password)

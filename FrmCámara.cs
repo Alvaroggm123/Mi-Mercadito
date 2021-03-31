@@ -96,7 +96,9 @@ namespace Mi_mercadito
         {
             if (MiCamara !=null && MiCamara.IsRunning)
             {
-                FrmMain f = new FrmMain(pbox_Camara.Image);
+                string[] not = new string[7];
+                not[0] = "";
+                FrmMain f = new FrmMain(pbox_Camara.Image, not);
                 f.pbox_Camara.Image = pbox_Camara.Image;
                 f.pbox_Camara.Image.Save(Path + ".jpg", ImageFormat.Jpeg);
                 f.Show();

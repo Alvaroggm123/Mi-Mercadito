@@ -13,34 +13,30 @@ namespace Mi_mercadito
 {
     public partial class FrmMain : Form
     {
-        public FrmMain() 
+        public FrmMain(System.Drawing.Image i, string[] consulta)
         {
             InitializeComponent();
-        }
-
-        public FrmMain(System.Drawing.Image i)
-        {
-            InitializeComponent();
+            // Se asigna el valor de la imagen de la foto a el picturebox de FrmMain.
             pbox_Camara.Image = i;
+            // Mensaje de saludo.
+            switch (consulta[4])
+            {
+                case "M":
+                    lblName.Text = "Bienvenido " + consulta[1];
+                    break;
+                case "F":
+                    lblName.Text = "Bienvenida " + consulta[1];
+                    break;
+                default:
+                    lblName.Text = "";
+                    break;
+            }
         }
 
-        private void menToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-        }
 
         private void btn_Foto_Click(object sender, EventArgs e)
         {
-            //hace que al dar click en el boton tomar foto se habra el formulario de la camara
+            // Hace que al dar click en el boton tomar foto se habra el formulario de la camara.
             FrmCámara formulario = new FrmCámara();
             formulario.Show();
             this.Hide();
@@ -48,6 +44,20 @@ namespace Mi_mercadito
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            Usuarios Usuario = new Usuarios();
+            if (Usuario.InsertarCarrito(pbox_Camara) > 0)
+            {
+                MessageBox.Show("Se ha guardado la imagen de manera correcta.", "Imagen guardada");
+
+            }
+            else
+            {
+                MessageBox.Show("No se ha ingresado la imagen de manera correcta.", "Error");
+            }
         }
     }
 }

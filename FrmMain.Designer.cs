@@ -67,6 +67,7 @@ namespace Mi_mercadito
             this.lView_Contenido = new System.Windows.Forms.ListView();
             this.btn_Foto = new System.Windows.Forms.Button();
             this.lBox_Datos = new System.Windows.Forms.ListBox();
+            this.lblName = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.SuspendLayout();
@@ -114,7 +115,6 @@ namespace Mi_mercadito
             this.menToolStripMenuItem.Name = "menToolStripMenuItem";
             this.menToolStripMenuItem.Size = new System.Drawing.Size(82, 32);
             this.menToolStripMenuItem.Text = "Menú";
-            this.menToolStripMenuItem.Click += new System.EventHandler(this.menToolStripMenuItem_Click);
             // 
             // miCuentaToolStripMenuItem
             // 
@@ -316,7 +316,6 @@ namespace Mi_mercadito
             this.btn_Cancelar.TabIndex = 5;
             this.btn_Cancelar.Text = "Cancelar Compra";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
-            this.btn_Cancelar.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_Agregar
             // 
@@ -326,6 +325,7 @@ namespace Mi_mercadito
             this.btn_Agregar.TabIndex = 6;
             this.btn_Agregar.Text = "Agregar al Carrito";
             this.btn_Agregar.UseVisualStyleBackColor = true;
+            this.btn_Agregar.Click += new System.EventHandler(this.btn_Agregar_Click);
             // 
             // pbox_Camara
             // 
@@ -336,7 +336,6 @@ namespace Mi_mercadito
             this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbox_Camara.TabIndex = 7;
             this.pbox_Camara.TabStop = false;
-            this.pbox_Camara.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // lView_Contenido
             // 
@@ -365,11 +364,23 @@ namespace Mi_mercadito
             this.lBox_Datos.Size = new System.Drawing.Size(362, 82);
             this.lBox_Datos.TabIndex = 11;
             // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(0, 36);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(199, 25);
+            this.lblName.TabIndex = 13;
+            this.lblName.Text = "Nombre del usuario";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 635);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.lBox_Datos);
             this.Controls.Add(this.btn_Foto);
             this.Controls.Add(this.lView_Contenido);
@@ -431,5 +442,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button btn_Foto;
         private System.Windows.Forms.ListBox lBox_Datos;
         public System.Windows.Forms.PictureBox pbox_Camara;
+        private System.Windows.Forms.Label lblName;
     }
 }
