@@ -149,4 +149,46 @@ namespace Mi_mercadito
             return Conn;
         }
     }
+
+    public class Sucursal //creacion de clase sucursal
+    {
+        public int ConsultaSuc(ComboBox cboxTienda) //creacion de método ConsultaSuc
+        {
+            cboxTienda.Items.Clear();  // limpia los items que se encuentran en el Combobox
+            int a = 0; //variable auxiliar "a"
+            string Consulta = (@"SELECT * FROM Sucursal;"); // consulta los elementos de la tabla de la BD de la Sucursal
+            using (SqlConnection Conn = ConnectionDB.StartConn()) 
+            {
+                SqlCommand cm = new SqlCommand(Consulta,Conn);
+                SqlDataReader dr = cm.ExecuteReader(); // lee los elementos de la tabla de la BD de Sucursal
+                while (dr.Read())
+                {
+                    a = cboxTienda.Items.Add(dr.GetString(1)); // añade los items de la BD Sucursal en el cboxTienda
+                }                
+            }
+            return a; // retorna el valor seleccionado por el usuario en el cboxTienda
+        }
+
+        public string[] Datos(string cboxSucursal ) //creacion de un metodo en base a un arreglo con el parámetro cboxSucursal
+        {
+            string[] Salida = new string[4]; // el arreglo Salida es de 4 datos de lectura ya que también lee la posición del IDSuc de la BD
+            string Consulta = (@"SELECT * FROM Sucursal WHERE sucName = @sucName;");
+            using (SqlConnection Conn = ConnectionDB.StartConn()) 
+            {
+                SqlCommand cm = new SqlCommand(Consulta,Conn);
+                cm.Parameters.AddWithValue("@sucName ", cboxSucursal);
+                SqlDataReader Leer = cm.ExecuteReader();
+                if (Leer.Read())
+                {
+                    //se realiza la lectura de la columna de la tabla e identifica que la posición del cboxSucursal coincida con la de los 
+                    //datos de la tabla
+                    Salida[0] = Leer["sucName"].ToString();                    
+                    Salida[1] = Leer["sucPais"].ToString();
+                    Salida[2] = Leer["sucCity"].ToString();
+                    Salida[3] = Leer["sucDirec"].ToString();
+                }                
+            }
+            return Salida;
+        }
+    }
 }

@@ -66,10 +66,19 @@ namespace Mi_mercadito
             this.pbox_Camara = new System.Windows.Forms.PictureBox();
             this.lView_Contenido = new System.Windows.Forms.ListView();
             this.cmdFoto = new System.Windows.Forms.Button();
-            this.lBox_Datos = new System.Windows.Forms.ListBox();
             this.lblName = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDir = new System.Windows.Forms.TextBox();
+            this.txtCiudad = new System.Windows.Forms.TextBox();
+            this.txtPaís = new System.Windows.Forms.TextBox();
+            this.lblDirección = new System.Windows.Forms.Label();
+            this.lblCiudad = new System.Windows.Forms.Label();
+            this.lblPaís = new System.Windows.Forms.Label();
+            this.lblSucursal = new System.Windows.Forms.Label();
+            this.cboxSucursal = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_miMercadito
@@ -296,12 +305,12 @@ namespace Mi_mercadito
             this.lbox_ListaMercado.FormattingEnabled = true;
             this.lbox_ListaMercado.Location = new System.Drawing.Point(5, 74);
             this.lbox_ListaMercado.Name = "lbox_ListaMercado";
-            this.lbox_ListaMercado.Size = new System.Drawing.Size(144, 329);
+            this.lbox_ListaMercado.Size = new System.Drawing.Size(131, 329);
             this.lbox_ListaMercado.TabIndex = 3;
             // 
             // btn_slide
             // 
-            this.btn_slide.Location = new System.Drawing.Point(121, 275);
+            this.btn_slide.Location = new System.Drawing.Point(108, 221);
             this.btn_slide.Name = "btn_slide";
             this.btn_slide.Size = new System.Drawing.Size(28, 36);
             this.btn_slide.TabIndex = 4;
@@ -310,7 +319,8 @@ namespace Mi_mercadito
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(61, 409);
+            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCancel.Location = new System.Drawing.Point(45, 517);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(104, 31);
             this.cmdCancel.TabIndex = 6;
@@ -320,7 +330,7 @@ namespace Mi_mercadito
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(344, 409);
+            this.cmdAdd.Location = new System.Drawing.Point(358, 517);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(110, 31);
             this.cmdAdd.TabIndex = 8;
@@ -331,9 +341,9 @@ namespace Mi_mercadito
             // pbox_Camara
             // 
             this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
-            this.pbox_Camara.Location = new System.Drawing.Point(155, 61);
+            this.pbox_Camara.Location = new System.Drawing.Point(142, 74);
             this.pbox_Camara.Name = "pbox_Camara";
-            this.pbox_Camara.Size = new System.Drawing.Size(235, 224);
+            this.pbox_Camara.Size = new System.Drawing.Size(235, 329);
             this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbox_Camara.TabIndex = 7;
             this.pbox_Camara.TabStop = false;
@@ -341,29 +351,21 @@ namespace Mi_mercadito
             // lView_Contenido
             // 
             this.lView_Contenido.HideSelection = false;
-            this.lView_Contenido.Location = new System.Drawing.Point(396, 74);
+            this.lView_Contenido.Location = new System.Drawing.Point(383, 74);
             this.lView_Contenido.Name = "lView_Contenido";
-            this.lView_Contenido.Size = new System.Drawing.Size(113, 211);
+            this.lView_Contenido.Size = new System.Drawing.Size(126, 329);
             this.lView_Contenido.TabIndex = 4;
             this.lView_Contenido.UseCompatibleStateImageBehavior = false;
             // 
             // cmdFoto
             // 
-            this.cmdFoto.Location = new System.Drawing.Point(204, 413);
+            this.cmdFoto.Location = new System.Drawing.Point(204, 517);
             this.cmdFoto.Name = "cmdFoto";
-            this.cmdFoto.Size = new System.Drawing.Size(99, 27);
+            this.cmdFoto.Size = new System.Drawing.Size(99, 31);
             this.cmdFoto.TabIndex = 7;
             this.cmdFoto.Text = "Capturar producto";
             this.cmdFoto.UseVisualStyleBackColor = true;
             this.cmdFoto.Click += new System.EventHandler(this.btn_Foto_Click);
-            // 
-            // lBox_Datos
-            // 
-            this.lBox_Datos.FormattingEnabled = true;
-            this.lBox_Datos.Location = new System.Drawing.Point(155, 299);
-            this.lBox_Datos.Name = "lBox_Datos";
-            this.lBox_Datos.Size = new System.Drawing.Size(354, 95);
-            this.lBox_Datos.TabIndex = 5;
             // 
             // lblName
             // 
@@ -376,15 +378,102 @@ namespace Mi_mercadito
             this.lblName.TabIndex = 2;
             this.lblName.Text = "Nombre de Usuario";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtDir);
+            this.groupBox1.Controls.Add(this.txtCiudad);
+            this.groupBox1.Controls.Add(this.txtPaís);
+            this.groupBox1.Controls.Add(this.lblDirección);
+            this.groupBox1.Controls.Add(this.lblCiudad);
+            this.groupBox1.Controls.Add(this.lblPaís);
+            this.groupBox1.Controls.Add(this.lblSucursal);
+            this.groupBox1.Controls.Add(this.cboxSucursal);
+            this.groupBox1.Location = new System.Drawing.Point(5, 409);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(504, 102);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Sucursal";
+            // 
+            // txtDir
+            // 
+            this.txtDir.Location = new System.Drawing.Point(378, 49);
+            this.txtDir.Name = "txtDir";
+            this.txtDir.ReadOnly = true;
+            this.txtDir.Size = new System.Drawing.Size(120, 20);
+            this.txtDir.TabIndex = 10;
+            // 
+            // txtCiudad
+            // 
+            this.txtCiudad.Location = new System.Drawing.Point(259, 50);
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.ReadOnly = true;
+            this.txtCiudad.Size = new System.Drawing.Size(96, 20);
+            this.txtCiudad.TabIndex = 9;
+            // 
+            // txtPaís
+            // 
+            this.txtPaís.Location = new System.Drawing.Point(137, 50);
+            this.txtPaís.Name = "txtPaís";
+            this.txtPaís.ReadOnly = true;
+            this.txtPaís.Size = new System.Drawing.Size(96, 20);
+            this.txtPaís.TabIndex = 8;
+            // 
+            // lblDirección
+            // 
+            this.lblDirección.AutoSize = true;
+            this.lblDirección.Location = new System.Drawing.Point(411, 33);
+            this.lblDirección.Name = "lblDirección";
+            this.lblDirección.Size = new System.Drawing.Size(52, 13);
+            this.lblDirección.TabIndex = 7;
+            this.lblDirección.Text = "Dirección";
+            // 
+            // lblCiudad
+            // 
+            this.lblCiudad.AutoSize = true;
+            this.lblCiudad.Location = new System.Drawing.Point(286, 33);
+            this.lblCiudad.Name = "lblCiudad";
+            this.lblCiudad.Size = new System.Drawing.Size(40, 13);
+            this.lblCiudad.TabIndex = 6;
+            this.lblCiudad.Text = "Ciudad";
+            // 
+            // lblPaís
+            // 
+            this.lblPaís.AutoSize = true;
+            this.lblPaís.Location = new System.Drawing.Point(164, 33);
+            this.lblPaís.Name = "lblPaís";
+            this.lblPaís.Size = new System.Drawing.Size(29, 13);
+            this.lblPaís.TabIndex = 5;
+            this.lblPaís.Text = "País";
+            // 
+            // lblSucursal
+            // 
+            this.lblSucursal.AutoSize = true;
+            this.lblSucursal.Location = new System.Drawing.Point(37, 33);
+            this.lblSucursal.Name = "lblSucursal";
+            this.lblSucursal.Size = new System.Drawing.Size(48, 13);
+            this.lblSucursal.TabIndex = 4;
+            this.lblSucursal.Text = "Sucursal";
+            // 
+            // cboxSucursal
+            // 
+            this.cboxSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxSucursal.FormattingEnabled = true;
+            this.cboxSucursal.Location = new System.Drawing.Point(7, 49);
+            this.cboxSucursal.Name = "cboxSucursal";
+            this.cboxSucursal.Size = new System.Drawing.Size(113, 21);
+            this.cboxSucursal.TabIndex = 0;
+            this.cboxSucursal.SelectedIndexChanged += new System.EventHandler(this.cboxSucursal_SelectedIndexChanged);
+            // 
             // FrmMain
             // 
             this.AcceptButton = this.cmdFoto;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(521, 462);
+            this.ClientSize = new System.Drawing.Size(521, 560);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.lBox_Datos);
             this.Controls.Add(this.cmdFoto);
             this.Controls.Add(this.lView_Contenido);
             this.Controls.Add(this.pbox_Camara);
@@ -398,9 +487,12 @@ namespace Mi_mercadito
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmMain";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,8 +535,16 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.ListView lView_Contenido;
         private System.Windows.Forms.Button cmdFoto;
-        private System.Windows.Forms.ListBox lBox_Datos;
         public System.Windows.Forms.PictureBox pbox_Camara;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblDirección;
+        private System.Windows.Forms.Label lblCiudad;
+        private System.Windows.Forms.Label lblPaís;
+        private System.Windows.Forms.Label lblSucursal;
+        private System.Windows.Forms.ComboBox cboxSucursal;
+        private System.Windows.Forms.TextBox txtDir;
+        private System.Windows.Forms.TextBox txtCiudad;
+        private System.Windows.Forms.TextBox txtPaís;
     }
 }

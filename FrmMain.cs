@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Mi_mercadito
 {
@@ -72,5 +73,22 @@ namespace Mi_mercadito
             else
                 this.Show();
         }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            Sucursal sucursal = new Sucursal();
+            sucursal.ConsultaSuc(cboxSucursal);
+        }
+
+        private void cboxSucursal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] arreglo = new string[3];
+            Sucursal datos = new Sucursal();
+            arreglo = datos.Datos(cboxSucursal.Text);
+            txtPaís.Text = arreglo[1];
+            txtCiudad.Text = arreglo[2];
+            txtDir.Text = arreglo[3];
+        }
+
     }
 }
