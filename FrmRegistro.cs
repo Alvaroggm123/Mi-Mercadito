@@ -40,23 +40,6 @@ namespace Mi_mercadito
                 if (!FormatoEmail(txtEmail.Text))
                     ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
                 // Termina la validación de los datos personales
-
-                //FALTA EVITAR LOS SIGNOS DE INTERROGACIÓN
-                //if (txtEmail.Text.Contains("?"))
-                //{
-                //    for (int i = 0; i < (txtEmail.Text.Length); i++)
-                //    {
-                //        char LetraAux = Convert.ToChar(txtEmail.Text.Substring(i, 1));
-                //        if (LetraAux == '?')
-                //        {
-                //            char[] SignoInterr[i] = SignosINT(txtEmail.Text);
-
-                //            foreach (char SignoInt in txtEmail.Text) { }
-                //            txtEmail.Text.IndexOfAny
-                //            txtEmail.Text.Remove(txtEmail.Text.Length - 1, 1);
-                //        }
-                //    }
-                //}
             }
             if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
                 return ErrorMessage("Definir sexo requerido", "Se requiere especificar sexo, en caso de inclusividad seleccione \"otro\".", txtName);
@@ -83,27 +66,40 @@ namespace Mi_mercadito
         private void ValidarCarac(TextBox CajaTexto)
         {
             foreach (byte Caracter in Encoding.ASCII.GetBytes(CajaTexto.Text))
-                //-Espacio-//      //--Acento--//     //-----Letras mayúsculas-----//     //-----Letras minúsculas-----//
-                if (Caracter != 32 && Caracter != 239 && (Caracter < 65 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && Caracter != 63)
+                    //-Espacio-//     //-----Letras mayúsculas-----//     //-----Letras minúsculas-----//
+                if (Caracter != 32 && (Caracter < 65 || Caracter > 90) && (Caracter < 97 || Caracter > 122)) 
                 {
-                    byte AuxUbi = Convert.ToByte(CajaTexto.Text.IndexOf(Convert.ToChar(Caracter)));
-                    MessageBox.Show("Solo se pueden ingresar valores válidos [(a), (A), (á), (Á)]", "Error de sintáxis", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    CajaTexto.Text = CajaTexto.Text.Remove(AuxUbi, 1);
-                    CajaTexto.SelectionStart = AuxUbi;
+                    try
+                    {
+                        ttAviso.SetToolTip(CajaTexto, "Favor de evitar caracteres especiales \n[0, @, ?. !. #, /]");
+                        byte AuxUbi = Convert.ToByte(CajaTexto.Text.IndexOf(Convert.ToChar(Caracter)));
+                        CajaTexto.Text = CajaTexto.Text.Remove(AuxUbi, 1);
+                        CajaTexto.SelectionStart = AuxUbi;
+                    }
+                    catch (OverflowException e)
+                    {
+                        // Nomas está aqui esto para que jale bien
+                    }
                 }
-            
         }
         private string ValidarCaracEmail(TextBox CajaTexto)
         {
             // Validamos que se usen signos válidos para un correo.
-            foreach (int Caracter in Encoding.ASCII.GetBytes(CajaTexto.Text))
-                if (Caracter != 46 && Caracter != 95 && Caracter != 45 && (Caracter < 64 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && (Caracter < 48 || Caracter > 57))
-                {
-                    byte AuxUbi = Convert.ToByte(CajaTexto.Text.IndexOf(Convert.ToChar(Caracter)));
-                    MessageBox.Show("Solo se pueden ingresar valores válidos [(Letras), (números), (@), (.), (-), (_)]", "Error de sintáxis", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    CajaTexto.Text = CajaTexto.Text.Remove(AuxUbi, 1);
-                    CajaTexto.SelectionStart = AuxUbi;
-                }
+            try
+            {
+                foreach (int Caracter in Encoding.ASCII.GetBytes(CajaTexto.Text))
+                    if (Caracter != 46 && Caracter != 95 && Caracter != 45 && (Caracter < 64 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && (Caracter < 48 || Caracter > 57))
+                    {
+                        int AuxUbi = Convert.ToByte(CajaTexto.Text.IndexOf(Convert.ToChar(Caracter)));
+                        MessageBox.Show("Solo se pueden ingresar valores válidos: \n[(Letras), (números), (@), (.), (-), (_)]", "Error de sintáxis de correo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        CajaTexto.Text = CajaTexto.Text.Remove(AuxUbi, 1);
+                        CajaTexto.SelectionStart = AuxUbi;
+                    }
+            }
+            catch (OverflowException e)
+            {
+                // Motivos personales
+            }
             return CajaTexto.Text;
         }
         private void SepararNombres(Control CajaTexto)
@@ -137,6 +133,28 @@ namespace Mi_mercadito
             }
             else
                 return false;
+        }
+        private bool ValidarUsername(TextBox txtUsername)
+        {
+            // Validamos que se usen signos válidos para un usuario.
+            foreach (int Caracter in Encoding.ASCII.GetBytes(txtUsername.Text))
+                /*  //-Guión bajo-//    //-----Letras Mayúsculas-----//    //-----Letras Minúsculas-----//     //-----------Números-----------//  */
+                if (Caracter != 95 && (Caracter < 65 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && (Caracter < 48 || Caracter > 57))
+                {
+                    try
+                    {
+                        int AuxUbi = Convert.ToByte(txtUsername.Text.IndexOf(Convert.ToChar(Caracter)));
+                        MessageBox.Show("Solo se pueden ingresar valores válidos: \n[(Letras), (números), (_)]", "Error de sintáxis de usuario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtUsername.Text = txtUsername.Text.Remove(AuxUbi, 1);
+                        txtUsername.SelectionStart = AuxUbi;
+                    }
+                    catch(OverflowException e)
+                    {
+
+                    }
+                    
+                }
+            return true;
         }
         /* ========== | FIN de los métodos | ========== */
         public FrmRegistro()
@@ -189,19 +207,30 @@ namespace Mi_mercadito
         {
             // Validamos que el usuario que se esté intentando registrar no se encuentre ya registrado.
             Usuarios Usuario = new Usuarios();
-            if (txtUsername.Text.Length > 10)
+            //Validación [CARACTERES PERMITIDOS] - Username
+            bool BoolAux = ValidarUsername(txtUsername);
+            if (BoolAux == true)
             {
-                if (!Usuario.Validar(txtUsername.Text))
-                    txtUsername.BackColor = Color.Red;
-                else txtUsername.BackColor = Color.White;
+                if (txtUsername.Text.Length >= 10)
+                {
+                    if (!Usuario.Validar(txtUsername.Text))
+                    {
+                        txtUsername.BackColor = Color.Red;
+                        ttAviso.SetToolTip(txtUsername,"El usuario ya existe");
+                    }
+                    else txtUsername.BackColor = Color.White;
+                }
             }
+            else
+                ErrorMessage("Datos del usuario", "El usuario debe contener valores válidos", txtUsername);
+            
         }
+
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
             //Valiadación [CARACTERES PERMITIDOS] - Email
             //Llamada del método ValidarCaracEmail();
             txtEmail.Text = ValidarCaracEmail(txtEmail);
-            txtEmail.SelectionStart = txtEmail.Text.Length;
         }
         private void txtName_TextChanged(object sender, EventArgs e)
         {
@@ -224,5 +253,6 @@ namespace Mi_mercadito
             ValidarCarac(txtLname2);
         }
 
+        
     }
 }
