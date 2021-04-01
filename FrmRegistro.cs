@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 // Librerías necesarias.
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Text;
 
 namespace Mi_mercadito
@@ -25,9 +26,39 @@ namespace Mi_mercadito
             // Generamos [Usuario] para validar si se ingresó un usuario correcto.
             Usuarios Usuario = new Usuarios();
             // Área de verificación de datos personales.
-            if (txtName.Text == "" || txtLname.Text == "" || txtEmail.Text == "")
+            if (txtName.Text == "" || txtLname.Text == "" || txtLname2.Text == "" || txtEmail.Text == "")
                 return ErrorMessage("Datos personales", "Los datos personales deben estar completos.", txtName);
-            else if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
+            else
+            {
+                // Conversión automática de la primera letra a mayúscula - Nombre
+                SepararNombres(txtName);
+                // Conversión automática de la primera letra a mayúscula - Apellido paterno
+                SepararNombres(txtLname);
+                // Conversión automática de la primera letra a mayúscula - Apellido materno
+                SepararNombres(txtLname2);
+                //Validar formato de Email
+                if (!FormatoEmail(txtEmail.Text))
+                    ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
+                // Termina la validación de los datos personales
+
+                //FALTA EVITAR LOS SIGNOS DE INTERROGACIÓN
+                //if (txtEmail.Text.Contains("?"))
+                //{
+                //    for (int i = 0; i < (txtEmail.Text.Length); i++)
+                //    {
+                //        char LetraAux = Convert.ToChar(txtEmail.Text.Substring(i, 1));
+                //        if (LetraAux == '?')
+                //        {
+                //            char[] SignoInterr[i] = SignosINT(txtEmail.Text);
+
+                //            foreach (char SignoInt in txtEmail.Text) { }
+                //            txtEmail.Text.IndexOfAny
+                //            txtEmail.Text.Remove(txtEmail.Text.Length - 1, 1);
+                //        }
+                //    }
+                //}
+            }
+            if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
                 return ErrorMessage("Definir sexo requerido", "Se requiere especificar sexo, en caso de inclusividad seleccione \"otro\".", txtName);
             else if (datepBirth.Value.AddYears(13) > DateTime.Today)
                 return ErrorMessage("Edad mínima requerida", "Se requiere especificar una edad mayor a 13 años.", lblSexo);
@@ -47,6 +78,65 @@ namespace Mi_mercadito
                 return ErrorMessage("Términos y condiciones", "Se deben aceptar los términos y condiciones.", lblPassword);
             else
                 return true;
+        }
+        // Validación [CARACTERES PERMITIDOS]
+        private void ValidarCarac(TextBox CajaTexto)
+        {
+            foreach (byte Caracter in Encoding.ASCII.GetBytes(CajaTexto.Text))
+                //-Espacio-//      //--Acento--//     //-----Letras mayúsculas-----//     //-----Letras minúsculas-----//
+                if (Caracter != 32 && Caracter != 239 && (Caracter < 65 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && Caracter != 63)
+                {
+                    byte AuxUbi = Convert.ToByte(CajaTexto.Text.IndexOf(Convert.ToChar(Caracter)));
+                    MessageBox.Show("Solo se pueden ingresar valores válidos [(a), (A), (á), (Á)]", "Error de sintáxis", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CajaTexto.Text = CajaTexto.Text.Remove(AuxUbi, 1);
+                    CajaTexto.SelectionStart = AuxUbi;
+                }
+            
+        }
+        private string ValidarCaracEmail(TextBox CajaTexto)
+        {
+            // Validamos que se usen signos válidos para un correo.
+            foreach (int Caracter in Encoding.ASCII.GetBytes(CajaTexto.Text))
+                if (Caracter != 46 && Caracter != 95 && Caracter != 45 && (Caracter < 64 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && (Caracter < 48 || Caracter > 57))
+                {
+                    byte AuxUbi = Convert.ToByte(CajaTexto.Text.IndexOf(Convert.ToChar(Caracter)));
+                    MessageBox.Show("Solo se pueden ingresar valores válidos [(Letras), (números), (@), (.), (-), (_)]", "Error de sintáxis", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CajaTexto.Text = CajaTexto.Text.Remove(AuxUbi, 1);
+                    CajaTexto.SelectionStart = AuxUbi;
+                }
+            return CajaTexto.Text;
+        }
+        private void SepararNombres(Control CajaTexto)
+        {
+            if (CajaTexto.Text.StartsWith(" "))
+                ErrorMessage("Datos personales", "Nombres/Apellidos no deben comenzar con [ESPACIO]", txtName);
+            else
+            {
+                // Conversión automática de la primera letra a mayúscula - Nombre/s
+                string[] NombresSeparados = CajaTexto.Text.ToLower().Split();
+                CajaTexto.ResetText();
+                for (int i = 0; i < NombresSeparados.Length; i++)
+                {
+                    CajaTexto.Text = string.Concat(CajaTexto.Text, NombresSeparados[i].Substring(0, 1).ToUpper(), NombresSeparados[i].Substring(1, NombresSeparados[i].Length - 1), " ");
+                }
+                if (NombresSeparados.Length >= 1)
+                    CajaTexto.Text = CajaTexto.Text.Remove(CajaTexto.Text.LastIndexOf(' '));
+            }
+
+        }
+        private bool FormatoEmail(string TextoEmail)
+        {
+            // Validar formato de Correo electrónico
+            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(TextoEmail, expresion))
+            {
+                if (Regex.Replace(TextoEmail, expresion, string.Empty).Length == 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
         }
         /* ========== | FIN de los métodos | ========== */
         public FrmRegistro()
@@ -108,17 +198,30 @@ namespace Mi_mercadito
         }
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
-            // Validamos que se usen signos válidos para un correo.
-            txtEmail.Text.ToLower();
-            foreach (int Caracter in Encoding.ASCII.GetBytes(txtEmail.Text))
-                if (Caracter != 46 && Caracter != 95 && Caracter != 45 && (Caracter < 64 || Caracter > 90) && (Caracter < 97 || Caracter > 122) && (Caracter < 48 || Caracter > 57))
-                {
-                    MessageBox.Show("Solo se pueden ingresar valores válidos", "Error de sintáxis",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                    string Correcion = txtEmail.Text;
-                    Correcion = Correcion.Remove(Correcion.Length - 1);
-                    txtEmail.Text = Correcion;
-                    txtEmail.SelectAll();
-                }
+            //Valiadación [CARACTERES PERMITIDOS] - Email
+            //Llamada del método ValidarCaracEmail();
+            txtEmail.Text = ValidarCaracEmail(txtEmail);
+            txtEmail.SelectionStart = txtEmail.Text.Length;
+        }
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            // Validación [CARACTERES PERMITIDOS] - Nombre
+            //Llamada del método ValidarCarac();
+            ValidarCarac(txtName);
+
+        }
+        private void txtLname_TextChanged(object sender, EventArgs e)
+        {
+            // Validación [CARACTERES PERMITIDOS] - Apellido paterno
+            //Llamada del método ValidarCarac();
+            ValidarCarac(txtLname);
+
+        }
+        private void txtLname2_TextChanged(object sender, EventArgs e)
+        {
+            // Validación [CARACTERES PERMITIDOS] - Apellido paterno
+            //Llamada del método ValidarCarac();
+            ValidarCarac(txtLname2);
         }
 
     }
