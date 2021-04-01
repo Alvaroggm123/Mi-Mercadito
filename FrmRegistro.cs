@@ -11,7 +11,22 @@ namespace Mi_mercadito
     public partial class FrmRegistro : Form
     {
         /* ========== | Comienzan los métodos | ========== */
-
+        
+        // Método que reemplaza las vocales con acento.
+        public static string ReemplazarAcentos(string txtCajaTexto)
+        {
+            Regex ReemplazarA = new Regex("[á|à|ä|â]", RegexOptions.Compiled);
+            Regex ReemplazarE = new Regex("[é|è|ë|ê]", RegexOptions.Compiled);
+            Regex ReemplazarI = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
+            Regex ReemplazarO = new Regex("[ó|ò|ö|ô]", RegexOptions.Compiled);
+            Regex ReemplazarU = new Regex("[ú|ù|ü|û]", RegexOptions.Compiled);
+            txtCajaTexto = ReemplazarA.Replace(txtCajaTexto, "a");
+            txtCajaTexto = ReemplazarE.Replace(txtCajaTexto, "e");
+            txtCajaTexto = ReemplazarI.Replace(txtCajaTexto, "i");
+            txtCajaTexto = ReemplazarO.Replace(txtCajaTexto, "o");
+            txtCajaTexto = ReemplazarU.Replace(txtCajaTexto, "u");
+            return txtCajaTexto;
+        }
         // Método que permite imprimir mensajes de error.
         private bool ErrorMessage(string Grupo, string Mensaje, Control Enfoque)
         {
@@ -37,7 +52,7 @@ namespace Mi_mercadito
                 // Conversión automática de la primera letra a mayúscula - Apellido materno
                 SepararNombres(txtLname2);
                 //Validar formato de Email
-                if (!FormatoEmail(txtEmail.Text))
+                if (!FormatoEmail(txtEmail))
                     ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
                 // Termina la validación de los datos personales
             }
@@ -76,9 +91,10 @@ namespace Mi_mercadito
                         CajaTexto.Text = CajaTexto.Text.Remove(AuxUbi, 1);
                         CajaTexto.SelectionStart = AuxUbi;
                     }
-                    catch (OverflowException e)
+                    catch
                     {
-                        // Nomas está aqui esto para que jale bien
+                        CajaTexto.Text = ReemplazarAcentos(CajaTexto.Text);
+                        CajaTexto.SelectionStart = CajaTexto.TextLength;
                     }
                 }
         }
@@ -96,9 +112,10 @@ namespace Mi_mercadito
                         CajaTexto.SelectionStart = AuxUbi;
                     }
             }
-            catch (OverflowException e)
+            catch
             {
-                // Motivos personales
+                CajaTexto.Text = ReemplazarAcentos(CajaTexto.Text);
+                CajaTexto.SelectionStart = CajaTexto.TextLength;
             }
             return CajaTexto.Text;
         }
@@ -120,19 +137,29 @@ namespace Mi_mercadito
             }
 
         }
-        private bool FormatoEmail(string TextoEmail)
+        private bool FormatoEmail(TextBox TextoEmail)
         {
-            // Validar formato de Correo electrónico
-            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(TextoEmail, expresion))
+            try
             {
-                if (Regex.Replace(TextoEmail, expresion, string.Empty).Length == 0)
-                    return true;
+                // Validar formato de Correo electrónico
+                string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                if (Regex.IsMatch(TextoEmail.Text, expresion))
+                {
+                    if (Regex.Replace(TextoEmail.Text, expresion, string.Empty).Length == 0)
+                        return true;
+                    else
+                        return false;
+                }
                 else
                     return false;
             }
-            else
-                return false;
+            catch
+            {
+                TextoEmail.Text = ReemplazarAcentos(TextoEmail.Text);
+                TextoEmail.SelectionStart = TextoEmail.TextLength;
+            }
+            return true;
+            
         }
         private bool ValidarUsername(TextBox txtUsername)
         {
@@ -150,7 +177,8 @@ namespace Mi_mercadito
                     }
                     catch(OverflowException e)
                     {
-
+                        txtUsername.Text = ReemplazarAcentos(txtUsername.Text);
+                        txtUsername.SelectionStart = txtUsername.TextLength;
                     }
                     
                 }
