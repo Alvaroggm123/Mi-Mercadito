@@ -191,4 +191,52 @@ namespace Mi_mercadito
             return Salida;
         }
     }
+
+    class Producto 
+    {
+        public string [] RellenarProduc(string nombreProduc)
+        {
+            string[] datoProduc = new string[7];
+            string Consulta = (@"SELECT prodName, prodPrice, prodContNet, prodDesc, marcName, dptoName, sucName FROM  Producto, Marca, Departamento, Sucursal" +
+            " WHERE prodName = @prodName AND prodMarc= marcId AND prodSuc=sucId AND prodDpto=dptoId ;");
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cm = new SqlCommand(Consulta, Conn);
+                cm.Parameters.AddWithValue("@prodName",nombreProduc);
+                SqlDataReader Leer = cm.ExecuteReader();
+                if (Leer.Read())
+                {
+                    datoProduc[0] = Leer["prodName"].ToString();
+                    datoProduc[1] = Leer["prodPrice"].ToString();
+                    datoProduc[2] = Leer["prodContNet"].ToString();
+                    datoProduc[3] = Leer["prodDesc"].ToString();
+                    datoProduc[4] = Leer["marcName"].ToString();
+                    datoProduc[5] = Leer["dptoName"].ToString();
+                    datoProduc[6] = Leer["sucName"].ToString();
+                }
+                return datoProduc;
+            }
+        }
+
+       /* public void Imagen(ref PictureBox pbImagen, string nombreProducto)
+        {
+            string Consulta = @"SELECT prodPic FROM Producto WHERE prodName=@prodPic";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cm = new SqlCommand(Consulta, Conn);
+                cm.Parameters.AddWithValue("@prodPic", nombreProducto);
+
+                SqlDataAdapter dp = new SqlDataAdapter(cm);
+                DataSet ds = new DataSet();
+                dp.Fill(ds, "Producto");
+
+                byte[] Datos = new byte[0];
+                DataRow dr = ds.Tables["Producto"].Rows[0];
+                Datos = (byte[])dr["prodPic"];
+                MemoryStream ms = new MemoryStream(Datos);
+                pbImagen.Image = System.Drawing.Bitmap.FromStream(ms);
+            }
+        }*/
+    }
+
 }

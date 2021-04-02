@@ -64,7 +64,6 @@ namespace Mi_mercadito
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.pbox_Camara = new System.Windows.Forms.PictureBox();
-            this.lView_Contenido = new System.Windows.Forms.ListView();
             this.cmdFoto = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -76,6 +75,20 @@ namespace Mi_mercadito
             this.lblPaís = new System.Windows.Forms.Label();
             this.lblSucursal = new System.Windows.Forms.Label();
             this.cboxSucursal = new System.Windows.Forms.ComboBox();
+            this.txtNombreProduc = new System.Windows.Forms.TextBox();
+            this.txtProdPrecio = new System.Windows.Forms.TextBox();
+            this.txtProdContNet = new System.Windows.Forms.TextBox();
+            this.txtProdDesc = new System.Windows.Forms.TextBox();
+            this.txtProdMarc = new System.Windows.Forms.TextBox();
+            this.txtProdDpto = new System.Windows.Forms.TextBox();
+            this.txtProdSuc = new System.Windows.Forms.TextBox();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.lblContNet = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.lblDpto = new System.Windows.Forms.Label();
+            this.lblProdSuc = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -107,7 +120,7 @@ namespace Mi_mercadito
             this.menToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(521, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(516, 36);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "X";
             // 
@@ -343,19 +356,10 @@ namespace Mi_mercadito
             this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
             this.pbox_Camara.Location = new System.Drawing.Point(142, 74);
             this.pbox_Camara.Name = "pbox_Camara";
-            this.pbox_Camara.Size = new System.Drawing.Size(235, 329);
+            this.pbox_Camara.Size = new System.Drawing.Size(247, 329);
             this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbox_Camara.TabIndex = 7;
             this.pbox_Camara.TabStop = false;
-            // 
-            // lView_Contenido
-            // 
-            this.lView_Contenido.HideSelection = false;
-            this.lView_Contenido.Location = new System.Drawing.Point(383, 74);
-            this.lView_Contenido.Name = "lView_Contenido";
-            this.lView_Contenido.Size = new System.Drawing.Size(126, 329);
-            this.lView_Contenido.TabIndex = 4;
-            this.lView_Contenido.UseCompatibleStateImageBehavior = false;
             // 
             // cmdFoto
             // 
@@ -388,9 +392,9 @@ namespace Mi_mercadito
             this.groupBox1.Controls.Add(this.lblPaís);
             this.groupBox1.Controls.Add(this.lblSucursal);
             this.groupBox1.Controls.Add(this.cboxSucursal);
-            this.groupBox1.Location = new System.Drawing.Point(5, 409);
+            this.groupBox1.Location = new System.Drawing.Point(5, 435);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(504, 102);
+            this.groupBox1.Size = new System.Drawing.Size(504, 76);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sucursal";
@@ -465,17 +469,156 @@ namespace Mi_mercadito
             this.cboxSucursal.TabIndex = 0;
             this.cboxSucursal.SelectedIndexChanged += new System.EventHandler(this.cboxSucursal_SelectedIndexChanged);
             // 
+            // txtNombreProduc
+            // 
+            this.txtNombreProduc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtNombreProduc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtNombreProduc.Location = new System.Drawing.Point(395, 74);
+            this.txtNombreProduc.Name = "txtNombreProduc";
+            this.txtNombreProduc.Size = new System.Drawing.Size(108, 20);
+            this.txtNombreProduc.TabIndex = 10;
+            this.txtNombreProduc.Leave += new System.EventHandler(this.txtNombreProduc_Leave);
+            // 
+            // txtProdPrecio
+            // 
+            this.txtProdPrecio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtProdPrecio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtProdPrecio.Location = new System.Drawing.Point(395, 122);
+            this.txtProdPrecio.Name = "txtProdPrecio";
+            this.txtProdPrecio.Size = new System.Drawing.Size(108, 20);
+            this.txtProdPrecio.TabIndex = 11;
+            // 
+            // txtProdContNet
+            // 
+            this.txtProdContNet.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtProdContNet.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtProdContNet.Location = new System.Drawing.Point(395, 178);
+            this.txtProdContNet.Name = "txtProdContNet";
+            this.txtProdContNet.Size = new System.Drawing.Size(108, 20);
+            this.txtProdContNet.TabIndex = 12;
+            // 
+            // txtProdDesc
+            // 
+            this.txtProdDesc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtProdDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtProdDesc.Location = new System.Drawing.Point(142, 409);
+            this.txtProdDesc.Name = "txtProdDesc";
+            this.txtProdDesc.Size = new System.Drawing.Size(361, 20);
+            this.txtProdDesc.TabIndex = 13;
+            // 
+            // txtProdMarc
+            // 
+            this.txtProdMarc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtProdMarc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtProdMarc.Location = new System.Drawing.Point(395, 246);
+            this.txtProdMarc.Name = "txtProdMarc";
+            this.txtProdMarc.Size = new System.Drawing.Size(108, 20);
+            this.txtProdMarc.TabIndex = 14;
+            // 
+            // txtProdDpto
+            // 
+            this.txtProdDpto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtProdDpto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtProdDpto.Location = new System.Drawing.Point(395, 307);
+            this.txtProdDpto.Name = "txtProdDpto";
+            this.txtProdDpto.Size = new System.Drawing.Size(108, 20);
+            this.txtProdDpto.TabIndex = 15;
+            // 
+            // txtProdSuc
+            // 
+            this.txtProdSuc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtProdSuc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtProdSuc.Location = new System.Drawing.Point(395, 368);
+            this.txtProdSuc.Name = "txtProdSuc";
+            this.txtProdSuc.Size = new System.Drawing.Size(108, 20);
+            this.txtProdSuc.TabIndex = 16;
+            // 
+            // lblProducto
+            // 
+            this.lblProducto.AutoSize = true;
+            this.lblProducto.Location = new System.Drawing.Point(420, 58);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(50, 13);
+            this.lblProducto.TabIndex = 17;
+            this.lblProducto.Text = "Producto";
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(433, 106);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(37, 13);
+            this.lblPrecio.TabIndex = 18;
+            this.lblPrecio.Text = "Precio";
+            // 
+            // lblContNet
+            // 
+            this.lblContNet.AutoSize = true;
+            this.lblContNet.Location = new System.Drawing.Point(420, 162);
+            this.lblContNet.Name = "lblContNet";
+            this.lblContNet.Size = new System.Drawing.Size(55, 13);
+            this.lblContNet.TabIndex = 19;
+            this.lblContNet.Text = "Cont. Net.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(62, 412);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Descripción";
+            // 
+            // lblMarca
+            // 
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Location = new System.Drawing.Point(433, 230);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(37, 13);
+            this.lblMarca.TabIndex = 21;
+            this.lblMarca.Text = "Marca";
+            // 
+            // lblDpto
+            // 
+            this.lblDpto.AutoSize = true;
+            this.lblDpto.Location = new System.Drawing.Point(416, 291);
+            this.lblDpto.Name = "lblDpto";
+            this.lblDpto.Size = new System.Drawing.Size(74, 13);
+            this.lblDpto.TabIndex = 22;
+            this.lblDpto.Text = "Departamento";
+            // 
+            // lblProdSuc
+            // 
+            this.lblProdSuc.AutoSize = true;
+            this.lblProdSuc.Location = new System.Drawing.Point(420, 352);
+            this.lblProdSuc.Name = "lblProdSuc";
+            this.lblProdSuc.Size = new System.Drawing.Size(48, 13);
+            this.lblProdSuc.TabIndex = 23;
+            this.lblProdSuc.Text = "Sucursal";
+            // 
             // FrmMain
             // 
-            this.AcceptButton = this.cmdFoto;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(521, 560);
+            this.ClientSize = new System.Drawing.Size(516, 560);
+            this.Controls.Add(this.lblProdSuc);
+            this.Controls.Add(this.lblDpto);
+            this.Controls.Add(this.lblMarca);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblContNet);
+            this.Controls.Add(this.lblPrecio);
+            this.Controls.Add(this.lblProducto);
+            this.Controls.Add(this.txtProdSuc);
+            this.Controls.Add(this.txtProdDpto);
+            this.Controls.Add(this.txtProdMarc);
+            this.Controls.Add(this.txtProdDesc);
+            this.Controls.Add(this.txtProdContNet);
+            this.Controls.Add(this.txtProdPrecio);
+            this.Controls.Add(this.txtNombreProduc);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.cmdFoto);
-            this.Controls.Add(this.lView_Contenido);
             this.Controls.Add(this.pbox_Camara);
             this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.cmdCancel);
@@ -533,7 +676,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button btn_slide;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.Button cmdAdd;
-        private System.Windows.Forms.ListView lView_Contenido;
         private System.Windows.Forms.Button cmdFoto;
         public System.Windows.Forms.PictureBox pbox_Camara;
         private System.Windows.Forms.Label lblName;
@@ -546,5 +688,19 @@ namespace Mi_mercadito
         private System.Windows.Forms.TextBox txtDir;
         private System.Windows.Forms.TextBox txtCiudad;
         private System.Windows.Forms.TextBox txtPaís;
+        private System.Windows.Forms.TextBox txtNombreProduc;
+        private System.Windows.Forms.TextBox txtProdPrecio;
+        private System.Windows.Forms.TextBox txtProdContNet;
+        private System.Windows.Forms.TextBox txtProdDesc;
+        private System.Windows.Forms.TextBox txtProdMarc;
+        private System.Windows.Forms.TextBox txtProdDpto;
+        private System.Windows.Forms.TextBox txtProdSuc;
+        private System.Windows.Forms.Label lblProducto;
+        private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.Label lblContNet;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblMarca;
+        private System.Windows.Forms.Label lblDpto;
+        private System.Windows.Forms.Label lblProdSuc;
     }
 }

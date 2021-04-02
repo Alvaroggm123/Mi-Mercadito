@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Mi_mercadito
 {
@@ -53,6 +54,8 @@ namespace Mi_mercadito
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+
+
             Usuarios Usuario = new Usuarios();
             if (Usuario.InsertarCarrito(pbox_Camara) > 0)
             {
@@ -78,6 +81,8 @@ namespace Mi_mercadito
         {
             Sucursal sucursal = new Sucursal();
             sucursal.ConsultaSuc(cboxSucursal);
+            Autocompletar();
+            
         }
 
         private void cboxSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,5 +95,57 @@ namespace Mi_mercadito
             txtDir.Text = arreglo[3];
         }
 
+        public void Autocompletar()
+        {
+            string Consulta = (@"SELECT * FROM Producto ;");
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                DataTable Datos = new DataTable();
+                AutoCompleteStringCollection lista = new AutoCompleteStringCollection();
+                SqlDataAdapter adaptador = new SqlDataAdapter(Consulta, Conn);
+                adaptador.Fill(Datos);
+
+                for (int i = 0; i < Datos.Rows.Count; i++)
+                {
+                    lista.Add(Datos.Rows[i]["prodName"].ToString());
+                }
+                txtNombreProduc.AutoCompleteCustomSource = lista;
+                Producto datos = new Producto();
+                //AutocompletarResto(datos);
+            }
+        }
+
+        private void AutocompletarResto(Producto datos)
+        {
+            //string [] arreglo = datos.RellenarProduc(txtNombreProduc.Text);
+            
+            ////string[] arreglo = new string[7];
+            ////Producto datos = new Producto();
+            ////arreglo = datos.RellenarProduc(txtNombreProduc.Text);
+            //txtProdPrecio.Text = arreglo[1];
+            //txtProdContNet.Text = arreglo[2];
+            //txtProdDesc.Text = arreglo[3];
+            //txtProdMarc.Text = arreglo[4];
+            //txtProdDpto.Text = arreglo[5];
+            //txtProdSuc.Text = arreglo[6];
+
+            ////datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
+        }
+
+        private void txtNombreProduc_Leave(object sender, EventArgs e)
+        {
+            string[] arreglo = new string[7];
+            Producto datos = new Producto();
+            arreglo = datos.RellenarProduc(txtNombreProduc.Text);
+            txtProdPrecio.Text = arreglo[1];
+            txtProdContNet.Text = arreglo[2];
+            txtProdDesc.Text = arreglo[3];
+            txtProdMarc.Text = arreglo[4];
+            txtProdDpto.Text = arreglo[5];
+            txtProdSuc.Text = arreglo[6];
+
+            //datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
+
+        }
     }
 }
