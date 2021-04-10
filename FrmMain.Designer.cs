@@ -93,6 +93,7 @@ namespace Mi_mercadito
             this.pbxX2 = new System.Windows.Forms.PictureBox();
             this.pbxmin = new System.Windows.Forms.PictureBox();
             this.pbxX = new System.Windows.Forms.PictureBox();
+            this.cmdCargarImg = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -326,14 +327,14 @@ namespace Mi_mercadito
             // lbox_ListaMercado
             // 
             this.lbox_ListaMercado.FormattingEnabled = true;
-            this.lbox_ListaMercado.Location = new System.Drawing.Point(5, 140);
+            this.lbox_ListaMercado.Location = new System.Drawing.Point(5, 96);
             this.lbox_ListaMercado.Name = "lbox_ListaMercado";
             this.lbox_ListaMercado.Size = new System.Drawing.Size(131, 329);
             this.lbox_ListaMercado.TabIndex = 3;
             // 
             // btn_slide
             // 
-            this.btn_slide.Location = new System.Drawing.Point(108, 287);
+            this.btn_slide.Location = new System.Drawing.Point(108, 244);
             this.btn_slide.Name = "btn_slide";
             this.btn_slide.Size = new System.Drawing.Size(28, 36);
             this.btn_slide.TabIndex = 4;
@@ -353,7 +354,7 @@ namespace Mi_mercadito
             // pbox_Camara
             // 
             this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
-            this.pbox_Camara.Location = new System.Drawing.Point(142, 140);
+            this.pbox_Camara.Location = new System.Drawing.Point(142, 96);
             this.pbox_Camara.Name = "pbox_Camara";
             this.pbox_Camara.Size = new System.Drawing.Size(247, 329);
             this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -502,6 +503,7 @@ namespace Mi_mercadito
             this.txtProdDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtProdDesc.Location = new System.Drawing.Point(142, 475);
             this.txtProdDesc.Name = "txtProdDesc";
+            this.txtProdDesc.ReadOnly = true;
             this.txtProdDesc.Size = new System.Drawing.Size(361, 20);
             this.txtProdDesc.TabIndex = 13;
             // 
@@ -511,6 +513,7 @@ namespace Mi_mercadito
             this.txtProdMarc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtProdMarc.Location = new System.Drawing.Point(395, 312);
             this.txtProdMarc.Name = "txtProdMarc";
+            this.txtProdMarc.ReadOnly = true;
             this.txtProdMarc.Size = new System.Drawing.Size(108, 20);
             this.txtProdMarc.TabIndex = 14;
             // 
@@ -520,6 +523,7 @@ namespace Mi_mercadito
             this.txtProdDpto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtProdDpto.Location = new System.Drawing.Point(395, 373);
             this.txtProdDpto.Name = "txtProdDpto";
+            this.txtProdDpto.ReadOnly = true;
             this.txtProdDpto.Size = new System.Drawing.Size(108, 20);
             this.txtProdDpto.TabIndex = 15;
             // 
@@ -529,6 +533,7 @@ namespace Mi_mercadito
             this.txtProdSuc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtProdSuc.Location = new System.Drawing.Point(395, 434);
             this.txtProdSuc.Name = "txtProdSuc";
+            this.txtProdSuc.ReadOnly = true;
             this.txtProdSuc.Size = new System.Drawing.Size(108, 20);
             this.txtProdSuc.TabIndex = 16;
             // 
@@ -661,11 +666,22 @@ namespace Mi_mercadito
             this.pbxX.MouseLeave += new System.EventHandler(this.pbxX_MouseLeave);
             this.pbxX.MouseHover += new System.EventHandler(this.pbxX_MouseHover);
             // 
+            // cmdCargarImg
+            // 
+            this.cmdCargarImg.Location = new System.Drawing.Point(142, 431);
+            this.cmdCargarImg.Name = "cmdCargarImg";
+            this.cmdCargarImg.Size = new System.Drawing.Size(229, 30);
+            this.cmdCargarImg.TabIndex = 25;
+            this.cmdCargarImg.Text = "Seleccionar Imágen";
+            this.cmdCargarImg.UseVisualStyleBackColor = true;
+            this.cmdCargarImg.Click += new System.EventHandler(this.cmdCargarImg_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 641);
+            this.Controls.Add(this.cmdCargarImg);
             this.Controls.Add(this.lblProdSuc);
             this.Controls.Add(this.lblDpto);
             this.Controls.Add(this.lblMarca);
@@ -776,5 +792,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.PictureBox pbxX2;
         private System.Windows.Forms.PictureBox pbxmin2;
         private System.Windows.Forms.ToolStripMenuItem iniciarSesiónToolStripMenuItem;
+        private System.Windows.Forms.Button cmdCargarImg;
     }
 }

@@ -218,7 +218,7 @@ namespace Mi_mercadito
             }
         }
 
-       /* public void Imagen(ref PictureBox pbImagen, string nombreProducto)
+        public void Imagen(ref PictureBox pbImagen, string nombreProducto)
         {
             string Consulta = @"SELECT prodPic FROM Producto WHERE prodName=@prodPic";
             using (SqlConnection Conn = ConnectionDB.StartConn())
@@ -236,7 +236,8 @@ namespace Mi_mercadito
                 MemoryStream ms = new MemoryStream(Datos);
                 pbImagen.Image = System.Drawing.Bitmap.FromStream(ms);
             }
-        }*/
+        }
+
     }
 
 }

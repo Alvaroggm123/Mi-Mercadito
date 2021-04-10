@@ -90,7 +90,12 @@ namespace Mi_mercadito
             Sucursal sucursal = new Sucursal();
             sucursal.ConsultaSuc(cboxSucursal);
             Autocompletar();
-            
+            // Condicional donde si el picturebox no cuenta con una imagen dentro, mandara a enviar el logo de Mi mercadito
+            if (pbox_Camara.Image == null)
+            {
+                Image logo = Image.FromFile("logomiMercadito.png"); // Toma la imágen de la carpeta bin, dentro de la otra carpeta Debug
+                pbox_Camara.Image = logo;
+            }
         }
 
         private void cboxSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,6 +103,7 @@ namespace Mi_mercadito
             string[] arreglo = new string[3];
             Sucursal datos = new Sucursal();
             arreglo = datos.Datos(cboxSucursal.Text);
+            txtProdSuc.Text = cboxSucursal.Text;
             txtPaís.Text = arreglo[1];
             txtCiudad.Text = arreglo[2];
             txtDir.Text = arreglo[3];
@@ -119,41 +125,33 @@ namespace Mi_mercadito
                 }
                 txtNombreProduc.AutoCompleteCustomSource = lista;
                 Producto datos = new Producto();
-                //AutocompletarResto(datos);
             }
-        }
-
-        private void AutocompletarResto(Producto datos)
-        {
-            //string [] arreglo = datos.RellenarProduc(txtNombreProduc.Text);
-            
-            ////string[] arreglo = new string[7];
-            ////Producto datos = new Producto();
-            ////arreglo = datos.RellenarProduc(txtNombreProduc.Text);
-            //txtProdPrecio.Text = arreglo[1];
-            //txtProdContNet.Text = arreglo[2];
-            //txtProdDesc.Text = arreglo[3];
-            //txtProdMarc.Text = arreglo[4];
-            //txtProdDpto.Text = arreglo[5];
-            //txtProdSuc.Text = arreglo[6];
-
-            ////datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
         }
 
         private void txtNombreProduc_Leave(object sender, EventArgs e)
         {
-            string[] arreglo = new string[7];
-            Producto datos = new Producto();
-            arreglo = datos.RellenarProduc(txtNombreProduc.Text);
-            txtProdPrecio.Text = arreglo[1];
-            txtProdContNet.Text = arreglo[2];
-            txtProdDesc.Text = arreglo[3];
-            txtProdMarc.Text = arreglo[4];
-            txtProdDpto.Text = arreglo[5];
-            txtProdSuc.Text = arreglo[6];
-
-            //datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
-
+            try
+            {
+                string[] arreglo = new string[7];
+                Producto datos = new Producto();
+                arreglo = datos.RellenarProduc(txtNombreProduc.Text);
+                txtProdPrecio.Text = arreglo[1];
+                txtProdContNet.Text = arreglo[2];
+                txtProdDesc.Text = arreglo[3];
+                txtProdMarc.Text = arreglo[4];
+                txtProdDpto.Text = arreglo[5];
+                txtProdSuc.Text = arreglo[6];
+                // Muestra la imágen del producto que esta almacenada en la base de datos
+                datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
+                // Hace que al presionar el TAB se modifique el combobox de la sucursal en base al del producto.
+                cboxSucursal.Text = txtProdSuc.Text;
+            }
+            catch (Exception)
+            {
+                // MessageBox que obliga al usuario registrar un producto al usuario para que no rompa el programa al querer usar el TAB
+                MessageBox.Show("Ingrese primero un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         // Movimiento de pantalla
@@ -228,6 +226,14 @@ namespace Mi_mercadito
             string Msg = "¿Desea cerrar sesión?", Title = "Cancelar";
             if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Close();
-        } 
+        }
+
+        private void cmdCargarImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog cargarImg = new OpenFileDialog();
+            cargarImg.Filter = "Todas las imágenes soportadas|*.Jpeg;*.JPG;*.png;*.bmp;*.ico";
+            cargarImg.InitialDirectory = System.IO.Path.GetTempPath();
+            if (cargarImg.ShowDialog() == DialogResult.OK) pbox_Camara.Load(cargarImg.FileName);
+        }
     }
 }
