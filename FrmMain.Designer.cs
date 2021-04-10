@@ -61,7 +61,6 @@ namespace Mi_mercadito
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbox_ListaMercado = new System.Windows.Forms.ListBox();
             this.btn_slide = new System.Windows.Forms.Button();
-            this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.pbox_Camara = new System.Windows.Forms.PictureBox();
             this.cmdFoto = new System.Windows.Forms.Button();
@@ -89,9 +88,19 @@ namespace Mi_mercadito
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblDpto = new System.Windows.Forms.Label();
             this.lblProdSuc = new System.Windows.Forms.Label();
+            this.pnlLogin = new System.Windows.Forms.Panel();
+            this.pbxmin2 = new System.Windows.Forms.PictureBox();
+            this.pbxX2 = new System.Windows.Forms.PictureBox();
+            this.pbxmin = new System.Windows.Forms.PictureBox();
+            this.pbxX = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.pnlLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxmin2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_miMercadito
@@ -100,7 +109,7 @@ namespace Mi_mercadito
             this.lbl_miMercadito.BackColor = System.Drawing.Color.LightSkyBlue;
             this.lbl_miMercadito.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_miMercadito.ForeColor = System.Drawing.Color.White;
-            this.lbl_miMercadito.Location = new System.Drawing.Point(33, 5);
+            this.lbl_miMercadito.Location = new System.Drawing.Point(33, 35);
             this.lbl_miMercadito.Name = "lbl_miMercadito";
             this.lbl_miMercadito.Size = new System.Drawing.Size(165, 27);
             this.lbl_miMercadito.TabIndex = 0;
@@ -108,7 +117,7 @@ namespace Mi_mercadito
             // 
             // txt
             // 
-            this.txt.Location = new System.Drawing.Point(204, 12);
+            this.txt.Location = new System.Drawing.Point(204, 39);
             this.txt.Name = "txt";
             this.txt.Size = new System.Drawing.Size(205, 20);
             this.txt.TabIndex = 1;
@@ -118,7 +127,7 @@ namespace Mi_mercadito
             this.menuStrip1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 32);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(516, 36);
             this.menuStrip1.TabIndex = 2;
@@ -145,19 +154,20 @@ namespace Mi_mercadito
             this.iniciarSesiónToolStripMenuItem});
             this.miCuentaToolStripMenuItem.Name = "miCuentaToolStripMenuItem";
             this.miCuentaToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
-            this.miCuentaToolStripMenuItem.Text = "Mi Cuenta";
+            this.miCuentaToolStripMenuItem.Text = "Mi cuenta";
             // 
             // crearCuentaToolStripMenuItem
             // 
             this.crearCuentaToolStripMenuItem.Name = "crearCuentaToolStripMenuItem";
-            this.crearCuentaToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.crearCuentaToolStripMenuItem.Text = "Crear Cuenta";
+            this.crearCuentaToolStripMenuItem.Size = new System.Drawing.Size(222, 32);
+            this.crearCuentaToolStripMenuItem.Text = "Crear cuenta";
             // 
             // iniciarSesiónToolStripMenuItem
             // 
             this.iniciarSesiónToolStripMenuItem.Name = "iniciarSesiónToolStripMenuItem";
-            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(224, 32);
-            this.iniciarSesiónToolStripMenuItem.Text = "Iniciar Sesión";
+            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(222, 32);
+            this.iniciarSesiónToolStripMenuItem.Text = "Cerrar sesión";
+            this.iniciarSesiónToolStripMenuItem.Click += new System.EventHandler(this.iniciarSesiónToolStripMenuItem_Click);
             // 
             // miCarritoToolStripMenuItem
             // 
@@ -168,7 +178,7 @@ namespace Mi_mercadito
             this.productosFavoritosToolStripMenuItem});
             this.miCarritoToolStripMenuItem.Name = "miCarritoToolStripMenuItem";
             this.miCarritoToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
-            this.miCarritoToolStripMenuItem.Text = "Mi Carrito";
+            this.miCarritoToolStripMenuItem.Text = "Mi carrito";
             // 
             // crearListaDeComprasToolStripMenuItem
             // 
@@ -316,34 +326,23 @@ namespace Mi_mercadito
             // lbox_ListaMercado
             // 
             this.lbox_ListaMercado.FormattingEnabled = true;
-            this.lbox_ListaMercado.Location = new System.Drawing.Point(5, 74);
+            this.lbox_ListaMercado.Location = new System.Drawing.Point(5, 140);
             this.lbox_ListaMercado.Name = "lbox_ListaMercado";
             this.lbox_ListaMercado.Size = new System.Drawing.Size(131, 329);
             this.lbox_ListaMercado.TabIndex = 3;
             // 
             // btn_slide
             // 
-            this.btn_slide.Location = new System.Drawing.Point(108, 221);
+            this.btn_slide.Location = new System.Drawing.Point(108, 287);
             this.btn_slide.Name = "btn_slide";
             this.btn_slide.Size = new System.Drawing.Size(28, 36);
             this.btn_slide.TabIndex = 4;
             this.btn_slide.Text = "<";
             this.btn_slide.UseVisualStyleBackColor = true;
             // 
-            // cmdCancel
-            // 
-            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdCancel.Location = new System.Drawing.Point(45, 517);
-            this.cmdCancel.Name = "cmdCancel";
-            this.cmdCancel.Size = new System.Drawing.Size(104, 31);
-            this.cmdCancel.TabIndex = 6;
-            this.cmdCancel.Text = "Salir";
-            this.cmdCancel.UseVisualStyleBackColor = true;
-            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
-            // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(358, 517);
+            this.cmdAdd.Location = new System.Drawing.Point(287, 594);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(110, 31);
             this.cmdAdd.TabIndex = 8;
@@ -354,7 +353,7 @@ namespace Mi_mercadito
             // pbox_Camara
             // 
             this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
-            this.pbox_Camara.Location = new System.Drawing.Point(142, 74);
+            this.pbox_Camara.Location = new System.Drawing.Point(142, 140);
             this.pbox_Camara.Name = "pbox_Camara";
             this.pbox_Camara.Size = new System.Drawing.Size(247, 329);
             this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -363,7 +362,7 @@ namespace Mi_mercadito
             // 
             // cmdFoto
             // 
-            this.cmdFoto.Location = new System.Drawing.Point(204, 517);
+            this.cmdFoto.Location = new System.Drawing.Point(133, 594);
             this.cmdFoto.Name = "cmdFoto";
             this.cmdFoto.Size = new System.Drawing.Size(99, 31);
             this.cmdFoto.TabIndex = 7;
@@ -376,7 +375,7 @@ namespace Mi_mercadito
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(0, 36);
+            this.lblName.Location = new System.Drawing.Point(0, 68);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(197, 25);
             this.lblName.TabIndex = 2;
@@ -392,7 +391,7 @@ namespace Mi_mercadito
             this.groupBox1.Controls.Add(this.lblPaís);
             this.groupBox1.Controls.Add(this.lblSucursal);
             this.groupBox1.Controls.Add(this.cboxSucursal);
-            this.groupBox1.Location = new System.Drawing.Point(5, 435);
+            this.groupBox1.Location = new System.Drawing.Point(5, 501);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(504, 76);
             this.groupBox1.TabIndex = 9;
@@ -473,7 +472,7 @@ namespace Mi_mercadito
             // 
             this.txtNombreProduc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtNombreProduc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNombreProduc.Location = new System.Drawing.Point(395, 74);
+            this.txtNombreProduc.Location = new System.Drawing.Point(395, 140);
             this.txtNombreProduc.Name = "txtNombreProduc";
             this.txtNombreProduc.Size = new System.Drawing.Size(108, 20);
             this.txtNombreProduc.TabIndex = 10;
@@ -483,7 +482,7 @@ namespace Mi_mercadito
             // 
             this.txtProdPrecio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdPrecio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdPrecio.Location = new System.Drawing.Point(395, 122);
+            this.txtProdPrecio.Location = new System.Drawing.Point(395, 188);
             this.txtProdPrecio.Name = "txtProdPrecio";
             this.txtProdPrecio.Size = new System.Drawing.Size(108, 20);
             this.txtProdPrecio.TabIndex = 11;
@@ -492,7 +491,7 @@ namespace Mi_mercadito
             // 
             this.txtProdContNet.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdContNet.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdContNet.Location = new System.Drawing.Point(395, 178);
+            this.txtProdContNet.Location = new System.Drawing.Point(395, 244);
             this.txtProdContNet.Name = "txtProdContNet";
             this.txtProdContNet.Size = new System.Drawing.Size(108, 20);
             this.txtProdContNet.TabIndex = 12;
@@ -501,7 +500,7 @@ namespace Mi_mercadito
             // 
             this.txtProdDesc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdDesc.Location = new System.Drawing.Point(142, 409);
+            this.txtProdDesc.Location = new System.Drawing.Point(142, 475);
             this.txtProdDesc.Name = "txtProdDesc";
             this.txtProdDesc.Size = new System.Drawing.Size(361, 20);
             this.txtProdDesc.TabIndex = 13;
@@ -510,7 +509,7 @@ namespace Mi_mercadito
             // 
             this.txtProdMarc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdMarc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdMarc.Location = new System.Drawing.Point(395, 246);
+            this.txtProdMarc.Location = new System.Drawing.Point(395, 312);
             this.txtProdMarc.Name = "txtProdMarc";
             this.txtProdMarc.Size = new System.Drawing.Size(108, 20);
             this.txtProdMarc.TabIndex = 14;
@@ -519,7 +518,7 @@ namespace Mi_mercadito
             // 
             this.txtProdDpto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdDpto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdDpto.Location = new System.Drawing.Point(395, 307);
+            this.txtProdDpto.Location = new System.Drawing.Point(395, 373);
             this.txtProdDpto.Name = "txtProdDpto";
             this.txtProdDpto.Size = new System.Drawing.Size(108, 20);
             this.txtProdDpto.TabIndex = 15;
@@ -528,7 +527,7 @@ namespace Mi_mercadito
             // 
             this.txtProdSuc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdSuc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdSuc.Location = new System.Drawing.Point(395, 368);
+            this.txtProdSuc.Location = new System.Drawing.Point(395, 434);
             this.txtProdSuc.Name = "txtProdSuc";
             this.txtProdSuc.Size = new System.Drawing.Size(108, 20);
             this.txtProdSuc.TabIndex = 16;
@@ -536,7 +535,7 @@ namespace Mi_mercadito
             // lblProducto
             // 
             this.lblProducto.AutoSize = true;
-            this.lblProducto.Location = new System.Drawing.Point(420, 58);
+            this.lblProducto.Location = new System.Drawing.Point(420, 124);
             this.lblProducto.Name = "lblProducto";
             this.lblProducto.Size = new System.Drawing.Size(50, 13);
             this.lblProducto.TabIndex = 17;
@@ -545,7 +544,7 @@ namespace Mi_mercadito
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(433, 106);
+            this.lblPrecio.Location = new System.Drawing.Point(433, 172);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(37, 13);
             this.lblPrecio.TabIndex = 18;
@@ -554,7 +553,7 @@ namespace Mi_mercadito
             // lblContNet
             // 
             this.lblContNet.AutoSize = true;
-            this.lblContNet.Location = new System.Drawing.Point(420, 162);
+            this.lblContNet.Location = new System.Drawing.Point(420, 228);
             this.lblContNet.Name = "lblContNet";
             this.lblContNet.Size = new System.Drawing.Size(55, 13);
             this.lblContNet.TabIndex = 19;
@@ -563,7 +562,7 @@ namespace Mi_mercadito
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(62, 412);
+            this.label4.Location = new System.Drawing.Point(62, 478);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 20;
@@ -572,7 +571,7 @@ namespace Mi_mercadito
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(433, 230);
+            this.lblMarca.Location = new System.Drawing.Point(433, 296);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(37, 13);
             this.lblMarca.TabIndex = 21;
@@ -581,7 +580,7 @@ namespace Mi_mercadito
             // lblDpto
             // 
             this.lblDpto.AutoSize = true;
-            this.lblDpto.Location = new System.Drawing.Point(416, 291);
+            this.lblDpto.Location = new System.Drawing.Point(416, 357);
             this.lblDpto.Name = "lblDpto";
             this.lblDpto.Size = new System.Drawing.Size(74, 13);
             this.lblDpto.TabIndex = 22;
@@ -590,18 +589,83 @@ namespace Mi_mercadito
             // lblProdSuc
             // 
             this.lblProdSuc.AutoSize = true;
-            this.lblProdSuc.Location = new System.Drawing.Point(420, 352);
+            this.lblProdSuc.Location = new System.Drawing.Point(420, 418);
             this.lblProdSuc.Name = "lblProdSuc";
             this.lblProdSuc.Size = new System.Drawing.Size(48, 13);
             this.lblProdSuc.TabIndex = 23;
             this.lblProdSuc.Text = "Sucursal";
             // 
+            // pnlLogin
+            // 
+            this.pnlLogin.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.pnlLogin.Controls.Add(this.pbxmin2);
+            this.pnlLogin.Controls.Add(this.pbxX2);
+            this.pnlLogin.Controls.Add(this.pbxmin);
+            this.pnlLogin.Controls.Add(this.pbxX);
+            this.pnlLogin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlLogin.Location = new System.Drawing.Point(0, 0);
+            this.pnlLogin.Name = "pnlLogin";
+            this.pnlLogin.Size = new System.Drawing.Size(516, 32);
+            this.pnlLogin.TabIndex = 24;
+            this.pnlLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlLogin_MouseDown);
+            // 
+            // pbxmin2
+            // 
+            this.pbxmin2.Image = global::Mi_mercadito.Properties.Resources.btn_min21;
+            this.pbxmin2.Location = new System.Drawing.Point(455, 1);
+            this.pbxmin2.Name = "pbxmin2";
+            this.pbxmin2.Size = new System.Drawing.Size(30, 30);
+            this.pbxmin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxmin2.TabIndex = 25;
+            this.pbxmin2.TabStop = false;
+            this.pbxmin2.Visible = false;
+            this.pbxmin2.Click += new System.EventHandler(this.pbxmin2_Click);
+            this.pbxmin2.MouseLeave += new System.EventHandler(this.pbxmin2_MouseLeave);
+            // 
+            // pbxX2
+            // 
+            this.pbxX2.Image = global::Mi_mercadito.Properties.Resources.btn_X2;
+            this.pbxX2.Location = new System.Drawing.Point(486, 1);
+            this.pbxX2.Name = "pbxX2";
+            this.pbxX2.Size = new System.Drawing.Size(30, 30);
+            this.pbxX2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxX2.TabIndex = 25;
+            this.pbxX2.TabStop = false;
+            this.pbxX2.Visible = false;
+            this.pbxX2.Click += new System.EventHandler(this.pbxX2_Click);
+            this.pbxX2.MouseLeave += new System.EventHandler(this.pbxX2_MouseLeave);
+            // 
+            // pbxmin
+            // 
+            this.pbxmin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pbxmin.Image = global::Mi_mercadito.Properties.Resources.btn_min1;
+            this.pbxmin.Location = new System.Drawing.Point(456, 0);
+            this.pbxmin.Name = "pbxmin";
+            this.pbxmin.Size = new System.Drawing.Size(30, 32);
+            this.pbxmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxmin.TabIndex = 0;
+            this.pbxmin.TabStop = false;
+            this.pbxmin.MouseLeave += new System.EventHandler(this.pbxmin_MouseLeave);
+            this.pbxmin.MouseHover += new System.EventHandler(this.pbxmin_MouseHover);
+            // 
+            // pbxX
+            // 
+            this.pbxX.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pbxX.Image = global::Mi_mercadito.Properties.Resources.btn_X;
+            this.pbxX.Location = new System.Drawing.Point(486, 0);
+            this.pbxX.Name = "pbxX";
+            this.pbxX.Size = new System.Drawing.Size(30, 32);
+            this.pbxX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxX.TabIndex = 10;
+            this.pbxX.TabStop = false;
+            this.pbxX.MouseLeave += new System.EventHandler(this.pbxX_MouseLeave);
+            this.pbxX.MouseHover += new System.EventHandler(this.pbxX_MouseHover);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(516, 560);
+            this.ClientSize = new System.Drawing.Size(516, 641);
             this.Controls.Add(this.lblProdSuc);
             this.Controls.Add(this.lblDpto);
             this.Controls.Add(this.lblMarca);
@@ -621,12 +685,13 @@ namespace Mi_mercadito
             this.Controls.Add(this.cmdFoto);
             this.Controls.Add(this.pbox_Camara);
             this.Controls.Add(this.cmdAdd);
-            this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.btn_slide);
             this.Controls.Add(this.lbox_ListaMercado);
             this.Controls.Add(this.txt);
             this.Controls.Add(this.lbl_miMercadito);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmMain";
@@ -636,6 +701,11 @@ namespace Mi_mercadito
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.pnlLogin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxmin2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -649,7 +719,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.ToolStripMenuItem menToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miCuentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearCuentaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem iniciarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miCarritoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearListaDeComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroDeComprasToolStripMenuItem;
@@ -674,7 +743,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ListBox lbox_ListaMercado;
         private System.Windows.Forms.Button btn_slide;
-        private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.Button cmdFoto;
         public System.Windows.Forms.PictureBox pbox_Camara;
@@ -702,5 +770,11 @@ namespace Mi_mercadito
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblDpto;
         private System.Windows.Forms.Label lblProdSuc;
+        private System.Windows.Forms.Panel pnlLogin;
+        private System.Windows.Forms.PictureBox pbxmin;
+        private System.Windows.Forms.PictureBox pbxX;
+        private System.Windows.Forms.PictureBox pbxX2;
+        private System.Windows.Forms.PictureBox pbxmin2;
+        private System.Windows.Forms.ToolStripMenuItem iniciarSesiónToolStripMenuItem;
     }
 }

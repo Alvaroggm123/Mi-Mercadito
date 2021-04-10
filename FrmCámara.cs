@@ -108,5 +108,57 @@ namespace Mi_mercadito
             }
             MiCamara.Stop();
         }
+        // Cerrar ventana
+        private void pbxX2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void pbxX_MouseHover(object sender, EventArgs e)
+        {
+            pbxX2.BackColor = Color.White;
+            pbxX2.Visible = true;
+            pbxX.Visible = false;
+        }
+
+        // Efectos de boton X
+        private void pbxX_MouseLeave(object sender, EventArgs e)
+        {
+            pbxX.BackColor = Color.PaleTurquoise;
+        }
+        private void pbxX2_MouseLeave(object sender, EventArgs e)
+        {
+            pbxX2.Visible = false;
+            pbxX.Visible = true;
+        }
+        // Minimizar ventana
+        private void pbxmin2_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+        // Efectos de boton min
+        private void pbxmin_MouseHover(object sender, EventArgs e)
+        {
+            pbxmin2.BackColor = Color.White;
+            pbxmin.Visible = false;
+            pbxmin2.Visible = true;
+        }
+
+        private void pbxmin_MouseLeave(object sender, EventArgs e)
+        {
+            pbxmin.BackColor = Color.PaleTurquoise;
+        }
+
+        private void pbxmin2_MouseLeave(object sender, EventArgs e)
+        {
+            pbxmin.Visible = true;
+            pbxmin2.Visible = false;
+        }  
     }
 }

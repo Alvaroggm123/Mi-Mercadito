@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+// Librerías a utilizar
+using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace Mi_mercadito
 {
@@ -34,16 +37,21 @@ namespace Mi_mercadito
                     break;
             }
         }
-
+        // Creación de método para movimiento de ventana
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         private void btn_Foto_Click(object sender, EventArgs e)
         {
             // Hace que al dar click en el boton tomar foto se habra el formulario de la camara.
             FrmCámara Camara = new FrmCámara();
             Image Logo = Camara.pbox_Camara.Image;
-            this.Hide();
+            this.Enabled = false;
             if (Camara.ShowDialog()==DialogResult.OK)
                 this.Show();
+            this.Enabled = true; ;
             // Re asignamos en caso de que corresponda un cambio
             if (Logo != pbox_Camara.Image)
             {
@@ -147,5 +155,79 @@ namespace Mi_mercadito
             //datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
 
         }
+
+        // Movimiento de pantalla
+        private void pnlLogin_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        // Cerrar ventana y programa
+        private void pbxX2_Click(object sender, EventArgs e)
+        {
+            // MessageBox implementación de código 
+            string Msg = "¿Desea cancelar el registro?", Title = "Cancelar registro";
+            if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Close();
+                Application.Exit();
+            }
+              
+        }
+        // Efectos del boton X
+        private void pbxX_MouseHover(object sender, EventArgs e)
+        {
+            pbxX2.BackColor = Color.White;
+            pbxX2.Visible = true;
+         
+        }
+
+        private void pbxX_MouseLeave(object sender, EventArgs e)
+        {
+            pbxX.BackColor = Color.PaleTurquoise;
+        }
+        private void pbxX2_MouseLeave(object sender, EventArgs e)
+        {
+            pbxX2.Visible = false;
+  
+        }
+
+        // Minimizar ventana
+        private void pbxmin2_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+        // Efectos del boton min
+        private void pbxmin_MouseHover(object sender, EventArgs e)
+        {
+            pbxmin2.BackColor = Color.White;        
+            pbxmin2.Visible = true;
+        }
+
+        private void pbxmin_MouseLeave(object sender, EventArgs e)
+        {
+            pbxmin.BackColor = Color.PaleTurquoise;
+        }
+
+        private void pbxmin2_MouseLeave(object sender, EventArgs e)
+        {
+            pbxmin2.Visible = false;
+        }
+
+        // Cerrar ventana
+        private void iniciarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string Msg = "¿Desea cancelar el registro?", Title = "Cancelar registro";
+            if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                this.Close();
+        } 
     }
 }

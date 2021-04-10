@@ -111,6 +111,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -125,6 +126,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_min2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_min1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_max.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_max1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_max2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_max21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_X.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_X2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_min21.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

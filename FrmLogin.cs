@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//Librerías a utilizar
+// Librerías a utilizar
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace Mi_mercadito
 {
+
     public partial class FrmLogin : Form
     {
         // === | INICIO Métodos | === //
@@ -30,6 +32,12 @@ namespace Mi_mercadito
             txtCajaTexto = ReemplazarU.Replace(txtCajaTexto, "u");
             return txtCajaTexto;
         }
+        // Creación de método para movimiento de ventana
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
         private void ValidarUsername(TextBox txtUsername)
         {
             // Validamos que se usen signos válidos para un usuario.
@@ -110,7 +118,66 @@ namespace Mi_mercadito
             // Validación [LOGIN] - Username
             ValidarUsername(txtUsername);
         }
+        // Movimiento de pantalla
+        private void pnlLogin_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
 
+        // Cerrar pantalla
+        private void pbxX2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        // Efecto de boton x
+        private void pbxX_MouseHover(object sender, EventArgs e)
+        {
+            pbxX2.BackColor = Color.White;
+            pbxX2.Visible = true;
+            pbxX.Visible = false;
+        }
+
+        // Efecto de boton x
+        private void pbxX_MouseLeave(object sender, EventArgs e)
+        {
+            pbxX.BackColor = Color.PaleTurquoise;      
+        }
+
+        // Efecto de boton x
+        private void pbxX2_MouseLeave(object sender, EventArgs e)
+        {
+            pbxX2.Visible = false;
+            pbxX.Visible = true;
+
+        }
+
+        // Minimizar la pantalla
+        private void pbxmin2_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+        // Efectos de boton min
+        private void pbxmin_MouseHover(object sender, EventArgs e)
+        {
+            pbxmin2.BackColor = Color.White;
+            pbxmin.Visible = false;
+            pbxmin2.Visible = true;
+        }
+
+        private void pbxmin2_MouseLeave(object sender, EventArgs e)
+        {
+            pbxmin.Visible = true;
+            pbxmin2.Visible = false;
+        }
         // === | FIN Eventos | === //
     }
 }
