@@ -167,7 +167,7 @@ namespace Mi_mercadito
         private void pbxX2_Click(object sender, EventArgs e)
         {
             // MessageBox implementación de código 
-            string Msg = "¿Desea cancelar el registro?", Title = "Cancelar registro";
+            string Msg = "¿Desea salir?", Title = "Cancelar";
             if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Close();
@@ -225,7 +225,7 @@ namespace Mi_mercadito
         // Cerrar ventana
         private void iniciarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string Msg = "¿Desea cancelar el registro?", Title = "Cancelar registro";
+            string Msg = "¿Desea cerrar sesión?", Title = "Cancelar";
             if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Close();
         } 
