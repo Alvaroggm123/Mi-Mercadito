@@ -196,7 +196,12 @@ namespace Mi_mercadito
             // Ventana de confirmación de salida del registro.
             string Msg = "¿Desea cancelar el registro?", Title = "Cancelar registro";
             if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
                 Close();
+                FrmLogin Login = new FrmLogin();
+                Login.Show();
+            }
+               
         }
 
         private void cmdAccept_Click(object sender, EventArgs e)

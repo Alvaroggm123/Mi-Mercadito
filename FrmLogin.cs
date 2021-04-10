@@ -104,6 +104,7 @@ namespace Mi_mercadito
         private void CmdRegister_Click(object sender, EventArgs e)
         {
             // Creamos objeto de formulario de registro.
+            this.Hide();
             FrmRegistro FormRegistro = new FrmRegistro();
 
             // Desplegamos el formulario de registro.
@@ -129,6 +130,7 @@ namespace Mi_mercadito
         private void pbxX2_Click(object sender, EventArgs e)
         {
             Close();
+            Application.Exit();
         }
 
         // Efecto de boton x
