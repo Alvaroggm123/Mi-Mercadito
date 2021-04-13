@@ -76,7 +76,6 @@ namespace Mi_mercadito
                 cmd.Parameters.AddWithValue("@usrUsrname ", Username);
                 int Count = Convert.ToInt32(cmd.ExecuteScalar());
                 return Count == 0;
-
             }
         }
         // Consulta de datos de usuario. 

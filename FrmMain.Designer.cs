@@ -94,6 +94,7 @@ namespace Mi_mercadito
             this.pbxmin = new System.Windows.Forms.PictureBox();
             this.pbxX = new System.Windows.Forms.PictureBox();
             this.cmdCargarImg = new System.Windows.Forms.Button();
+            this.cmdEnabled = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -343,7 +344,7 @@ namespace Mi_mercadito
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(287, 594);
+            this.cmdAdd.Location = new System.Drawing.Point(231, 594);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(110, 31);
             this.cmdAdd.TabIndex = 8;
@@ -363,7 +364,7 @@ namespace Mi_mercadito
             // 
             // cmdFoto
             // 
-            this.cmdFoto.Location = new System.Drawing.Point(133, 594);
+            this.cmdFoto.Location = new System.Drawing.Point(108, 594);
             this.cmdFoto.Name = "cmdFoto";
             this.cmdFoto.Size = new System.Drawing.Size(99, 31);
             this.cmdFoto.TabIndex = 7;
@@ -477,6 +478,8 @@ namespace Mi_mercadito
             this.txtNombreProduc.Name = "txtNombreProduc";
             this.txtNombreProduc.Size = new System.Drawing.Size(108, 20);
             this.txtNombreProduc.TabIndex = 10;
+            this.txtNombreProduc.TextChanged += new System.EventHandler(this.txtNombreProduc_TextChanged);
+            this.txtNombreProduc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProduc_KeyDown);
             this.txtNombreProduc.Leave += new System.EventHandler(this.txtNombreProduc_Leave);
             // 
             // txtProdPrecio
@@ -676,11 +679,21 @@ namespace Mi_mercadito
             this.cmdCargarImg.UseVisualStyleBackColor = true;
             this.cmdCargarImg.Click += new System.EventHandler(this.cmdCargarImg_Click);
             // 
+            // cmdEnabled
+            // 
+            this.cmdEnabled.Location = new System.Drawing.Point(369, 594);
+            this.cmdEnabled.Name = "cmdEnabled";
+            this.cmdEnabled.Size = new System.Drawing.Size(121, 31);
+            this.cmdEnabled.TabIndex = 26;
+            this.cmdEnabled.Text = "Agregar Producto";
+            this.cmdEnabled.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 641);
+            this.Controls.Add(this.cmdEnabled);
             this.Controls.Add(this.cmdCargarImg);
             this.Controls.Add(this.lblProdSuc);
             this.Controls.Add(this.lblDpto);
@@ -776,7 +789,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.TextBox txtProdPrecio;
         private System.Windows.Forms.TextBox txtProdContNet;
         private System.Windows.Forms.TextBox txtProdDesc;
-        private System.Windows.Forms.TextBox txtProdMarc;
         private System.Windows.Forms.TextBox txtProdDpto;
         private System.Windows.Forms.TextBox txtProdSuc;
         private System.Windows.Forms.Label lblProducto;
@@ -793,5 +805,7 @@ namespace Mi_mercadito
         private System.Windows.Forms.PictureBox pbxmin2;
         private System.Windows.Forms.ToolStripMenuItem iniciarSesiónToolStripMenuItem;
         private System.Windows.Forms.Button cmdCargarImg;
+        private System.Windows.Forms.TextBox txtProdMarc;
+        private System.Windows.Forms.Button cmdEnabled;
     }
 }
