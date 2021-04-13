@@ -18,6 +18,7 @@ namespace Mi_mercadito
 {
     public partial class FrmMain : Form
     {
+        public static string IdMarca, IdDepartamento, IdSuc;
         public FrmMain(System.Drawing.Image i, string[] Consulta)
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace Mi_mercadito
             FrmCámara Camara = new FrmCámara();
             Image Logo = Camara.pbox_Camara.Image;
             this.Enabled = false;
-            if (Camara.ShowDialog()==DialogResult.OK)
+            if (Camara.ShowDialog() == DialogResult.OK)
                 this.Show();
             this.Enabled = true; ;
             // Re asignamos en caso de que corresponda un cambio
@@ -62,11 +63,42 @@ namespace Mi_mercadito
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
-            Usuarios Usuario = new Usuarios();
-            if (Usuario.InsertarCarrito(pbox_Camara) > 0)
-                MessageBox.Show("Se ha guardado la imagen de manera correcta.", "Imagen guardada");
+
+                        Marca Marc = new Marca();
+                        if (!Marc.ValidarMarc(txtProdMarc.Text))
+                        {
+                            IdMarca = Marc.ConsultId(txtProdMarc.Text);
+                        }
+                        else
+                        {
+                            Marc.InsertarMarc(txtProdMarc.Text, pbox_Camara);
+                            IdMarca = Marc.ConsultId(txtProdMarc.Text);
+                        }
+
+
+                        Departamento Departamento = new Departamento();
+                        if (!Departamento.ValidarDepart(txtProdDpto.Text))
+                        {
+                            IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+                        }
+                        else
+                        {
+                        }    
+
+                     Sucursal Sucursal = new Sucursal();
+                    IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPaís.Text, txtCiudad.Text, txtDir.Text);
+
+
+            Producto Productos = new Producto();
+            if (Productos.InsertProductos(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, pbox_Camara, IdMarca, IdDepartamento,IdSuc) > 0)
+            {
+                MessageBox.Show("Se ha guardado el producto de manera correcta.", "Producto guardado",MessageBoxButtons.OK);
+            }
             else
-                MessageBox.Show("No se ha ingresado la imagen de manera correcta.", "Error");
+            {
+                MessageBox.Show("No se ha guardado el producto de manera correcta.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
         }
 
         private void cmdCancel_Click(object sender, EventArgs e)
@@ -120,10 +152,10 @@ namespace Mi_mercadito
                     lista.Add(Datos.Rows[i]["prodName"].ToString());
                 }
                 txtNombreProduc.AutoCompleteCustomSource = lista;
-            }            
+            }
         }
 
-        public void AutoCompletarMarca() 
+        public void AutoCompletarMarca()
         {
             string Consulta = (@"SELECT * FROM Marca ;");
             using (SqlConnection Conn = ConnectionDB.StartConn())
@@ -175,14 +207,14 @@ namespace Mi_mercadito
             {
                 Close();
                 Application.Exit();
-            }            
+            }
         }
 
         // Efectos del boton X
         private void pbxX_MouseHover(object sender, EventArgs e)
         {
             pbxX2.BackColor = Color.White;
-            pbxX2.Visible = true;         
+            pbxX2.Visible = true;
         }
 
         private void pbxX_MouseLeave(object sender, EventArgs e)
@@ -191,7 +223,7 @@ namespace Mi_mercadito
         }
         private void pbxX2_MouseLeave(object sender, EventArgs e)
         {
-            pbxX2.Visible = false;  
+            pbxX2.Visible = false;
         }
 
         // Minimizar ventana
@@ -209,7 +241,7 @@ namespace Mi_mercadito
         // Efectos del boton min
         private void pbxmin_MouseHover(object sender, EventArgs e)
         {
-            pbxmin2.BackColor = Color.White;        
+            pbxmin2.BackColor = Color.White;
             pbxmin2.Visible = true;
         }
 
@@ -240,7 +272,7 @@ namespace Mi_mercadito
         }
 
         private void txtNombreProduc_KeyDown(object sender, KeyEventArgs e)
-        {            
+        {
             //if (e.KeyCode == Keys.Tab)
             {
                 //string[] arreglo = new string[7];
@@ -295,7 +327,7 @@ namespace Mi_mercadito
             }
         }
 
-        public bool Bloqueo(string txtblockmarc) 
+        public bool Bloqueo(string txtblockmarc)
         {
             string Consulta = @"SELECT * FROM Producto WHERE prodName = @prodName;";
             using (SqlConnection Conn = ConnectionDB.StartConn())
@@ -322,7 +354,7 @@ namespace Mi_mercadito
                 txtProdDesc.ReadOnly = false;
                 Image logo = Image.FromFile("logomiMercadito.png"); // Toma la imágen de la carpeta bin, dentro de la otra carpeta Debug
                 pbox_Camara.Image = logo;
-            }            
+            }
         }
     }
 }

@@ -94,7 +94,7 @@ namespace Mi_mercadito
             this.pbxmin = new System.Windows.Forms.PictureBox();
             this.pbxX = new System.Windows.Forms.PictureBox();
             this.cmdCargarImg = new System.Windows.Forms.Button();
-            this.cmdEnabled = new System.Windows.Forms.Button();
+            this.cmdCar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_Camara)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -348,7 +348,7 @@ namespace Mi_mercadito
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(110, 31);
             this.cmdAdd.TabIndex = 8;
-            this.cmdAdd.Text = "Enviar datos";
+            this.cmdAdd.Text = "Enviar producto";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.btn_Agregar_Click);
             // 
@@ -679,21 +679,21 @@ namespace Mi_mercadito
             this.cmdCargarImg.UseVisualStyleBackColor = true;
             this.cmdCargarImg.Click += new System.EventHandler(this.cmdCargarImg_Click);
             // 
-            // cmdEnabled
+            // cmdCar
             // 
-            this.cmdEnabled.Location = new System.Drawing.Point(369, 594);
-            this.cmdEnabled.Name = "cmdEnabled";
-            this.cmdEnabled.Size = new System.Drawing.Size(121, 31);
-            this.cmdEnabled.TabIndex = 26;
-            this.cmdEnabled.Text = "Agregar Producto";
-            this.cmdEnabled.UseVisualStyleBackColor = true;
+            this.cmdCar.Location = new System.Drawing.Point(369, 594);
+            this.cmdCar.Name = "cmdCar";
+            this.cmdCar.Size = new System.Drawing.Size(121, 31);
+            this.cmdCar.TabIndex = 26;
+            this.cmdCar.Text = "Agregar al carrito";
+            this.cmdCar.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 641);
-            this.Controls.Add(this.cmdEnabled);
+            this.Controls.Add(this.cmdCar);
             this.Controls.Add(this.cmdCargarImg);
             this.Controls.Add(this.lblProdSuc);
             this.Controls.Add(this.lblDpto);
@@ -806,6 +806,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.ToolStripMenuItem iniciarSesiónToolStripMenuItem;
         private System.Windows.Forms.Button cmdCargarImg;
         private System.Windows.Forms.TextBox txtProdMarc;
-        private System.Windows.Forms.Button cmdEnabled;
+        private System.Windows.Forms.Button cmdCar;
     }
 }

@@ -189,6 +189,27 @@ namespace Mi_mercadito
             }
             return Salida;
         }
+        // Consulta del Id de la Sucursal
+        public string ConsultId(string sucName, string sucPais, string sucCity, string sucDirec)
+        {
+            string Salida = "";
+            string Consulta = @"SELECT * FROM Sucursal WHERE sucName = @sucName AND sucPais = @sucPais AND sucCity = @sucCity AND sucDirec = @sucDirec;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@sucName", sucName);
+                cmd.Parameters.AddWithValue("@sucPais", sucPais);
+                cmd.Parameters.AddWithValue("@sucCity", sucCity);
+                cmd.Parameters.AddWithValue("@sucDirec", sucDirec);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida = Leer["sucId"].ToString();
+                }
+                return Salida;
+            }
+        }
     }
 
     class Producto 
@@ -216,7 +237,7 @@ namespace Mi_mercadito
                 return datoProduc;
             }
         }
-
+        // Inserción de imagen
         public void Imagen(ref PictureBox pbImagen, string nombreProducto)
         {
             string Consulta = @"SELECT prodPic FROM Producto WHERE prodName=@prodPic";
@@ -234,6 +255,124 @@ namespace Mi_mercadito
                 Datos = (byte[])dr["prodPic"];
                 MemoryStream ms = new MemoryStream(Datos);
                 pbImagen.Image = System.Drawing.Bitmap.FromStream(ms);
+            }
+        }
+
+        // Inserción de nuevos productos
+        public int InsertProductos(string prodName, string prodPrice, string prodContNet, string prodDesc, PictureBox pb, string prodMarc, string prodDpto, string prodSuc)
+        {
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand Comando = new SqlCommand("INSERT INTO Producto VALUES (@prodName,@prodPrice,@prodContNet,@prodDesc,@prodPic,@prodMarc,@prodDpto,@prodSuc)", Conn);
+                Comando.Parameters.Add("@prodName", SqlDbType.NVarChar);
+                Comando.Parameters.Add("@prodPrice", SqlDbType.Decimal);
+                Comando.Parameters.Add("@prodContNet", SqlDbType.Decimal);
+                Comando.Parameters.Add("@prodDesc", SqlDbType.NVarChar);
+                Comando.Parameters.Add("@prodPic", SqlDbType.Image);
+                Comando.Parameters.Add("@prodMarc", SqlDbType.Int);
+                Comando.Parameters.Add("@prodDpto", SqlDbType.Int);
+                Comando.Parameters.Add("@prodSuc", SqlDbType.Int);
+
+
+                Comando.Parameters["@prodName"].Value = prodName;
+                Comando.Parameters["@prodPrice"].Value = prodPrice;
+                Comando.Parameters["@prodContNet"].Value = prodContNet;
+                Comando.Parameters["@prodDesc"].Value = prodDesc;
+
+                MemoryStream ms = new MemoryStream();
+                pb.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Comando.Parameters["@prodPic"].Value = ms.GetBuffer();
+
+                Comando.Parameters["@prodMarc"].Value = prodMarc;
+                Comando.Parameters["@prodDpto"].Value = prodDpto;
+                Comando.Parameters["@prodSuc"].Value = prodSuc;
+                return Comando.ExecuteNonQuery();
+            }
+        }
+    }
+    class Marca
+    {
+        // Validar existencia de la Marca
+        public bool ValidarMarc(string Marca)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM Marca WHERE marcName = @marcName ; ";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@marcName", Marca);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
+        // Consulta del Id de la Marca
+        public string ConsultId(string MarcName)
+        {
+            string Salida="";
+            string Consulta = @"SELECT marcId FROM Marca WHERE marcName = @marcName;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@marcName", MarcName);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida = Leer["marcId"].ToString();              
+                }
+                return Salida;
+            }
+        }
+
+        // Insertar Marca
+        public int InsertarMarc(string MarcaName, PictureBox Imagen)
+        {
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand Comando = new SqlCommand("INSERT INTO Marca VALUES (@marcName,@marcPic)", Conn);
+                Comando.Parameters.Add("@marcName", SqlDbType.NVarChar);
+                Comando.Parameters.Add("@marcPic", SqlDbType.Image);
+
+                Comando.Parameters["@marcName"].Value = MarcaName;
+
+                MemoryStream ms = new MemoryStream();
+                Imagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Comando.Parameters["@marcPic"].Value = ms.GetBuffer();
+
+                return Comando.ExecuteNonQuery();
+            }
+        }
+    }
+
+   class Departamento
+    {
+        // Validar existencia de departamento
+        public bool ValidarDepart(string Depart)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM Departamento WHERE dptoName = @dptoName ; ";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@dptoName", Depart);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
+        // Consulta del Id del Departamento
+        public string ConsultId(string dptoName)
+        {
+            string Salida = "";
+            string Consulta = @"SELECT dptoId FROM Departamento WHERE dptoName = @dptoName;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@dptoName", dptoName);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida = Leer["dptoId"].ToString();
+                }
+                return Salida;
             }
         }
 
