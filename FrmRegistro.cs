@@ -20,11 +20,21 @@ namespace Mi_mercadito
             Regex ReemplazarI = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
             Regex ReemplazarO = new Regex("[ó|ò|ö|ô]", RegexOptions.Compiled);
             Regex ReemplazarU = new Regex("[ú|ù|ü|û]", RegexOptions.Compiled);
+            Regex ReemplazarAMay = new Regex("[Á]", RegexOptions.Compiled);
+            Regex ReemplazarEMay = new Regex("[É]", RegexOptions.Compiled);
+            Regex ReemplazarIMay = new Regex("[Í]", RegexOptions.Compiled);
+            Regex ReemplazarOMay = new Regex("[Ó]", RegexOptions.Compiled);
+            Regex ReemplazarUMay = new Regex("[Ú]", RegexOptions.Compiled);
             txtCajaTexto = ReemplazarA.Replace(txtCajaTexto, "a");
             txtCajaTexto = ReemplazarE.Replace(txtCajaTexto, "e");
             txtCajaTexto = ReemplazarI.Replace(txtCajaTexto, "i");
             txtCajaTexto = ReemplazarO.Replace(txtCajaTexto, "o");
             txtCajaTexto = ReemplazarU.Replace(txtCajaTexto, "u");
+            txtCajaTexto = ReemplazarAMay.Replace(txtCajaTexto, "A");
+            txtCajaTexto = ReemplazarEMay.Replace(txtCajaTexto, "E");
+            txtCajaTexto = ReemplazarIMay.Replace(txtCajaTexto, "I");
+            txtCajaTexto = ReemplazarOMay.Replace(txtCajaTexto, "O");
+            txtCajaTexto = ReemplazarUMay.Replace(txtCajaTexto, "U");
             return txtCajaTexto;
         }
         // Método que permite imprimir mensajes de error.
@@ -54,6 +64,12 @@ namespace Mi_mercadito
                 //Validar formato de Email
                 if (!FormatoEmail(txtEmail))
                     ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
+                else if (!VerifEmail(txtEmail))
+                {
+                    ErrorMessage("Datos personales", "El correo ya está vinculado a una cuenta", txtEmail);
+                }
+
+
                 // Termina la validación de los datos personales
             }
             if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
@@ -77,6 +93,19 @@ namespace Mi_mercadito
             else
                 return true;
         }
+
+        private bool VerifEmail(TextBox CajaTexto)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM Users WHERE usrEmail = @usrEmail";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@usrEmail", CajaTexto.Text);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
+
         // Validación [CARACTERES PERMITIDOS]
         private void ValidarCarac(TextBox CajaTexto)
         {

@@ -25,11 +25,21 @@ namespace Mi_mercadito
             Regex ReemplazarI = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
             Regex ReemplazarO = new Regex("[ó|ò|ö|ô]", RegexOptions.Compiled);
             Regex ReemplazarU = new Regex("[ú|ù|ü|û]", RegexOptions.Compiled);
+            Regex ReemplazarAMay = new Regex("[Á]", RegexOptions.Compiled);
+            Regex ReemplazarEMay = new Regex("[É]", RegexOptions.Compiled);
+            Regex ReemplazarIMay = new Regex("[Í]", RegexOptions.Compiled);
+            Regex ReemplazarOMay = new Regex("[Ó]", RegexOptions.Compiled);
+            Regex ReemplazarUMay = new Regex("[Ú]", RegexOptions.Compiled);
             txtCajaTexto = ReemplazarA.Replace(txtCajaTexto, "a");
             txtCajaTexto = ReemplazarE.Replace(txtCajaTexto, "e");
             txtCajaTexto = ReemplazarI.Replace(txtCajaTexto, "i");
             txtCajaTexto = ReemplazarO.Replace(txtCajaTexto, "o");
             txtCajaTexto = ReemplazarU.Replace(txtCajaTexto, "u");
+            txtCajaTexto = ReemplazarAMay.Replace(txtCajaTexto, "A");
+            txtCajaTexto = ReemplazarEMay.Replace(txtCajaTexto, "E");
+            txtCajaTexto = ReemplazarIMay.Replace(txtCajaTexto, "I");
+            txtCajaTexto = ReemplazarOMay.Replace(txtCajaTexto, "O");
+            txtCajaTexto = ReemplazarUMay.Replace(txtCajaTexto, "U");
             return txtCajaTexto;
         }
         // Creación de método para movimiento de ventana
@@ -38,7 +48,7 @@ namespace Mi_mercadito
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        private void ValidarUsername(TextBox txtUsername)
+        private bool ValidarUsername(TextBox txtUsername)
         {
             // Validamos que se usen signos válidos para un usuario.
             foreach (int Caracter in Encoding.ASCII.GetBytes(txtUsername.Text))
@@ -51,18 +61,27 @@ namespace Mi_mercadito
                         MessageBox.Show("Solo se pueden ingresar valores válidos: \n[(Letras), (números), (_)]", "Error de sintáxis de usuario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtUsername.Text = txtUsername.Text.Remove(AuxUbi, 1);
                         txtUsername.SelectionStart = AuxUbi;
+                        return true;
                     }
                     catch
                     {
                         txtUsername.Text = ReemplazarAcentos(txtUsername.Text);
                         txtUsername.SelectionStart = txtUsername.TextLength;
+                        return true;
                     }
                 }
+            return true;
         }
+        private bool VerifContraseña(string CajaTexto)
+        {
+            return true;
+        }
+
         // === | FIN Métodos | === //
         public FrmLogin()
         {
             InitializeComponent();
+            txtPassword.Enabled = false;
         }
 
         // === | INICIO Eventos | === //
@@ -89,7 +108,9 @@ namespace Mi_mercadito
                 }
                 else
                 {
-                    //Un saludito
+                    lblUsuarioRip.Visible = true;
+                    txtPassword.ResetText();
+                    txtUsername.SelectAll();
                 }
             else
             {
@@ -113,12 +134,27 @@ namespace Mi_mercadito
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
+            // Generamos [Usuario] para validar si se ingresó un usuario correcto.
+            Usuarios Usuario = new Usuarios();
+            //Validación [CARACTERES PERMITIDOS] - Username
+            bool BoolAux = ValidarUsername(txtUsername);
+            if (BoolAux == true)
+            {
+                if (txtUsername.Text.Length >= 10)
+                {
+                    txtPassword.Enabled = true;
+                }
+                else
+                    txtPassword.Enabled = false;
+            }
+
             // Apagamos el lblUsuarioRip
             lblUsuarioRip.Visible = false;
 
             // Validación [LOGIN] - Username
             ValidarUsername(txtUsername);
         }
+
         // Movimiento de pantalla
         private void pnlLogin_MouseDown(object sender, MouseEventArgs e)
         {
@@ -180,6 +216,8 @@ namespace Mi_mercadito
             pbxmin.Visible = true;
             pbxmin2.Visible = false;
         }
+
+        
         // === | FIN Eventos | === //
     }
 }
