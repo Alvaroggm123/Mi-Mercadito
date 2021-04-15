@@ -128,34 +128,34 @@ namespace Mi_mercadito
 
         private void cboxSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string[] arreglo = new string[3];
-            Sucursal datos = new Sucursal();
-            arreglo = datos.Datos(cboxSucursal.Text);
-            txtProdSuc.Text = cboxSucursal.Text;
+            string[] arreglo = new string[3]; // Se crea un arreglo que almacena 4 datos
+            Sucursal datos = new Sucursal(); // Se crea el objeto datos en base a la clase Sucursal
+            arreglo = datos.Datos(cboxSucursal.Text); // Se llama al método de la clase Sucursal, que tiene como parámetro el cboxSucursal
+            txtProdSuc.Text = cboxSucursal.Text; // Iguala los datos que se implemnten en las sucursales tanto en el textbox como el combobox
             txtPaís.Text = arreglo[1];
             txtCiudad.Text = arreglo[2];
             txtDir.Text = arreglo[3];
         }
 
-        public void Autocompletar()
+        public void Autocompletar() // Método autocompletar txtNombreProduc
         {
-            string Consulta = (@"SELECT * FROM Producto ;");
+            string Consulta = (@"SELECT * FROM Producto ;"); // Se consulta la BD en la tabla Producto
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
-                DataTable Datos = new DataTable();
-                AutoCompleteStringCollection lista = new AutoCompleteStringCollection();
+                DataTable Datos = new DataTable(); // Se obtuenen los datos de la tabla
+                AutoCompleteStringCollection lista = new AutoCompleteStringCollection(); // Se crea  el objeto en base a la clase que general el autocompletar
                 SqlDataAdapter adaptador = new SqlDataAdapter(Consulta, Conn);
-                adaptador.Fill(Datos);
-
+                adaptador.Fill(Datos); // Rellena los datos en base a los que se encuentran en la tabla Producto de la BD
+                // Ciclo for donde va leyendo fila por fila los datos que se relacionan con la tabla Producto
                 for (int i = 0; i < Datos.Rows.Count; i++)
                 {
-                    lista.Add(Datos.Rows[i]["prodName"].ToString());
+                    lista.Add(Datos.Rows[i]["prodName"].ToString()); // Se añaden los datos de la columna "prodName" y los pasa a tipo string
                 }
-                txtNombreProduc.AutoCompleteCustomSource = lista;
+                txtNombreProduc.AutoCompleteCustomSource = lista; // Se autocompleta el textbox aplicando la propiedad autocomplete realizando la lectura de la lista
             }
         }
 
-        public void AutoCompletarMarca()
+        public void AutoCompletarMarca() // Método autocompletar txtProdMarc
         {
             string Consulta = (@"SELECT * FROM Marca ;");
             using (SqlConnection Conn = ConnectionDB.StartConn())
@@ -173,7 +173,7 @@ namespace Mi_mercadito
             }
         }
 
-        public void AutoCompletarDpto()
+        public void AutoCompletarDpto() // Método autocompletar txtProdDpto
         {
             string Consulta = (@"SELECT * FROM Departamento ;");
             using (SqlConnection Conn = ConnectionDB.StartConn())
@@ -315,10 +315,8 @@ namespace Mi_mercadito
                 txtProdMarc.Text = arreglo[4];
                 txtProdDpto.Text = arreglo[5];
                 txtProdSuc.Text = arreglo[6];
-                // Muestra la imágen del producto que esta almacenada en la base de datos
-                datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
-                // Hace que al presionar el TAB se modifique el combobox de la sucursal en base al del producto.
-                cboxSucursal.Text = txtProdSuc.Text;
+                datos.Imagen(ref pbox_Camara, txtNombreProduc.Text); // Muestra la imágen del producto que esta almacenada en la base de datos
+                cboxSucursal.Text = txtProdSuc.Text; // Hace que al presionar el TAB se modifique el combobox de la sucursal en base al del producto.
             }
             catch (Exception)
             {
@@ -327,7 +325,8 @@ namespace Mi_mercadito
             }
         }
 
-        public bool Bloqueo(string txtblockmarc)
+        // Función Bloqueo() que me indica cuando puedo modificar ciertos textbox dependiendo de los datos introducidos por el usuario en el txtNombreProduc
+        public bool Bloqueo(string txtblockmarc) 
         {
             string Consulta = @"SELECT * FROM Producto WHERE prodName = @prodName;";
             using (SqlConnection Conn = ConnectionDB.StartConn())

@@ -157,5 +157,8 @@
   <ItemGroup>
     <None Include="Resources\btn_min21.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\logomiMercadito.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
