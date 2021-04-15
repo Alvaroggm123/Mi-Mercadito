@@ -210,6 +210,29 @@ namespace Mi_mercadito
                 return Salida;
             }
         }
+
+        public void ConsultaImagen(ref PictureBox pbFoto)
+        {
+            string Consulta = @"SELECT * FROM Imagen1 WHERE nombre = @nombre";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cm = new SqlCommand(Consulta, Conn);
+                cm.Parameters.AddWithValue("@nombre", "MercaditoLogo");
+
+                SqlDataAdapter dp = new SqlDataAdapter(cm);
+                DataSet ds = new DataSet();
+                // Nombre tabla
+                dp.Fill(ds, "Imagen1");
+                byte[] Datos = new byte[0];
+                // Nombre tabla
+                DataRow dr = ds.Tables["Imagen1"].Rows[0];
+                // Nombre tabla
+                Datos = (byte[])dr["imagen"];
+                MemoryStream ms = new MemoryStream(Datos);
+                pbFoto.Image = System.Drawing.Bitmap.FromStream(ms);
+            }
+        }
+
     }
 
     class Producto 
@@ -288,7 +311,8 @@ namespace Mi_mercadito
                 Comando.Parameters["@prodSuc"].Value = prodSuc;
                 return Comando.ExecuteNonQuery();
             }
-        }
+        }        
+
     }
     class Marca
     {

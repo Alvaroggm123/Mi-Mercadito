@@ -121,8 +121,8 @@ namespace Mi_mercadito
             // Condicional donde si el picturebox no cuenta con una imagen dentro, mandara a enviar el logo de Mi mercadito
             if (pbox_Camara.Image == null)
             {
-                Image logo = Image.FromFile("logomiMercadito.png"); // Toma la imágen de la carpeta bin, dentro de la otra carpeta Debug
-                pbox_Camara.Image = logo;
+                Sucursal Consulta = new Sucursal();
+                Consulta.ConsultaImagen(ref pbox_Camara);
             }
         }
 
@@ -351,8 +351,8 @@ namespace Mi_mercadito
                 txtProdMarc.ReadOnly = false;
                 txtProdDpto.ReadOnly = false;
                 txtProdDesc.ReadOnly = false;
-                Image logo = Image.FromFile("logomiMercadito.png"); // Toma la imágen de la carpeta bin, dentro de la otra carpeta Debug
-                pbox_Camara.Image = logo;
+                Sucursal Consulta = new Sucursal();
+                Consulta.ConsultaImagen(ref pbox_Camara);
             }
         }
     }
