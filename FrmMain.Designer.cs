@@ -29,7 +29,6 @@ namespace Mi_mercadito
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.lbl_miMercadito = new System.Windows.Forms.Label();
             this.txt = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -354,7 +353,7 @@ namespace Mi_mercadito
             // 
             // pbox_Camara
             // 
-            this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
+            this.pbox_Camara.Image = global::Mi_mercadito.Properties.Resources.logomiMercadito;
             this.pbox_Camara.Location = new System.Drawing.Point(142, 96);
             this.pbox_Camara.Name = "pbox_Camara";
             this.pbox_Camara.Size = new System.Drawing.Size(247, 329);

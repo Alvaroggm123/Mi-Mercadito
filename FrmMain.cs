@@ -44,73 +44,6 @@ namespace Mi_mercadito
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        private void btn_Foto_Click(object sender, EventArgs e)
-        {
-            // Hace que al dar click en el boton tomar foto se habra el formulario de la camara.
-            FrmCámara Camara = new FrmCámara();
-            Image Logo = Camara.pbox_Camara.Image;
-            this.Enabled = false;
-            if (Camara.ShowDialog() == DialogResult.OK)
-                this.Show();
-            this.Enabled = true; ;
-            // Re asignamos en caso de que corresponda un cambio
-            if (Logo != pbox_Camara.Image)
-            {
-                pbox_Camara.Image = Camara.pbox_Camara.Image;
-                Camara.pbox_Camara.Image = Logo;
-            }
-        }
-
-        private void btn_Agregar_Click(object sender, EventArgs e)
-        {
-
-                        Marca Marc = new Marca();
-                        if (!Marc.ValidarMarc(txtProdMarc.Text))
-                        {
-                            IdMarca = Marc.ConsultId(txtProdMarc.Text);
-                        }
-                        else
-                        {
-                            Marc.InsertarMarc(txtProdMarc.Text, pbox_Camara);
-                            IdMarca = Marc.ConsultId(txtProdMarc.Text);
-                        }
-
-
-                        Departamento Departamento = new Departamento();
-                        if (!Departamento.ValidarDepart(txtProdDpto.Text))
-                        {
-                            IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
-                        }
-                        else
-                        {
-                        }    
-
-                     Sucursal Sucursal = new Sucursal();
-                    IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPaís.Text, txtCiudad.Text, txtDir.Text);
-
-
-            Producto Productos = new Producto();
-            if (Productos.InsertProductos(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, pbox_Camara, IdMarca, IdDepartamento,IdSuc) > 0)
-            {
-                MessageBox.Show("Se ha guardado el producto de manera correcta.", "Producto guardado",MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("No se ha guardado el producto de manera correcta.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void cmdCancel_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            string Msg = "¿Desea salir?", Title = "Salir de mi lista";
-            if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                this.Close();
-            else
-                this.Show();
-        }
-
         private void FrmMain_Load(object sender, EventArgs e)
         {
             Sucursal sucursal = new Sucursal();
@@ -121,21 +54,10 @@ namespace Mi_mercadito
             // Condicional donde si el picturebox no cuenta con una imagen dentro, mandara a enviar el logo de Mi mercadito
             if (pbox_Camara.Image == null)
             {
-                Sucursal Consulta = new Sucursal();
-                Consulta.ConsultaImagen(ref pbox_Camara);
+                pbox_Camara.Image = Mi_mercadito.Properties.Resources.logomiMercadito;
             }
         }
 
-        private void cboxSucursal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string[] arreglo = new string[3]; // Se crea un arreglo que almacena 4 datos
-            Sucursal datos = new Sucursal(); // Se crea el objeto datos en base a la clase Sucursal
-            arreglo = datos.Datos(cboxSucursal.Text); // Se llama al método de la clase Sucursal, que tiene como parámetro el cboxSucursal
-            txtProdSuc.Text = cboxSucursal.Text; // Iguala los datos que se implemnten en las sucursales tanto en el textbox como el combobox
-            txtPaís.Text = arreglo[1];
-            txtCiudad.Text = arreglo[2];
-            txtDir.Text = arreglo[3];
-        }
 
         public void Autocompletar() // Método autocompletar txtNombreProduc
         {
@@ -155,6 +77,7 @@ namespace Mi_mercadito
             }
         }
 
+        // ***** MÉTODOS *****//
         public void AutoCompletarMarca() // Método autocompletar txtProdMarc
         {
             string Consulta = (@"SELECT * FROM Marca ;");
@@ -189,6 +112,92 @@ namespace Mi_mercadito
                 }
                 txtProdDpto.AutoCompleteCustomSource = lista;
             }
+        }
+
+        // Función Bloqueo() que me indica cuando puedo modificar ciertos textbox dependiendo de los datos introducidos por el usuario en el txtNombreProduc
+        public bool Bloqueo(string txtblockmarc)
+        {
+            string Consulta = @"SELECT * FROM Producto WHERE prodName = @prodName;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@prodName", txtblockmarc);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
+
+        private void btn_Foto_Click(object sender, EventArgs e)
+        {
+            // Hace que al dar click en el boton tomar foto se habra el formulario de la camara.
+            FrmCámara Camara = new FrmCámara();
+            Image Logo = Camara.pbox_Camara.Image;
+            this.Enabled = false;
+            if (Camara.ShowDialog() == DialogResult.OK)
+                this.Show();
+            this.Enabled = true; ;
+            // Re asignamos en caso de que corresponda un cambio
+            if (Logo != pbox_Camara.Image)
+            {
+                pbox_Camara.Image = Camara.pbox_Camara.Image;
+                Camara.pbox_Camara.Image = Logo;
+            }
+        }
+
+        private void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            Marca Marc = new Marca();
+            if (!Marc.ValidarMarc(txtProdMarc.Text))
+            {
+                IdMarca = Marc.ConsultId(txtProdMarc.Text);
+            }
+            else
+            {
+                Marc.InsertarMarc(txtProdMarc.Text, pbox_Camara);
+                IdMarca = Marc.ConsultId(txtProdMarc.Text);
+            }
+
+            Departamento Departamento = new Departamento();
+            if (!Departamento.ValidarDepart(txtProdDpto.Text))
+            {
+                IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+            }
+            else { }
+
+            Sucursal Sucursal = new Sucursal();
+            IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPaís.Text, txtCiudad.Text, txtDir.Text);
+
+            Producto Productos = new Producto();
+            if (Productos.InsertProductos(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, pbox_Camara, IdMarca, IdDepartamento, IdSuc) > 0)
+            {
+                MessageBox.Show("Se ha guardado el producto de manera correcta.", "Producto guardado", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("No se ha guardado el producto de manera correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void cmdCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            string Msg = "¿Desea salir?", Title = "Salir de mi lista";
+            if (MessageBox.Show(Msg, Title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                this.Close();
+            else
+                this.Show();
+        }
+
+        private void cboxSucursal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] arreglo = new string[3]; // Se crea un arreglo que almacena 4 datos
+            Sucursal datos = new Sucursal(); // Se crea el objeto datos en base a la clase Sucursal
+            arreglo = datos.Datos(cboxSucursal.Text); // Se llama al método de la clase Sucursal, que tiene como parámetro el cboxSucursal
+            txtProdSuc.Text = cboxSucursal.Text; // Iguala los datos que se implemnten en las sucursales tanto en el textbox como el combobox
+            txtPaís.Text = arreglo[1];
+            txtCiudad.Text = arreglo[2];
+            txtDir.Text = arreglo[3];
         }
 
         // Movimiento de pantalla
@@ -325,19 +334,6 @@ namespace Mi_mercadito
             }
         }
 
-        // Función Bloqueo() que me indica cuando puedo modificar ciertos textbox dependiendo de los datos introducidos por el usuario en el txtNombreProduc
-        public bool Bloqueo(string txtblockmarc) 
-        {
-            string Consulta = @"SELECT * FROM Producto WHERE prodName = @prodName;";
-            using (SqlConnection Conn = ConnectionDB.StartConn())
-            {
-                SqlCommand cmd = new SqlCommand(Consulta, Conn);
-                cmd.Parameters.AddWithValue("@prodName", txtblockmarc);
-                int Count = Convert.ToInt32(cmd.ExecuteScalar());
-                return Count == 0;
-            }
-        }
-
         private void txtNombreProduc_TextChanged(object sender, EventArgs e)
         {
             if (!Bloqueo(txtNombreProduc.Text))
@@ -351,8 +347,7 @@ namespace Mi_mercadito
                 txtProdMarc.ReadOnly = false;
                 txtProdDpto.ReadOnly = false;
                 txtProdDesc.ReadOnly = false;
-                Sucursal Consulta = new Sucursal();
-                Consulta.ConsultaImagen(ref pbox_Camara);
+                pbox_Camara.Image = Mi_mercadito.Properties.Resources.logomiMercadito;
             }
         }
     }
