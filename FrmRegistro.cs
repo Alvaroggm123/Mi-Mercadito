@@ -63,13 +63,13 @@ namespace Mi_mercadito
                 SepararNombres(txtLname2);
                 //Validar formato de Email
                 if (!FormatoEmail(txtEmail))
-                    ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
+                {
+                    return ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
+                }
                 else if (!VerifEmail(txtEmail))
                 {
-                    ErrorMessage("Datos personales", "El correo ya está vinculado a una cuenta", txtEmail);
+                    return ErrorMessage("Datos personales", "El correo ya está vinculado a una cuenta", txtEmail);
                 }
-
-
                 // Termina la validación de los datos personales
             }
             if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
@@ -278,9 +278,14 @@ namespace Mi_mercadito
                     if (!Usuario.Validar(txtUsername.Text))
                     {
                         txtUsername.BackColor = Color.Red;
+                        ttAviso.Active = true;
                         ttAviso.SetToolTip(txtUsername,"El usuario ya existe");
                     }
-                    else txtUsername.BackColor = Color.White;
+                    else
+                    {
+                        txtUsername.BackColor = Color.White;
+                        ttAviso.Active = false;
+                    }
                 }
             }
             else
