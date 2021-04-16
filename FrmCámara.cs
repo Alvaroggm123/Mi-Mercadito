@@ -1,5 +1,5 @@
-﻿using AForge.Video;//librería para la cámara
-using AForge.Video.DirectShow;//librería para la cámara
+﻿using AForge.Video;// Librería para la cámara.
+using AForge.Video.DirectShow;// Librería para la cámara
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,40 +13,45 @@ using System.Windows.Forms;
 
 namespace Mi_mercadito
 {
-    public partial class FrmCámara : Form
+    public partial class FrmCamara : Form
     {
-        //se guardaran las imagenes tomadas por el usuario
+        // ==================== || INICIO Variables || ==================== //
+
+        // Se guardarán las imágenes tomadas por el usuario.
         private string Path = System.IO.Path.GetTempPath();
         private bool Dispositivos;
-        //se utiliza para saber cual cámara utilizara el dispositivo
+        // Se utiliza para saber cuál cámara utilizará el dispositivo.
         private FilterInfoCollection MisDispositivos;
-        //obtiene la imagen en tiempo real
+        // Obtiene la imagen en tiempo real.
         private VideoCaptureDevice MiCamara;
 
-        public FrmCámara()
+        // ==================== || FIN Variables || ==================== //
+
+        // ==================== || INICIO Métodos || ==================== //
+        public FrmCamara()
         {
             InitializeComponent();
         }
 
         private void FrmCámara_Load(object sender, EventArgs e)
         {
-            //se llama al metodo para cargar la imagen en el formulario
+            // Se llama al mÉtodo para cargar la imagen en el formulario.
             CargaDispositivo();
         }
 
         public void CargaDispositivo()
         {
-            //realiza la conexión de la cámara en tiempo real con el formulario
+            // Realiza la conexión de la cámara en tiempo real con el formulario.
             MisDispositivos = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             if (MisDispositivos.Count > 0)
             {
-                //el arreglo analiza la cantidad de cámaras que tiene el dispositivo
+                // El arreglo analiza la cantidad de cámaras que tiene el dispositivo.
                 Dispositivos = true;
                 for (int i = 0; i < MisDispositivos.Count; i++)
-                    ///permite agregar los dispositivos y esta en string para poder visualizar los nombre
-                    cbox_Camara.Items.Add(MisDispositivos[i].Name.ToString());
-                //selecciona el primer dispositivo por defecto
-                cbox_Camara.Text = MisDispositivos[0].Name.ToString();
+                    // Permite agregar los dispositivos y esta en [string] para poder visualizar los nombres.
+                    cboxCamara.Items.Add(MisDispositivos[i].Name.ToString());
+                // Selecciona el primer dispositivo por defecto.
+                cboxCamara.Text = MisDispositivos[0].Name.ToString();
                 
             }
             else
@@ -55,16 +60,16 @@ namespace Mi_mercadito
 
         private void Capturando(object sender, NewFrameEventArgs eventArgs) 
         {
-            //el Bitmap sirve para cargar la imagen en base a la cantidad de frames
-            //clona la imagen para que la foto tomada se mande al picturebox del Main y no exista conflicto en la lectura de frames
-            //el .Clone() crea un nuevo objeto a partir del que existe por el Bitmap Imagen
+            // El [Bitmap] sirve para cargar la imagen en base a la cantidad de frames.
+            // clona la imagen para que la foto tomada se mande al [picturebox] del Main y no exista conflicto en la lectura de frames.
+            // El [.Clone()] crea un nuevo objeto a partir del que existe por el Bitmap Imagen.
             Bitmap Imagen = (Bitmap)eventArgs.Frame.Clone();
             pbox_Camara.Image = Imagen;
         }
 
         private void CerrarCamara() 
         {
-            ///hace que si MiCamara no tiene un frame corriendo y esta corriendo se cierre la cámara
+            // Hace que si [MiCamara] no tiene un frame corriendo y esta corriendo se cierre la cámara.
             if (MiCamara !=null && MiCamara.IsRunning)
             {
                 MiCamara.SignalToStop();
@@ -72,30 +77,34 @@ namespace Mi_mercadito
             }
         }
 
-        private void btn_Grabar_Click(object sender, EventArgs e)
+        // ==================== || FIN Métodos || ==================== //
+
+        // ==================== || INICIO Eventos || ==================== //
+
+        private void cmdGrabar_Click(object sender, EventArgs e)
         {
             CerrarCamara();
-            //selecciona la camara que esta en el combobox en base a la posición
-            int i = cbox_Camara.SelectedIndex;
-            //nos indica el nombre de la posiicon
+            // Selecciona la cámara que esta en el [combobox] en base a la posición.
+            int i = cboxCamara.SelectedIndex;
+            // Nos indica el nombre de la posicion.
             string NombreVideo = MisDispositivos[i].MonikerString;
-            //captura la imagen en base al nombre del dispositivo
+            // Captura la imagen en base al nombre del dispositivo.
             MiCamara = new VideoCaptureDevice(NombreVideo);
-            //agrega el metodo captura al momento de tomar la foto
+            // Agrega el método captura al momento de tomar la foto.
             MiCamara.NewFrame += new NewFrameEventHandler(Capturando);
-            //hace que la cámara inicie
+            // Hace que la cámara inicie.
             MiCamara.Start();
             cmdFoto.Focus();
         }
 
-        private void FrmCámara_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmCamara_FormClosed(object sender, FormClosedEventArgs e)
         {
             CerrarCamara();
         }
 
-        private void btn_CapturarFoto_Click(object sender, EventArgs e) 
+        private void cmdCapturarFoto_Click(object sender, EventArgs e)
         {
-            if (MiCamara !=null && MiCamara.IsRunning)
+            if (MiCamara != null && MiCamara.IsRunning)
             {
                 string[] not = new string[7];
                 not[0] = "";
@@ -108,7 +117,7 @@ namespace Mi_mercadito
             }
             MiCamara.Stop();
         }
-        // Cerrar ventana
+        // Cerrar ventana.
         private void pbxX2_Click(object sender, EventArgs e)
         {
             Close();
@@ -120,7 +129,7 @@ namespace Mi_mercadito
             pbxX.Visible = false;
         }
 
-        // Efectos de boton X
+        // Efectos de boton X.
         private void pbxX_MouseLeave(object sender, EventArgs e)
         {
             pbxX.BackColor = Color.PaleTurquoise;
@@ -130,7 +139,7 @@ namespace Mi_mercadito
             pbxX2.Visible = false;
             pbxX.Visible = true;
         }
-        // Minimizar ventana
+        // Minimizar ventana.
         private void pbxmin2_Click(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
@@ -142,7 +151,7 @@ namespace Mi_mercadito
                 WindowState = FormWindowState.Normal;
             }
         }
-        // Efectos de boton min
+        // Efectos de botón min.
         private void pbxmin_MouseHover(object sender, EventArgs e)
         {
             pbxmin2.BackColor = Color.White;
@@ -159,6 +168,10 @@ namespace Mi_mercadito
         {
             pbxmin.Visible = true;
             pbxmin2.Visible = false;
-        }  
+        }
+
+        // ==================== || FIN Eventos || ==================== //
+
+
     }
 }

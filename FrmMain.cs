@@ -142,7 +142,7 @@ namespace Mi_mercadito
         private void cmdFoto_Click(object sender, EventArgs e)
         {
             // Hace que al dar click en el botón tomar foto se habra el formulario de la cámara.
-            FrmCámara Camara = new FrmCámara();
+            FrmCamara Camara = new FrmCamara();
             Image Logo = Camara.pbox_Camara.Image;
             this.Enabled = false;
             if (Camara.ShowDialog() == DialogResult.OK)
