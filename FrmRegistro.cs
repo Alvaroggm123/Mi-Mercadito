@@ -257,12 +257,19 @@ namespace Mi_mercadito
                 if (MessageBox.Show("¿Sus datos son correctos?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     if (Usuario.Insertar(Usuario) > 0)
                     {
+                        string Format = "yyyy-MM-dd";
+                        string Now = DateTime.Today.ToString(Format);
+                        Usuario.InsertList(Now,txtUsername.Text);
                         MessageBox.Show("¡Enhorabuena!, te haz registrado correctamente, regresa para loguearte.", "Datos guardados", MessageBoxButtons.OK);
                         Close();
+                        FrmLogin Login = new FrmLogin();
+                        Login.Show();
                     }
                     else
                         MessageBox.Show("No se pudieron guardar los datos.", "Error de guardado", MessageBoxButtons.OK);
             }
+
+
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)

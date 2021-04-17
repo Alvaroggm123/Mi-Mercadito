@@ -19,9 +19,7 @@ namespace Mi_mercadito
     public partial class FrmMain : Form
     {
         // ==================== || INICIO Variables || ==================== //
-
-        public static string IdMarca, IdDepartamento, IdSuc;
-
+             
         // ==================== || FIN Variables || ==================== //
 
         // ==================== || INICIO Métodos || ==================== //
@@ -32,8 +30,10 @@ namespace Mi_mercadito
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+        string[] DatosUsr;
         public FrmMain(System.Drawing.Image i, string[] Consulta)
         {
+            DatosUsr = Consulta;
             InitializeComponent();
             // Se asigna el valor de la imagen de la foto a el picturebox de FrmMain.
             pboxCamara.Image = i;
@@ -48,12 +48,14 @@ namespace Mi_mercadito
                     break;
                 default:
                     lblName.Text = "Hola " + Consulta[1];
-                    break;
+                    break;               
             }
         }
+        
 
         public void Autocompletar()
         {
+           
             // Método autocompletar txtNombreProduc.
             string Consulta = (@"SELECT * FROM Producto ;"); // Se consulta la BD en la tabla Producto.
             using (SqlConnection Conn = ConnectionDB.StartConn())
@@ -158,6 +160,7 @@ namespace Mi_mercadito
 
         private void cmdAdd_Click(object sender, EventArgs e)
         {
+            string IdMarca="", IdDepartamento="", IdSuc="";
             Marca Marc = new Marca();
             if (!Marc.ValidarMarc(txtProdMarc.Text))
             {
@@ -173,6 +176,10 @@ namespace Mi_mercadito
             if (!Departamento.ValidarDepart(txtProdDpto.Text))
             {
                 IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un departamento válido", "Error departamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             Sucursal Sucursal = new Sucursal();
@@ -314,6 +321,50 @@ namespace Mi_mercadito
                     //txtProdPrecio.Focus();
                 }
             }
+        }
+
+        private void cmdCar_Click(object sender, EventArgs e)
+        {
+            // Variables para guardar ids
+            string IdCarrito="", IdProducto="", IdSuc="",IdMarca="",IdDepartamento="" ;
+
+            //  Validación de Carro, existencia de usuario, obtención de IdCarrito, IdSuc, IdMarca,
+            //  IdDepartamento y IdProducto, y inserción de datos en tabla MisProductos
+            Carrito Carro = new Carrito();
+            if (!Carro.ValidarList(DatosUsr[0]))
+            {
+                IdCarrito = Carro.ConsultIdLista(DatosUsr[0]);
+            }
+
+            Sucursal Sucursal = new Sucursal();
+            IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPais.Text, txtCiudad.Text, txtDireccion.Text);
+            
+            Marca Marc = new Marca();
+            if (!Marc.ValidarMarc(txtProdMarc.Text))
+            {
+                IdMarca = Marc.ConsultId(txtProdMarc.Text);
+            }
+            else
+            {
+                MessageBox.Show("No ha registrado la marca.", "Error Marca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            Departamento Departamento = new Departamento();
+            if (!Departamento.ValidarDepart(txtProdDpto.Text))
+            {
+                IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un departamento válido", "Error departamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            Producto Prod = new Producto();
+            IdProducto = Prod.ConsultIdProducto(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, IdMarca, IdDepartamento, IdSuc);
+
+            MisProductos MiProd = new MisProductos();
+            MiProd.InsertarMisProductos(IdCarrito, IdProducto);
+            MessageBox.Show("Producto agregado al carrito correctamente", "Producto agregado", MessageBoxButtons.OK);
         }
 
         private void txtNombreProduc_Leave(object sender, EventArgs e)

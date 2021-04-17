@@ -67,6 +67,23 @@ namespace Mi_mercadito
                 return Comando.ExecuteNonQuery();
             }
         }
+        public int InsertList(string usrRegDate, string usrUsrname)
+        {
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand Comando = new SqlCommand("INSERT INTO MiCarrito VALUES (@mcarName,@mcarDate,@mcarUsr)", Conn);
+                Comando.Parameters.Add("@mcarName", SqlDbType.NVarChar);
+                Comando.Parameters.Add("@mcarDate", SqlDbType.DateTime);
+                Comando.Parameters.Add("@mcarUsr", SqlDbType.NVarChar);
+
+                Comando.Parameters["@mcarName"].Value = "Mi lista";
+                Comando.Parameters["@mcarDate"].Value = usrRegDate;
+                Comando.Parameters["@mcarUsr"].Value = usrUsrname;
+
+                return Comando.ExecuteNonQuery();
+            }
+        }
+
         public bool Validar(string Username)
         {
             string Consulta = @"SELECT COUNT(*) FROM Users WHERE usrUsrname = @usrUsrname ; ";
@@ -288,7 +305,33 @@ namespace Mi_mercadito
                 Comando.Parameters["@prodSuc"].Value = prodSuc;
                 return Comando.ExecuteNonQuery();
             }
-        }        
+        }
+        // Consulta del Id de la tabla Producto
+        public string ConsultIdProducto(string ProdName, string prodPrice, string prodContNet, string Desc, string MarcId, string DepartamentoId, string SucId)
+        {
+            string Salida = "";
+            string Consulta = @"SELECT prodId FROM Producto WHERE prodName=@prodName AND prodPrice=@prodPrice AND prodContNet=@prodContNet AND prodDesc=@prodDesc AND prodMarc=@prodMarc AND prodDpto=@prodDpto AND prodSuc=@prodSuc;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@prodName", ProdName);
+                cmd.Parameters.AddWithValue("@prodPrice", prodPrice); 
+                cmd.Parameters.AddWithValue("@prodContNet", prodContNet); 
+                cmd.Parameters.AddWithValue("@prodDesc", Desc);
+                cmd.Parameters.AddWithValue("@prodMarc", MarcId);
+                cmd.Parameters.AddWithValue("@prodDpto", DepartamentoId);
+                cmd.Parameters.AddWithValue("@prodSuc", SucId);
+
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida = Leer["prodId"].ToString();
+                }
+                return Salida;
+            }
+        }
+
 
     }
     class Marca
@@ -377,6 +420,60 @@ namespace Mi_mercadito
             }
         }
 
+    }
+    // Clase para carrito
+    class Carrito
+    {
+        // Válidación de los datos de la lista
+        public bool ValidarList(string Username)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM MiCarrito WHERE mcarUsr = @mcarUsr ; ";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@mcarUsr", Username);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
+        // Consulta del Id de la lista
+        public string ConsultIdLista(string LName)
+        {
+            string Salida = "";
+            string Consulta = @"SELECT mcarId FROM MiCarrito WHERE mcarUsr = @mcarUsr;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@mcarUsr", LName);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida = Leer["mcarId"].ToString();
+                }
+                return Salida;
+            }
+        }
+
+    }
+    // Clase parar MisProductos de la lista
+    class MisProductos
+    {
+        // Inserción de datos de la tabla MisProductos
+        public int InsertarMisProductos(string IdCarro, string IdProd)
+        {
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand Comando = new SqlCommand("INSERT INTO MisProductos VALUES (@mprodCar,@mprodProd)", Conn);
+                Comando.Parameters.Add("@mprodCar", SqlDbType.NVarChar);
+                Comando.Parameters.Add("@mprodProd", SqlDbType.NVarChar);
+
+                Comando.Parameters["@mprodCar"].Value = IdCarro;
+                Comando.Parameters["@mprodProd"].Value = IdProd;
+
+                return Comando.ExecuteNonQuery();
+            }
+        }
     }
 
 }
