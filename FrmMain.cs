@@ -123,6 +123,27 @@ namespace Mi_mercadito
                 return Count == 0;
             }
         }
+
+        public string RellenarLista(string listadatos)
+        {
+            string Salida = "";
+            string Consulta = @"SELECT DISTINCT prodName AS 'Producto' FROM MisProductos,Producto, MiCarrito WHERE mprodCar = '" + listadatos + "' AND mprodProd = prodId;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                //cmd.Parameters.AddWithValue("@mprodCar", listadatos);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                while (Leer.Read())
+                {
+                    Salida = Leer["Producto"].ToString();
+                    lboxListaMercado.Items.Add(Salida);
+                }
+                return "";
+
+            }
+        }
+
         // ==================== || FIN Métodos || ==================== //
 
         // ==================== || INICIO Eventos || ==================== //
@@ -138,6 +159,17 @@ namespace Mi_mercadito
             if (pboxCamara.Image == null)
             {
                 pboxCamara.Image = Mi_mercadito.Properties.Resources.logomiMercadito;
+            }
+            string IdCarrito = "", NameList, Datos = "";
+
+            Carrito Carro = new Carrito();
+            if (!Carro.ValidarList(DatosUsr[0]))
+            {
+                IdCarrito = Carro.ConsultIdLista(DatosUsr[0]);
+                NameList = Carro.ConsultNameList(IdCarrito);
+                lblnomList.Text = NameList;
+                Datos = RellenarLista(IdCarrito);
+                lboxListaMercado.Items.Add(Datos.ToString());
             }
         }
 
@@ -343,6 +375,7 @@ namespace Mi_mercadito
             if (!Marc.ValidarMarc(txtProdMarc.Text))
             {
                 IdMarca = Marc.ConsultId(txtProdMarc.Text);
+                lboxListaMercado.Items.ToString();
             }
             else
             {
@@ -364,6 +397,29 @@ namespace Mi_mercadito
 
             MisProductos MiProd = new MisProductos();
             MiProd.InsertarMisProductos(IdCarrito, IdProducto);
+
+            if (!Bloqueo(txtNombreProduc.Text))
+            {
+                int id = 1;
+                string listaprod = Convert.ToString(id);
+                // Condicional que indica que si el método [Bloqueo] es igual tanto el parámetro [txtNombreProduc.Text] al ["prodName"].
+                if (lboxListaMercado.Items.ToString() != txtNombreProduc.Text.ToString())
+                {
+                    lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString()); // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado]. 
+
+                }
+                else if (lboxListaMercado.Items.ToString() == txtNombreProduc.Text.ToString())
+                {
+                    //int i = 0;
+                    //foreach (var item in i.ToString())
+                    //{
+                    //    lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString());
+                    //}
+                }
+            }
+            else
+                MessageBox.Show("Ingrese un Producto", "Error Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             MessageBox.Show("Producto agregado al carrito correctamente", "Producto agregado", MessageBoxButtons.OK);
         }
 

@@ -454,6 +454,23 @@ namespace Mi_mercadito
                 return Salida;
             }
         }
+        public string ConsultNameList(string IdL)
+        {
+            string Salida = "";
+            string Consulta = @"SELECT mcarName FROM MiCarrito WHERE mcarId = @mcarId;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@mcarId", IdL);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida = Leer["mcarName"].ToString();
+                }
+                return Salida;
+            }
+        }
 
     }
     // Clase parar MisProductos de la lista

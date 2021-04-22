@@ -94,6 +94,7 @@ namespace Mi_mercadito
             this.pbxX = new System.Windows.Forms.PictureBox();
             this.cmdCargarImg = new System.Windows.Forms.Button();
             this.cmdCar = new System.Windows.Forms.Button();
+            this.lblnomList = new System.Windows.Forms.Label();
             this.msMiMercadito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCamara)).BeginInit();
             this.grpbSucursal.SuspendLayout();
@@ -329,7 +330,7 @@ namespace Mi_mercadito
             // lboxListaMercado
             // 
             this.lboxListaMercado.FormattingEnabled = true;
-            this.lboxListaMercado.Location = new System.Drawing.Point(5, 96);
+            this.lboxListaMercado.Location = new System.Drawing.Point(5, 125);
             this.lboxListaMercado.Name = "lboxListaMercado";
             this.lboxListaMercado.Size = new System.Drawing.Size(131, 329);
             this.lboxListaMercado.TabIndex = 16;
@@ -690,11 +691,20 @@ namespace Mi_mercadito
             this.cmdCar.UseVisualStyleBackColor = true;
             this.cmdCar.Click += new System.EventHandler(this.cmdCar_Click);
             // 
+            // lblnomList
+            // 
+            this.lblnomList.AutoSize = true;
+            this.lblnomList.Location = new System.Drawing.Point(55, 109);
+            this.lblnomList.Name = "lblnomList";
+            this.lblnomList.Size = new System.Drawing.Size(0, 13);
+            this.lblnomList.TabIndex = 33;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 641);
+            this.Controls.Add(this.lblnomList);
             this.Controls.Add(this.cmdCar);
             this.Controls.Add(this.cmdCargarImg);
             this.Controls.Add(this.lblProdSuc);
@@ -809,5 +819,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button cmdCargarImg;
         private System.Windows.Forms.TextBox txtProdMarc;
         private System.Windows.Forms.Button cmdCar;
+        private System.Windows.Forms.Label lblnomList;
     }
 }
