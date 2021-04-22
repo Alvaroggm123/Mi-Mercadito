@@ -52,7 +52,6 @@ namespace Mi_mercadito
             }
         }
         
-
         public void Autocompletar()
         {
            
@@ -461,6 +460,28 @@ namespace Mi_mercadito
                 txtProdDesc.ReadOnly = false;
                 pboxCamara.Image = Mi_mercadito.Properties.Resources.logomiMercadito;
             }
+        }
+
+        private void cmdSlide_Click(object sender, EventArgs e)
+        {
+            // Ocultar la lista.
+            lboxListaMercado.Visible = false;
+            cmdSlide.Visible = false;
+
+            // Mover la foto.
+            pboxCamara.Size = new Size(359, 329);
+            pboxCamara.Location = new Point(28,95);
+        }
+
+        private void cmdSlide2_Click(object sender, EventArgs e)
+        {
+            // Mostrar la lista.
+            lboxListaMercado.Visible = true;
+            cmdSlide.Visible = true;
+
+            // Mover la foto.
+            pboxCamara.Size = new Size(231, 329);
+            pboxCamara.Location = new Point(158, 96);
         }
         // ==================== || FIN Eventos || ==================== //
     }
