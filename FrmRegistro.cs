@@ -50,7 +50,7 @@ namespace Mi_mercadito
         {
             // Generamos [Usuario] para validar si se ingresó un usuario correcto.
             Usuarios Usuario = new Usuarios();
-            // Área de verificación de datos personales.
+            // ===== Área de verificación de datos personales ===== //
             if (txtName.Text == "" || txtLname.Text == "" || txtLname2.Text == "" || txtEmail.Text == "")
                 return ErrorMessage("Datos personales", "Los datos personales deben estar completos.", txtName);
             else
@@ -62,36 +62,99 @@ namespace Mi_mercadito
                 // Conversión automática de la primera letra a mayúscula - Apellido materno
                 SepararNombres(txtLname2);
                 //Validar formato de Email
-                if (!FormatoEmail(txtEmail))
+                if (!VeriFormato(txtEmail, 1)) //AQUIIIIIIIIIIIIIIII
                 {
                     return ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
                 }
-                else if (!VerifEmail(txtEmail))
+                else if (!VerifEmail(txtEmail)) 
                 {
                     return ErrorMessage("Datos personales", "El correo ya está vinculado a una cuenta", txtEmail);
                 }
-                // Termina la validación de los datos personales
+                // ===== Termina la validación de los datos personales ===== //
             }
             if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
+            {
                 return ErrorMessage("Definir sexo requerido", "Se requiere especificar sexo, en caso de inclusividad seleccione \"otro\".", txtName);
+            }
             else if (datepBirth.Value.AddYears(13) > DateTime.Today)
                 return ErrorMessage("Edad mínima requerida", "Se requiere especificar una edad mayor a 13 años.", lblSexo);
 
-            // Área de verificación de datos de contacto.
-            else if (txtUsername.Text == "" || txtPassword.Text == "" || txtConfirmP.Text == "")
-                return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario válido.", lblUsername);
-            else if (txtUsername.Text.Length < 10)
-                return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario de al menos 10 caracteres.", lblPassword);
-            else if (txtPassword.Text != txtConfirmP.Text)
-                return ErrorMessage("Contraseña", "Las contraseñas no coinciden.", lblPassword);
-            else if (!Usuario.Validar(txtUsername.Text))
-                return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblUsername);
+            // ===== Área de verificación de datos de contacto ===== //
+            if (txtUsername.Text == "" || txtPassword.Text == "" || txtConfirmP.Text == "")
+                return ErrorMessage("Datos de usuario", "Se requiere llenar los datos de usuario.", lblUsername);
+            else
+            {
+                if (txtUsername.Text.Length < 10)
+                    return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario de al menos 10 caracteres.", lblPassword);
+                else if (txtPassword.Text != txtConfirmP.Text)
+                    return ErrorMessage("Contraseña", "Las contraseñas no coinciden.", lblPassword);
+                else if (!Usuario.Validar(txtUsername.Text))
+                    return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblUsername);
+                else if (!VeriFormato(txtPassword, 2)) //AQUIIIIIIIIIIIIIIIIIII
+                    return ErrorMessage("Contraseña", "Se requiere una contraseña válida.\n\nMínimo 8 caracteres, al menos un número y una letra mayúscula ó minúscula.", lblPassword);
+            }
 
             // Validamos que haya aceptado los términos y condiciones.
-            else if (!chkboxTerms.Checked) // === | Caso especial, falta verificar | === //
+            if (!chkboxTerms.Checked) // === | Caso especial, falta verificar | === //
                 return ErrorMessage("Términos y condiciones", "Se deben aceptar los términos y condiciones.", lblPassword);
             else
                 return true;
+        }
+
+        private bool VeriFormato(TextBox TextoVerificar, int Case)
+        {
+            // Función para verificar el formato del Email y la Password.
+            switch (Case)
+            {
+                // Caso 1 - Formato para Email.
+                case 1:
+                    try
+                    {
+                        // Validar formato de Correo electrónico
+                        string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                        if (Regex.IsMatch(TextoVerificar.Text, expresion))
+                        {
+                            if (Regex.Replace(TextoVerificar.Text, expresion, string.Empty).Length == 0)
+                                return true;
+                            else
+                                return false;
+                        }
+                        else
+                            return false;
+                    }
+                    catch
+                    {
+                        TextoVerificar.Text = ReemplazarAcentos(TextoVerificar.Text);
+                        TextoVerificar.SelectionStart = TextoVerificar.TextLength;
+                    }
+                    return true;
+                    break;
+
+                // Caso 2 - Formato para Password.
+                case 2:
+                    try
+                    {
+                        // Validar formato de la contraseña
+                        string expresion = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+                        if (Regex.IsMatch(TextoVerificar.Text, expresion))
+                        {
+                            if (Regex.Replace(TextoVerificar.Text, expresion, string.Empty).Length == 0)
+                                return true;
+                            else
+                                return false;
+                        }
+                        else
+                            return false;
+                    }
+                    catch
+                    {
+                        TextoVerificar.Text = ReemplazarAcentos(TextoVerificar.Text);
+                        TextoVerificar.SelectionStart = TextoVerificar.TextLength;
+                    }
+                    return true;
+                    break;
+            }
+            return true;
         }
 
         private bool VerifEmail(TextBox CajaTexto)
@@ -166,30 +229,7 @@ namespace Mi_mercadito
             }
 
         }
-        private bool FormatoEmail(TextBox TextoEmail)
-        {
-            try
-            {
-                // Validar formato de Correo electrónico
-                string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-                if (Regex.IsMatch(TextoEmail.Text, expresion))
-                {
-                    if (Regex.Replace(TextoEmail.Text, expresion, string.Empty).Length == 0)
-                        return true;
-                    else
-                        return false;
-                }
-                else
-                    return false;
-            }
-            catch
-            {
-                TextoEmail.Text = ReemplazarAcentos(TextoEmail.Text);
-                TextoEmail.SelectionStart = TextoEmail.TextLength;
-            }
-            return true;
-            
-        }
+        
         private bool ValidarUsername(TextBox txtUsername)
         {
             // Validamos que se usen signos válidos para un usuario.
