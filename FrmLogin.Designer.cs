@@ -58,40 +58,40 @@ namespace Mi_mercadito
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(12, 304);
+            this.lblUsername.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
+            this.lblUsername.Location = new System.Drawing.Point(38, 423);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(131, 19);
+            this.lblUsername.Size = new System.Drawing.Size(136, 18);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Nombre de usuario:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(189, 304);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtUsername.Location = new System.Drawing.Point(177, 421);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(209, 21);
+            this.txtUsername.Size = new System.Drawing.Size(235, 26);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(189, 330);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPassword.Location = new System.Drawing.Point(177, 457);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(209, 21);
+            this.txtPassword.Size = new System.Drawing.Size(235, 26);
             this.txtPassword.TabIndex = 3;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(77, 329);
+            this.lblPassword.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
+            this.lblPassword.Location = new System.Drawing.Point(87, 459);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(82, 19);
+            this.lblPassword.Size = new System.Drawing.Size(84, 18);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Contraseña:";
             // 
@@ -99,11 +99,11 @@ namespace Mi_mercadito
             // 
             this.CmdAccept.FlatAppearance.BorderColor = System.Drawing.Color.Purple;
             this.CmdAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CmdAccept.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdAccept.Location = new System.Drawing.Point(240, 372);
-            this.CmdAccept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.CmdAccept.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
+            this.CmdAccept.Location = new System.Drawing.Point(270, 515);
+            this.CmdAccept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmdAccept.Name = "CmdAccept";
-            this.CmdAccept.Size = new System.Drawing.Size(143, 34);
+            this.CmdAccept.Size = new System.Drawing.Size(161, 47);
             this.CmdAccept.TabIndex = 4;
             this.CmdAccept.Text = "Iniciar sesión ";
             this.CmdAccept.UseVisualStyleBackColor = true;
@@ -113,11 +113,11 @@ namespace Mi_mercadito
             // 
             this.CmdRegister.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
             this.CmdRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CmdRegister.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmdRegister.Location = new System.Drawing.Point(49, 372);
-            this.CmdRegister.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.CmdRegister.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
+            this.CmdRegister.Location = new System.Drawing.Point(55, 515);
+            this.CmdRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmdRegister.Name = "CmdRegister";
-            this.CmdRegister.Size = new System.Drawing.Size(141, 34);
+            this.CmdRegister.Size = new System.Drawing.Size(159, 47);
             this.CmdRegister.TabIndex = 5;
             this.CmdRegister.Text = "Registrarme";
             this.CmdRegister.UseVisualStyleBackColor = true;
@@ -126,10 +126,10 @@ namespace Mi_mercadito
             // lblTerminos
             // 
             this.lblTerminos.AutoSize = true;
-            this.lblTerminos.Location = new System.Drawing.Point(131, 425);
+            this.lblTerminos.Location = new System.Drawing.Point(147, 588);
             this.lblTerminos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTerminos.Name = "lblTerminos";
-            this.lblTerminos.Size = new System.Drawing.Size(159, 13);
+            this.lblTerminos.Size = new System.Drawing.Size(161, 18);
             this.lblTerminos.TabIndex = 6;
             this.lblTerminos.Text = "Términos y condiciones";
             // 
@@ -147,9 +147,9 @@ namespace Mi_mercadito
             // 
             this.lblUsuarioRip.AutoSize = true;
             this.lblUsuarioRip.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblUsuarioRip.Location = new System.Drawing.Point(187, 289);
+            this.lblUsuarioRip.Location = new System.Drawing.Point(174, 399);
             this.lblUsuarioRip.Name = "lblUsuarioRip";
-            this.lblUsuarioRip.Size = new System.Drawing.Size(235, 13);
+            this.lblUsuarioRip.Size = new System.Drawing.Size(224, 18);
             this.lblUsuarioRip.TabIndex = 7;
             this.lblUsuarioRip.Text = "¡El usuario o contraseña no existe!";
             this.lblUsuarioRip.Visible = false;
@@ -160,19 +160,19 @@ namespace Mi_mercadito
             this.pnlLogin.Controls.Add(this.pbxX);
             this.pnlLogin.Controls.Add(this.pbxmin);
             this.pnlLogin.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(431, 32);
+            this.pnlLogin.Size = new System.Drawing.Size(485, 44);
             this.pnlLogin.TabIndex = 8;
             this.pnlLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlLogin_MouseDown);
             // 
             // pbxX
             // 
             this.pbxX.Image = global::Mi_mercadito.Properties.Resources.btn_X;
-            this.pbxX.Location = new System.Drawing.Point(389, 1);
-            this.pbxX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxX.Location = new System.Drawing.Point(438, 1);
+            this.pbxX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxX.Name = "pbxX";
-            this.pbxX.Size = new System.Drawing.Size(40, 30);
+            this.pbxX.Size = new System.Drawing.Size(45, 42);
             this.pbxX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxX.TabIndex = 10;
             this.pbxX.TabStop = false;
@@ -182,10 +182,10 @@ namespace Mi_mercadito
             // pbxmin
             // 
             this.pbxmin.Image = global::Mi_mercadito.Properties.Resources.btn_min1;
-            this.pbxmin.Location = new System.Drawing.Point(345, 1);
-            this.pbxmin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxmin.Location = new System.Drawing.Point(388, 1);
+            this.pbxmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxmin.Name = "pbxmin";
-            this.pbxmin.Size = new System.Drawing.Size(40, 30);
+            this.pbxmin.Size = new System.Drawing.Size(45, 42);
             this.pbxmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxmin.TabIndex = 0;
             this.pbxmin.TabStop = false;
@@ -194,10 +194,10 @@ namespace Mi_mercadito
             // pbxmin2
             // 
             this.pbxmin2.Image = global::Mi_mercadito.Properties.Resources.btn_min21;
-            this.pbxmin2.Location = new System.Drawing.Point(345, 1);
-            this.pbxmin2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxmin2.Location = new System.Drawing.Point(388, 1);
+            this.pbxmin2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxmin2.Name = "pbxmin2";
-            this.pbxmin2.Size = new System.Drawing.Size(40, 30);
+            this.pbxmin2.Size = new System.Drawing.Size(45, 42);
             this.pbxmin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxmin2.TabIndex = 12;
             this.pbxmin2.TabStop = false;
@@ -208,10 +208,10 @@ namespace Mi_mercadito
             // pbxX2
             // 
             this.pbxX2.Image = global::Mi_mercadito.Properties.Resources.btn_X2;
-            this.pbxX2.Location = new System.Drawing.Point(389, 1);
-            this.pbxX2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxX2.Location = new System.Drawing.Point(438, 1);
+            this.pbxX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxX2.Name = "pbxX2";
-            this.pbxX2.Size = new System.Drawing.Size(40, 30);
+            this.pbxX2.Size = new System.Drawing.Size(45, 42);
             this.pbxX2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxX2.TabIndex = 11;
             this.pbxX2.TabStop = false;
@@ -224,20 +224,20 @@ namespace Mi_mercadito
             this.pbxLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbxLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbxLogo.BackgroundImage")));
             this.pbxLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxLogo.Location = new System.Drawing.Point(49, 57);
-            this.pbxLogo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxLogo.Location = new System.Drawing.Point(55, 79);
+            this.pbxLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(333, 229);
+            this.pbxLogo.Size = new System.Drawing.Size(375, 317);
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
             // 
             // FrmLogin
             // 
             this.AcceptButton = this.CmdAccept;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(431, 463);
+            this.ClientSize = new System.Drawing.Size(485, 641);
             this.Controls.Add(this.pbxmin2);
             this.Controls.Add(this.pbxX2);
             this.Controls.Add(this.pnlLogin);
@@ -250,9 +250,9 @@ namespace Mi_mercadito
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.pbxLogo);
             this.Controls.Add(this.lblTerminos);
-            this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmLogin";
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

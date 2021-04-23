@@ -483,6 +483,11 @@ namespace Mi_mercadito
             pboxCamara.Size = new Size(231, 329);
             pboxCamara.Location = new Point(158, 96);
         }
+
+        private void lblName_Click(object sender, EventArgs e)
+        {
+
+        }
         // ==================== || FIN Eventos || ==================== //
     }
 }

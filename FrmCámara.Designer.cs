@@ -50,10 +50,10 @@ namespace Mi_mercadito
             // pbox_Camara
             // 
             this.pbox_Camara.Image = ((System.Drawing.Image)(resources.GetObject("pbox_Camara.Image")));
-            this.pbox_Camara.Location = new System.Drawing.Point(13, 56);
-            this.pbox_Camara.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbox_Camara.Location = new System.Drawing.Point(15, 78);
+            this.pbox_Camara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbox_Camara.Name = "pbox_Camara";
-            this.pbox_Camara.Size = new System.Drawing.Size(793, 610);
+            this.pbox_Camara.Size = new System.Drawing.Size(892, 845);
             this.pbox_Camara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbox_Camara.TabIndex = 0;
             this.pbox_Camara.TabStop = false;
@@ -64,10 +64,10 @@ namespace Mi_mercadito
             this.cmdFoto.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.cmdFoto.FlatAppearance.BorderSize = 2;
             this.cmdFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdFoto.Location = new System.Drawing.Point(608, 672);
-            this.cmdFoto.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdFoto.Location = new System.Drawing.Point(684, 930);
+            this.cmdFoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdFoto.Name = "cmdFoto";
-            this.cmdFoto.Size = new System.Drawing.Size(171, 30);
+            this.cmdFoto.Size = new System.Drawing.Size(192, 42);
             this.cmdFoto.TabIndex = 2;
             this.cmdFoto.Text = "Tomar Foto";
             this.cmdFoto.UseVisualStyleBackColor = true;
@@ -76,10 +76,10 @@ namespace Mi_mercadito
             // cboxCamara
             // 
             this.cboxCamara.FormattingEnabled = true;
-            this.cboxCamara.Location = new System.Drawing.Point(67, 672);
-            this.cboxCamara.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboxCamara.Location = new System.Drawing.Point(75, 930);
+            this.cboxCamara.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboxCamara.Name = "cboxCamara";
-            this.cboxCamara.Size = new System.Drawing.Size(255, 21);
+            this.cboxCamara.Size = new System.Drawing.Size(286, 26);
             this.cboxCamara.TabIndex = 0;
             // 
             // cmdGrabar
@@ -87,10 +87,10 @@ namespace Mi_mercadito
             this.cmdGrabar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.cmdGrabar.FlatAppearance.BorderSize = 2;
             this.cmdGrabar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdGrabar.Location = new System.Drawing.Point(387, 672);
-            this.cmdGrabar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdGrabar.Location = new System.Drawing.Point(435, 930);
+            this.cmdGrabar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdGrabar.Name = "cmdGrabar";
-            this.cmdGrabar.Size = new System.Drawing.Size(171, 29);
+            this.cmdGrabar.Size = new System.Drawing.Size(192, 40);
             this.cmdGrabar.TabIndex = 1;
             this.cmdGrabar.Text = "Grabar";
             this.cmdGrabar.UseVisualStyleBackColor = true;
@@ -104,18 +104,18 @@ namespace Mi_mercadito
             this.pnlLogin.Controls.Add(this.pbxX);
             this.pnlLogin.Controls.Add(this.pbxmin);
             this.pnlLogin.Location = new System.Drawing.Point(-3, 0);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(827, 32);
+            this.pnlLogin.Size = new System.Drawing.Size(930, 44);
             this.pnlLogin.TabIndex = 0;
             // 
             // pbxmin2
             // 
             this.pbxmin2.Image = global::Mi_mercadito.Properties.Resources.btn_min21;
-            this.pbxmin2.Location = new System.Drawing.Point(741, 1);
-            this.pbxmin2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxmin2.Location = new System.Drawing.Point(834, 1);
+            this.pbxmin2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxmin2.Name = "pbxmin2";
-            this.pbxmin2.Size = new System.Drawing.Size(40, 30);
+            this.pbxmin2.Size = new System.Drawing.Size(45, 42);
             this.pbxmin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxmin2.TabIndex = 13;
             this.pbxmin2.TabStop = false;
@@ -126,10 +126,10 @@ namespace Mi_mercadito
             // pbxX2
             // 
             this.pbxX2.Image = global::Mi_mercadito.Properties.Resources.btn_X2;
-            this.pbxX2.Location = new System.Drawing.Point(784, 1);
-            this.pbxX2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxX2.Location = new System.Drawing.Point(882, 1);
+            this.pbxX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxX2.Name = "pbxX2";
-            this.pbxX2.Size = new System.Drawing.Size(40, 30);
+            this.pbxX2.Size = new System.Drawing.Size(45, 42);
             this.pbxX2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxX2.TabIndex = 26;
             this.pbxX2.TabStop = false;
@@ -140,10 +140,10 @@ namespace Mi_mercadito
             // pbxX
             // 
             this.pbxX.Image = global::Mi_mercadito.Properties.Resources.btn_X;
-            this.pbxX.Location = new System.Drawing.Point(784, 1);
-            this.pbxX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxX.Location = new System.Drawing.Point(882, 1);
+            this.pbxX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxX.Name = "pbxX";
-            this.pbxX.Size = new System.Drawing.Size(40, 30);
+            this.pbxX.Size = new System.Drawing.Size(45, 42);
             this.pbxX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxX.TabIndex = 10;
             this.pbxX.TabStop = false;
@@ -153,10 +153,10 @@ namespace Mi_mercadito
             // pbxmin
             // 
             this.pbxmin.Image = global::Mi_mercadito.Properties.Resources.btn_min1;
-            this.pbxmin.Location = new System.Drawing.Point(741, 1);
-            this.pbxmin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxmin.Location = new System.Drawing.Point(834, 1);
+            this.pbxmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbxmin.Name = "pbxmin";
-            this.pbxmin.Size = new System.Drawing.Size(40, 30);
+            this.pbxmin.Size = new System.Drawing.Size(45, 42);
             this.pbxmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxmin.TabIndex = 0;
             this.pbxmin.TabStop = false;
@@ -166,18 +166,18 @@ namespace Mi_mercadito
             // FrmCamara
             // 
             this.AcceptButton = this.cmdGrabar;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(823, 717);
+            this.ClientSize = new System.Drawing.Size(926, 993);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.cmdGrabar);
             this.Controls.Add(this.cboxCamara);
             this.Controls.Add(this.cmdFoto);
             this.Controls.Add(this.pbox_Camara);
-            this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmCamara";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCámara";

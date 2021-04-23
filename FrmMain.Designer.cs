@@ -115,8 +115,8 @@ namespace Mi_mercadito
             this.lblMiMercadito.BackColor = System.Drawing.Color.LightSkyBlue;
             this.lblMiMercadito.Font = new System.Drawing.Font("Bookman Old Style", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMiMercadito.ForeColor = System.Drawing.Color.White;
-            this.lblMiMercadito.Location = new System.Drawing.Point(44, 35);
-            this.lblMiMercadito.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMiMercadito.Location = new System.Drawing.Point(49, 44);
+            this.lblMiMercadito.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMiMercadito.Name = "lblMiMercadito";
             this.lblMiMercadito.Size = new System.Drawing.Size(165, 27);
             this.lblMiMercadito.TabIndex = 0;
@@ -124,22 +124,23 @@ namespace Mi_mercadito
             // 
             // txtBuscador
             // 
-            this.txtBuscador.Location = new System.Drawing.Point(272, 39);
-            this.txtBuscador.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtBuscador.Location = new System.Drawing.Point(238, 45);
+            this.txtBuscador.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtBuscador.Name = "txtBuscador";
-            this.txtBuscador.Size = new System.Drawing.Size(272, 21);
+            this.txtBuscador.Size = new System.Drawing.Size(347, 26);
             this.txtBuscador.TabIndex = 1;
             // 
             // msMiMercadito
             // 
             this.msMiMercadito.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.msMiMercadito.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
             this.msMiMercadito.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.msMiMercadito.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuMiMercadito});
-            this.msMiMercadito.Location = new System.Drawing.Point(0, 27);
+            this.msMiMercadito.Location = new System.Drawing.Point(0, 37);
             this.msMiMercadito.Name = "msMiMercadito";
             this.msMiMercadito.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.msMiMercadito.Size = new System.Drawing.Size(688, 36);
+            this.msMiMercadito.Size = new System.Drawing.Size(774, 36);
             this.msMiMercadito.TabIndex = 2;
             this.msMiMercadito.Text = "X";
             // 
@@ -336,18 +337,19 @@ namespace Mi_mercadito
             // lboxListaMercado
             // 
             this.lboxListaMercado.FormattingEnabled = true;
-            this.lboxListaMercado.Location = new System.Drawing.Point(7, 125);
-            this.lboxListaMercado.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.lboxListaMercado.ItemHeight = 18;
+            this.lboxListaMercado.Location = new System.Drawing.Point(5, 133);
+            this.lboxListaMercado.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.lboxListaMercado.Name = "lboxListaMercado";
-            this.lboxListaMercado.Size = new System.Drawing.Size(169, 329);
+            this.lboxListaMercado.Size = new System.Drawing.Size(189, 508);
             this.lboxListaMercado.TabIndex = 16;
             // 
             // cmdSlide
             // 
-            this.cmdSlide.Location = new System.Drawing.Point(180, 244);
-            this.cmdSlide.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdSlide.Location = new System.Drawing.Point(203, 338);
+            this.cmdSlide.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdSlide.Name = "cmdSlide";
-            this.cmdSlide.Size = new System.Drawing.Size(27, 36);
+            this.cmdSlide.Size = new System.Drawing.Size(31, 50);
             this.cmdSlide.TabIndex = 17;
             this.cmdSlide.Text = "<";
             this.cmdSlide.UseVisualStyleBackColor = true;
@@ -356,10 +358,10 @@ namespace Mi_mercadito
             // pboxCamara
             // 
             this.pboxCamara.Image = global::Mi_mercadito.Properties.Resources.logomiMercadito;
-            this.pboxCamara.Location = new System.Drawing.Point(211, 96);
-            this.pboxCamara.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pboxCamara.Location = new System.Drawing.Point(238, 133);
+            this.pboxCamara.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pboxCamara.Name = "pboxCamara";
-            this.pboxCamara.Size = new System.Drawing.Size(308, 329);
+            this.pboxCamara.Size = new System.Drawing.Size(347, 456);
             this.pboxCamara.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxCamara.TabIndex = 7;
             this.pboxCamara.TabStop = false;
@@ -369,10 +371,10 @@ namespace Mi_mercadito
             this.cmdFoto.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.cmdFoto.FlatAppearance.BorderSize = 2;
             this.cmdFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdFoto.Location = new System.Drawing.Point(144, 594);
-            this.cmdFoto.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdFoto.Location = new System.Drawing.Point(162, 822);
+            this.cmdFoto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdFoto.Name = "cmdFoto";
-            this.cmdFoto.Size = new System.Drawing.Size(132, 31);
+            this.cmdFoto.Size = new System.Drawing.Size(149, 43);
             this.cmdFoto.TabIndex = 29;
             this.cmdFoto.Text = "Capturar producto";
             this.cmdFoto.UseVisualStyleBackColor = true;
@@ -382,13 +384,14 @@ namespace Mi_mercadito
             // 
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(0, 63);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Font = new System.Drawing.Font("Baskerville Old Face", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(0, 73);
+            this.lblName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(197, 25);
+            this.lblName.Size = new System.Drawing.Size(202, 27);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Nombre de Usuario";
+            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // grpbSucursal
             // 
@@ -400,79 +403,79 @@ namespace Mi_mercadito
             this.grpbSucursal.Controls.Add(this.lblPais);
             this.grpbSucursal.Controls.Add(this.lblSucursal);
             this.grpbSucursal.Controls.Add(this.cboxSucursal);
-            this.grpbSucursal.Location = new System.Drawing.Point(7, 501);
-            this.grpbSucursal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.grpbSucursal.Location = new System.Drawing.Point(8, 694);
+            this.grpbSucursal.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.grpbSucursal.Name = "grpbSucursal";
-            this.grpbSucursal.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.grpbSucursal.Size = new System.Drawing.Size(672, 76);
+            this.grpbSucursal.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.grpbSucursal.Size = new System.Drawing.Size(756, 106);
             this.grpbSucursal.TabIndex = 20;
             this.grpbSucursal.TabStop = false;
             this.grpbSucursal.Text = "Sucursal";
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(504, 49);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtDireccion.Location = new System.Drawing.Point(567, 68);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.ReadOnly = true;
-            this.txtDireccion.Size = new System.Drawing.Size(159, 21);
+            this.txtDireccion.Size = new System.Drawing.Size(179, 26);
             this.txtDireccion.TabIndex = 28;
             // 
             // txtCiudad
             // 
-            this.txtCiudad.Location = new System.Drawing.Point(345, 50);
-            this.txtCiudad.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtCiudad.Location = new System.Drawing.Point(388, 70);
+            this.txtCiudad.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.ReadOnly = true;
-            this.txtCiudad.Size = new System.Drawing.Size(127, 21);
+            this.txtCiudad.Size = new System.Drawing.Size(143, 26);
             this.txtCiudad.TabIndex = 26;
             // 
             // txtPais
             // 
-            this.txtPais.Location = new System.Drawing.Point(183, 50);
-            this.txtPais.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtPais.Location = new System.Drawing.Point(206, 70);
+            this.txtPais.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtPais.Name = "txtPais";
             this.txtPais.ReadOnly = true;
-            this.txtPais.Size = new System.Drawing.Size(127, 21);
+            this.txtPais.Size = new System.Drawing.Size(143, 26);
             this.txtPais.TabIndex = 24;
             // 
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(548, 33);
-            this.lblDireccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDireccion.Location = new System.Drawing.Point(617, 46);
+            this.lblDireccion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(70, 13);
+            this.lblDireccion.Size = new System.Drawing.Size(71, 18);
             this.lblDireccion.TabIndex = 27;
             this.lblDireccion.Text = "Dirección";
             // 
             // lblCiudad
             // 
             this.lblCiudad.AutoSize = true;
-            this.lblCiudad.Location = new System.Drawing.Point(381, 33);
-            this.lblCiudad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCiudad.Location = new System.Drawing.Point(428, 46);
+            this.lblCiudad.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCiudad.Name = "lblCiudad";
-            this.lblCiudad.Size = new System.Drawing.Size(53, 13);
+            this.lblCiudad.Size = new System.Drawing.Size(54, 18);
             this.lblCiudad.TabIndex = 25;
             this.lblCiudad.Text = "Ciudad";
             // 
             // lblPais
             // 
             this.lblPais.AutoSize = true;
-            this.lblPais.Location = new System.Drawing.Point(219, 33);
-            this.lblPais.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPais.Location = new System.Drawing.Point(247, 46);
+            this.lblPais.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPais.Name = "lblPais";
-            this.lblPais.Size = new System.Drawing.Size(29, 13);
+            this.lblPais.Size = new System.Drawing.Size(34, 18);
             this.lblPais.TabIndex = 23;
             this.lblPais.Text = "País";
             // 
             // lblSucursal
             // 
             this.lblSucursal.AutoSize = true;
-            this.lblSucursal.Location = new System.Drawing.Point(49, 33);
-            this.lblSucursal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSucursal.Location = new System.Drawing.Point(55, 46);
+            this.lblSucursal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblSucursal.Name = "lblSucursal";
-            this.lblSucursal.Size = new System.Drawing.Size(64, 13);
+            this.lblSucursal.Size = new System.Drawing.Size(62, 18);
             this.lblSucursal.TabIndex = 21;
             this.lblSucursal.Text = "Sucursal";
             // 
@@ -480,10 +483,10 @@ namespace Mi_mercadito
             // 
             this.cboxSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxSucursal.FormattingEnabled = true;
-            this.cboxSucursal.Location = new System.Drawing.Point(9, 49);
-            this.cboxSucursal.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboxSucursal.Location = new System.Drawing.Point(10, 68);
+            this.cboxSucursal.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cboxSucursal.Name = "cboxSucursal";
-            this.cboxSucursal.Size = new System.Drawing.Size(149, 21);
+            this.cboxSucursal.Size = new System.Drawing.Size(167, 26);
             this.cboxSucursal.TabIndex = 22;
             this.cboxSucursal.SelectedIndexChanged += new System.EventHandler(this.cboxSucursal_SelectedIndexChanged);
             // 
@@ -491,10 +494,10 @@ namespace Mi_mercadito
             // 
             this.txtNombreProduc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtNombreProduc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNombreProduc.Location = new System.Drawing.Point(527, 91);
-            this.txtNombreProduc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtNombreProduc.Location = new System.Drawing.Point(593, 126);
+            this.txtNombreProduc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtNombreProduc.Name = "txtNombreProduc";
-            this.txtNombreProduc.Size = new System.Drawing.Size(143, 21);
+            this.txtNombreProduc.Size = new System.Drawing.Size(161, 26);
             this.txtNombreProduc.TabIndex = 4;
             this.txtNombreProduc.TextChanged += new System.EventHandler(this.txtNombreProduc_TextChanged);
             this.txtNombreProduc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProduc_KeyDown);
@@ -504,133 +507,133 @@ namespace Mi_mercadito
             // 
             this.txtProdPrecio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdPrecio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdPrecio.Location = new System.Drawing.Point(527, 139);
-            this.txtProdPrecio.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtProdPrecio.Location = new System.Drawing.Point(593, 192);
+            this.txtProdPrecio.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdPrecio.Name = "txtProdPrecio";
-            this.txtProdPrecio.Size = new System.Drawing.Size(143, 21);
+            this.txtProdPrecio.Size = new System.Drawing.Size(161, 26);
             this.txtProdPrecio.TabIndex = 6;
             // 
             // txtProdContNet
             // 
             this.txtProdContNet.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdContNet.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdContNet.Location = new System.Drawing.Point(527, 195);
-            this.txtProdContNet.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtProdContNet.Location = new System.Drawing.Point(593, 270);
+            this.txtProdContNet.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdContNet.Name = "txtProdContNet";
-            this.txtProdContNet.Size = new System.Drawing.Size(143, 21);
+            this.txtProdContNet.Size = new System.Drawing.Size(161, 26);
             this.txtProdContNet.TabIndex = 8;
             // 
             // txtProdDesc
             // 
             this.txtProdDesc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdDesc.Location = new System.Drawing.Point(189, 475);
-            this.txtProdDesc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtProdDesc.Location = new System.Drawing.Point(212, 658);
+            this.txtProdDesc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdDesc.Name = "txtProdDesc";
             this.txtProdDesc.ReadOnly = true;
-            this.txtProdDesc.Size = new System.Drawing.Size(480, 21);
+            this.txtProdDesc.Size = new System.Drawing.Size(539, 26);
             this.txtProdDesc.TabIndex = 19;
             // 
             // txtProdMarc
             // 
             this.txtProdMarc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdMarc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdMarc.Location = new System.Drawing.Point(527, 235);
-            this.txtProdMarc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtProdMarc.Location = new System.Drawing.Point(593, 325);
+            this.txtProdMarc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdMarc.Name = "txtProdMarc";
             this.txtProdMarc.ReadOnly = true;
-            this.txtProdMarc.Size = new System.Drawing.Size(143, 21);
+            this.txtProdMarc.Size = new System.Drawing.Size(161, 26);
             this.txtProdMarc.TabIndex = 10;
             // 
             // txtProdDpto
             // 
             this.txtProdDpto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdDpto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdDpto.Location = new System.Drawing.Point(527, 373);
-            this.txtProdDpto.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtProdDpto.Location = new System.Drawing.Point(593, 516);
+            this.txtProdDpto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdDpto.Name = "txtProdDpto";
             this.txtProdDpto.ReadOnly = true;
-            this.txtProdDpto.Size = new System.Drawing.Size(143, 21);
+            this.txtProdDpto.Size = new System.Drawing.Size(161, 26);
             this.txtProdDpto.TabIndex = 12;
             // 
             // txtProdSuc
             // 
             this.txtProdSuc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdSuc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdSuc.Location = new System.Drawing.Point(527, 434);
-            this.txtProdSuc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtProdSuc.Location = new System.Drawing.Point(593, 601);
+            this.txtProdSuc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdSuc.Name = "txtProdSuc";
             this.txtProdSuc.ReadOnly = true;
-            this.txtProdSuc.Size = new System.Drawing.Size(143, 21);
+            this.txtProdSuc.Size = new System.Drawing.Size(161, 26);
             this.txtProdSuc.TabIndex = 14;
             // 
             // lblNombreProduc
             // 
             this.lblNombreProduc.AutoSize = true;
-            this.lblNombreProduc.Location = new System.Drawing.Point(560, 75);
-            this.lblNombreProduc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombreProduc.Location = new System.Drawing.Point(630, 104);
+            this.lblNombreProduc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNombreProduc.Name = "lblNombreProduc";
-            this.lblNombreProduc.Size = new System.Drawing.Size(73, 13);
+            this.lblNombreProduc.Size = new System.Drawing.Size(66, 18);
             this.lblNombreProduc.TabIndex = 3;
             this.lblNombreProduc.Text = "Producto";
             // 
             // lblProdPrecio
             // 
             this.lblProdPrecio.AutoSize = true;
-            this.lblProdPrecio.Location = new System.Drawing.Point(577, 123);
-            this.lblProdPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProdPrecio.Location = new System.Drawing.Point(649, 170);
+            this.lblProdPrecio.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdPrecio.Name = "lblProdPrecio";
-            this.lblProdPrecio.Size = new System.Drawing.Size(47, 13);
+            this.lblProdPrecio.Size = new System.Drawing.Size(49, 18);
             this.lblProdPrecio.TabIndex = 5;
             this.lblProdPrecio.Text = "Precio";
             // 
             // lblProdContNet
             // 
             this.lblProdContNet.AutoSize = true;
-            this.lblProdContNet.Location = new System.Drawing.Point(560, 179);
-            this.lblProdContNet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProdContNet.Location = new System.Drawing.Point(630, 248);
+            this.lblProdContNet.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdContNet.Name = "lblProdContNet";
-            this.lblProdContNet.Size = new System.Drawing.Size(71, 13);
+            this.lblProdContNet.Size = new System.Drawing.Size(74, 18);
             this.lblProdContNet.TabIndex = 7;
             this.lblProdContNet.Text = "Cont. Net.";
             // 
             // lblProdDesc
             // 
             this.lblProdDesc.AutoSize = true;
-            this.lblProdDesc.Location = new System.Drawing.Point(83, 478);
-            this.lblProdDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProdDesc.Location = new System.Drawing.Point(94, 662);
+            this.lblProdDesc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdDesc.Name = "lblProdDesc";
-            this.lblProdDesc.Size = new System.Drawing.Size(81, 13);
+            this.lblProdDesc.Size = new System.Drawing.Size(85, 18);
             this.lblProdDesc.TabIndex = 18;
             this.lblProdDesc.Text = "Descripción";
             // 
             // lblProdMarc
             // 
             this.lblProdMarc.AutoSize = true;
-            this.lblProdMarc.Location = new System.Drawing.Point(577, 219);
-            this.lblProdMarc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProdMarc.Location = new System.Drawing.Point(649, 304);
+            this.lblProdMarc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdMarc.Name = "lblProdMarc";
-            this.lblProdMarc.Size = new System.Drawing.Size(47, 13);
+            this.lblProdMarc.Size = new System.Drawing.Size(49, 18);
             this.lblProdMarc.TabIndex = 9;
             this.lblProdMarc.Text = "Marca";
             // 
             // lblProdDpto
             // 
             this.lblProdDpto.AutoSize = true;
-            this.lblProdDpto.Location = new System.Drawing.Point(548, 267);
-            this.lblProdDpto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProdDpto.Location = new System.Drawing.Point(617, 370);
+            this.lblProdDpto.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdDpto.Name = "lblProdDpto";
-            this.lblProdDpto.Size = new System.Drawing.Size(99, 13);
+            this.lblProdDpto.Size = new System.Drawing.Size(99, 18);
             this.lblProdDpto.TabIndex = 11;
             this.lblProdDpto.Text = "Departamento";
             // 
             // lblProdSuc
             // 
             this.lblProdSuc.AutoSize = true;
-            this.lblProdSuc.Location = new System.Drawing.Point(560, 418);
-            this.lblProdSuc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProdSuc.Location = new System.Drawing.Point(630, 578);
+            this.lblProdSuc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdSuc.Name = "lblProdSuc";
-            this.lblProdSuc.Size = new System.Drawing.Size(64, 13);
+            this.lblProdSuc.Size = new System.Drawing.Size(62, 18);
             this.lblProdSuc.TabIndex = 13;
             this.lblProdSuc.Text = "Sucursal";
             // 
@@ -643,19 +646,19 @@ namespace Mi_mercadito
             this.pnlLogin.Controls.Add(this.pbxX);
             this.pnlLogin.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogin.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlLogin.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(688, 27);
+            this.pnlLogin.Size = new System.Drawing.Size(774, 37);
             this.pnlLogin.TabIndex = 32;
             this.pnlLogin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlLogin_MouseDown);
             // 
             // pbxmin2
             // 
             this.pbxmin2.Image = global::Mi_mercadito.Properties.Resources.btn_min21;
-            this.pbxmin2.Location = new System.Drawing.Point(607, 1);
-            this.pbxmin2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxmin2.Location = new System.Drawing.Point(683, 1);
+            this.pbxmin2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pbxmin2.Name = "pbxmin2";
-            this.pbxmin2.Size = new System.Drawing.Size(40, 30);
+            this.pbxmin2.Size = new System.Drawing.Size(45, 42);
             this.pbxmin2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxmin2.TabIndex = 25;
             this.pbxmin2.TabStop = false;
@@ -666,10 +669,10 @@ namespace Mi_mercadito
             // pbxX2
             // 
             this.pbxX2.Image = global::Mi_mercadito.Properties.Resources.btn_X2;
-            this.pbxX2.Location = new System.Drawing.Point(648, 1);
-            this.pbxX2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxX2.Location = new System.Drawing.Point(729, 1);
+            this.pbxX2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pbxX2.Name = "pbxX2";
-            this.pbxX2.Size = new System.Drawing.Size(40, 30);
+            this.pbxX2.Size = new System.Drawing.Size(45, 42);
             this.pbxX2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxX2.TabIndex = 25;
             this.pbxX2.TabStop = false;
@@ -681,10 +684,10 @@ namespace Mi_mercadito
             // 
             this.pbxmin.Dock = System.Windows.Forms.DockStyle.Right;
             this.pbxmin.Image = global::Mi_mercadito.Properties.Resources.btn_min1;
-            this.pbxmin.Location = new System.Drawing.Point(608, 0);
-            this.pbxmin.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxmin.Location = new System.Drawing.Point(684, 0);
+            this.pbxmin.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pbxmin.Name = "pbxmin";
-            this.pbxmin.Size = new System.Drawing.Size(40, 27);
+            this.pbxmin.Size = new System.Drawing.Size(45, 37);
             this.pbxmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxmin.TabIndex = 0;
             this.pbxmin.TabStop = false;
@@ -695,10 +698,10 @@ namespace Mi_mercadito
             // 
             this.pbxX.Dock = System.Windows.Forms.DockStyle.Right;
             this.pbxX.Image = global::Mi_mercadito.Properties.Resources.btn_X;
-            this.pbxX.Location = new System.Drawing.Point(648, 0);
-            this.pbxX.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pbxX.Location = new System.Drawing.Point(729, 0);
+            this.pbxX.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.pbxX.Name = "pbxX";
-            this.pbxX.Size = new System.Drawing.Size(40, 27);
+            this.pbxX.Size = new System.Drawing.Size(45, 37);
             this.pbxX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxX.TabIndex = 10;
             this.pbxX.TabStop = false;
@@ -710,10 +713,10 @@ namespace Mi_mercadito
             this.cmdCargarImg.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.cmdCargarImg.FlatAppearance.BorderSize = 2;
             this.cmdCargarImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdCargarImg.Location = new System.Drawing.Point(211, 428);
-            this.cmdCargarImg.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdCargarImg.Location = new System.Drawing.Point(238, 593);
+            this.cmdCargarImg.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdCargarImg.Name = "cmdCargarImg";
-            this.cmdCargarImg.Size = new System.Drawing.Size(309, 30);
+            this.cmdCargarImg.Size = new System.Drawing.Size(347, 42);
             this.cmdCargarImg.TabIndex = 15;
             this.cmdCargarImg.Text = "Seleccionar Imagen";
             this.cmdCargarImg.UseVisualStyleBackColor = true;
@@ -724,10 +727,10 @@ namespace Mi_mercadito
             this.cmdCar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.cmdCar.FlatAppearance.BorderSize = 2;
             this.cmdCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdCar.Location = new System.Drawing.Point(492, 594);
-            this.cmdCar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdCar.Location = new System.Drawing.Point(553, 822);
+            this.cmdCar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdCar.Name = "cmdCar";
-            this.cmdCar.Size = new System.Drawing.Size(161, 31);
+            this.cmdCar.Size = new System.Drawing.Size(181, 43);
             this.cmdCar.TabIndex = 31;
             this.cmdCar.Text = "Agregar al carrito";
             this.cmdCar.UseVisualStyleBackColor = true;
@@ -736,18 +739,21 @@ namespace Mi_mercadito
             // lblnomList
             // 
             this.lblnomList.AutoSize = true;
-            this.lblnomList.Location = new System.Drawing.Point(73, 109);
-            this.lblnomList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblnomList.Font = new System.Drawing.Font("Baskerville Old Face", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnomList.Location = new System.Drawing.Point(4, 104);
+            this.lblnomList.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblnomList.Name = "lblnomList";
-            this.lblnomList.Size = new System.Drawing.Size(0, 13);
+            this.lblnomList.Size = new System.Drawing.Size(78, 24);
             this.lblnomList.TabIndex = 33;
+            this.lblnomList.Text = "Mi Lista";
+            this.lblnomList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmdSlide2
             // 
-            this.cmdSlide2.Location = new System.Drawing.Point(5, 244);
-            this.cmdSlide2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdSlide2.Location = new System.Drawing.Point(5, 338);
+            this.cmdSlide2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdSlide2.Name = "cmdSlide2";
-            this.cmdSlide2.Size = new System.Drawing.Size(25, 36);
+            this.cmdSlide2.Size = new System.Drawing.Size(28, 50);
             this.cmdSlide2.TabIndex = 18;
             this.cmdSlide2.Text = ">";
             this.cmdSlide2.UseVisualStyleBackColor = true;
@@ -758,10 +764,10 @@ namespace Mi_mercadito
             this.cmdAdd.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.cmdAdd.FlatAppearance.BorderSize = 2;
             this.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdAdd.Location = new System.Drawing.Point(308, 594);
-            this.cmdAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmdAdd.Location = new System.Drawing.Point(347, 822);
+            this.cmdAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdAdd.Name = "cmdAdd";
-            this.cmdAdd.Size = new System.Drawing.Size(147, 31);
+            this.cmdAdd.Size = new System.Drawing.Size(166, 43);
             this.cmdAdd.TabIndex = 30;
             this.cmdAdd.Text = "Enviar producto";
             this.cmdAdd.UseVisualStyleBackColor = true;
@@ -771,18 +777,19 @@ namespace Mi_mercadito
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(537, 283);
+            this.pictureBox1.Location = new System.Drawing.Point(604, 392);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 84);
+            this.pictureBox1.Size = new System.Drawing.Size(131, 116);
             this.pictureBox1.TabIndex = 34;
             this.pictureBox1.TabStop = false;
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(688, 641);
+            this.ClientSize = new System.Drawing.Size(774, 888);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdSlide);
             this.Controls.Add(this.lblnomList);
@@ -813,9 +820,9 @@ namespace Mi_mercadito
             this.Controls.Add(this.pboxCamara);
             this.Controls.Add(this.lboxListaMercado);
             this.Controls.Add(this.cmdSlide2);
-            this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmMain";
