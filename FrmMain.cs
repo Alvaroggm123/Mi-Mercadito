@@ -51,6 +51,13 @@ namespace Mi_mercadito
                     break;
             }
         }
+        private bool ErrorMessage(string Grupo, string Mensaje, Control Enfoque)
+        {
+            string Titulo = "Error en " + Grupo;
+            MessageBox.Show(Mensaje, Titulo);
+            Enfoque.Focus();
+            return false;
+        }
 
         public void AutocompletarTxt(string Consulta, TextBox Elemento)
         {
@@ -309,70 +316,75 @@ namespace Mi_mercadito
 
         private void cmdCar_Click(object sender, EventArgs e)
         {
-            // Variables para guardar ids
-            string IdCarrito = "", IdProducto = "", IdSuc = "", IdMarca = "", IdDepartamento = "";
-
-            //  Validación de Carro, existencia de usuario, obtención de IdCarrito, IdSuc, IdMarca,
-            //  IdDepartamento y IdProducto, y inserción de datos en tabla MisProductos
-            Carrito Carro = new Carrito();
-            if (!Carro.ValidarList(DatosUsr[0]))
-            {
-                IdCarrito = Carro.ConsultIdLista(DatosUsr[0]);
-            }
-
-            Sucursal Sucursal = new Sucursal();
-            IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPais.Text, txtCiudad.Text, txtDireccion.Text);
-
-            Marca Marc = new Marca();
-            if (!Marc.ValidarMarc(txtProdMarc.Text))
-            {
-                IdMarca = Marc.ConsultId(txtProdMarc.Text);
-                lboxListaMercado.Items.ToString();
-            }
+            if (txtNombreProduc.Text == "" || txtProdPrecio.Text == "" || txtProdContNet.Text == "" || txtProdMarc.Text == "" || txtProdDpto.Text == "")
+                ErrorMessage("Datos del producto", "Debe llenar todos los datos del producto.", txtNombreProduc);
             else
             {
-                MessageBox.Show("No ha registrado la marca.", "Error Marca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                // Variables para guardar ids
+                string IdCarrito = "", IdProducto = "", IdSuc = "", IdMarca = "", IdDepartamento = "";
 
-            Departamento Departamento = new Departamento();
-            if (!Departamento.ValidarDepart(txtProdDpto.Text))
-            {
-                IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
-            }
-            else
-            {
-                MessageBox.Show("Ingrese un departamento válido", "Error departamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            Producto Prod = new Producto();
-            IdProducto = Prod.ConsultIdProducto(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, IdMarca, IdDepartamento, IdSuc);
-
-            MisProductos MiProd = new MisProductos();
-            MiProd.InsertarMisProductos(IdCarrito, IdProducto);
-
-            if (!Bloqueo(txtNombreProduc.Text))
-            {
-                int id = 1;
-                string listaprod = Convert.ToString(id);
-                // Condicional que indica que si el método [Bloqueo] es igual tanto el parámetro [txtNombreProduc.Text] al ["prodName"].
-                if (lboxListaMercado.Items.ToString() != txtNombreProduc.Text.ToString())
+                //  Validación de Carro, existencia de usuario, obtención de IdCarrito, IdSuc, IdMarca,
+                //  IdDepartamento y IdProducto, y inserción de datos en tabla MisProductos
+                Carrito Carro = new Carrito();
+                if (!Carro.ValidarList(DatosUsr[0]))
                 {
-                    lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString()); // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado]. 
-
+                    IdCarrito = Carro.ConsultIdLista(DatosUsr[0]);
                 }
-                else if (lboxListaMercado.Items.ToString() == txtNombreProduc.Text.ToString())
+
+                Sucursal Sucursal = new Sucursal();
+                IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPais.Text, txtCiudad.Text, txtDireccion.Text);
+
+                Marca Marc = new Marca();
+                if (!Marc.ValidarMarc(txtProdMarc.Text))
                 {
-                    //int i = 0;
-                    //foreach (var item in i.ToString())
-                    //{
-                    //    lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString());
-                    //}
+                    IdMarca = Marc.ConsultId(txtProdMarc.Text);
+                    lboxListaMercado.Items.ToString();
                 }
-            }
-            else
-                MessageBox.Show("Ingrese un Producto", "Error Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                {
+                    MessageBox.Show("No ha registrado la marca.", "Error Marca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
-            MessageBox.Show("Producto agregado al carrito correctamente", "Producto agregado", MessageBoxButtons.OK);
+                Departamento Departamento = new Departamento();
+                if (!Departamento.ValidarDepart(txtProdDpto.Text))
+                {
+                    IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un departamento válido", "Error departamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                Producto Prod = new Producto();
+                IdProducto = Prod.ConsultIdProducto(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, IdMarca, IdDepartamento, IdSuc);
+
+                MisProductos MiProd = new MisProductos();
+                MiProd.InsertarMisProductos(IdCarrito, IdProducto);
+
+                if (!Bloqueo(txtNombreProduc.Text))
+                {
+                    int id = 1;
+                    string listaprod = Convert.ToString(id);
+                    // Condicional que indica que si el método [Bloqueo] es igual tanto el parámetro [txtNombreProduc.Text] al ["prodName"].
+                    if (lboxListaMercado.Items.ToString() != txtNombreProduc.Text.ToString())
+                    {
+                        lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString()); // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado]. 
+
+                    }
+                    else if (lboxListaMercado.Items.ToString() == txtNombreProduc.Text.ToString())
+                    {
+                        //int i = 0;
+                        //foreach (var item in i.ToString())
+                        //{
+                        //    lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString());
+                        //}
+                    }
+                }
+                else
+                    MessageBox.Show("Ingrese un Producto", "Error Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                MessageBox.Show("Producto agregado al carrito correctamente", "Producto agregado", MessageBoxButtons.OK);
+            }
         }
 
         private void txtNombreProduc_Leave(object sender, EventArgs e)

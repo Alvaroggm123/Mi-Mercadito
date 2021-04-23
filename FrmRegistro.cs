@@ -62,7 +62,7 @@ namespace Mi_mercadito
                 // Conversión automática de la primera letra a mayúscula - Apellido materno
                 SepararNombres(txtLname2);
                 //Validar formato de Email
-                if (!VeriFormato(txtEmail, 1)) //AQUIIIIIIIIIIIIIIII
+                if (!VeriFormato(txtEmail, 1))
                 {
                     return ErrorMessage("Datos personales", "El correo no tiene un formato válido", txtEmail);
                 }
@@ -90,7 +90,7 @@ namespace Mi_mercadito
                     return ErrorMessage("Contraseña", "Las contraseñas no coinciden.", lblPassword);
                 else if (!Usuario.Validar(txtUsername.Text))
                     return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblUsername);
-                else if (!VeriFormato(txtPassword, 2)) //AQUIIIIIIIIIIIIIIIIIII
+                else if (!VeriFormato(txtPassword, 2)) 
                     return ErrorMessage("Contraseña", "Se requiere una contraseña válida.\n\nMínimo 8 caracteres, al menos un número y una letra mayúscula ó minúscula.", lblPassword);
             }
 
