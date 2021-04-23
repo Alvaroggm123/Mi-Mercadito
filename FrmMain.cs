@@ -422,8 +422,19 @@ namespace Mi_mercadito
             cmdSlide.Visible = false;
 
             // Mover la foto.
-            pboxCamara.Size = new Size(359, 329);
-            pboxCamara.Location = new Point(28, 95);
+            pboxCamara.Size = new Size(pboxCamara.Width + 195, pboxCamara.Height);
+            pboxCamara.Location = new Point(pboxCamara.Location.X - 195, pboxCamara.Location.Y);
+
+            // Mover el botón.
+            cmdCargarImg.Size = new Size(cmdCargarImg.Width + 195, cmdCargarImg.Height);
+            cmdCargarImg.Location = new Point(cmdCargarImg.Location.X - 195, cmdCargarImg.Location.Y);
+
+            // Mover el lblDescription
+            lblProdDesc.Location = new Point(lblProdDesc.Location.X- 85, lblProdDesc.Location.Y);
+
+            // Mover el txtProdDesc
+            txtProdDesc.Size = new Size(txtProdDesc.Width + 85, txtProdDesc.Height);
+            txtProdDesc.Location = new Point(txtProdDesc.Location.X - 85, txtProdDesc.Location.Y);
         }
 
         private void cmdSlide2_Click(object sender, EventArgs e)
@@ -433,8 +444,19 @@ namespace Mi_mercadito
             cmdSlide.Visible = true;
 
             // Mover la foto.
-            pboxCamara.Size = new Size(231, 329);
-            pboxCamara.Location = new Point(158, 96);
+            pboxCamara.Size = new Size(pboxCamara.Width - 195, pboxCamara.Height);
+            pboxCamara.Location = new Point(pboxCamara.Location.X + 195, pboxCamara.Location.Y);
+
+            // Mover el botón.
+            cmdCargarImg.Size = new Size(cmdCargarImg.Width - 195, cmdCargarImg.Height);
+            cmdCargarImg.Location = new Point(cmdCargarImg.Location.X + 195, cmdCargarImg.Location.Y);
+
+            // Mover el lblDescription
+            lblProdDesc.Location = new Point(lblProdDesc.Location.X + 85, lblProdDesc.Location.Y);
+
+            // Mover el txtProdDesc
+            txtProdDesc.Size = new Size(txtProdDesc.Width - 85, txtProdDesc.Height);
+            txtProdDesc.Location = new Point(txtProdDesc.Location.X + 85, txtProdDesc.Location.Y);
         }
         // ==================== || FIN Eventos || ==================== //
     }
