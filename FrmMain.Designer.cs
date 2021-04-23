@@ -338,10 +338,10 @@ namespace Mi_mercadito
             // 
             this.lboxListaMercado.FormattingEnabled = true;
             this.lboxListaMercado.ItemHeight = 23;
-            this.lboxListaMercado.Location = new System.Drawing.Point(5, 133);
+            this.lboxListaMercado.Location = new System.Drawing.Point(6, 125);
             this.lboxListaMercado.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.lboxListaMercado.Name = "lboxListaMercado";
-            this.lboxListaMercado.Size = new System.Drawing.Size(189, 487);
+            this.lboxListaMercado.Size = new System.Drawing.Size(189, 510);
             this.lboxListaMercado.TabIndex = 16;
             // 
             // cmdSlide
@@ -493,7 +493,7 @@ namespace Mi_mercadito
             // 
             this.txtNombreProduc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtNombreProduc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNombreProduc.Location = new System.Drawing.Point(593, 126);
+            this.txtNombreProduc.Location = new System.Drawing.Point(593, 119);
             this.txtNombreProduc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtNombreProduc.Name = "txtNombreProduc";
             this.txtNombreProduc.Size = new System.Drawing.Size(161, 30);
@@ -505,7 +505,7 @@ namespace Mi_mercadito
             // 
             this.txtProdPrecio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdPrecio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdPrecio.Location = new System.Drawing.Point(593, 192);
+            this.txtProdPrecio.Location = new System.Drawing.Point(593, 180);
             this.txtProdPrecio.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdPrecio.Name = "txtProdPrecio";
             this.txtProdPrecio.Size = new System.Drawing.Size(161, 30);
@@ -515,7 +515,7 @@ namespace Mi_mercadito
             // 
             this.txtProdContNet.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdContNet.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdContNet.Location = new System.Drawing.Point(593, 270);
+            this.txtProdContNet.Location = new System.Drawing.Point(593, 241);
             this.txtProdContNet.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdContNet.Name = "txtProdContNet";
             this.txtProdContNet.Size = new System.Drawing.Size(161, 30);
@@ -536,7 +536,7 @@ namespace Mi_mercadito
             // 
             this.txtProdMarc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdMarc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdMarc.Location = new System.Drawing.Point(593, 325);
+            this.txtProdMarc.Location = new System.Drawing.Point(593, 362);
             this.txtProdMarc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdMarc.Name = "txtProdMarc";
             this.txtProdMarc.ReadOnly = true;
@@ -547,7 +547,7 @@ namespace Mi_mercadito
             // 
             this.txtProdDpto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdDpto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdDpto.Location = new System.Drawing.Point(593, 516);
+            this.txtProdDpto.Location = new System.Drawing.Point(593, 547);
             this.txtProdDpto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdDpto.Name = "txtProdDpto";
             this.txtProdDpto.ReadOnly = true;
@@ -558,7 +558,7 @@ namespace Mi_mercadito
             // 
             this.txtProdSuc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdSuc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdSuc.Location = new System.Drawing.Point(593, 601);
+            this.txtProdSuc.Location = new System.Drawing.Point(593, 608);
             this.txtProdSuc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdSuc.Name = "txtProdSuc";
             this.txtProdSuc.ReadOnly = true;
@@ -568,7 +568,7 @@ namespace Mi_mercadito
             // lblNombreProduc
             // 
             this.lblNombreProduc.AutoSize = true;
-            this.lblNombreProduc.Location = new System.Drawing.Point(630, 104);
+            this.lblNombreProduc.Location = new System.Drawing.Point(630, 92);
             this.lblNombreProduc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNombreProduc.Name = "lblNombreProduc";
             this.lblNombreProduc.Size = new System.Drawing.Size(82, 23);
@@ -578,7 +578,7 @@ namespace Mi_mercadito
             // lblProdPrecio
             // 
             this.lblProdPrecio.AutoSize = true;
-            this.lblProdPrecio.Location = new System.Drawing.Point(649, 170);
+            this.lblProdPrecio.Location = new System.Drawing.Point(645, 153);
             this.lblProdPrecio.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdPrecio.Name = "lblProdPrecio";
             this.lblProdPrecio.Size = new System.Drawing.Size(61, 23);
@@ -588,7 +588,7 @@ namespace Mi_mercadito
             // lblProdContNet
             // 
             this.lblProdContNet.AutoSize = true;
-            this.lblProdContNet.Location = new System.Drawing.Point(630, 248);
+            this.lblProdContNet.Location = new System.Drawing.Point(625, 214);
             this.lblProdContNet.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdContNet.Name = "lblProdContNet";
             this.lblProdContNet.Size = new System.Drawing.Size(92, 23);
@@ -608,7 +608,7 @@ namespace Mi_mercadito
             // lblProdMarc
             // 
             this.lblProdMarc.AutoSize = true;
-            this.lblProdMarc.Location = new System.Drawing.Point(649, 304);
+            this.lblProdMarc.Location = new System.Drawing.Point(645, 326);
             this.lblProdMarc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdMarc.Name = "lblProdMarc";
             this.lblProdMarc.Size = new System.Drawing.Size(61, 23);
@@ -618,7 +618,7 @@ namespace Mi_mercadito
             // lblProdDpto
             // 
             this.lblProdDpto.AutoSize = true;
-            this.lblProdDpto.Location = new System.Drawing.Point(617, 370);
+            this.lblProdDpto.Location = new System.Drawing.Point(610, 396);
             this.lblProdDpto.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdDpto.Name = "lblProdDpto";
             this.lblProdDpto.Size = new System.Drawing.Size(124, 23);
@@ -628,7 +628,7 @@ namespace Mi_mercadito
             // lblProdSuc
             // 
             this.lblProdSuc.AutoSize = true;
-            this.lblProdSuc.Location = new System.Drawing.Point(630, 578);
+            this.lblProdSuc.Location = new System.Drawing.Point(630, 581);
             this.lblProdSuc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdSuc.Name = "lblProdSuc";
             this.lblProdSuc.Size = new System.Drawing.Size(76, 23);
@@ -737,11 +737,11 @@ namespace Mi_mercadito
             // lblnomList
             // 
             this.lblnomList.AutoSize = true;
-            this.lblnomList.Font = new System.Drawing.Font("Baskerville Old Face", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnomList.Font = new System.Drawing.Font("Baskerville Old Face", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblnomList.Location = new System.Drawing.Point(4, 104);
             this.lblnomList.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblnomList.Name = "lblnomList";
-            this.lblnomList.Size = new System.Drawing.Size(104, 31);
+            this.lblnomList.Size = new System.Drawing.Size(76, 23);
             this.lblnomList.TabIndex = 33;
             this.lblnomList.Text = "Mi Lista";
             this.lblnomList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -775,7 +775,7 @@ namespace Mi_mercadito
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(604, 392);
+            this.pictureBox1.Location = new System.Drawing.Point(603, 423);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(131, 116);
