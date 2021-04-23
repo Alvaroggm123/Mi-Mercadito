@@ -46,9 +46,13 @@ namespace Mi_mercadito
             // 
             // cmdAccept
             // 
-            this.cmdAccept.Location = new System.Drawing.Point(92, 223);
+            this.cmdAccept.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.cmdAccept.FlatAppearance.BorderSize = 2;
+            this.cmdAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdAccept.Location = new System.Drawing.Point(120, 240);
+            this.cmdAccept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmdAccept.Name = "cmdAccept";
-            this.cmdAccept.Size = new System.Drawing.Size(123, 23);
+            this.cmdAccept.Size = new System.Drawing.Size(164, 23);
             this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Terminar registro";
             this.cmdAccept.UseVisualStyleBackColor = true;
@@ -56,51 +60,57 @@ namespace Mi_mercadito
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(9, 33);
+            this.lblUsername.Location = new System.Drawing.Point(12, 33);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(99, 13);
+            this.lblUsername.Size = new System.Drawing.Size(130, 13);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Nombre de usuario:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(114, 30);
+            this.txtUsername.Location = new System.Drawing.Point(152, 30);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.ReadOnly = true;
-            this.txtUsername.Size = new System.Drawing.Size(154, 20);
+            this.txtUsername.Size = new System.Drawing.Size(204, 21);
             this.txtUsername.TabIndex = 1;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(59, 56);
+            this.txtName.Location = new System.Drawing.Point(79, 56);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtName.Name = "txtName";
             this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(209, 20);
+            this.txtName.Size = new System.Drawing.Size(277, 21);
             this.txtName.TabIndex = 3;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(9, 59);
+            this.lblName.Location = new System.Drawing.Point(12, 59);
+            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(44, 13);
+            this.lblName.Size = new System.Drawing.Size(54, 13);
             this.lblName.TabIndex = 2;
             this.lblName.Text = "Nombre";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(111, 82);
+            this.txtEmail.Location = new System.Drawing.Point(148, 82);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(157, 20);
+            this.txtEmail.Size = new System.Drawing.Size(208, 21);
             this.txtEmail.TabIndex = 5;
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(9, 85);
+            this.lblEmail.Location = new System.Drawing.Point(12, 85);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(96, 13);
+            this.lblEmail.Size = new System.Drawing.Size(141, 13);
             this.lblEmail.TabIndex = 4;
             this.lblEmail.Text = "Correo electrónico:";
             // 
@@ -108,7 +118,8 @@ namespace Mi_mercadito
             // 
             this.lblDialogo.AutoSize = true;
             this.lblDialogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDialogo.Location = new System.Drawing.Point(76, 9);
+            this.lblDialogo.Location = new System.Drawing.Point(101, 9);
+            this.lblDialogo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDialogo.Name = "lblDialogo";
             this.lblDialogo.Size = new System.Drawing.Size(256, 60);
             this.lblDialogo.TabIndex = 0;
@@ -123,9 +134,11 @@ namespace Mi_mercadito
             this.grpbDatos.Controls.Add(this.lblName);
             this.grpbDatos.Controls.Add(this.txtEmail);
             this.grpbDatos.Controls.Add(this.lblEmail);
-            this.grpbDatos.Location = new System.Drawing.Point(12, 96);
+            this.grpbDatos.Location = new System.Drawing.Point(13, 113);
+            this.grpbDatos.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.grpbDatos.Name = "grpbDatos";
-            this.grpbDatos.Size = new System.Drawing.Size(290, 121);
+            this.grpbDatos.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.grpbDatos.Size = new System.Drawing.Size(387, 121);
             this.grpbDatos.TabIndex = 1;
             this.grpbDatos.TabStop = false;
             this.grpbDatos.Text = "Datos registrados";
@@ -135,23 +148,26 @@ namespace Mi_mercadito
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(-6, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(-8, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(94, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(125, 79);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // FrmDespliegue
             // 
             this.AcceptButton = this.cmdAccept;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(324, 272);
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(432, 272);
             this.Controls.Add(this.cmdAccept);
             this.Controls.Add(this.lblDialogo);
             this.Controls.Add(this.grpbDatos);
             this.Controls.Add(this.pictureBox1);
+            this.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FrmDespliegue";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Datos registrados correctamente";
