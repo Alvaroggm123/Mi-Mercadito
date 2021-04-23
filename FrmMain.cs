@@ -19,7 +19,7 @@ namespace Mi_mercadito
     public partial class FrmMain : Form
     {
         // ==================== || INICIO Variables || ==================== //
-             
+
         // ==================== || FIN Variables || ==================== //
 
         // ==================== || INICIO Métodos || ==================== //
@@ -48,67 +48,49 @@ namespace Mi_mercadito
                     break;
                 default:
                     lblName.Text = "Hola " + Consulta[1];
-                    break;               
+                    break;
             }
         }
-        
-        public void Autocompletar()
-        {
-           
-            // Método autocompletar txtNombreProduc.
-            string Consulta = (@"SELECT * FROM Producto ;"); // Se consulta la BD en la tabla Producto.
-            using (SqlConnection Conn = ConnectionDB.StartConn())
-            {
-                DataTable Datos = new DataTable(); // Se obtienen los datos de la tabla.
-                AutoCompleteStringCollection lista = new AutoCompleteStringCollection(); // Se crea  el objeto [Lista] en base a la clase que general el autocompletar.
-                SqlDataAdapter adaptador = new SqlDataAdapter(Consulta, Conn);
-                adaptador.Fill(Datos); // Rellena los datos en base a los que se encuentran en la tabla Producto de la BD.
-                // Ciclo for donde va leyendo fila por fila los datos que se relacionan con la tabla Producto.
-                for (int i = 0; i < Datos.Rows.Count; i++)
-                {
-                    lista.Add(Datos.Rows[i]["prodName"].ToString()); // Se añaden los datos de la columna [prodName] y los pasa a tipo string.
-                }
-                txtNombreProduc.AutoCompleteCustomSource = lista; // Se autocompleta el textbox aplicando la propiedad [autocomplete] realizando la lectura de la lista.
-            }
-        }
-        public void AutoCompletarMarca() 
+
+        public void AutocompletarTxt(string Consulta, TextBox Elemento)
         {
             // Método autocompletar txtProdMarc
-            string Consulta = (@"SELECT * FROM Marca ;");
+            string Command = (@"SELECT * FROM " + Consulta + " ;");
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 DataTable Datos = new DataTable();
                 AutoCompleteStringCollection lista = new AutoCompleteStringCollection();
-                SqlDataAdapter adaptador = new SqlDataAdapter(Consulta, Conn);
-                adaptador.Fill(Datos);
+                SqlDataAdapter Adapter = new SqlDataAdapter(Command, Conn);
+                Adapter.Fill(Datos);
 
                 for (int i = 0; i < Datos.Rows.Count; i++)
                 {
-                    lista.Add(Datos.Rows[i]["marcName"].ToString());
+                    lista.Add(Datos.Rows[i][1].ToString());
                 }
-                txtProdMarc.AutoCompleteCustomSource = lista;
+                if (Elemento is TextBox)
+                    Elemento.AutoCompleteCustomSource = lista;
             }
         }
-
-        public void AutoCompletarDpto() 
+        public void AutocompletarTxt(string Consulta, TextBox Elemento, int Columna)
         {
-            // Método autocompletar txtProdDpto.
-            string Consulta = (@"SELECT * FROM Departamento ;");
+            // Método autocompletar txtProdMarc
+            string Command = (@"SELECT * FROM " + Consulta + " ;");
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 DataTable Datos = new DataTable();
                 AutoCompleteStringCollection lista = new AutoCompleteStringCollection();
-                SqlDataAdapter adaptador = new SqlDataAdapter(Consulta, Conn);
-                adaptador.Fill(Datos);
+                SqlDataAdapter Adapter = new SqlDataAdapter(Command, Conn);
+                Adapter.Fill(Datos);
 
                 for (int i = 0; i < Datos.Rows.Count; i++)
                 {
-                    lista.Add(Datos.Rows[i]["dptoName"].ToString());
+                    lista.Add(Datos.Rows[i][Columna].ToString());
                 }
-                txtProdDpto.AutoCompleteCustomSource = lista;
+                if (Elemento is TextBox)
+                    Elemento.AutoCompleteCustomSource = lista;
             }
         }
-        
+
         public bool Bloqueo(string txtblockmarc)
         {
             // Función Bloqueo() que me indica cuando puedo modificar ciertos textbox dependiendo
@@ -151,9 +133,11 @@ namespace Mi_mercadito
         {
             Sucursal sucursal = new Sucursal();
             sucursal.ConsultaSuc(cboxSucursal);
-            Autocompletar();
-            AutoCompletarMarca();
-            AutoCompletarDpto();
+            //Autocompletar();
+            AutocompletarTxt("Marca", txtProdMarc);
+            AutocompletarTxt("Producto", txtNombreProduc);
+            AutocompletarTxt("Departamento", txtProdDpto);
+            //AutoCompletarDpto();
             // Condicional donde si el picturebox no cuenta con una imagen dentro, mandará a enviar el logo de Mi mercadito.
             if (pboxCamara.Image == null)
             {
@@ -191,7 +175,7 @@ namespace Mi_mercadito
 
         private void cmdAdd_Click(object sender, EventArgs e)
         {
-            string IdMarca="", IdDepartamento="", IdSuc="";
+            string IdMarca = "", IdDepartamento = "", IdSuc = "";
             Marca Marc = new Marca();
             if (!Marc.ValidarMarc(txtProdMarc.Text))
             {
@@ -306,7 +290,7 @@ namespace Mi_mercadito
             pbxmin2.Visible = false;
         }
 
-        
+
         private void iniciarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Cerrar ventana.
@@ -323,41 +307,10 @@ namespace Mi_mercadito
             if (cargarImg.ShowDialog() == DialogResult.OK) pboxCamara.Load(cargarImg.FileName);
         }
 
-        private void txtNombreProduc_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Tab)
-            {
-                //string[] arreglo = new string[7];
-                //Producto datos = new Producto();
-                //arreglo = datos.RellenarProduc(txtNombreProduc.Text);
-                //txtProdPrecio.Text = arreglo[1];
-                //txtProdContNet.Text = arreglo[2];
-                //txtProdDesc.Text = arreglo[3];
-                //txtProdMarc.Text = arreglo[4];
-                //txtProdDpto.Text = arreglo[5];
-                //txtProdSuc.Text = arreglo[6];
-                //// Muestra la imágen del producto que esta almacenada en la base de datos
-                //datos.Imagen(ref pbox_Camara, txtNombreProduc.Text);
-                //// Hace que al presionar el TAB se modifique el combobox de la sucursal en base al del producto.
-                //cboxSucursal.Text = txtProdSuc.Text;
-
-                //if (txtNombreProduc.Text == "" || txtNombreProduc.Text == null)
-                {
-                    // MessageBox que obliga al usuario registrar un producto al usuario para que no rompa el programa al querer usar el TAB
-                    //MessageBox.Show("Ingrese primero un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //return;
-                }
-                //else
-                {
-                    //txtProdPrecio.Focus();
-                }
-            }
-        }
-
         private void cmdCar_Click(object sender, EventArgs e)
         {
             // Variables para guardar ids
-            string IdCarrito="", IdProducto="", IdSuc="",IdMarca="",IdDepartamento="" ;
+            string IdCarrito = "", IdProducto = "", IdSuc = "", IdMarca = "", IdDepartamento = "";
 
             //  Validación de Carro, existencia de usuario, obtención de IdCarrito, IdSuc, IdMarca,
             //  IdDepartamento y IdProducto, y inserción de datos en tabla MisProductos
@@ -369,7 +322,7 @@ namespace Mi_mercadito
 
             Sucursal Sucursal = new Sucursal();
             IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPais.Text, txtCiudad.Text, txtDireccion.Text);
-            
+
             Marca Marc = new Marca();
             if (!Marc.ValidarMarc(txtProdMarc.Text))
             {
@@ -426,9 +379,9 @@ namespace Mi_mercadito
         {
             try
             {
-                string[] arreglo = new string[7];
                 Producto datos = new Producto();
-                arreglo = datos.RellenarProduc(txtNombreProduc.Text);
+                string[] arreglo = datos.RellenarProduc(txtNombreProduc.Text);
+
                 txtProdPrecio.Text = arreglo[1];
                 txtProdContNet.Text = arreglo[2];
                 txtProdDesc.Text = arreglo[3];
@@ -470,7 +423,7 @@ namespace Mi_mercadito
 
             // Mover la foto.
             pboxCamara.Size = new Size(359, 329);
-            pboxCamara.Location = new Point(28,95);
+            pboxCamara.Location = new Point(28, 95);
         }
 
         private void cmdSlide2_Click(object sender, EventArgs e)
@@ -482,11 +435,6 @@ namespace Mi_mercadito
             // Mover la foto.
             pboxCamara.Size = new Size(231, 329);
             pboxCamara.Location = new Point(158, 96);
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-
         }
         // ==================== || FIN Eventos || ==================== //
     }

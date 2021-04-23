@@ -391,7 +391,6 @@ namespace Mi_mercadito
             this.lblName.Size = new System.Drawing.Size(202, 27);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Nombre de Usuario";
-            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // grpbSucursal
             // 
@@ -500,7 +499,6 @@ namespace Mi_mercadito
             this.txtNombreProduc.Size = new System.Drawing.Size(161, 26);
             this.txtNombreProduc.TabIndex = 4;
             this.txtNombreProduc.TextChanged += new System.EventHandler(this.txtNombreProduc_TextChanged);
-            this.txtNombreProduc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProduc_KeyDown);
             this.txtNombreProduc.Leave += new System.EventHandler(this.txtNombreProduc_Leave);
             // 
             // txtProdPrecio
@@ -778,7 +776,7 @@ namespace Mi_mercadito
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(604, 392);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(131, 116);
             this.pictureBox1.TabIndex = 34;
@@ -789,7 +787,7 @@ namespace Mi_mercadito
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(774, 888);
+            this.ClientSize = new System.Drawing.Size(774, 881);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdSlide);
             this.Controls.Add(this.lblnomList);
