@@ -439,8 +439,7 @@ namespace Mi_mercadito
                 lviewProducto.Items.Add(Datos.ToString());
                 txtTotalCompra.Text = "Total: $";
                 txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio());
-                MessageBox.Show("Producto agregado al carrito correctamente", "Producto agregado", MessageBoxButtons.OK);
-             
+                      
             }
         }
 
