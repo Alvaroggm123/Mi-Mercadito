@@ -114,8 +114,8 @@ namespace Mi_mercadito
 
         public string RellenarLista(string listadatos)
         {
-            string Salida = "";
-            string Consulta = @"SELECT DISTINCT prodName AS 'Producto' FROM MisProductos,Producto, MiCarrito WHERE mprodCar = '" + listadatos + "' AND mprodProd = prodId;";
+            string Salida = "", Salida2 = "", Salida3="";
+            string Consulta = @"SELECT DISTINCT prodName AS 'Producto', prodPrice AS 'prodPrice' FROM MisProductos,Producto, MiCarrito WHERE mprodCar = '" + listadatos + "' AND mprodProd = prodId;";
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 SqlCommand cmd = new SqlCommand(Consulta, Conn);
@@ -125,13 +125,45 @@ namespace Mi_mercadito
                 while (Leer.Read())
                 {
                     Salida = Leer["Producto"].ToString();
-                    lboxListaMercado.Items.Add(Salida);
+                    ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
+                    Producto.SubItems.Add("1");
+                    Salida3 = Leer["prodPrice"].ToString();
+                    Producto.SubItems.Add(Salida3);
+                    lviewProducto.Items.Add(Producto);
                 }
                 return "";
-
             }
         }
+        void AutocompletarFormulario(string Producto) 
+        {
+            // Método que autocompleta los campos del Frm Main
+            Producto datos = new Producto();            
+            string[] arreglo = datos.RellenarProduc(Producto);
+            txtNombreProduc.Text = arreglo[0];
+            txtProdPrecio.Text = arreglo[1];
+            txtProdContNet.Text = arreglo[2];
+            txtProdDesc.Text = arreglo[3];
+            txtProdMarc.Text = arreglo[4];
+            txtProdDpto.Text = arreglo[5];
+            txtProdSuc.Text = arreglo[6];
+            datos.Imagen(ref pboxCamara, txtNombreProduc.Text); // Muestra la imagen del producto que esta almacenada en la base de datos.
+            cboxSucursal.Text = txtProdSuc.Text;
+        }
 
+        public string SumaPrecio() 
+        {
+            // Función SumaPrecio que realiza un ciclo for con el cual lee los elementos del [lviewProducto] en base a la columna Precio.
+            string SumPrecio = "";
+            double Suma = 0;
+            for (int i = 0; i < lviewProducto.Items.Count; i++)
+            {
+                if (lviewProducto.Items[i].SubItems[0].Text != "")
+                {
+                    Suma += double.Parse(lviewProducto.Items[i].SubItems[2].Text); // Realiza la suma de los datos de la columan Precio.
+                }
+            }
+            return SumPrecio = Suma.ToString(); // Retorna el valor de la suma total.
+        }
         // ==================== || FIN Métodos || ==================== //
 
         // ==================== || INICIO Eventos || ==================== //
@@ -140,18 +172,15 @@ namespace Mi_mercadito
         {
             Sucursal sucursal = new Sucursal();
             sucursal.ConsultaSuc(cboxSucursal);
-            //Autocompletar();
             AutocompletarTxt("Marca", txtProdMarc);
             AutocompletarTxt("Producto", txtNombreProduc);
             AutocompletarTxt("Departamento", txtProdDpto);
-            //AutoCompletarDpto();
             // Condicional donde si el picturebox no cuenta con una imagen dentro, mandará a enviar el logo de Mi mercadito.
             if (pboxCamara.Image == null)
             {
                 pboxCamara.Image = Mi_mercadito.Properties.Resources.logomiMercadito;
             }
             string IdCarrito = "", NameList, Datos = "";
-
             Carrito Carro = new Carrito();
             if (!Carro.ValidarList(DatosUsr[0]))
             {
@@ -159,8 +188,9 @@ namespace Mi_mercadito
                 NameList = Carro.ConsultNameList(IdCarrito);
                 lblnomList.Text = NameList;
                 Datos = RellenarLista(IdCarrito);
-                lboxListaMercado.Items.Add(Datos.ToString());
+                lviewProducto.Items.Add(Datos.ToString());
             }
+            txtTotalCompra.Text = string.Concat(txtTotalCompra.Text," "+ SumaPrecio()); // Se manda llamar a la función [SumaPrecio].
         }
 
         private void cmdFoto_Click(object sender, EventArgs e)
@@ -291,12 +321,10 @@ namespace Mi_mercadito
             // Efectos del botón min.
             pbxmin.BackColor = Color.PaleTurquoise;
         }
-
         private void pbxmin2_MouseLeave(object sender, EventArgs e)
         {
             pbxmin2.Visible = false;
         }
-
 
         private void iniciarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -338,7 +366,6 @@ namespace Mi_mercadito
                 if (!Marc.ValidarMarc(txtProdMarc.Text))
                 {
                     IdMarca = Marc.ConsultId(txtProdMarc.Text);
-                    lboxListaMercado.Items.ToString();
                 }
                 else
                 {
@@ -361,27 +388,30 @@ namespace Mi_mercadito
                 MisProductos MiProd = new MisProductos();
                 MiProd.InsertarMisProductos(IdCarrito, IdProducto);
 
+                int Contador = 0;
                 if (!Bloqueo(txtNombreProduc.Text))
                 {
-                    int id = 1;
-                    string listaprod = Convert.ToString(id);
-                    // Condicional que indica que si el método [Bloqueo] es igual tanto el parámetro [txtNombreProduc.Text] al ["prodName"].
-                    if (lboxListaMercado.Items.ToString() != txtNombreProduc.Text.ToString())
+                    // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado].
+                    string Salida = txtNombreProduc.Text.ToString();
+                    ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
+                    for (int i = 0; i < lviewProducto.Items.Count; i++)
                     {
-                        lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString()); // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado]. 
-
+                        if (lviewProducto.Items[i].SubItems[0].Text == txtNombreProduc.Text)
+                        {
+                            Contador = int.Parse(lviewProducto.Items[i].SubItems[1].Text); // Realiza la suma de los datos de la columan Precio.
+                            Contador++;
+                        }
                     }
-                    else if (lboxListaMercado.Items.ToString() == txtNombreProduc.Text.ToString())
-                    {
-                        //int i = 0;
-                        //foreach (var item in i.ToString())
-                        //{
-                        //    lboxListaMercado.Items.Add(txtNombreProduc.Text.ToString());
-                        //}
-                    }
+                    Producto.SubItems.Add("1").Text = Contador.ToString();
+                    string Salida3 = txtProdPrecio.Text.ToString();
+                    Producto.SubItems.Add(Salida3);
+                    lviewProducto.Items.Add(Producto);
                 }
                 else
                     MessageBox.Show("Ingrese un Producto", "Error Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                txtTotalCompra.Text = "Total: $";
+                txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio());
 
                 MessageBox.Show("Producto agregado al carrito correctamente", "Producto agregado", MessageBoxButtons.OK);
             }
@@ -391,17 +421,7 @@ namespace Mi_mercadito
         {
             try
             {
-                Producto datos = new Producto();
-                string[] arreglo = datos.RellenarProduc(txtNombreProduc.Text);
-
-                txtProdPrecio.Text = arreglo[1];
-                txtProdContNet.Text = arreglo[2];
-                txtProdDesc.Text = arreglo[3];
-                txtProdMarc.Text = arreglo[4];
-                txtProdDpto.Text = arreglo[5];
-                txtProdSuc.Text = arreglo[6];
-                datos.Imagen(ref pboxCamara, txtNombreProduc.Text); // Muestra la imagen del producto que esta almacenada en la base de datos.
-                cboxSucursal.Text = txtProdSuc.Text; // Hace que al presionar [TAB] se modifique el combobox de la sucursal en base a la del producto.
+                AutocompletarFormulario(txtNombreProduc.Text); // Se manda llamar al Método que se rellena desde el [txtNombreProduc]. 
             }
             catch (Exception)
             {
@@ -430,8 +450,9 @@ namespace Mi_mercadito
         private void cmdSlide_Click(object sender, EventArgs e)
         {
             // Ocultar la lista.
-            lboxListaMercado.Visible = false;
+            lviewProducto.Visible = false;
             cmdSlide.Visible = false;
+            txtTotalCompra.Visible = false;
 
             // Mover la foto.
             pboxCamara.Size = new Size(pboxCamara.Width + 195, pboxCamara.Height);
@@ -447,13 +468,18 @@ namespace Mi_mercadito
             // Mover el txtProdDesc
             txtProdDesc.Size = new Size(txtProdDesc.Width + 85, txtProdDesc.Height);
             txtProdDesc.Location = new Point(txtProdDesc.Location.X - 85, txtProdDesc.Location.Y);
+
+            // Mover el txtTotalCompra.
+            txtTotalCompra.Size = new Size(txtTotalCompra.Width + 85, txtTotalCompra.Height);
+            txtTotalCompra.Location = new Point(txtTotalCompra.Location.X - 85, txtTotalCompra.Location.Y);
         }
 
         private void cmdSlide2_Click(object sender, EventArgs e)
         {
             // Mostrar la lista.
-            lboxListaMercado.Visible = true;
+            lviewProducto.Visible = true;
             cmdSlide.Visible = true;
+            txtTotalCompra.Visible = true;
 
             // Mover la foto.
             pboxCamara.Size = new Size(pboxCamara.Width - 195, pboxCamara.Height);
@@ -469,6 +495,21 @@ namespace Mi_mercadito
             // Mover el txtProdDesc
             txtProdDesc.Size = new Size(txtProdDesc.Width - 85, txtProdDesc.Height);
             txtProdDesc.Location = new Point(txtProdDesc.Location.X + 85, txtProdDesc.Location.Y);
+
+            // Mover el txtTotalCompra
+            txtTotalCompra.Size = new Size(txtTotalCompra.Width - 85, txtTotalCompra.Height);
+            txtTotalCompra.Location = new Point(txtTotalCompra.Location.X + 85, txtTotalCompra.Location.Y);
+        }
+        private void lviewProducto_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Producto datos = new Producto();
+            for (int i = 0; i < lviewProducto.Items.Count; i++)
+            {
+                if (lviewProducto.Items[i].Selected)
+                {
+                    AutocompletarFormulario(lviewProducto.Items[i].SubItems[0].Text); // Se manda llamar al Método que se rellena desde el [lviewProducto].
+                }
+            }
         }
         // ==================== || FIN Eventos || ==================== //
     }

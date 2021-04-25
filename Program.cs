@@ -331,8 +331,6 @@ namespace Mi_mercadito
                 return Salida;
             }
         }
-
-
     }
     class Marca
     {
@@ -481,16 +479,34 @@ namespace Mi_mercadito
         {
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
-                SqlCommand Comando = new SqlCommand("INSERT INTO MisProductos VALUES (@mprodCar,@mprodProd)", Conn);
+                SqlCommand Comando = new SqlCommand("INSERT INTO MisProductos VALUES (@mprodCar,@mprodProd, @mprodCantidad)", Conn);
                 Comando.Parameters.Add("@mprodCar", SqlDbType.NVarChar);
                 Comando.Parameters.Add("@mprodProd", SqlDbType.NVarChar);
+                Comando.Parameters.Add("@mprodCantidad", SqlDbType.Int);
 
                 Comando.Parameters["@mprodCar"].Value = IdCarro;
                 Comando.Parameters["@mprodProd"].Value = IdProd;
-
+                Comando.Parameters["@mprodCantidad"].Value = 1;
+                
                 return Comando.ExecuteNonQuery();
             }
         }
+
+        public bool ValidarContador(string IdCarro, string IdProd) 
+        {
+            string Consulta = @"SELECT COUNT(*) FROM MisProductos WHERE mprodCar = @mprodCar AND mrpodProd=@mprodProd ;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@mprodCar", IdCarro);
+                cmd.Parameters.AddWithValue("@mprodProd",IdProd);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
+
     }
+
+
 
 }

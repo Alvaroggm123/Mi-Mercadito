@@ -59,7 +59,6 @@ namespace Mi_mercadito
             this.bebésYNiñosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bellezaEHigieneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lboxListaMercado = new System.Windows.Forms.ListBox();
             this.cmdSlide = new System.Windows.Forms.Button();
             this.pboxCamara = new System.Windows.Forms.PictureBox();
             this.cmdFoto = new System.Windows.Forms.Button();
@@ -98,6 +97,11 @@ namespace Mi_mercadito
             this.cmdSlide2 = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lviewProducto = new System.Windows.Forms.ListView();
+            this.Producto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Cantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Precio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtTotalCompra = new System.Windows.Forms.TextBox();
             this.msMiMercadito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCamara)).BeginInit();
             this.grpbSucursal.SuspendLayout();
@@ -118,7 +122,7 @@ namespace Mi_mercadito
             this.lblMiMercadito.Location = new System.Drawing.Point(49, 44);
             this.lblMiMercadito.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMiMercadito.Name = "lblMiMercadito";
-            this.lblMiMercadito.Size = new System.Drawing.Size(209, 37);
+            this.lblMiMercadito.Size = new System.Drawing.Size(165, 27);
             this.lblMiMercadito.TabIndex = 0;
             this.lblMiMercadito.Text = "Mi Mercadito";
             // 
@@ -127,7 +131,7 @@ namespace Mi_mercadito
             this.txtBuscador.Location = new System.Drawing.Point(238, 45);
             this.txtBuscador.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtBuscador.Name = "txtBuscador";
-            this.txtBuscador.Size = new System.Drawing.Size(347, 30);
+            this.txtBuscador.Size = new System.Drawing.Size(347, 26);
             this.txtBuscador.TabIndex = 1;
             // 
             // msMiMercadito
@@ -140,7 +144,7 @@ namespace Mi_mercadito
             this.msMiMercadito.Location = new System.Drawing.Point(0, 37);
             this.msMiMercadito.Name = "msMiMercadito";
             this.msMiMercadito.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.msMiMercadito.Size = new System.Drawing.Size(774, 44);
+            this.msMiMercadito.Size = new System.Drawing.Size(774, 36);
             this.msMiMercadito.TabIndex = 2;
             this.msMiMercadito.Text = "X";
             // 
@@ -155,7 +159,7 @@ namespace Mi_mercadito
             this.menuMiMercadito.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuMiMercadito.ForeColor = System.Drawing.Color.Gray;
             this.menuMiMercadito.Name = "menuMiMercadito";
-            this.menuMiMercadito.Size = new System.Drawing.Size(102, 40);
+            this.menuMiMercadito.Size = new System.Drawing.Size(82, 32);
             this.menuMiMercadito.Text = "Menú";
             // 
             // miCuentaToolStripMenuItem
@@ -164,19 +168,19 @@ namespace Mi_mercadito
             this.crearCuentaToolStripMenuItem,
             this.iniciarSesiónToolStripMenuItem});
             this.miCuentaToolStripMenuItem.Name = "miCuentaToolStripMenuItem";
-            this.miCuentaToolStripMenuItem.Size = new System.Drawing.Size(304, 40);
+            this.miCuentaToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.miCuentaToolStripMenuItem.Text = "Mi cuenta";
             // 
             // crearCuentaToolStripMenuItem
             // 
             this.crearCuentaToolStripMenuItem.Name = "crearCuentaToolStripMenuItem";
-            this.crearCuentaToolStripMenuItem.Size = new System.Drawing.Size(275, 40);
+            this.crearCuentaToolStripMenuItem.Size = new System.Drawing.Size(222, 32);
             this.crearCuentaToolStripMenuItem.Text = "Crear cuenta";
             // 
             // iniciarSesiónToolStripMenuItem
             // 
             this.iniciarSesiónToolStripMenuItem.Name = "iniciarSesiónToolStripMenuItem";
-            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(275, 40);
+            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(222, 32);
             this.iniciarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.iniciarSesiónToolStripMenuItem.Click += new System.EventHandler(this.iniciarSesiónToolStripMenuItem_Click);
             // 
@@ -188,13 +192,13 @@ namespace Mi_mercadito
             this.verListaDeComprasToolStripMenuItem,
             this.productosFavoritosToolStripMenuItem});
             this.miCarritoToolStripMenuItem.Name = "miCarritoToolStripMenuItem";
-            this.miCarritoToolStripMenuItem.Size = new System.Drawing.Size(304, 40);
+            this.miCarritoToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.miCarritoToolStripMenuItem.Text = "Mi carrito";
             // 
             // crearListaDeComprasToolStripMenuItem
             // 
             this.crearListaDeComprasToolStripMenuItem.Name = "crearListaDeComprasToolStripMenuItem";
-            this.crearListaDeComprasToolStripMenuItem.Size = new System.Drawing.Size(404, 40);
+            this.crearListaDeComprasToolStripMenuItem.Size = new System.Drawing.Size(324, 32);
             this.crearListaDeComprasToolStripMenuItem.Text = "Crear Lista de Compras";
             // 
             // registroDeComprasToolStripMenuItem
@@ -205,43 +209,43 @@ namespace Mi_mercadito
             this.mensualToolStripMenuItem,
             this.verCalendarioToolStripMenuItem});
             this.registroDeComprasToolStripMenuItem.Name = "registroDeComprasToolStripMenuItem";
-            this.registroDeComprasToolStripMenuItem.Size = new System.Drawing.Size(404, 40);
+            this.registroDeComprasToolStripMenuItem.Size = new System.Drawing.Size(324, 32);
             this.registroDeComprasToolStripMenuItem.Text = "Registro de Compras";
             // 
             // diarioToolStripMenuItem
             // 
             this.diarioToolStripMenuItem.Name = "diarioToolStripMenuItem";
-            this.diarioToolStripMenuItem.Size = new System.Drawing.Size(294, 40);
+            this.diarioToolStripMenuItem.Size = new System.Drawing.Size(236, 32);
             this.diarioToolStripMenuItem.Text = "Diario";
             // 
             // semanalToolStripMenuItem
             // 
             this.semanalToolStripMenuItem.Name = "semanalToolStripMenuItem";
-            this.semanalToolStripMenuItem.Size = new System.Drawing.Size(294, 40);
+            this.semanalToolStripMenuItem.Size = new System.Drawing.Size(236, 32);
             this.semanalToolStripMenuItem.Text = "Semanal";
             // 
             // mensualToolStripMenuItem
             // 
             this.mensualToolStripMenuItem.Name = "mensualToolStripMenuItem";
-            this.mensualToolStripMenuItem.Size = new System.Drawing.Size(294, 40);
+            this.mensualToolStripMenuItem.Size = new System.Drawing.Size(236, 32);
             this.mensualToolStripMenuItem.Text = "Mensual";
             // 
             // verCalendarioToolStripMenuItem
             // 
             this.verCalendarioToolStripMenuItem.Name = "verCalendarioToolStripMenuItem";
-            this.verCalendarioToolStripMenuItem.Size = new System.Drawing.Size(294, 40);
+            this.verCalendarioToolStripMenuItem.Size = new System.Drawing.Size(236, 32);
             this.verCalendarioToolStripMenuItem.Text = "Ver Calendario";
             // 
             // verListaDeComprasToolStripMenuItem
             // 
             this.verListaDeComprasToolStripMenuItem.Name = "verListaDeComprasToolStripMenuItem";
-            this.verListaDeComprasToolStripMenuItem.Size = new System.Drawing.Size(404, 40);
+            this.verListaDeComprasToolStripMenuItem.Size = new System.Drawing.Size(324, 32);
             this.verListaDeComprasToolStripMenuItem.Text = "Ver Lista de Compras";
             // 
             // productosFavoritosToolStripMenuItem
             // 
             this.productosFavoritosToolStripMenuItem.Name = "productosFavoritosToolStripMenuItem";
-            this.productosFavoritosToolStripMenuItem.Size = new System.Drawing.Size(404, 40);
+            this.productosFavoritosToolStripMenuItem.Size = new System.Drawing.Size(324, 32);
             this.productosFavoritosToolStripMenuItem.Text = "Productos Favoritos";
             // 
             // departamentosToolStripMenuItem
@@ -259,90 +263,80 @@ namespace Mi_mercadito
             this.bebésYNiñosToolStripMenuItem,
             this.bellezaEHigieneToolStripMenuItem});
             this.departamentosToolStripMenuItem.Name = "departamentosToolStripMenuItem";
-            this.departamentosToolStripMenuItem.Size = new System.Drawing.Size(304, 40);
+            this.departamentosToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.departamentosToolStripMenuItem.Text = "Departamentos";
             // 
             // despensaToolStripMenuItem
             // 
             this.despensaToolStripMenuItem.Name = "despensaToolStripMenuItem";
-            this.despensaToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.despensaToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.despensaToolStripMenuItem.Text = "Despensa";
             // 
             // lácteosToolStripMenuItem
             // 
             this.lácteosToolStripMenuItem.Name = "lácteosToolStripMenuItem";
-            this.lácteosToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.lácteosToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.lácteosToolStripMenuItem.Text = "Lácteos";
             // 
             // frutasYVerdurasToolStripMenuItem
             // 
             this.frutasYVerdurasToolStripMenuItem.Name = "frutasYVerdurasToolStripMenuItem";
-            this.frutasYVerdurasToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.frutasYVerdurasToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.frutasYVerdurasToolStripMenuItem.Text = "Frutas y Verduras";
             // 
             // carnesYMariscosToolStripMenuItem
             // 
             this.carnesYMariscosToolStripMenuItem.Name = "carnesYMariscosToolStripMenuItem";
-            this.carnesYMariscosToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.carnesYMariscosToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.carnesYMariscosToolStripMenuItem.Text = "Carnes y Mariscos";
             // 
             // panaderíaToolStripMenuItem
             // 
             this.panaderíaToolStripMenuItem.Name = "panaderíaToolStripMenuItem";
-            this.panaderíaToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.panaderíaToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.panaderíaToolStripMenuItem.Text = "Panadería";
             // 
             // bebidasToolStripMenuItem
             // 
             this.bebidasToolStripMenuItem.Name = "bebidasToolStripMenuItem";
-            this.bebidasToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.bebidasToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.bebidasToolStripMenuItem.Text = "Bebidas";
             // 
             // artículosParaElHogarToolStripMenuItem
             // 
             this.artículosParaElHogarToolStripMenuItem.Name = "artículosParaElHogarToolStripMenuItem";
-            this.artículosParaElHogarToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.artículosParaElHogarToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.artículosParaElHogarToolStripMenuItem.Text = "Artículos para el Hogar";
             // 
             // limpiezaToolStripMenuItem
             // 
             this.limpiezaToolStripMenuItem.Name = "limpiezaToolStripMenuItem";
-            this.limpiezaToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.limpiezaToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.limpiezaToolStripMenuItem.Text = "Limpieza";
             // 
             // mascotasToolStripMenuItem
             // 
             this.mascotasToolStripMenuItem.Name = "mascotasToolStripMenuItem";
-            this.mascotasToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.mascotasToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.mascotasToolStripMenuItem.Text = "Mascotas";
             // 
             // bebésYNiñosToolStripMenuItem
             // 
             this.bebésYNiñosToolStripMenuItem.Name = "bebésYNiñosToolStripMenuItem";
-            this.bebésYNiñosToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.bebésYNiñosToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.bebésYNiñosToolStripMenuItem.Text = "Bebés y Niños";
             // 
             // bellezaEHigieneToolStripMenuItem
             // 
             this.bellezaEHigieneToolStripMenuItem.Name = "bellezaEHigieneToolStripMenuItem";
-            this.bellezaEHigieneToolStripMenuItem.Size = new System.Drawing.Size(401, 40);
+            this.bellezaEHigieneToolStripMenuItem.Size = new System.Drawing.Size(322, 32);
             this.bellezaEHigieneToolStripMenuItem.Text = "Belleza e Higiene";
             // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(304, 40);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(243, 32);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // lboxListaMercado
-            // 
-            this.lboxListaMercado.FormattingEnabled = true;
-            this.lboxListaMercado.ItemHeight = 23;
-            this.lboxListaMercado.Location = new System.Drawing.Point(6, 125);
-            this.lboxListaMercado.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.lboxListaMercado.Name = "lboxListaMercado";
-            this.lboxListaMercado.Size = new System.Drawing.Size(189, 510);
-            this.lboxListaMercado.TabIndex = 16;
             // 
             // cmdSlide
             // 
@@ -385,10 +379,10 @@ namespace Mi_mercadito
             this.lblName.AutoSize = true;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblName.Font = new System.Drawing.Font("Baskerville Old Face", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(0, 81);
+            this.lblName.Location = new System.Drawing.Point(0, 73);
             this.lblName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(258, 34);
+            this.lblName.Size = new System.Drawing.Size(202, 27);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Nombre de Usuario";
             // 
@@ -417,7 +411,7 @@ namespace Mi_mercadito
             this.txtDireccion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.ReadOnly = true;
-            this.txtDireccion.Size = new System.Drawing.Size(179, 30);
+            this.txtDireccion.Size = new System.Drawing.Size(179, 26);
             this.txtDireccion.TabIndex = 28;
             // 
             // txtCiudad
@@ -426,7 +420,7 @@ namespace Mi_mercadito
             this.txtCiudad.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.ReadOnly = true;
-            this.txtCiudad.Size = new System.Drawing.Size(143, 30);
+            this.txtCiudad.Size = new System.Drawing.Size(143, 26);
             this.txtCiudad.TabIndex = 26;
             // 
             // txtPais
@@ -435,7 +429,7 @@ namespace Mi_mercadito
             this.txtPais.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtPais.Name = "txtPais";
             this.txtPais.ReadOnly = true;
-            this.txtPais.Size = new System.Drawing.Size(143, 30);
+            this.txtPais.Size = new System.Drawing.Size(143, 26);
             this.txtPais.TabIndex = 24;
             // 
             // lblDireccion
@@ -444,7 +438,7 @@ namespace Mi_mercadito
             this.lblDireccion.Location = new System.Drawing.Point(617, 46);
             this.lblDireccion.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(87, 23);
+            this.lblDireccion.Size = new System.Drawing.Size(71, 18);
             this.lblDireccion.TabIndex = 27;
             this.lblDireccion.Text = "Dirección";
             // 
@@ -454,7 +448,7 @@ namespace Mi_mercadito
             this.lblCiudad.Location = new System.Drawing.Point(428, 46);
             this.lblCiudad.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCiudad.Name = "lblCiudad";
-            this.lblCiudad.Size = new System.Drawing.Size(67, 23);
+            this.lblCiudad.Size = new System.Drawing.Size(54, 18);
             this.lblCiudad.TabIndex = 25;
             this.lblCiudad.Text = "Ciudad";
             // 
@@ -464,7 +458,7 @@ namespace Mi_mercadito
             this.lblPais.Location = new System.Drawing.Point(247, 46);
             this.lblPais.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPais.Name = "lblPais";
-            this.lblPais.Size = new System.Drawing.Size(43, 23);
+            this.lblPais.Size = new System.Drawing.Size(34, 18);
             this.lblPais.TabIndex = 23;
             this.lblPais.Text = "País";
             // 
@@ -474,7 +468,7 @@ namespace Mi_mercadito
             this.lblSucursal.Location = new System.Drawing.Point(55, 46);
             this.lblSucursal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblSucursal.Name = "lblSucursal";
-            this.lblSucursal.Size = new System.Drawing.Size(76, 23);
+            this.lblSucursal.Size = new System.Drawing.Size(62, 18);
             this.lblSucursal.TabIndex = 21;
             this.lblSucursal.Text = "Sucursal";
             // 
@@ -485,7 +479,7 @@ namespace Mi_mercadito
             this.cboxSucursal.Location = new System.Drawing.Point(10, 68);
             this.cboxSucursal.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cboxSucursal.Name = "cboxSucursal";
-            this.cboxSucursal.Size = new System.Drawing.Size(167, 31);
+            this.cboxSucursal.Size = new System.Drawing.Size(167, 26);
             this.cboxSucursal.TabIndex = 22;
             this.cboxSucursal.SelectedIndexChanged += new System.EventHandler(this.cboxSucursal_SelectedIndexChanged);
             // 
@@ -496,7 +490,7 @@ namespace Mi_mercadito
             this.txtNombreProduc.Location = new System.Drawing.Point(593, 119);
             this.txtNombreProduc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtNombreProduc.Name = "txtNombreProduc";
-            this.txtNombreProduc.Size = new System.Drawing.Size(161, 30);
+            this.txtNombreProduc.Size = new System.Drawing.Size(161, 26);
             this.txtNombreProduc.TabIndex = 4;
             this.txtNombreProduc.TextChanged += new System.EventHandler(this.txtNombreProduc_TextChanged);
             this.txtNombreProduc.Leave += new System.EventHandler(this.txtNombreProduc_Leave);
@@ -508,7 +502,7 @@ namespace Mi_mercadito
             this.txtProdPrecio.Location = new System.Drawing.Point(593, 180);
             this.txtProdPrecio.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdPrecio.Name = "txtProdPrecio";
-            this.txtProdPrecio.Size = new System.Drawing.Size(161, 30);
+            this.txtProdPrecio.Size = new System.Drawing.Size(161, 26);
             this.txtProdPrecio.TabIndex = 6;
             // 
             // txtProdContNet
@@ -518,7 +512,7 @@ namespace Mi_mercadito
             this.txtProdContNet.Location = new System.Drawing.Point(593, 241);
             this.txtProdContNet.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdContNet.Name = "txtProdContNet";
-            this.txtProdContNet.Size = new System.Drawing.Size(161, 30);
+            this.txtProdContNet.Size = new System.Drawing.Size(161, 26);
             this.txtProdContNet.TabIndex = 8;
             // 
             // txtProdDesc
@@ -529,7 +523,7 @@ namespace Mi_mercadito
             this.txtProdDesc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdDesc.Name = "txtProdDesc";
             this.txtProdDesc.ReadOnly = true;
-            this.txtProdDesc.Size = new System.Drawing.Size(542, 30);
+            this.txtProdDesc.Size = new System.Drawing.Size(542, 26);
             this.txtProdDesc.TabIndex = 19;
             // 
             // txtProdMarc
@@ -540,7 +534,7 @@ namespace Mi_mercadito
             this.txtProdMarc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdMarc.Name = "txtProdMarc";
             this.txtProdMarc.ReadOnly = true;
-            this.txtProdMarc.Size = new System.Drawing.Size(161, 30);
+            this.txtProdMarc.Size = new System.Drawing.Size(161, 26);
             this.txtProdMarc.TabIndex = 10;
             // 
             // txtProdDpto
@@ -551,7 +545,7 @@ namespace Mi_mercadito
             this.txtProdDpto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdDpto.Name = "txtProdDpto";
             this.txtProdDpto.ReadOnly = true;
-            this.txtProdDpto.Size = new System.Drawing.Size(161, 30);
+            this.txtProdDpto.Size = new System.Drawing.Size(161, 26);
             this.txtProdDpto.TabIndex = 12;
             // 
             // txtProdSuc
@@ -562,7 +556,7 @@ namespace Mi_mercadito
             this.txtProdSuc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdSuc.Name = "txtProdSuc";
             this.txtProdSuc.ReadOnly = true;
-            this.txtProdSuc.Size = new System.Drawing.Size(161, 30);
+            this.txtProdSuc.Size = new System.Drawing.Size(161, 26);
             this.txtProdSuc.TabIndex = 14;
             // 
             // lblNombreProduc
@@ -571,7 +565,7 @@ namespace Mi_mercadito
             this.lblNombreProduc.Location = new System.Drawing.Point(630, 92);
             this.lblNombreProduc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNombreProduc.Name = "lblNombreProduc";
-            this.lblNombreProduc.Size = new System.Drawing.Size(82, 23);
+            this.lblNombreProduc.Size = new System.Drawing.Size(66, 18);
             this.lblNombreProduc.TabIndex = 3;
             this.lblNombreProduc.Text = "Producto";
             // 
@@ -581,7 +575,7 @@ namespace Mi_mercadito
             this.lblProdPrecio.Location = new System.Drawing.Point(645, 153);
             this.lblProdPrecio.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdPrecio.Name = "lblProdPrecio";
-            this.lblProdPrecio.Size = new System.Drawing.Size(61, 23);
+            this.lblProdPrecio.Size = new System.Drawing.Size(49, 18);
             this.lblProdPrecio.TabIndex = 5;
             this.lblProdPrecio.Text = "Precio";
             // 
@@ -591,7 +585,7 @@ namespace Mi_mercadito
             this.lblProdContNet.Location = new System.Drawing.Point(625, 214);
             this.lblProdContNet.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdContNet.Name = "lblProdContNet";
-            this.lblProdContNet.Size = new System.Drawing.Size(92, 23);
+            this.lblProdContNet.Size = new System.Drawing.Size(74, 18);
             this.lblProdContNet.TabIndex = 7;
             this.lblProdContNet.Text = "Cont. Net.";
             // 
@@ -601,7 +595,7 @@ namespace Mi_mercadito
             this.lblProdDesc.Location = new System.Drawing.Point(119, 661);
             this.lblProdDesc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdDesc.Name = "lblProdDesc";
-            this.lblProdDesc.Size = new System.Drawing.Size(109, 23);
+            this.lblProdDesc.Size = new System.Drawing.Size(89, 18);
             this.lblProdDesc.TabIndex = 18;
             this.lblProdDesc.Text = "Descripción:";
             // 
@@ -611,7 +605,7 @@ namespace Mi_mercadito
             this.lblProdMarc.Location = new System.Drawing.Point(645, 326);
             this.lblProdMarc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdMarc.Name = "lblProdMarc";
-            this.lblProdMarc.Size = new System.Drawing.Size(61, 23);
+            this.lblProdMarc.Size = new System.Drawing.Size(49, 18);
             this.lblProdMarc.TabIndex = 9;
             this.lblProdMarc.Text = "Marca";
             // 
@@ -621,7 +615,7 @@ namespace Mi_mercadito
             this.lblProdDpto.Location = new System.Drawing.Point(610, 396);
             this.lblProdDpto.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdDpto.Name = "lblProdDpto";
-            this.lblProdDpto.Size = new System.Drawing.Size(124, 23);
+            this.lblProdDpto.Size = new System.Drawing.Size(99, 18);
             this.lblProdDpto.TabIndex = 11;
             this.lblProdDpto.Text = "Departamento";
             // 
@@ -631,7 +625,7 @@ namespace Mi_mercadito
             this.lblProdSuc.Location = new System.Drawing.Point(630, 581);
             this.lblProdSuc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdSuc.Name = "lblProdSuc";
-            this.lblProdSuc.Size = new System.Drawing.Size(76, 23);
+            this.lblProdSuc.Size = new System.Drawing.Size(62, 18);
             this.lblProdSuc.TabIndex = 13;
             this.lblProdSuc.Text = "Sucursal";
             // 
@@ -741,7 +735,7 @@ namespace Mi_mercadito
             this.lblnomList.Location = new System.Drawing.Point(4, 104);
             this.lblnomList.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblnomList.Name = "lblnomList";
-            this.lblnomList.Size = new System.Drawing.Size(76, 23);
+            this.lblnomList.Size = new System.Drawing.Size(61, 18);
             this.lblnomList.TabIndex = 33;
             this.lblnomList.Text = "Mi Lista";
             this.lblnomList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -782,12 +776,52 @@ namespace Mi_mercadito
             this.pictureBox1.TabIndex = 34;
             this.pictureBox1.TabStop = false;
             // 
+            // lviewProducto
+            // 
+            this.lviewProducto.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Producto,
+            this.Cantidad,
+            this.Precio});
+            this.lviewProducto.HideSelection = false;
+            this.lviewProducto.Location = new System.Drawing.Point(6, 125);
+            this.lviewProducto.Name = "lviewProducto";
+            this.lviewProducto.Size = new System.Drawing.Size(189, 508);
+            this.lviewProducto.TabIndex = 16;
+            this.lviewProducto.UseCompatibleStateImageBehavior = false;
+            this.lviewProducto.View = System.Windows.Forms.View.Details;
+            this.lviewProducto.SelectedIndexChanged += new System.EventHandler(this.lviewProducto_SelectedIndexChanged_1);
+            // 
+            // Producto
+            // 
+            this.Producto.Text = "Producto";
+            this.Producto.Width = 130;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.Text = "Cantidad";
+            // 
+            // Precio
+            // 
+            this.Precio.Text = "Precio";
+            // 
+            // txtTotalCompra
+            // 
+            this.txtTotalCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalCompra.Location = new System.Drawing.Point(8, 584);
+            this.txtTotalCompra.Name = "txtTotalCompra";
+            this.txtTotalCompra.ReadOnly = true;
+            this.txtTotalCompra.Size = new System.Drawing.Size(185, 19);
+            this.txtTotalCompra.TabIndex = 35;
+            this.txtTotalCompra.Text = "Total: $";
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(774, 881);
+            this.Controls.Add(this.txtTotalCompra);
+            this.Controls.Add(this.lviewProducto);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdSlide);
             this.Controls.Add(this.lblnomList);
@@ -816,7 +850,6 @@ namespace Mi_mercadito
             this.Controls.Add(this.msMiMercadito);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.pboxCamara);
-            this.Controls.Add(this.lboxListaMercado);
             this.Controls.Add(this.cmdSlide2);
             this.Font = new System.Drawing.Font("Baskerville Old Face", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -871,7 +904,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.ToolStripMenuItem bebésYNiñosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bellezaEHigieneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ListBox lboxListaMercado;
         private System.Windows.Forms.Button cmdSlide;
         private System.Windows.Forms.Button cmdFoto;
         public System.Windows.Forms.PictureBox pboxCamara;
@@ -911,5 +943,10 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button cmdSlide2;
         private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListView lviewProducto;
+        private System.Windows.Forms.ColumnHeader Producto;
+        private System.Windows.Forms.ColumnHeader Cantidad;
+        private System.Windows.Forms.TextBox txtTotalCompra;
+        private System.Windows.Forms.ColumnHeader Precio;
     }
 }
