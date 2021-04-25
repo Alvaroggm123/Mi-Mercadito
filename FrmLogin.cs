@@ -180,7 +180,7 @@ namespace Mi_mercadito
         // Efecto de boton x
         private void pbxX_MouseLeave(object sender, EventArgs e)
         {
-            pbxX.BackColor = Color.PaleTurquoise;      
+            pbxX.BackColor = Color.Azure;      
         }
 
         // Efecto de boton x

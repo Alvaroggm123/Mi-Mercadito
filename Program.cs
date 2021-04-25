@@ -173,36 +173,36 @@ namespace Mi_mercadito
             cboxTienda.Items.Clear();  // limpia los items que se encuentran en el Combobox
             int a = 0; //variable auxiliar "a"
             string Consulta = (@"SELECT * FROM Sucursal;"); // consulta los elementos de la tabla de la BD de la Sucursal
-            using (SqlConnection Conn = ConnectionDB.StartConn()) 
+            using (SqlConnection Conn = ConnectionDB.StartConn())
             {
-                SqlCommand cm = new SqlCommand(Consulta,Conn);
+                SqlCommand cm = new SqlCommand(Consulta, Conn);
                 SqlDataReader dr = cm.ExecuteReader(); // lee los elementos de la tabla de la BD de Sucursal
                 while (dr.Read())
                 {
                     a = cboxTienda.Items.Add(dr.GetString(1)); // añade los items de la BD Sucursal en el cboxTienda
-                }                
+                }
             }
             return a; // retorna el valor seleccionado por el usuario en el cboxTienda
         }
 
-        public string[] Datos(string cboxSucursal ) //creacion de un metodo en base a un arreglo con el parámetro cboxSucursal
+        public string[] Datos(string cboxSucursal) //creacion de un metodo en base a un arreglo con el parámetro cboxSucursal
         {
             string[] Salida = new string[4]; // el arreglo Salida es de 4 datos de lectura ya que también lee la posición del IDSuc de la BD
             string Consulta = (@"SELECT * FROM Sucursal WHERE sucName = @sucName;");
-            using (SqlConnection Conn = ConnectionDB.StartConn()) 
+            using (SqlConnection Conn = ConnectionDB.StartConn())
             {
-                SqlCommand cm = new SqlCommand(Consulta,Conn);
+                SqlCommand cm = new SqlCommand(Consulta, Conn);
                 cm.Parameters.AddWithValue("@sucName ", cboxSucursal);
                 SqlDataReader Leer = cm.ExecuteReader();
                 if (Leer.Read())
                 {
                     //se realiza la lectura de la columna de la tabla e identifica que la posición del cboxSucursal coincida con la de los 
                     //datos de la tabla
-                    Salida[0] = Leer["sucName"].ToString();                    
+                    Salida[0] = Leer["sucName"].ToString();
                     Salida[1] = Leer["sucPais"].ToString();
                     Salida[2] = Leer["sucCity"].ToString();
                     Salida[3] = Leer["sucDirec"].ToString();
-                }                
+                }
             }
             return Salida;
         }
@@ -229,9 +229,9 @@ namespace Mi_mercadito
         }
     }
 
-    class Producto 
+    class Producto
     {
-        public string [] RellenarProduc(string nombreProduc)
+        public string[] RellenarProduc(string nombreProduc)
         {
             string[] datoProduc = new string[7];
             string Consulta = (@"SELECT prodName, prodPrice, prodContNet, prodDesc, marcName, dptoName, sucName FROM  Producto, Marca, Departamento, Sucursal" +
@@ -239,7 +239,7 @@ namespace Mi_mercadito
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 SqlCommand cm = new SqlCommand(Consulta, Conn);
-                cm.Parameters.AddWithValue("@prodName",nombreProduc);
+                cm.Parameters.AddWithValue("@prodName", nombreProduc);
                 SqlDataReader Leer = cm.ExecuteReader();
                 if (Leer.Read())
                 {
@@ -315,8 +315,8 @@ namespace Mi_mercadito
             {
                 SqlCommand cmd = new SqlCommand(Consulta, Conn);
                 cmd.Parameters.AddWithValue("@prodName", ProdName);
-                cmd.Parameters.AddWithValue("@prodPrice", prodPrice); 
-                cmd.Parameters.AddWithValue("@prodContNet", prodContNet); 
+                cmd.Parameters.AddWithValue("@prodPrice", prodPrice);
+                cmd.Parameters.AddWithValue("@prodContNet", prodContNet);
                 cmd.Parameters.AddWithValue("@prodDesc", Desc);
                 cmd.Parameters.AddWithValue("@prodMarc", MarcId);
                 cmd.Parameters.AddWithValue("@prodDpto", DepartamentoId);
@@ -349,7 +349,7 @@ namespace Mi_mercadito
         // Consulta del Id de la Marca
         public string ConsultId(string MarcName)
         {
-            string Salida="";
+            string Salida = "";
             string Consulta = @"SELECT marcId FROM Marca WHERE marcName = @marcName;";
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
@@ -359,7 +359,7 @@ namespace Mi_mercadito
                 SqlDataReader Leer = cmd.ExecuteReader();
                 if (Leer.Read())
                 {
-                    Salida = Leer["marcId"].ToString();              
+                    Salida = Leer["marcId"].ToString();
                 }
                 return Salida;
             }
@@ -385,7 +385,7 @@ namespace Mi_mercadito
         }
     }
 
-   class Departamento
+    class Departamento
     {
         // Validar existencia de departamento
         public bool ValidarDepart(string Depart)
@@ -452,6 +452,7 @@ namespace Mi_mercadito
                 return Salida;
             }
         }
+        // Consulta del nombre de la lista
         public string ConsultNameList(string IdL)
         {
             string Salida = "";
@@ -467,6 +468,20 @@ namespace Mi_mercadito
                     Salida = Leer["mcarName"].ToString();
                 }
                 return Salida;
+            }
+        }
+        // Actualización de la lista
+        public int ActualizarLista(string User, string NameList)
+        {
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand Comando = new SqlCommand("UPDATE MiCarrito SET mcarName=@mcarName WHERE mcarUsr = @mcarUsr;", Conn);
+                Comando.Parameters.AddWithValue("@mcarUsr", User);
+                Comando.Parameters.Add("@mcarName", SqlDbType.NVarChar);
+
+                Comando.Parameters["@mcarName"].Value = NameList;
+
+                return Comando.ExecuteNonQuery();
             }
         }
 
@@ -487,26 +502,61 @@ namespace Mi_mercadito
                 Comando.Parameters["@mprodCar"].Value = IdCarro;
                 Comando.Parameters["@mprodProd"].Value = IdProd;
                 Comando.Parameters["@mprodCantidad"].Value = 1;
-                
+
                 return Comando.ExecuteNonQuery();
             }
         }
-
-        public bool ValidarContador(string IdCarro, string IdProd) 
+        // Validación del contador de Misproductos 
+        public bool ValidarContador(string IdCarro, string IdProd)
         {
-            string Consulta = @"SELECT COUNT(*) FROM MisProductos WHERE mprodCar = @mprodCar AND mrpodProd=@mprodProd ;";
+            string Consulta = @"SELECT COUNT(*) FROM MisProductos WHERE mprodCar=@mprodCar AND mprodProd=@mprodProd ;";
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 SqlCommand cmd = new SqlCommand(Consulta, Conn);
                 cmd.Parameters.AddWithValue("@mprodCar", IdCarro);
-                cmd.Parameters.AddWithValue("@mprodProd",IdProd);
+                cmd.Parameters.AddWithValue("@mprodProd", IdProd);
                 int Count = Convert.ToInt32(cmd.ExecuteScalar());
                 return Count == 0;
             }
         }
 
+        // Consulta de datos de los productos
+        public string[] ConsultaDatosMiProd(string IdCarro, string IdProd)
+        {
+            string[] Salida = new string[4];
+            string Consulta = @"SELECT mprodCar,mprodProd,mprodCantidad FROM MisProductos WHERE mprodCar = @mprodCar AND mprodProd=@mprodProd ;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@mprodCar", IdCarro);
+                cmd.Parameters.AddWithValue("@mprodProd", IdProd);
+                //* Lectura de datos.
+                SqlDataReader Leer = cmd.ExecuteReader();
+                if (Leer.Read())
+                {
+                    Salida[0] = Leer["mprodCar"].ToString();
+                    Salida[1] = Leer["mprodProd"].ToString();
+                    Salida[2] = Leer["mprodCantidad"].ToString();
+                }
+                return Salida;
+
+            }
+
+        }
+        // Actualización de cantidad de productos de las listas
+        public int ActualizarCantidad(string IdCarro, string IdProd, int Cantidad)
+        {
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand Comando = new SqlCommand("UPDATE MisProductos SET mprodCantidad=@mprodCantidad WHERE mprodCar = " + IdCarro + " AND mprodProd = " + IdProd, Conn);
+
+                Comando.Parameters.Add("@mprodCantidad", SqlDbType.Int);
+       
+                Comando.Parameters["@mprodCantidad"].Value = Cantidad;
+
+                return Comando.ExecuteNonQuery();
+            }
+        }
+
     }
-
-
-
 }

@@ -93,7 +93,6 @@ namespace Mi_mercadito
             this.pbxX = new System.Windows.Forms.PictureBox();
             this.cmdCargarImg = new System.Windows.Forms.Button();
             this.cmdCar = new System.Windows.Forms.Button();
-            this.lblnomList = new System.Windows.Forms.Label();
             this.cmdSlide2 = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -102,6 +101,8 @@ namespace Mi_mercadito
             this.Cantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Precio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtTotalCompra = new System.Windows.Forms.TextBox();
+            this.cmdEliminar = new System.Windows.Forms.Button();
+            this.txtnomList = new System.Windows.Forms.TextBox();
             this.msMiMercadito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCamara)).BeginInit();
             this.grpbSucursal.SuspendLayout();
@@ -728,18 +729,6 @@ namespace Mi_mercadito
             this.cmdCar.UseVisualStyleBackColor = true;
             this.cmdCar.Click += new System.EventHandler(this.cmdCar_Click);
             // 
-            // lblnomList
-            // 
-            this.lblnomList.AutoSize = true;
-            this.lblnomList.Font = new System.Drawing.Font("Baskerville Old Face", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnomList.Location = new System.Drawing.Point(4, 104);
-            this.lblnomList.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblnomList.Name = "lblnomList";
-            this.lblnomList.Size = new System.Drawing.Size(61, 18);
-            this.lblnomList.TabIndex = 33;
-            this.lblnomList.Text = "Mi Lista";
-            this.lblnomList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // cmdSlide2
             // 
             this.cmdSlide2.Location = new System.Drawing.Point(5, 338);
@@ -814,17 +803,44 @@ namespace Mi_mercadito
             this.txtTotalCompra.TabIndex = 35;
             this.txtTotalCompra.Text = "Total: $";
             // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.cmdEliminar.FlatAppearance.BorderSize = 2;
+            this.cmdEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdEliminar.Location = new System.Drawing.Point(18, 643);
+            this.cmdEliminar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.cmdEliminar.Name = "cmdEliminar";
+            this.cmdEliminar.Size = new System.Drawing.Size(95, 43);
+            this.cmdEliminar.TabIndex = 36;
+            this.cmdEliminar.Text = "Eliminar";
+            this.cmdEliminar.UseVisualStyleBackColor = true;
+            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
+            // 
+            // txtnomList
+            // 
+            this.txtnomList.BackColor = System.Drawing.Color.Azure;
+            this.txtnomList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtnomList.Font = new System.Drawing.Font("Baskerville Old Face", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnomList.Location = new System.Drawing.Point(8, 103);
+            this.txtnomList.Multiline = true;
+            this.txtnomList.Name = "txtnomList";
+            this.txtnomList.Size = new System.Drawing.Size(100, 19);
+            this.txtnomList.TabIndex = 37;
+            this.txtnomList.MouseLeave += new System.EventHandler(this.txtnomList_MouseLeave);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(774, 881);
+            this.Controls.Add(this.txtnomList);
+            this.Controls.Add(this.cmdEliminar);
             this.Controls.Add(this.txtTotalCompra);
             this.Controls.Add(this.lviewProducto);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdSlide);
-            this.Controls.Add(this.lblnomList);
             this.Controls.Add(this.cmdCar);
             this.Controls.Add(this.cmdCargarImg);
             this.Controls.Add(this.lblProdSuc);
@@ -939,7 +955,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button cmdCargarImg;
         private System.Windows.Forms.TextBox txtProdMarc;
         private System.Windows.Forms.Button cmdCar;
-        private System.Windows.Forms.Label lblnomList;
         private System.Windows.Forms.Button cmdSlide2;
         private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -948,5 +963,7 @@ namespace Mi_mercadito
         private System.Windows.Forms.ColumnHeader Cantidad;
         private System.Windows.Forms.TextBox txtTotalCompra;
         private System.Windows.Forms.ColumnHeader Precio;
+        private System.Windows.Forms.Button cmdEliminar;
+        private System.Windows.Forms.TextBox txtnomList;
     }
 }

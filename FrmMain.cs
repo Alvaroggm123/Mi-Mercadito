@@ -114,8 +114,9 @@ namespace Mi_mercadito
 
         public string RellenarLista(string listadatos)
         {
-            string Salida = "", Salida2 = "", Salida3="";
-            string Consulta = @"SELECT DISTINCT prodName AS 'Producto', prodPrice AS 'prodPrice' FROM MisProductos,Producto, MiCarrito WHERE mprodCar = '" + listadatos + "' AND mprodProd = prodId;";
+            double total=0;
+            string Salida = "", Salida2 = "", Salida3="", auxPrice="", auxCantidad="";
+            string Consulta = @"SELECT DISTINCT prodName AS 'Producto', prodPrice AS 'prodPrice', mprodCantidad AS 'mprodCantidad' FROM MisProductos,Producto, MiCarrito WHERE mprodCar = '" + listadatos + "' AND mprodProd = prodId;";
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 SqlCommand cmd = new SqlCommand(Consulta, Conn);
@@ -124,10 +125,16 @@ namespace Mi_mercadito
                 SqlDataReader Leer = cmd.ExecuteReader();
                 while (Leer.Read())
                 {
-                    Salida = Leer["Producto"].ToString();
+                    Salida = Leer["Producto"].ToString();             
                     ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
-                    Producto.SubItems.Add("1");
-                    Salida3 = Leer["prodPrice"].ToString();
+                    Salida2 = Leer["mprodCantidad"].ToString();
+                    Producto.SubItems.Add(Salida2);
+
+                    auxCantidad = Leer["mprodCantidad"].ToString();
+                    auxPrice = Leer["prodPrice"].ToString();
+
+                    total = Convert.ToInt32(auxCantidad) * Convert.ToDouble(auxPrice);
+                    Salida3 = total.ToString();
                     Producto.SubItems.Add(Salida3);
                     lviewProducto.Items.Add(Producto);
                 }
@@ -186,7 +193,7 @@ namespace Mi_mercadito
             {
                 IdCarrito = Carro.ConsultIdLista(DatosUsr[0]);
                 NameList = Carro.ConsultNameList(IdCarrito);
-                lblnomList.Text = NameList;
+                txtnomList.Text = NameList;
                 Datos = RellenarLista(IdCarrito);
                 lviewProducto.Items.Add(Datos.ToString());
             }
@@ -289,7 +296,7 @@ namespace Mi_mercadito
         private void pbxX_MouseLeave(object sender, EventArgs e)
         {
             // Efectos del botón X.
-            pbxX.BackColor = Color.PaleTurquoise;
+            pbxX.BackColor = Color.SteelBlue;
         }
         private void pbxX2_MouseLeave(object sender, EventArgs e)
         {
@@ -319,7 +326,7 @@ namespace Mi_mercadito
         private void pbxmin_MouseLeave(object sender, EventArgs e)
         {
             // Efectos del botón min.
-            pbxmin.BackColor = Color.PaleTurquoise;
+            pbxmin.BackColor = Color.SteelBlue;
         }
         private void pbxmin2_MouseLeave(object sender, EventArgs e)
         {
@@ -386,34 +393,54 @@ namespace Mi_mercadito
                 IdProducto = Prod.ConsultIdProducto(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, IdMarca, IdDepartamento, IdSuc);
 
                 MisProductos MiProd = new MisProductos();
-                MiProd.InsertarMisProductos(IdCarrito, IdProducto);
-
-                int Contador = 0;
-                if (!Bloqueo(txtNombreProduc.Text))
+                if (!MiProd.ValidarContador(IdCarrito,IdProducto))
                 {
-                    // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado].
-                    string Salida = txtNombreProduc.Text.ToString();
-                    ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
-                    for (int i = 0; i < lviewProducto.Items.Count; i++)
-                    {
-                        if (lviewProducto.Items[i].SubItems[0].Text == txtNombreProduc.Text)
-                        {
-                            Contador = int.Parse(lviewProducto.Items[i].SubItems[1].Text); // Realiza la suma de los datos de la columan Precio.
-                            Contador++;
-                        }
-                    }
-                    Producto.SubItems.Add("1").Text = Contador.ToString();
-                    string Salida3 = txtProdPrecio.Text.ToString();
-                    Producto.SubItems.Add(Salida3);
-                    lviewProducto.Items.Add(Producto);
+                    string[] DatosMisProd= new string[4];
+                    DatosMisProd = MiProd.ConsultaDatosMiProd(IdCarrito, IdProducto);
+                    int r = 0;
+                    r = Convert.ToInt32(DatosMisProd[2]) + 1;
+                    MiProd.ActualizarCantidad(IdCarrito,IdProducto,r);
                 }
                 else
-                    MessageBox.Show("Ingrese un Producto", "Error Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                {
+                   
+                    MiProd.InsertarMisProductos(IdCarrito, IdProducto);
+                }
 
+
+                /*
+                   int Contador = 0;
+                 if (!Bloqueo(txtNombreProduc.Text))
+                 {
+                     // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado].
+                     string Salida = txtNombreProduc.Text.ToString();
+                     ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
+                     for (int i = 0; i < lviewProducto.Items.Count; i++)
+                     {
+                         if (lviewProducto.Items[i].SubItems[0].Text == txtNombreProduc.Text)
+                         {
+                             Contador = int.Parse(lviewProducto.Items[i].SubItems[1].Text); // Realiza la suma de los datos de la columan Precio.
+                             Contador++;
+                         }
+                     }
+                     Producto.SubItems.Add("1").Text = Contador.ToString();
+                     string Salida3 = txtProdPrecio.Text.ToString();
+                     Producto.SubItems.Add(Salida3);
+                     lviewProducto.Items.Add(Producto);
+                 }
+                 else
+                     MessageBox.Show("Ingrese un Producto", "Error Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+          
+                 */
+                string Datos = "";
+                lviewProducto.Items.Clear();
+                Datos = RellenarLista(IdCarrito);
+                lviewProducto.Items.Add(Datos.ToString());
                 txtTotalCompra.Text = "Total: $";
                 txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio());
-
                 MessageBox.Show("Producto agregado al carrito correctamente", "Producto agregado", MessageBoxButtons.OK);
+             
             }
         }
 
@@ -510,6 +537,17 @@ namespace Mi_mercadito
                     AutocompletarFormulario(lviewProducto.Items[i].SubItems[0].Text); // Se manda llamar al Método que se rellena desde el [lviewProducto].
                 }
             }
+        }
+
+        // Cambio del nombre de la lista
+        private void txtnomList_MouseLeave(object sender, EventArgs e)
+        {
+            Carrito Carro = new Carrito();
+            Carro.ActualizarLista(DatosUsr[0], txtnomList.Text);
+        }
+
+        private void cmdEliminar_Click(object sender, EventArgs e)
+        {      
         }
         // ==================== || FIN Eventos || ==================== //
     }
