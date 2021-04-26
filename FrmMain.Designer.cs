@@ -758,7 +758,7 @@ namespace Mi_mercadito
             // 
             this.pboxDpto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pboxDpto.BackgroundImage")));
             this.pboxDpto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pboxDpto.Location = new System.Drawing.Point(603, 423);
+            this.pboxDpto.Location = new System.Drawing.Point(613, 418);
             this.pboxDpto.Margin = new System.Windows.Forms.Padding(4);
             this.pboxDpto.Name = "pboxDpto";
             this.pboxDpto.Size = new System.Drawing.Size(131, 116);
@@ -784,11 +784,11 @@ namespace Mi_mercadito
             // Producto
             // 
             this.Producto.Text = "Producto";
-            this.Producto.Width = 130;
+            this.Producto.Width = 127;
             // 
             // Cantidad
             // 
-            this.Cantidad.Text = "Cantidad";
+            this.Cantidad.Text = "Cant.";
             // 
             // Precio
             // 

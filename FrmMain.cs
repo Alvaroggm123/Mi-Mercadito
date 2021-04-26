@@ -623,6 +623,15 @@ namespace Mi_mercadito
                         else if (Convert.ToInt32(DatosMisProd[2]) == 1) // Condición de eliminación
                         {
                             MiProd.EliminarProdMiList(IdCarrito, IdProducto);  // Eliminación del productos
+                            /* |==| Limpieza de textbox |==| */
+                            txtNombreProduc.Clear();
+                            txtProdPrecio.Clear();
+                            txtProdContNet.Clear();
+                            txtProdMarc.Clear();    txtProdMarc.Enabled = true;
+                            txtProdSuc.Clear();
+                            txtProdDesc.Clear();
+                            txtProdDpto.Clear();
+                            Prod.ImagenDpto(ref pboxDpto, "Otros");
                         }
                     }
                     else
