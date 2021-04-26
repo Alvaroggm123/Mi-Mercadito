@@ -114,8 +114,8 @@ namespace Mi_mercadito
 
         public string RellenarLista(string listadatos)
         {
-            double total=0;
-            string Salida = "", Salida2 = "", Salida3="", auxPrice="", auxCantidad="";
+            double total = 0;
+            string Salida = "", Salida2 = "", Salida3 = "", auxPrice = "", auxCantidad = "";
             string Consulta = @"SELECT DISTINCT prodName AS 'Producto', prodPrice AS 'prodPrice', mprodCantidad AS 'mprodCantidad' FROM MisProductos,Producto, MiCarrito WHERE mprodCar = '" + listadatos + "' AND mprodProd = prodId;";
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
@@ -125,10 +125,12 @@ namespace Mi_mercadito
                 SqlDataReader Leer = cmd.ExecuteReader();
                 while (Leer.Read())
                 {
-                    Salida = Leer["Producto"].ToString();             
+                    Salida = Leer["Producto"].ToString();
                     ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
                     Salida2 = Leer["mprodCantidad"].ToString();
                     Producto.SubItems.Add(Salida2);
+
+                    // Guardado de cantidad y precio + multiplicación 
 
                     auxCantidad = Leer["mprodCantidad"].ToString();
                     auxPrice = Leer["prodPrice"].ToString();
@@ -141,10 +143,10 @@ namespace Mi_mercadito
                 return "";
             }
         }
-        void AutocompletarFormulario(string Producto) 
+        void AutocompletarFormulario(string Producto)
         {
             // Método que autocompleta los campos del Frm Main
-            Producto datos = new Producto();            
+            Producto datos = new Producto();
             string[] arreglo = datos.RellenarProduc(Producto);
             txtNombreProduc.Text = arreglo[0];
             txtProdPrecio.Text = arreglo[1];
@@ -152,12 +154,14 @@ namespace Mi_mercadito
             txtProdDesc.Text = arreglo[3];
             txtProdMarc.Text = arreglo[4];
             txtProdDpto.Text = arreglo[5];
+            datos.ImagenDpto(ref pboxDpto, txtProdDpto.Text);
             txtProdSuc.Text = arreglo[6];
             datos.Imagen(ref pboxCamara, txtNombreProduc.Text); // Muestra la imagen del producto que esta almacenada en la base de datos.
             cboxSucursal.Text = txtProdSuc.Text;
+
         }
 
-        public string SumaPrecio() 
+        public string SumaPrecio()
         {
             // Función SumaPrecio que realiza un ciclo for con el cual lee los elementos del [lviewProducto] en base a la columna Precio.
             string SumPrecio = "";
@@ -197,7 +201,7 @@ namespace Mi_mercadito
                 Datos = RellenarLista(IdCarrito);
                 lviewProducto.Items.Add(Datos.ToString());
             }
-            txtTotalCompra.Text = string.Concat(txtTotalCompra.Text," "+ SumaPrecio()); // Se manda llamar a la función [SumaPrecio].
+            txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio()); // Se manda llamar a la función [SumaPrecio].
         }
 
         private void cmdFoto_Click(object sender, EventArgs e)
@@ -219,6 +223,7 @@ namespace Mi_mercadito
 
         private void cmdAdd_Click(object sender, EventArgs e)
         {
+            // Variables para guardar Ids
             string IdMarca = "", IdDepartamento = "", IdSuc = "";
             Marca Marc = new Marca();
             if (!Marc.ValidarMarc(txtProdMarc.Text))
@@ -393,17 +398,17 @@ namespace Mi_mercadito
                 IdProducto = Prod.ConsultIdProducto(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, IdMarca, IdDepartamento, IdSuc);
 
                 MisProductos MiProd = new MisProductos();
-                if (!MiProd.ValidarContador(IdCarrito,IdProducto))
+                if (!MiProd.ValidarContador(IdCarrito, IdProducto))
                 {
-                    string[] DatosMisProd= new string[4];
+                    string[] DatosMisProd = new string[4];
                     DatosMisProd = MiProd.ConsultaDatosMiProd(IdCarrito, IdProducto);
                     int r = 0;
                     r = Convert.ToInt32(DatosMisProd[2]) + 1;
-                    MiProd.ActualizarCantidad(IdCarrito,IdProducto,r);
+                    MiProd.ActualizarCantidad(IdCarrito, IdProducto, r);
                 }
                 else
                 {
-                   
+
                     MiProd.InsertarMisProductos(IdCarrito, IdProducto);
                 }
 
@@ -439,7 +444,7 @@ namespace Mi_mercadito
                 lviewProducto.Items.Add(Datos.ToString());
                 txtTotalCompra.Text = "Total: $";
                 txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio());
-                      
+
             }
         }
 
@@ -489,7 +494,7 @@ namespace Mi_mercadito
             cmdCargarImg.Location = new Point(cmdCargarImg.Location.X - 195, cmdCargarImg.Location.Y);
 
             // Mover el lblDescription
-            lblProdDesc.Location = new Point(lblProdDesc.Location.X- 85, lblProdDesc.Location.Y);
+            lblProdDesc.Location = new Point(lblProdDesc.Location.X - 85, lblProdDesc.Location.Y);
 
             // Mover el txtProdDesc
             txtProdDesc.Size = new Size(txtProdDesc.Width + 85, txtProdDesc.Height);
@@ -541,12 +546,95 @@ namespace Mi_mercadito
         // Cambio del nombre de la lista
         private void txtnomList_MouseLeave(object sender, EventArgs e)
         {
-            Carrito Carro = new Carrito();
-            Carro.ActualizarLista(DatosUsr[0], txtnomList.Text);
+            try
+            {
+                Carrito Carro = new Carrito();
+                Carro.ActualizarLista(DatosUsr[0], txtnomList.Text);
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         private void cmdEliminar_Click(object sender, EventArgs e)
-        {      
+        {
+            // Condición de selecciones de campos autorrellenados para las eliminaciones
+            foreach (ListViewItem Lprod in lviewProducto.SelectedItems)
+            {
+                Lprod.Selected = true;
+
+                if (txtNombreProduc.Text == "" || txtProdPrecio.Text == "" || txtProdContNet.Text == "" || txtProdMarc.Text == "" || txtProdDpto.Text == "" || Lprod.Selected == false)
+                    ErrorMessage("producto no seleccionado", "Debe seleccionar un producto de la lista.", txtNombreProduc);
+                else
+                {
+                    // Variables para guardar ids
+                    string IdCarrito = "", IdProducto = "", IdSuc = "", IdMarca = "", IdDepartamento = "";
+
+                    //  Validación de Carro, existencia de usuario, obtención de IdCarrito, IdSuc, IdMarca,
+                    //  IdDepartamento y IdProducto, y inserción de datos en tabla MisProductos
+                    Carrito Carro = new Carrito();
+                    if (!Carro.ValidarList(DatosUsr[0]))
+                    {
+                        IdCarrito = Carro.ConsultIdLista(DatosUsr[0]);
+                    }
+
+                    Sucursal Sucursal = new Sucursal();
+                    IdSuc = Sucursal.ConsultId(cboxSucursal.Text, txtPais.Text, txtCiudad.Text, txtDireccion.Text);
+
+                    Marca Marc = new Marca();
+                    if (!Marc.ValidarMarc(txtProdMarc.Text))
+                    {
+                        IdMarca = Marc.ConsultId(txtProdMarc.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No ha registrado la marca.", "Error Marca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    Departamento Departamento = new Departamento();
+                    if (!Departamento.ValidarDepart(txtProdDpto.Text))
+                    {
+                        IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese un departamento válido", "Error departamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    Producto Prod = new Producto();
+                    IdProducto = Prod.ConsultIdProducto(txtNombreProduc.Text, txtProdPrecio.Text, txtProdContNet.Text, txtProdDesc.Text, IdMarca, IdDepartamento, IdSuc);
+
+                    MisProductos MiProd = new MisProductos();
+                    
+                    if (!MiProd.ValidarContador(IdCarrito, IdProducto))  // Validación de contador de productos
+                    {
+                        string[] DatosMisProd = new string[4];  // Datos del Mis productos
+                        DatosMisProd = MiProd.ConsultaDatosMiProd(IdCarrito, IdProducto);
+                        int r = 0;
+                        if (Convert.ToInt32(DatosMisProd[2]) > 1)
+                        {
+                            r = Convert.ToInt32(DatosMisProd[2]) - 1; // Contador de resta
+                            MiProd.ActualizarCantidad(IdCarrito, IdProducto, r);
+                        }
+                        else if (Convert.ToInt32(DatosMisProd[2]) == 1) // Condición de eliminación
+                        {
+                            MiProd.EliminarProdMiList(IdCarrito, IdProducto);  // Eliminación del productos
+                        }
+                    }
+                    else
+                    {}
+                    // Limpieza y actualización de la base de datos y sus resultados
+                    string Datos = "";
+                    lviewProducto.Items.Clear();
+                    Datos = RellenarLista(IdCarrito);
+                    lviewProducto.Items.Add(Datos.ToString());
+                    txtTotalCompra.Text = "Total: $";
+                    txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio());
+                }
+            }
+
         }
         // ==================== || FIN Eventos || ==================== //
     }

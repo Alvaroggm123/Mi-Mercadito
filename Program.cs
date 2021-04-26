@@ -306,6 +306,25 @@ namespace Mi_mercadito
                 return Comando.ExecuteNonQuery();
             }
         }
+        public void ImagenDpto(ref PictureBox pbImagen, string NDpto)
+        {
+            string Consulta = @"SELECT dptoPic FROM Departamento WHERE dptoName=@dptoName";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cm = new SqlCommand(Consulta, Conn);
+                cm.Parameters.AddWithValue("@dptoName", NDpto);
+
+                SqlDataAdapter dp = new SqlDataAdapter(cm);
+                DataSet ds = new DataSet();
+                dp.Fill(ds, "Departamento");
+
+                byte[] Datos = new byte[0];
+                DataRow dr = ds.Tables["Departamento"].Rows[0];
+                Datos = (byte[])dr["dptoPic"];
+                MemoryStream ms = new MemoryStream(Datos);
+                pbImagen.Image = System.Drawing.Bitmap.FromStream(ms);
+            }
+        }
         // Consulta del Id de la tabla Producto
         public string ConsultIdProducto(string ProdName, string prodPrice, string prodContNet, string Desc, string MarcId, string DepartamentoId, string SucId)
         {
@@ -540,9 +559,26 @@ namespace Mi_mercadito
                 }
                 return Salida;
 
-            }
-
+            }    
         }
+        // Eliminación de productos
+        public bool EliminarProdMiList(string IdCarro, string IdProd)
+        {
+
+            string Consulta = @"DELETE FROM MisProductos WHERE mprodCar=@mprodCar AND mprodProd=@mprodProd ;";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+               SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@mprodCar", IdCarro);
+                cmd.Parameters.AddWithValue("@mprodProd", IdProd);
+
+                int resultado = cmd.ExecuteNonQuery();       
+
+                if (resultado > 0) return true;
+                else return false;
+            }
+        }
+
         // Actualización de cantidad de productos de las listas
         public int ActualizarCantidad(string IdCarro, string IdProd, int Cantidad)
         {

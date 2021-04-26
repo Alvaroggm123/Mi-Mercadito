@@ -95,7 +95,7 @@ namespace Mi_mercadito
             this.cmdCar = new System.Windows.Forms.Button();
             this.cmdSlide2 = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pboxDpto = new System.Windows.Forms.PictureBox();
             this.lviewProducto = new System.Windows.Forms.ListView();
             this.Producto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Cantidad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -111,7 +111,7 @@ namespace Mi_mercadito
             ((System.ComponentModel.ISupportInitialize)(this.pbxX2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxDpto)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMiMercadito
@@ -754,16 +754,17 @@ namespace Mi_mercadito
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
-            // pictureBox1
+            // pboxDpto
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(603, 423);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(131, 116);
-            this.pictureBox1.TabIndex = 34;
-            this.pictureBox1.TabStop = false;
+            this.pboxDpto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pboxDpto.BackgroundImage")));
+            this.pboxDpto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pboxDpto.Location = new System.Drawing.Point(603, 423);
+            this.pboxDpto.Margin = new System.Windows.Forms.Padding(4);
+            this.pboxDpto.Name = "pboxDpto";
+            this.pboxDpto.Size = new System.Drawing.Size(131, 116);
+            this.pboxDpto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboxDpto.TabIndex = 34;
+            this.pboxDpto.TabStop = false;
             // 
             // lviewProducto
             // 
@@ -839,7 +840,7 @@ namespace Mi_mercadito
             this.Controls.Add(this.cmdEliminar);
             this.Controls.Add(this.txtTotalCompra);
             this.Controls.Add(this.lviewProducto);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pboxDpto);
             this.Controls.Add(this.cmdSlide);
             this.Controls.Add(this.cmdCar);
             this.Controls.Add(this.cmdCargarImg);
@@ -884,7 +885,7 @@ namespace Mi_mercadito
             ((System.ComponentModel.ISupportInitialize)(this.pbxX2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxDpto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -957,7 +958,7 @@ namespace Mi_mercadito
         private System.Windows.Forms.Button cmdCar;
         private System.Windows.Forms.Button cmdSlide2;
         private System.Windows.Forms.Button cmdAdd;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pboxDpto;
         private System.Windows.Forms.ListView lviewProducto;
         private System.Windows.Forms.ColumnHeader Producto;
         private System.Windows.Forms.ColumnHeader Cantidad;
