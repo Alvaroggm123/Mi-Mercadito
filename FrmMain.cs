@@ -450,9 +450,11 @@ namespace Mi_mercadito
 
         private void txtNombreProduc_Leave(object sender, EventArgs e)
         {
+            Producto Prod = new Producto();
             try
             {
-                AutocompletarFormulario(txtNombreProduc.Text); // Se manda llamar al Método que se rellena desde el [txtNombreProduc]. 
+                if (!Prod.Validar(txtNombreProduc.Text))
+                    AutocompletarFormulario(txtNombreProduc.Text); // Se manda llamar al Método que se rellena desde el [txtNombreProduc]. 
             }
             catch (Exception)
             {

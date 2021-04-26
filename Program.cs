@@ -254,6 +254,18 @@ namespace Mi_mercadito
                 return datoProduc;
             }
         }
+        // Validar que existe el producto
+        public bool Validar(string Producto)
+        {
+            string Consulta = @"SELECT COUNT(*) FROM Producto WHERE prodName= @prodName ; ";
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cmd = new SqlCommand(Consulta, Conn);
+                cmd.Parameters.AddWithValue("@prodName ", Producto);
+                int Count = Convert.ToInt32(cmd.ExecuteScalar());
+                return Count == 0;
+            }
+        }
         // Inserción de imagen
         public void Imagen(ref PictureBox pbImagen, string nombreProducto)
         {

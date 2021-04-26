@@ -745,12 +745,12 @@ namespace Mi_mercadito
             this.cmdAdd.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
             this.cmdAdd.FlatAppearance.BorderSize = 2;
             this.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdAdd.Location = new System.Drawing.Point(347, 822);
+            this.cmdAdd.Location = new System.Drawing.Point(343, 822);
             this.cmdAdd.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdAdd.Name = "cmdAdd";
-            this.cmdAdd.Size = new System.Drawing.Size(166, 43);
+            this.cmdAdd.Size = new System.Drawing.Size(174, 43);
             this.cmdAdd.TabIndex = 30;
-            this.cmdAdd.Text = "Enviar producto";
+            this.cmdAdd.Text = "Agregar nuevo producto";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
@@ -872,6 +872,7 @@ namespace Mi_mercadito
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FrmMain";
+            this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmMain";
             this.Load += new System.EventHandler(this.FrmMain_Load);
