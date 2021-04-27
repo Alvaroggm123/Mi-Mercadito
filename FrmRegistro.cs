@@ -50,6 +50,7 @@ namespace Mi_mercadito
         {
             // Generamos [Usuario] para validar si se ingresó un usuario correcto.
             Usuarios Usuario = new Usuarios();
+
             // ===== Área de verificación de datos personales ===== //
             if (txtName.Text == "" || txtLname.Text == "" || txtLname2.Text == "" || txtEmail.Text == "")
                 return ErrorMessage("Datos personales", "Los datos personales deben estar completos.", txtName);
@@ -72,6 +73,8 @@ namespace Mi_mercadito
                 }
                 // ===== Termina la validación de los datos personales ===== //
             }
+
+            // ===== Área de verificación de género ===== //
             if (!rbtnFmale.Checked && !rbtnMale.Checked && !rbtnOther.Checked)
             {
                 return ErrorMessage("Definir sexo requerido", "Se requiere especificar sexo, en caso de inclusividad seleccione \"otro\".", txtName);
@@ -85,8 +88,13 @@ namespace Mi_mercadito
             else
             {
                 if (txtUsername.Text.Length < 10)
-                    return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario de al menos 10 caracteres.", lblPassword);
-                else if (txtPassword.Text != txtConfirmP.Text)
+                    return ErrorMessage("Nombre de usuario", "Se requiere un nombre de usuario de al menos 10 caracteres.", txtUsername);
+                else if (!VeriFormato(txtUsername, 3))
+                {
+                    return ErrorMessage("Nombre de usuario", "El nombre de usuario no tiene un formato válido.\n\nDebe contener al menos una letra y un número.", txtUsername);
+                }
+
+                if (txtPassword.Text != txtConfirmP.Text)
                     return ErrorMessage("Contraseña", "Las contraseñas no coinciden.", lblPassword);
                 else if (!Usuario.Validar(txtUsername.Text))
                     return ErrorMessage("Usuario ya registrado", "El usuario " + txtUsername.Text + " ya se encuentra registrado.", lblUsername);
@@ -110,7 +118,7 @@ namespace Mi_mercadito
                 case 1:
                     try
                     {
-                        // Validar formato de Correo electrónico
+                        // Validar formato de [Correo electrónico].
                         string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
                         if (Regex.IsMatch(TextoVerificar.Text, expresion))
                         {
@@ -128,13 +136,12 @@ namespace Mi_mercadito
                         TextoVerificar.SelectionStart = TextoVerificar.TextLength;
                     }
                     return true;
-                    break;
 
                 // Caso 2 - Formato para Password.
                 case 2:
                     try
                     {
-                        // Validar formato de la contraseña
+                        // Validar formato de la contraseña.
                         string expresion = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
                         if (Regex.IsMatch(TextoVerificar.Text, expresion))
                         {
@@ -152,7 +159,29 @@ namespace Mi_mercadito
                         TextoVerificar.SelectionStart = TextoVerificar.TextLength;
                     }
                     return true;
-                    break;
+
+                // Caso 3 - Formato para Username.
+                case 3:
+                    try
+                    {
+                        // Validar formato de el username.
+                        string expresion = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{10,}$";
+                        if (Regex.IsMatch(TextoVerificar.Text, expresion))
+                        {
+                            if (Regex.Replace(TextoVerificar.Text, expresion, string.Empty).Length == 0)
+                                return true;
+                            else
+                                return false;
+                        }
+                        else
+                            return false;
+                    }
+                    catch
+                    {
+                        TextoVerificar.Text = ReemplazarAcentos(TextoVerificar.Text);
+                        TextoVerificar.SelectionStart = TextoVerificar.TextLength;
+                    }
+                    return true;
             }
             return true;
         }
