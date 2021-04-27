@@ -448,7 +448,22 @@ namespace Mi_mercadito
                 return Salida;
             }
         }
-
+        public int ConsultaDpto(ComboBox cboxDepartmamento) // Creacion de método ConsultaDpto.
+        {
+            cboxDepartmamento.Items.Clear();  // Limpia los items que se encuentran en el Combobox.
+            int a = 0; // Variable auxiliar "a".
+            string Consulta = (@"SELECT * FROM Departamento;"); // Consulta los elementos de la tabla de la BD de Departamento.
+            using (SqlConnection Conn = ConnectionDB.StartConn())
+            {
+                SqlCommand cm = new SqlCommand(Consulta, Conn);
+                SqlDataReader dr = cm.ExecuteReader(); // Lee los elementos de la tabla de la BD de Departamento
+                while (dr.Read())
+                {
+                    a = cboxDepartmamento.Items.Add(dr.GetString(1)); // Añade los items de la BD Sucursal en el cboxDepartamento.
+                }
+            }
+            return a; // Retorna el valor seleccionado por el usuario en el cboxDepartamento.
+        }
     }
     // Clase para carrito
     class Carrito

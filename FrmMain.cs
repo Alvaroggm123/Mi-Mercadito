@@ -120,7 +120,6 @@ namespace Mi_mercadito
             using (SqlConnection Conn = ConnectionDB.StartConn())
             {
                 SqlCommand cmd = new SqlCommand(Consulta, Conn);
-                //cmd.Parameters.AddWithValue("@mprodCar", listadatos);
                 //* Lectura de datos.
                 SqlDataReader Leer = cmd.ExecuteReader();
                 while (Leer.Read())
@@ -129,12 +128,9 @@ namespace Mi_mercadito
                     ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
                     Salida2 = Leer["mprodCantidad"].ToString();
                     Producto.SubItems.Add(Salida2);
-
                     // Guardado de cantidad y precio + multiplicación 
-
                     auxCantidad = Leer["mprodCantidad"].ToString();
                     auxPrice = Leer["prodPrice"].ToString();
-
                     total = Convert.ToInt32(auxCantidad) * Convert.ToDouble(auxPrice);
                     Salida3 = total.ToString();
                     Producto.SubItems.Add(Salida3);
@@ -142,6 +138,16 @@ namespace Mi_mercadito
                 }
                 return "";
             }
+        }
+        void RellenaSucursal(string SucursalAutocompletar)
+        {
+            string[] arreglo = new string[3]; // Se crea un arreglo que almacena 4 datos.
+            Sucursal datos = new Sucursal(); // Se crea el objeto [datos] en base a la clase Sucursal.
+            arreglo = datos.Datos(SucursalAutocompletar); // Se llama al método de la clase Sucursal, que tiene como parámetro el cboxSucursal.
+            cboxSucursal.Text = arreglo[0];
+            txtPais.Text = arreglo[1];
+            txtCiudad.Text = arreglo[2];
+            txtDireccion.Text = arreglo[3];
         }
         void AutocompletarFormulario(string Producto)
         {
@@ -153,12 +159,10 @@ namespace Mi_mercadito
             txtProdContNet.Text = arreglo[2];
             txtProdDesc.Text = arreglo[3];
             txtProdMarc.Text = arreglo[4];
-            txtProdDpto.Text = arreglo[5];
-            datos.ImagenDpto(ref pboxDpto, txtProdDpto.Text);
-            txtProdSuc.Text = arreglo[6];
+            cboxProdDpto.Text = arreglo[5];
+            cboxSucursal.Text = arreglo[6];
             datos.Imagen(ref pboxCamara, txtNombreProduc.Text); // Muestra la imagen del producto que esta almacenada en la base de datos.
-            cboxSucursal.Text = txtProdSuc.Text;
-
+            RellenaSucursal(cboxSucursal.Text);
         }
 
         public string SumaPrecio()
@@ -183,9 +187,10 @@ namespace Mi_mercadito
         {
             Sucursal sucursal = new Sucursal();
             sucursal.ConsultaSuc(cboxSucursal);
+            Departamento dpto = new Departamento();
+            dpto.ConsultaDpto(cboxProdDpto);
             AutocompletarTxt("Marca", txtProdMarc);
             AutocompletarTxt("Producto", txtNombreProduc);
-            AutocompletarTxt("Departamento", txtProdDpto);
             // Condicional donde si el picturebox no cuenta con una imagen dentro, mandará a enviar el logo de Mi mercadito.
             if (pboxCamara.Image == null)
             {
@@ -237,9 +242,9 @@ namespace Mi_mercadito
             }
 
             Departamento Departamento = new Departamento();
-            if (!Departamento.ValidarDepart(txtProdDpto.Text))
+            if (!Departamento.ValidarDepart(cboxProdDpto.Text))
             {
-                IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+                IdDepartamento = Departamento.ConsultId(cboxProdDpto.Text);
             }
             else
             {
@@ -263,13 +268,7 @@ namespace Mi_mercadito
 
         private void cboxSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string[] arreglo = new string[3]; // Se crea un arreglo que almacena 4 datos.
-            Sucursal datos = new Sucursal(); // Se crea el objeto [datos] en base a la clase Sucursal.
-            arreglo = datos.Datos(cboxSucursal.Text); // Se llama al método de la clase Sucursal, que tiene como parámetro el cboxSucursal.
-            txtProdSuc.Text = cboxSucursal.Text; // Iguala los datos que se implemnten en las sucursales tanto en el textbox como el combobox.
-            txtPais.Text = arreglo[1];
-            txtCiudad.Text = arreglo[2];
-            txtDireccion.Text = arreglo[3];
+            RellenaSucursal(cboxSucursal.Text);
         }
 
         private void pnlLogin_MouseDown(object sender, MouseEventArgs e)
@@ -356,7 +355,7 @@ namespace Mi_mercadito
 
         private void cmdCar_Click(object sender, EventArgs e)
         {
-            if (txtNombreProduc.Text == "" || txtProdPrecio.Text == "" || txtProdContNet.Text == "" || txtProdMarc.Text == "" || txtProdDpto.Text == "")
+            if (txtNombreProduc.Text == "" || txtProdPrecio.Text == "" || txtProdContNet.Text == "" || txtProdMarc.Text == "" || cboxProdDpto.Text == "")
                 ErrorMessage("Datos del producto", "Debe llenar todos los datos del producto.", txtNombreProduc);
             else
             {
@@ -385,9 +384,9 @@ namespace Mi_mercadito
                 }
 
                 Departamento Departamento = new Departamento();
-                if (!Departamento.ValidarDepart(txtProdDpto.Text))
+                if (!Departamento.ValidarDepart(cboxProdDpto.Text))
                 {
-                    IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+                    IdDepartamento = Departamento.ConsultId(cboxProdDpto.Text);
                 }
                 else
                 {
@@ -411,40 +410,12 @@ namespace Mi_mercadito
 
                     MiProd.InsertarMisProductos(IdCarrito, IdProducto);
                 }
-
-
-                /*
-                   int Contador = 0;
-                 if (!Bloqueo(txtNombreProduc.Text))
-                 {
-                     // Se almacena el valor del [txtNombreProduc.Text] al [lboxListaMercado].
-                     string Salida = txtNombreProduc.Text.ToString();
-                     ListViewItem Producto = new ListViewItem(Convert.ToString(Salida));
-                     for (int i = 0; i < lviewProducto.Items.Count; i++)
-                     {
-                         if (lviewProducto.Items[i].SubItems[0].Text == txtNombreProduc.Text)
-                         {
-                             Contador = int.Parse(lviewProducto.Items[i].SubItems[1].Text); // Realiza la suma de los datos de la columan Precio.
-                             Contador++;
-                         }
-                     }
-                     Producto.SubItems.Add("1").Text = Contador.ToString();
-                     string Salida3 = txtProdPrecio.Text.ToString();
-                     Producto.SubItems.Add(Salida3);
-                     lviewProducto.Items.Add(Producto);
-                 }
-                 else
-                     MessageBox.Show("Ingrese un Producto", "Error Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-          
-                 */
                 string Datos = "";
                 lviewProducto.Items.Clear();
                 Datos = RellenarLista(IdCarrito);
                 lviewProducto.Items.Add(Datos.ToString());
                 txtTotalCompra.Text = "Total: $";
                 txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio());
-
             }
         }
 
@@ -468,13 +439,13 @@ namespace Mi_mercadito
             if (!Bloqueo(txtNombreProduc.Text))
             {
                 txtProdMarc.ReadOnly = true;
-                txtProdDpto.ReadOnly = true;
+                cboxProdDpto.Enabled = false;
                 txtProdDesc.ReadOnly = true;
             }
             else
             {
                 txtProdMarc.ReadOnly = false;
-                txtProdDpto.ReadOnly = false;
+                cboxProdDpto.Enabled = true;
                 txtProdDesc.ReadOnly = false;
                 pboxCamara.Image = Mi_mercadito.Properties.Resources.logomiMercadito;
             }
@@ -557,7 +528,6 @@ namespace Mi_mercadito
             {
 
             }
-
         }
 
         private void cmdEliminar_Click(object sender, EventArgs e)
@@ -567,7 +537,7 @@ namespace Mi_mercadito
             {
                 Lprod.Selected = true;
 
-                if (txtNombreProduc.Text == "" || txtProdPrecio.Text == "" || txtProdContNet.Text == "" || txtProdMarc.Text == "" || txtProdDpto.Text == "" || Lprod.Selected == false)
+                if (txtNombreProduc.Text == "" || txtProdPrecio.Text == "" || txtProdContNet.Text == "" || txtProdMarc.Text == "" || cboxProdDpto.Text == "" || Lprod.Selected == false)
                     ErrorMessage("producto no seleccionado", "Debe seleccionar un producto de la lista.", txtNombreProduc);
                 else
                 {
@@ -596,9 +566,9 @@ namespace Mi_mercadito
                     }
 
                     Departamento Departamento = new Departamento();
-                    if (!Departamento.ValidarDepart(txtProdDpto.Text))
+                    if (!Departamento.ValidarDepart(cboxProdDpto.Text))
                     {
-                        IdDepartamento = Departamento.ConsultId(txtProdDpto.Text);
+                        IdDepartamento = Departamento.ConsultId(cboxProdDpto.Text);
                     }
                     else
                     {
@@ -628,9 +598,9 @@ namespace Mi_mercadito
                             txtProdPrecio.Clear();
                             txtProdContNet.Clear();
                             txtProdMarc.Clear();    txtProdMarc.Enabled = true;
-                            txtProdSuc.Clear();
+                            cboxProdDpto.ResetText();
                             txtProdDesc.Clear();
-                            txtProdDpto.Clear();
+                            cboxProdDpto.ResetText();
                             Prod.ImagenDpto(ref pboxDpto, "Otros");
                         }
                     }
@@ -645,6 +615,35 @@ namespace Mi_mercadito
                     txtTotalCompra.Text = string.Concat(txtTotalCompra.Text, " " + SumaPrecio());
                 }
             }
+        }
+
+        private void lblNombreProduc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblProdPrecio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProdPrecio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblProdContNet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtProdContNet_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblProdMarc_Click(object sender, EventArgs e)
+        {
 
         }
         // ==================== || FIN Eventos || ==================== //

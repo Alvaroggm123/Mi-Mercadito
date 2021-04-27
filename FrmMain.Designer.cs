@@ -77,15 +77,12 @@ namespace Mi_mercadito
             this.txtProdContNet = new System.Windows.Forms.TextBox();
             this.txtProdDesc = new System.Windows.Forms.TextBox();
             this.txtProdMarc = new System.Windows.Forms.TextBox();
-            this.txtProdDpto = new System.Windows.Forms.TextBox();
-            this.txtProdSuc = new System.Windows.Forms.TextBox();
             this.lblNombreProduc = new System.Windows.Forms.Label();
             this.lblProdPrecio = new System.Windows.Forms.Label();
             this.lblProdContNet = new System.Windows.Forms.Label();
             this.lblProdDesc = new System.Windows.Forms.Label();
             this.lblProdMarc = new System.Windows.Forms.Label();
             this.lblProdDpto = new System.Windows.Forms.Label();
-            this.lblProdSuc = new System.Windows.Forms.Label();
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.pbxmin2 = new System.Windows.Forms.PictureBox();
             this.pbxX2 = new System.Windows.Forms.PictureBox();
@@ -103,6 +100,7 @@ namespace Mi_mercadito
             this.txtTotalCompra = new System.Windows.Forms.TextBox();
             this.cmdEliminar = new System.Windows.Forms.Button();
             this.txtnomList = new System.Windows.Forms.TextBox();
+            this.cboxProdDpto = new System.Windows.Forms.ComboBox();
             this.msMiMercadito.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxCamara)).BeginInit();
             this.grpbSucursal.SuspendLayout();
@@ -488,7 +486,7 @@ namespace Mi_mercadito
             // 
             this.txtNombreProduc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtNombreProduc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNombreProduc.Location = new System.Drawing.Point(593, 119);
+            this.txtNombreProduc.Location = new System.Drawing.Point(593, 160);
             this.txtNombreProduc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtNombreProduc.Name = "txtNombreProduc";
             this.txtNombreProduc.Size = new System.Drawing.Size(161, 26);
@@ -500,21 +498,23 @@ namespace Mi_mercadito
             // 
             this.txtProdPrecio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdPrecio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdPrecio.Location = new System.Drawing.Point(593, 180);
+            this.txtProdPrecio.Location = new System.Drawing.Point(593, 221);
             this.txtProdPrecio.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdPrecio.Name = "txtProdPrecio";
             this.txtProdPrecio.Size = new System.Drawing.Size(161, 26);
             this.txtProdPrecio.TabIndex = 6;
+            this.txtProdPrecio.TextChanged += new System.EventHandler(this.txtProdPrecio_TextChanged);
             // 
             // txtProdContNet
             // 
             this.txtProdContNet.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtProdContNet.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdContNet.Location = new System.Drawing.Point(593, 241);
+            this.txtProdContNet.Location = new System.Drawing.Point(593, 282);
             this.txtProdContNet.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtProdContNet.Name = "txtProdContNet";
             this.txtProdContNet.Size = new System.Drawing.Size(161, 26);
             this.txtProdContNet.TabIndex = 8;
+            this.txtProdContNet.TextChanged += new System.EventHandler(this.txtProdContNet_TextChanged);
             // 
             // txtProdDesc
             // 
@@ -538,57 +538,38 @@ namespace Mi_mercadito
             this.txtProdMarc.Size = new System.Drawing.Size(161, 26);
             this.txtProdMarc.TabIndex = 10;
             // 
-            // txtProdDpto
-            // 
-            this.txtProdDpto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtProdDpto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdDpto.Location = new System.Drawing.Point(593, 547);
-            this.txtProdDpto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtProdDpto.Name = "txtProdDpto";
-            this.txtProdDpto.ReadOnly = true;
-            this.txtProdDpto.Size = new System.Drawing.Size(161, 26);
-            this.txtProdDpto.TabIndex = 12;
-            // 
-            // txtProdSuc
-            // 
-            this.txtProdSuc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtProdSuc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtProdSuc.Location = new System.Drawing.Point(593, 608);
-            this.txtProdSuc.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.txtProdSuc.Name = "txtProdSuc";
-            this.txtProdSuc.ReadOnly = true;
-            this.txtProdSuc.Size = new System.Drawing.Size(161, 26);
-            this.txtProdSuc.TabIndex = 14;
-            // 
             // lblNombreProduc
             // 
             this.lblNombreProduc.AutoSize = true;
-            this.lblNombreProduc.Location = new System.Drawing.Point(630, 92);
+            this.lblNombreProduc.Location = new System.Drawing.Point(633, 133);
             this.lblNombreProduc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNombreProduc.Name = "lblNombreProduc";
             this.lblNombreProduc.Size = new System.Drawing.Size(66, 18);
             this.lblNombreProduc.TabIndex = 3;
             this.lblNombreProduc.Text = "Producto";
+            this.lblNombreProduc.Click += new System.EventHandler(this.lblNombreProduc_Click);
             // 
             // lblProdPrecio
             // 
             this.lblProdPrecio.AutoSize = true;
-            this.lblProdPrecio.Location = new System.Drawing.Point(645, 153);
+            this.lblProdPrecio.Location = new System.Drawing.Point(645, 199);
             this.lblProdPrecio.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdPrecio.Name = "lblProdPrecio";
             this.lblProdPrecio.Size = new System.Drawing.Size(49, 18);
             this.lblProdPrecio.TabIndex = 5;
             this.lblProdPrecio.Text = "Precio";
+            this.lblProdPrecio.Click += new System.EventHandler(this.lblProdPrecio_Click);
             // 
             // lblProdContNet
             // 
             this.lblProdContNet.AutoSize = true;
-            this.lblProdContNet.Location = new System.Drawing.Point(625, 214);
+            this.lblProdContNet.Location = new System.Drawing.Point(633, 260);
             this.lblProdContNet.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdContNet.Name = "lblProdContNet";
             this.lblProdContNet.Size = new System.Drawing.Size(74, 18);
             this.lblProdContNet.TabIndex = 7;
             this.lblProdContNet.Text = "Cont. Net.";
+            this.lblProdContNet.Click += new System.EventHandler(this.lblProdContNet_Click);
             // 
             // lblProdDesc
             // 
@@ -603,32 +584,23 @@ namespace Mi_mercadito
             // lblProdMarc
             // 
             this.lblProdMarc.AutoSize = true;
-            this.lblProdMarc.Location = new System.Drawing.Point(645, 326);
+            this.lblProdMarc.Location = new System.Drawing.Point(647, 338);
             this.lblProdMarc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdMarc.Name = "lblProdMarc";
             this.lblProdMarc.Size = new System.Drawing.Size(49, 18);
             this.lblProdMarc.TabIndex = 9;
             this.lblProdMarc.Text = "Marca";
+            this.lblProdMarc.Click += new System.EventHandler(this.lblProdMarc_Click);
             // 
             // lblProdDpto
             // 
             this.lblProdDpto.AutoSize = true;
-            this.lblProdDpto.Location = new System.Drawing.Point(610, 396);
+            this.lblProdDpto.Location = new System.Drawing.Point(625, 435);
             this.lblProdDpto.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblProdDpto.Name = "lblProdDpto";
             this.lblProdDpto.Size = new System.Drawing.Size(99, 18);
             this.lblProdDpto.TabIndex = 11;
             this.lblProdDpto.Text = "Departamento";
-            // 
-            // lblProdSuc
-            // 
-            this.lblProdSuc.AutoSize = true;
-            this.lblProdSuc.Location = new System.Drawing.Point(630, 581);
-            this.lblProdSuc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblProdSuc.Name = "lblProdSuc";
-            this.lblProdSuc.Size = new System.Drawing.Size(62, 18);
-            this.lblProdSuc.TabIndex = 13;
-            this.lblProdSuc.Text = "Sucursal";
             // 
             // pnlLogin
             // 
@@ -758,7 +730,7 @@ namespace Mi_mercadito
             // 
             this.pboxDpto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pboxDpto.BackgroundImage")));
             this.pboxDpto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pboxDpto.Location = new System.Drawing.Point(613, 418);
+            this.pboxDpto.Location = new System.Drawing.Point(603, 473);
             this.pboxDpto.Margin = new System.Windows.Forms.Padding(4);
             this.pboxDpto.Name = "pboxDpto";
             this.pboxDpto.Size = new System.Drawing.Size(131, 116);
@@ -830,12 +802,24 @@ namespace Mi_mercadito
             this.txtnomList.TabIndex = 37;
             this.txtnomList.MouseLeave += new System.EventHandler(this.txtnomList_MouseLeave);
             // 
+            // cboxProdDpto
+            // 
+            this.cboxProdDpto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxProdDpto.Enabled = false;
+            this.cboxProdDpto.FormattingEnabled = true;
+            this.cboxProdDpto.Location = new System.Drawing.Point(593, 607);
+            this.cboxProdDpto.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.cboxProdDpto.Name = "cboxProdDpto";
+            this.cboxProdDpto.Size = new System.Drawing.Size(161, 26);
+            this.cboxProdDpto.TabIndex = 12;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(774, 881);
+            this.Controls.Add(this.cboxProdDpto);
             this.Controls.Add(this.txtnomList);
             this.Controls.Add(this.cmdEliminar);
             this.Controls.Add(this.txtTotalCompra);
@@ -844,15 +828,12 @@ namespace Mi_mercadito
             this.Controls.Add(this.cmdSlide);
             this.Controls.Add(this.cmdCar);
             this.Controls.Add(this.cmdCargarImg);
-            this.Controls.Add(this.lblProdSuc);
             this.Controls.Add(this.lblProdDpto);
             this.Controls.Add(this.lblProdMarc);
             this.Controls.Add(this.lblProdDesc);
             this.Controls.Add(this.lblProdContNet);
             this.Controls.Add(this.lblProdPrecio);
             this.Controls.Add(this.lblNombreProduc);
-            this.Controls.Add(this.txtProdSuc);
-            this.Controls.Add(this.txtProdDpto);
             this.Controls.Add(this.txtProdMarc);
             this.Controls.Add(this.txtProdDesc);
             this.Controls.Add(this.txtProdContNet);
@@ -939,15 +920,12 @@ namespace Mi_mercadito
         private System.Windows.Forms.TextBox txtProdPrecio;
         private System.Windows.Forms.TextBox txtProdContNet;
         private System.Windows.Forms.TextBox txtProdDesc;
-        private System.Windows.Forms.TextBox txtProdDpto;
-        private System.Windows.Forms.TextBox txtProdSuc;
         private System.Windows.Forms.Label lblNombreProduc;
         private System.Windows.Forms.Label lblProdPrecio;
         private System.Windows.Forms.Label lblProdContNet;
         private System.Windows.Forms.Label lblProdDesc;
         private System.Windows.Forms.Label lblProdMarc;
         private System.Windows.Forms.Label lblProdDpto;
-        private System.Windows.Forms.Label lblProdSuc;
         private System.Windows.Forms.Panel pnlLogin;
         private System.Windows.Forms.PictureBox pbxmin;
         private System.Windows.Forms.PictureBox pbxX;
@@ -967,5 +945,6 @@ namespace Mi_mercadito
         private System.Windows.Forms.ColumnHeader Precio;
         private System.Windows.Forms.Button cmdEliminar;
         private System.Windows.Forms.TextBox txtnomList;
+        private System.Windows.Forms.ComboBox cboxProdDpto;
     }
 }
