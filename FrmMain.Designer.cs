@@ -503,7 +503,6 @@ namespace Mi_mercadito
             this.txtProdPrecio.Name = "txtProdPrecio";
             this.txtProdPrecio.Size = new System.Drawing.Size(161, 26);
             this.txtProdPrecio.TabIndex = 6;
-            this.txtProdPrecio.TextChanged += new System.EventHandler(this.txtProdPrecio_TextChanged);
             // 
             // txtProdContNet
             // 
@@ -514,7 +513,6 @@ namespace Mi_mercadito
             this.txtProdContNet.Name = "txtProdContNet";
             this.txtProdContNet.Size = new System.Drawing.Size(161, 26);
             this.txtProdContNet.TabIndex = 8;
-            this.txtProdContNet.TextChanged += new System.EventHandler(this.txtProdContNet_TextChanged);
             // 
             // txtProdDesc
             // 
@@ -547,7 +545,6 @@ namespace Mi_mercadito
             this.lblNombreProduc.Size = new System.Drawing.Size(66, 18);
             this.lblNombreProduc.TabIndex = 3;
             this.lblNombreProduc.Text = "Producto";
-            this.lblNombreProduc.Click += new System.EventHandler(this.lblNombreProduc_Click);
             // 
             // lblProdPrecio
             // 
@@ -558,7 +555,6 @@ namespace Mi_mercadito
             this.lblProdPrecio.Size = new System.Drawing.Size(49, 18);
             this.lblProdPrecio.TabIndex = 5;
             this.lblProdPrecio.Text = "Precio";
-            this.lblProdPrecio.Click += new System.EventHandler(this.lblProdPrecio_Click);
             // 
             // lblProdContNet
             // 
@@ -569,7 +565,6 @@ namespace Mi_mercadito
             this.lblProdContNet.Size = new System.Drawing.Size(74, 18);
             this.lblProdContNet.TabIndex = 7;
             this.lblProdContNet.Text = "Cont. Net.";
-            this.lblProdContNet.Click += new System.EventHandler(this.lblProdContNet_Click);
             // 
             // lblProdDesc
             // 
@@ -590,7 +585,6 @@ namespace Mi_mercadito
             this.lblProdMarc.Size = new System.Drawing.Size(49, 18);
             this.lblProdMarc.TabIndex = 9;
             this.lblProdMarc.Text = "Marca";
-            this.lblProdMarc.Click += new System.EventHandler(this.lblProdMarc_Click);
             // 
             // lblProdDpto
             // 
@@ -812,6 +806,7 @@ namespace Mi_mercadito
             this.cboxProdDpto.Name = "cboxProdDpto";
             this.cboxProdDpto.Size = new System.Drawing.Size(161, 26);
             this.cboxProdDpto.TabIndex = 12;
+            this.cboxProdDpto.SelectedIndexChanged += new System.EventHandler(this.cboxProdDpto_SelectedIndexChanged);
             // 
             // FrmMain
             // 

@@ -160,6 +160,7 @@ namespace Mi_mercadito
             txtProdDesc.Text = arreglo[3];
             txtProdMarc.Text = arreglo[4];
             cboxProdDpto.Text = arreglo[5];
+            datos.ImagenDpto(ref pboxDpto, cboxProdDpto.Text);
             cboxSucursal.Text = arreglo[6];
             datos.Imagen(ref pboxCamara, txtNombreProduc.Text); // Muestra la imagen del producto que esta almacenada en la base de datos.
             RellenaSucursal(cboxSucursal.Text);
@@ -617,34 +618,11 @@ namespace Mi_mercadito
             }
         }
 
-        private void lblNombreProduc_Click(object sender, EventArgs e)
+        private void cboxProdDpto_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void lblProdPrecio_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtProdPrecio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblProdContNet_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtProdContNet_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblProdMarc_Click(object sender, EventArgs e)
-        {
-
+            // Evento que al seleccionar una opción del [cboxProdDpto] del [Departamento] cambie la imágen del [pboxDpto].
+            Producto datos = new Producto();
+            datos.ImagenDpto(ref pboxDpto, cboxProdDpto.Text);
         }
         // ==================== || FIN Eventos || ==================== //
     }
