@@ -189,9 +189,9 @@ namespace Mi_mercadito
             Sucursal sucursal = new Sucursal();
             sucursal.ConsultaSuc(cboxSucursal);
             Departamento dpto = new Departamento();
-            dpto.ConsultaDpto(cboxProdDpto);
             AutocompletarTxt("Marca", txtProdMarc);
             AutocompletarTxt("Producto", txtNombreProduc);
+            dpto.ConsultaDpto(cboxProdDpto);
             // Condicional donde si el picturebox no cuenta con una imagen dentro, mandará a enviar el logo de Mi mercadito.
             if (pboxCamara.Image == null)
             {
@@ -437,7 +437,7 @@ namespace Mi_mercadito
 
         private void txtNombreProduc_TextChanged(object sender, EventArgs e)
         {
-            if (!Bloqueo(txtNombreProduc.Text))
+            if (!Bloqueo(txtNombreProduc.Text) || txtNombreProduc.Text == "")
             {
                 txtProdMarc.ReadOnly = true;
                 cboxProdDpto.Enabled = false;
@@ -458,6 +458,8 @@ namespace Mi_mercadito
             lviewProducto.Visible = false;
             cmdSlide.Visible = false;
             txtTotalCompra.Visible = false;
+            cmdEliminar.Visible = false;
+            txtnomList.Visible = false;
 
             // Mover la foto.
             pboxCamara.Size = new Size(pboxCamara.Width + 195, pboxCamara.Height);
@@ -485,6 +487,8 @@ namespace Mi_mercadito
             lviewProducto.Visible = true;
             cmdSlide.Visible = true;
             txtTotalCompra.Visible = true;
+            cmdEliminar.Visible = true;
+            txtnomList.Visible = true;
 
             // Mover la foto.
             pboxCamara.Size = new Size(pboxCamara.Width - 195, pboxCamara.Height);
