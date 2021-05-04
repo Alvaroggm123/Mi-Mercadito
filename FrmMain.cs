@@ -51,6 +51,11 @@ namespace Mi_mercadito
                     break;
             }
         }
+
+        public FrmMain()
+        {
+        }
+
         private bool ErrorMessage(string Grupo, string Mensaje, Control Enfoque)
         {
             string Titulo = "Error en " + Grupo;

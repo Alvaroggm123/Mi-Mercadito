@@ -120,6 +120,7 @@ namespace Mi_mercadito
         // Cerrar ventana.
         private void pbxX2_Click(object sender, EventArgs e)
         {
+            pbox_Camara.Image = Mi_mercadito.Properties.Resources.logomiMercadito;
             Close();
         }
         private void pbxX_MouseHover(object sender, EventArgs e)
