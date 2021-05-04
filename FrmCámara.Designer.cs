@@ -63,6 +63,7 @@ namespace Mi_mercadito
             // 
             // cboxCamara
             // 
+            this.cboxCamara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCamara.FormattingEnabled = true;
             this.cboxCamara.Location = new System.Drawing.Point(13, 790);
             this.cboxCamara.Margin = new System.Windows.Forms.Padding(4);
