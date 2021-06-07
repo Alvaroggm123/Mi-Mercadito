@@ -155,7 +155,7 @@ namespace Mi_mercadito
         public static SqlConnection StartConn()
         {
             // Configuración de los parámetros para conectar con la base de datos.
-            string[] Config = { "Data Source = mercadito.axolotlteam.com;",
+            string[] Config = { "Data Source = the.axolotlteam.com;",
             /*                 */"Initial Catalog=Mercadito;",
             /*                 */"User Id=Mercader;",
             /*                 */"Password=Mercadito3312"};
