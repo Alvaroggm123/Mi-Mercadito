@@ -1,0 +1,3 @@
+Options -Indexes
+ErrorDocument 404 /assets/dependencies/404.php
+ErrorDocument 403 /assets/dependencies/403.php
