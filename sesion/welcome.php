@@ -32,10 +32,6 @@ if (isset($_POST['modCant']) && isset($_POST['mprodId'])) {
     if ($_POST['modCant'] != "")
         $flag = $db->modCantidadProd($_POST['mprodId'], $_POST['modCant']);
     //header('location: users.php');
-    if ($flag)
-        AlertMessage('Usuario modificado correctamente', "");
-    else
-        AlertMessage('No se realizaron modificaciones.', "");
 }
 ?>
 <!DOCTYPE HTML>

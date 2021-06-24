@@ -66,6 +66,7 @@ if (isset($_POST['modId']) && (isset($_POST['modUsername']) || isset($_POST['mod
 </header>
 
 <body>
+<div class="container">
     <h1>AxolotlTeam</h1>
     <h2>Bienvenido, desde este panel puedes administrar los usuarios.</h2>
     <?php
@@ -85,6 +86,7 @@ if (isset($_POST['modId']) && (isset($_POST['modUsername']) || isset($_POST['mod
     echo"</table>";
     ?>
 </body>
+</div>
 <footer>
     <?php include '../../assets/dependencies/foot.php' ?>
 </footer>

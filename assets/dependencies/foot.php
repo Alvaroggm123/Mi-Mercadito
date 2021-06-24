@@ -1,4 +1,6 @@
 <?php
 $Year = date("Y");
 ?>
-<p class="text-muted copyright">Copyright© AxolotlTeam <?php echo $Year ?></p>
+<div class="container">
+    <p class="text-muted copyright">Copyright© AxolotlTeam <?php echo $Year ?></p>
+</div>
