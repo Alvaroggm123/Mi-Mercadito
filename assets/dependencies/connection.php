@@ -116,7 +116,7 @@ class DataBase
     }
     function EliminarUsuario($usrId)
     {
-        $sql = "DELETE FROM Users WHERE usrId= ? ;";
+        $sql = "EXEC deleteUsuario ? ;";
         $params = array($usrId);
 
         $conn = $this->connect();
