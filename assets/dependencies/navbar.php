@@ -81,10 +81,10 @@ if (basename($_SERVER["PHP_SELF"]) == "404.php" || basename($_SERVER["PHP_SELF"]
                     echo <<<EOT
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Mi panel
+                                Mi mercadito
                             </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{$Links['panel']['principal']}">Ir a mi panel</a></li>
+                                <li><a class="dropdown-item" href="{$Links['panel']['principal']}">Ir a mi carrito</a></li>
                             EOT;
                     switch ($_SESSION['rol']) {
                         case 3:
@@ -98,7 +98,7 @@ if (basename($_SERVER["PHP_SELF"]) == "404.php" || basename($_SERVER["PHP_SELF"]
                         <li>
                             <hr class='dropdown-divider'>
                         </li>
-                        <li><a class='dropdown-item' href='" . $Links["panel"]["myPanel"] . "'>Mi configuración (nd)</a></li>
+                        <li><a class='dropdown-item' href='" /*. $Links["panel"]["myPanel"]*/ . "#'>Mi configuración (nd)</a></li>
                     </ul>
                 </li>";
                 }

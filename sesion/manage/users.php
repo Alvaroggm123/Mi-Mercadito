@@ -27,7 +27,7 @@ if (isset($_GET['delUser'])) {
     else
         AlertMessage('No se realizaron modificaciones.', "");
     }
-    if (isset($_POST['modId']) && (isset($_POST['modUsername']) || isset($_POST['modRol']) || isset($_POST['modFname']) || isset($_POST['modLname']) || isset($_POST['modEmail']) || isset($_POST['modPassword']))) {
+if (isset($_POST['modId']) && (isset($_POST['modUsername']) || isset($_POST['modRol']) || isset($_POST['modFname']) || isset($_POST['modLname']) || isset($_POST['modEmail']) || isset($_POST['modPassword']))) {
     $db = new Database();
     $flag = false;
     if ($_POST['modUsername'] != "")
@@ -69,22 +69,20 @@ if (isset($_GET['delUser'])) {
     <h1>AxolotlTeam</h1>
     <h2>Bienvenido, desde este panel puedes administrar los usuarios.</h2>
     <?php
-        if (($_SESSION['rol'] == 3)||($_SESSION['rol'] == 2)){
-            echo "
-            <table class='table table-striped'>
-            <thead>
-                <th scope='row'>ID.</th>
-                <th>Rango</th>
-                <th>Nombre de usuario</th>
-                <th>Nombre</th>
-                <th>Apellido(s)</th>
-                <th>E-mail</th>
-                <th>Contraseña</th>
-                <th>Administrar</th></thead>";
-            $db = new Database();
-            $db->getUsers();
-        echo"</table>";
-        }
+        echo "
+        <table class='table table-striped'>
+        <thead>
+            <th scope='row'>ID.</th>
+            <th>Rango</th>
+            <th>Nombre de usuario</th>
+            <th>Nombre</th>
+            <th>Apellido(s)</th>
+            <th>E-mail</th>
+            <th>Contraseña</th>
+            <th>Administrar</th></thead>";
+        $db = new Database();
+        $db->getUsers();
+    echo"</table>";
     ?>
 </body>
 <footer>

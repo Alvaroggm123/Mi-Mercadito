@@ -137,6 +137,63 @@ class DataBase
             AlertMessage("Hubo un error al modificar el usuario.", "");
         } else return true;
     }
+    public function getProducts($usrUsername)
+    {
+        $sql = "EXEC miLista ?";
+        $params = array($usrUsername);
+        $conn = $this->connect();
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
+            printf("Algo fallo");
+        }
+        $cont = 0;
+        while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+            echo "<form method='POST' action='#'><tr>";
+            echo "<input type='hidden' name='mprodId' value='" . $row['mprodId'] . "'>";
+            echo "</td><td><a data-toggle='tooltip' data-placement='top' title='Producto ".++$cont."'>".$cont."</a>";
+            echo "</td><td><a data-toggle='tooltip' data-placement='top' title='".$row['prodName']."'><input class='form-control' type='text'  value='" . $row['prodName'] . "' disabled></a>";
+            echo "</td><td><a data-toggle='tooltip' data-placement='top' title='Precio del producto'><input class='form-control' type='text'  value='$" . $row['prodPrice'] . "' disabled></a>";
+            echo "</td><td><a data-toggle='tooltip' data-placement='top' title='Cantidad del producto'><input class='form-control' type='number' name='modCant' id='modCant' min=1 value='" . $row['mprodCantidad'] . "' ></a>";
+            echo "</td><td><a data-toggle='tooltip' data-placement='top' title='Total del producto'><input class='form-control' type='text' value='$" . $row['prodPrice']*$row['mprodCantidad'] . "' disabled></a>";
+            echo "</td><td><a data-toggle='tooltip' data-placement='top' title='" . $row['prodDesc'] . "'><input class='form-control' type='text' value='" . $row['prodDesc'] . "' disabled></a>";
+            echo "</td>
+                    <td>
+                        <div class='btn-group' role='group'>
+                                <button type='submit' class='btn btn-primary' id='cmdModify'>Modificar</button>
+                            <a href='welcome.php?delProd=" . $row['mprodId'] . "'>
+                                <button type='button' class='btn btn-danger' id='cmdDelete'>Eliminar</button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </form>";
+        }
+        return $cont;
+    }
+    function eliminarProducto($prodId)
+    {
+        $sql = "DELETE FROM MisProductos WHERE mprodId= ? ;";
+        $params = array($prodId);
+
+        $conn = $this->connect();
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
+        } else return true;
+    }
+    function modCantidadProd($id, $cant)
+    {
+        $sql = "UPDATE MisProductos SET mprodCantidad=? WHERE mprodId=?;";
+        $params = array($cant, $id);
+
+        $conn = $this->connect();
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        if ($stmt === false) {
+            die(print_r(sqlsrv_errors(), true));
+            AlertMessage("Hubo un error al modificar la cantidad de producto.", "");
+        } else return true;
+    }
 }
 function AlertMessage($message, $ruta)
 {
@@ -148,3 +205,4 @@ function AlertMessage($message, $ruta)
     } else
         echo "</script>";
 }
+
